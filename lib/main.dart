@@ -1,13 +1,15 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/newoceanapp/generated_widget/Generated_Widget.dart';
-import 'package:flutterapp/newoceanapp/generated_widget1/Generated_Widget1.dart';
-import 'package:flutterapp/newoceanapp/generated_widget2/Generated_Widget2.dart';
-
-void main() {
-  runApp(newoceanApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'package:newocean/shake.dart';
+import 'package:newocean/storage_service.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
-class newoceanApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,12 +17,67 @@ class newoceanApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/Generated_Widget2',
-      routes: {
-        '/Generated_Widget': (context) => Generated_Widget(),
-        '/Generated_Widget1': (context) => Generated_Widget1(),
-        '/Generated_Widget2': (context) => Generated_Widget2(),
-      },
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final Storage storage =Storage();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('cloud storage'),
+      ),
+      body: Column(
+        children: [
+         Center(
+           child: ElevatedButton(
+            onPressed: () async {
+              final results = await FilePicker.platform.pickFiles(
+              allowMultiple: false,
+              type:FileType.custom,
+               allowedExtensions: ['png','jpg'],
+              );
+      if(results==null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No file selected'),
+          ),
+        );
+        return null;
+      }
+      final path = results.files.single.path!;
+      final filename=results.files.single.name;
+      storage.
+          uploadFile(path,filename)
+          .then((value)=>print('Done'));
+
+    },
+    child: Text('upload file'),
+    ),
+    ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(builder: (context) => new shake()),
+                );
+             },
+                child: Text('shake'),
+            ),
+          ),
+      ],
+      ),
     );
   }
 }
