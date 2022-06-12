@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:newocean/shake.dart';
 import 'package:newocean/storage_service.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,6 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
     child: Text('upload file'),
     ),
     ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(builder: (context) => new shake()),
+                );
+             },
+                child: Text('shake'),
+            ),
+          ),
       ],
       ),
     );
