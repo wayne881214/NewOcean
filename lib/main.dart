@@ -1,83 +1,51 @@
-import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:newocean/shake.dart';
-import 'package:newocean/storage_service.dart';
-void main() async{
+import 'package:flutter/services.dart';
+import 'widget/navigation_drawer_widget.dart';
+
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'New Ocean';
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomeScreen(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: title,
+    theme: ThemeData(primarySwatch: Colors.teal),
+    home: MainPage(),
+  );
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+class MainPage extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainPageState extends State<MainPage> {
   @override
-  Widget build(BuildContext context) {
-    final Storage storage =Storage();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('cloud storage'),
+  Widget build(BuildContext context) => Scaffold(
+    drawer: NavigationDrawerWidget(),
+    // endDrawer: NavigationDrawerWidget(),
+    appBar: AppBar(
+      title: Text(MyApp.title),
+      centerTitle: true,
+    ),
+    body: Builder(
+      builder: (context) => Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 32),
+        child: Image.asset('images/turtle.png'),
       ),
-      body: Column(
-        children: [
-         Center(
-           child: ElevatedButton(
-            onPressed: () async {
-              final results = await FilePicker.platform.pickFiles(
-              allowMultiple: false,
-              type:FileType.custom,
-               allowedExtensions: ['png','jpg'],
-              );
-      if(results==null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('No file selected'),
-          ),
-        );
-        return null;
-      }
-      final path = results.files.single.path!;
-      final filename=results.files.single.name;
-      storage.
-          uploadFile(path,filename)
-          .then((value)=>print('Done'));
+    ),
+  );
 
-    },
-    child: Text('upload file'),
-    ),
-    ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(builder: (context) => new shake()),
-                );
-             },
-                child: Text('shake'),
-            ),
-          ),
-      ],
-      ),
-    );
-  }
 }
