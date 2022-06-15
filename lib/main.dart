@@ -1,29 +1,58 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:untitled/routes/app_routes.dart';
+import 'core/utils/initial_bindings.dart';
+import 'localization/app_localization.dart';
 import 'widget/navigation_drawer_widget.dart';
-
-Future main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
+  SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
   ]);
-
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'New Ocean';
-
+  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: title,
-    theme: ThemeData(primarySwatch: Colors.teal),
-    home: MainPage(),
-  );
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      translations: AppLocalization(),
+      locale: Get.deviceLocale, //for setting localization strings
+      fallbackLocale: Locale('en', 'US'),
+      title: 'peter1421_s_application17',
+      // initialBinding: InitialBindings(),
+      initialRoute: AppRoutes.initialRoute,
+      getPages: AppRoutes.pages,
+    );
+  }
 }
+// Future main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await SystemChrome.setPreferredOrientations([
+//     DeviceOrientation.portraitUp,
+//     DeviceOrientation.portraitDown,
+//   ]);
+//
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   static final String title = 'New Ocean';
+//
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     title: title,
+//     theme: ThemeData(primarySwatch: Colors.teal),
+//     home: MainPage(),
+//   );
+// }
 
 class MainPage extends StatefulWidget {
   @override
