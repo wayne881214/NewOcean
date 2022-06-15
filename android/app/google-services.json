@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223238297413",
+    "firebase_url": "https://newocean-444d7-default-rtdb.firebaseio.com",
+    "project_id": "newocean-444d7",
+    "storage_bucket": "newocean-444d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223238297413:android:f77ea9e53ffc2df4add02c",
+        "android_client_info": {
+          "package_name": "com.example.newocean"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223238297413-ag4i6u14gjj3m8rtb4925qgsuuh4n0un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5YMWqrWbkkxqhP6du3SeyvXIRuXBSiqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223238297413-ag4i6u14gjj3m8rtb4925qgsuuh4n0un.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223238297413-a97pm4iffs4hl2i2bs2mac1gcsoa8opv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.newocean"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
