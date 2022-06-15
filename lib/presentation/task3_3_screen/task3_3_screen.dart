@@ -1,8 +1,17 @@
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+import '../../core/utils/color_constant.dart';
+import '../../core/utils/image_constant.dart';
+import '../../core/utils/math_utils.dart';
+import '../../routes/app_routes.dart';
+import '../../theme/app_decoration.dart';
+import '../../theme/app_style.dart';
 import 'controller/task3_3_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
-import 'package:peter1421_s_application17/core/app_export.dart';
+// import 'package:peter1421_s_application17/core/app_export.dart';
 
 class Task33Screen extends GetWidget<Task33Controller> {
   @override

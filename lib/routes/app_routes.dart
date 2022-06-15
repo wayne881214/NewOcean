@@ -16,12 +16,22 @@
 // import 'package:peter1421_s_application17/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
 import 'package:get/get.dart';
 
+import '../presentation/hamburger_screen/binding/hamburger_binding.dart';
+import '../presentation/hamburger_screen/hamburger_screen.dart';
+import '../presentation/home_screen/binding/home_binding.dart';
+import '../presentation/home_screen/home_screen.dart';
 import '../presentation/task1_screen/binding/task1_binding.dart';
 import '../presentation/task1_screen/task1_screen.dart';
 import '../presentation/task3_1_screen/binding/task3_1_binding.dart';
 import '../presentation/task3_1_screen/task3_1_screen.dart';
-import '../presentation/task4_screen/binding/task4_binding.dart';
-import '../presentation/task4_screen/task4_screen.dart';
+import '../presentation/task3_2_screen/binding/task3_2_binding.dart';
+import '../presentation/task3_2_screen/task3_2_screen.dart';
+import '../presentation/task3_3_screen/binding/task3_3_binding.dart';
+import '../presentation/task3_3_screen/task3_3_screen.dart';
+// import '../presentation/task3_1_screen/binding/task3_1_binding.dart';
+// import '../presentation/task3_1_screen/task3_1_screen.dart';
+// import '../presentation/task4_screen/binding/task4_binding.dart';
+// import '../presentation/task4_screen/task4_screen.dart';
 
 class AppRoutes {
   static String homeScreen = '/home_screen';
@@ -43,20 +53,20 @@ class AppRoutes {
   static String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
-    // GetPage(
-    //   name: homeScreen,
-    //   page: () => HomeScreen(),
-    //   bindings: [
-    //     HomeBinding(),
-    //   ],
-    // ),
-    // GetPage(
-    //   name: hamburgerScreen,
-    //   page: () => HamburgerScreen(),
-    //   bindings: [
-    //     HamburgerBinding(),
-    //   ],
-    // ),
+    GetPage(
+      name: homeScreen,
+      page: () => HomeScreen(),
+      bindings: [
+        HomeBinding(),
+      ],
+    ),
+    GetPage(
+      name: hamburgerScreen,
+      page: () => HamburgerScreen(),
+      bindings: [
+        HamburgerBinding(),
+      ],
+    ),
     GetPage(
       name: task1Screen,
       page: () => Task1Screen(),
@@ -71,27 +81,27 @@ class AppRoutes {
         Task31Binding(),
       ],
     ),
-    // GetPage(
-    //   name: task33Screen,
-    //   page: () => Task33Screen(),
-    //   bindings: [
-    //     Task33Binding(),
-    //   ],
-    // ),
-    // GetPage(
-    //   name: task32Screen,
-    //   page: () => Task32Screen(),
-    //   bindings: [
-    //     Task32Binding(),
-    //   ],
-    // ),
     GetPage(
-      name: task4Screen,
-      page: () => Task4Screen(),
+      name: task33Screen,
+      page: () => Task33Screen(),
       bindings: [
-        Task4Binding(),
+        Task33Binding(),
       ],
     ),
+    GetPage(
+      name: task32Screen,
+      page: () => Task32Screen(),
+      bindings: [
+        Task32Binding(),
+      ],
+    ),
+    // GetPage(
+    //   name: task4Screen,
+    //   page: () => Task4Screen(),
+    //   bindings: [
+    //     Task4Binding(),
+    //   ],
+    // ),
     // GetPage(
     //   name: appNavigationScreen,
     //   page: () => AppNavigationScreen(),
@@ -99,12 +109,12 @@ class AppRoutes {
     //     AppNavigationBinding(),
     //   ],
     // ),
-    // GetPage(
-    //   name: initialRoute,
-    //   page: () => HomeScreen(),
-    //   bindings: [
-    //     HomeBinding(),
-    //   ],
-    // )
+    GetPage(
+      name: initialRoute,
+      page: () => Task1Screen(),
+      bindings: [
+        Task1Binding(),
+      ],
+    )
   ];
 }

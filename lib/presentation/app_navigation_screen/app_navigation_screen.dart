@@ -1,6 +1,13 @@
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+import '../../core/utils/color_constant.dart';
+import '../../core/utils/math_utils.dart';
+import '../../routes/app_routes.dart';
+import '../../theme/app_style.dart';
 import 'controller/app_navigation_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:peter1421_s_application17/core/app_export.dart';
+// import 'package:peter1421_s_application17/core/app_export.dart';
 
 class AppNavigationScreen extends GetWidget<AppNavigationController> {
   @override

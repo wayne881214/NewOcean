@@ -1,8 +1,16 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../core/utils/color_constant.dart';
+import '../../core/utils/image_constant.dart';
+import '../../core/utils/math_utils.dart';
+import '../../theme/app_decoration.dart';
+import '../../theme/app_style.dart';
 import 'controller/task2_controller.dart';
 import 'models/task2_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peter1421_s_application17/core/app_export.dart';
+// import 'package:peter1421_s_application17/core/app_export.dart';
 
 // ignore_for_file: must_be_immutable
 class Task2Page extends StatelessWidget {

@@ -1,3 +1,71 @@
+// class ImageConstant {
+//   static String imgHomepagelogo = 'images/img_homepagelogo.svg';
+//
+//   static String imgAnimalgef987be2 = 'images/img_animalgef987be_2.png';
+//
+//   static String imgFrame1 = 'images/img_frame_1.svg';
+//
+//   static String imgVector = 'images/img_vector.svg';
+//
+//   static String imgGroup1 = 'images/img_group_1.svg';
+//
+//   static String imgAnimalgef987be1 = 'images/img_animalgef987be_1.png';
+//
+//   static String imgPluscircle = 'images/img_pluscircle.svg';
+//
+//   static String imgX3 = 'images/img_x_3.svg';
+//
+//   static String imgEllipse8 = 'images/img_ellipse8.png';
+//
+//   static String imgX = 'images/img_x.svg';
+//
+//   static String imgFrame = 'images/img_frame.png';
+//
+//   static String imgClock = 'images/img_clock.svg';
+//
+//   static String imgVector2 = 'images/img_vector_2.svg';
+//
+//   static String imgImage271 = 'images/img_image27_1.png';
+//
+//   static String imgX2 = 'images/img_x_2.svg';
+//
+//   static String imgGroup100000085 = 'images/img_group100000085.svg';
+//
+//   static String imgVector1 = 'images/img_vector_1.svg';
+//
+//   static String imgGroup = 'images/img_group.svg';
+//
+//   static String imgArrow1 = 'images/img_arrow1.svg';
+//
+//   static String imgDiamondicon = 'images/img_diamondicon.svg';
+//
+//   static String imgVector4 = 'images/img_vector_4.svg';
+//
+//   static String imgHamburgericon1 = 'images/img_hamburgericon_1.svg';
+//
+//   static String imgClock1 = 'images/img_clock_1.svg';
+//
+//   static String imgAnimalgef987be = 'images/img_animalgef987be.png';
+//
+//   static String imgPolygon1 = 'images/img_polygon1.svg';
+//
+//   static String imgImage27 = 'images/img_image27.png';
+//
+//   static String imgX1 = 'images/img_x_1.svg';
+//
+//   static String imgLovepikcom401 = 'images/img_lovepikcom401.png';
+//
+//   static String imgCoralg1e76e727 = 'images/img_coralg1e76e727.png';
+//
+//   static String imgAnimalg8ea9e7c = 'images/img_animalg8ea9e7c.png';
+//
+//   static String imgHamburgericon = 'images/img_hamburgericon.png';
+//
+//   static String imgVector3 = 'images/img_vector_3.svg';
+//
+//   static String imageNotFound = 'images/image_not_found.png';
+// }
+
 class ImageConstant {
   static String imgHomepagelogo = 'assets/images/img_homepagelogo.svg';
 

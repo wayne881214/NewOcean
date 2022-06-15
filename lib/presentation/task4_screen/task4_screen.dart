@@ -1,15 +1,18 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../core/utils/color_constant.dart';
-import '../../core/utils/image_constant.dart';
-import '../../core/utils/math_utils.dart';
-import '../../theme/app_style.dart';
 import '../task2_page/task2_page.dart';
 import '../task3_page/task3_page.dart';
 import 'controller/task4_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../core/utils/color_constant.dart';
+import '../../core/utils/image_constant.dart';
+import '../../core/utils/math_utils.dart';
+import '../../routes/app_routes.dart';
+import '../../theme/app_decoration.dart';
+import '../../theme/app_style.dart';
 // import 'package:peter1421_s_application17/core/app_export.dart';
 // import 'package:peter1421_s_application17/presentation/task2_page/task2_page.dart';
 // import 'package:peter1421_s_application17/presentation/task3_page/task3_page.dart';
