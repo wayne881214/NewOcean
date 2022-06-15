@@ -39,6 +39,14 @@ dependencies:
   file_picker: ^4.0.3
   sensors: ^0.4.0+1
   firebase_database: 8.0.0
+  get: ^4.6.1
+  pull_to_refresh: ^2.0.0
+  connectivity_plus: ^1.4.0
+  shared_preferences: ^2.0.7
+  cached_network_image: ^3.1.0
+  flutter_svg: ^0.22.0
+  outline_gradient_button: ^2.0.0+1
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +68,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+#    - assets/
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
