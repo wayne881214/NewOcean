@@ -15,8 +15,7 @@ List<Task> task = [];
 class _TaskState extends State<TasksPage> {
   //生成 TaskCard Widget (任務卡片列表)
   //widget/task_card_widget.dart
-  StatelessWidget card = TaskCard_Peter(data:task);
-
+  StatelessWidget card = TaskCard(data:task);
   @override
   //初始化
   void initState() {
@@ -31,7 +30,7 @@ class _TaskState extends State<TasksPage> {
       }
       //更新 TaskCard Widget(任務卡片列表)
       setState(() {
-        card = TaskCard_Peter(data:task);
+        card = TaskCard(data:task);
       });
     });
   }

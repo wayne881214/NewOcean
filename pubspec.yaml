@@ -41,6 +41,7 @@ dependencies:
   sensors: ^0.4.0+1
   firebase_database:
   get: ^4.6.5
+  percent_indicator: ^4.0.1
 
 dev_dependencies:
   flutter_test:
