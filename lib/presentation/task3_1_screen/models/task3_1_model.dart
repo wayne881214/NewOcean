@@ -1,0 +1,1 @@
+class Task31Model {}

@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
       builder: (context) => Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 32),
-        child: Image.asset('images/turtle.png'),
+        child: Image.asset('assets/images/turtle.png'),
       ),
     ),
   );

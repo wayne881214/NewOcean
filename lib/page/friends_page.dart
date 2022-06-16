@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/screen/shake.dart';
+
+import '../screen/peter_task.dart';
 class FriendsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
@@ -20,6 +22,19 @@ class FriendsPage extends StatelessWidget {
                   );
                 },
                 child: Text('shake'),
+
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(builder: (context) => new peter_taskDebug()),
+                  );
+                },
+                child: Text('測試任務ui'),
+
               ),
             ),
           ],
