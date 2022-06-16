@@ -29,57 +29,6 @@ class Task32Screen extends GetWidget<Task32Controller> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Container(
-                                      width: size.width,
-                                      decoration: BoxDecoration(
-                                          color: ColorConstant.cyan600),
-                                      child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: getHorizontalSize(161.00),
-                                              top: getVerticalSize(45.00),
-                                              right: getHorizontalSize(25.00),
-                                              bottom: getVerticalSize(17.00)),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text("lbl_task".tr,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .textstylerobotoromanbold30
-                                                        .copyWith(
-                                                            fontSize:
-                                                                getFontSize(
-                                                                    30))),
-                                                GestureDetector(
-                                                    onTap: () {
-                                                      onTapImgX();
-                                                    },
-                                                    child: Padding(
-                                                        padding: EdgeInsets.only(
-                                                            top:
-                                                                getVerticalSize(
-                                                                    4.00)),
-                                                        child: Container(
-                                                            height: getSize(
-                                                                24.00),
-                                                            width:
-                                                                getSize(24.00),
-                                                            child: SvgPicture
-                                                                .asset(
-                                                                    ImageConstant
-                                                                        .imgX3,
-                                                                    fit: BoxFit
-                                                                        .fill))))
-                                              ])))),
                               Container(
                                   margin: EdgeInsets.only(
                                       left: getHorizontalSize(10.00),

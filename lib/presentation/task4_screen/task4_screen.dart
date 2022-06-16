@@ -31,77 +31,77 @@ class Task4Screen extends GetWidget<Task4Controller> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.cyan600,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: getHorizontalSize(
-                        26.00,
-                      ),
-                      top: getVerticalSize(
-                        45.00,
-                      ),
-                      right: getHorizontalSize(
-                        93.00,
-                      ),
-                      bottom: getVerticalSize(
-                        17.00,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: getVerticalSize(
-                              10.00,
-                            ),
-                            bottom: getVerticalSize(
-                              2.00,
-                            ),
-                          ),
-                          child: Container(
-                            height: getVerticalSize(
-                              16.00,
-                            ),
-                            width: getHorizontalSize(
-                              12.00,
-                            ),
-                            child: SvgPicture.asset(
-                              ImageConstant.imgVector4,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: getHorizontalSize(
-                              55.00,
-                            ),
-                          ),
-                          child: Text(
-                            "lbl_save_the_turtle".tr,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: AppStyle.textstylerobotoromanbold30.copyWith(
-                              fontSize: getFontSize(
-                                30,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // Align(
+              //   alignment: Alignment.centerLeft,
+              //   child: Container(
+              //     width: size.width,
+              //     decoration: BoxDecoration(
+              //       color: ColorConstant.cyan600,
+              //     ),
+              //     child: Padding(
+              //       padding: EdgeInsets.only(
+              //         left: getHorizontalSize(
+              //           26.00,
+              //         ),
+              //         top: getVerticalSize(
+              //           45.00,
+              //         ),
+              //         right: getHorizontalSize(
+              //           93.00,
+              //         ),
+              //         bottom: getVerticalSize(
+              //           17.00,
+              //         ),
+              //       ),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.start,
+              //         crossAxisAlignment: CrossAxisAlignment.end,
+              //         mainAxisSize: MainAxisSize.max,
+              //         children: [
+              //           Padding(
+              //             padding: EdgeInsets.only(
+              //               top: getVerticalSize(
+              //                 10.00,
+              //               ),
+              //               bottom: getVerticalSize(
+              //                 2.00,
+              //               ),
+              //             ),
+              //             child: Container(
+              //               height: getVerticalSize(
+              //                 16.00,
+              //               ),
+              //               width: getHorizontalSize(
+              //                 12.00,
+              //               ),
+              //               child: SvgPicture.asset(
+              //                 ImageConstant.imgVector4,
+              //                 fit: BoxFit.fill,
+              //               ),
+              //             ),
+              //           ),
+              //           Padding(
+              //             padding: EdgeInsets.only(
+              //               left: getHorizontalSize(
+              //                 55.00,
+              //               ),
+              //             ),
+              //             child: Text(
+              //               "lbl_save_the_turtle".tr,
+              //               overflow: TextOverflow.ellipsis,
+              //               textAlign: TextAlign.left,
+              //               style: AppStyle.textstylerobotoromanbold30.copyWith(
+              //                 fontSize: getFontSize(
+              //                   30,
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Expanded(
                 child: Align(
                   alignment: Alignment.centerLeft,
