@@ -26,7 +26,7 @@ class _TaskState extends State<TasksPage> {
       int id= (event.snapshot.value as Map)["id"];
       int state= (event.snapshot.value as Map)["state"];
       if(state==1) {
-        task.add(Task.addTask(id));
+        task.add(Task.addTask(id,state));
       }
       //更新 TaskCard Widget(任務卡片列表)
       setState(() {

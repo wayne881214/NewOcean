@@ -5,11 +5,14 @@ import 'package:newocean/model/task_model.dart';
 import 'package:newocean/screen/mission.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 class TaskCard extends StatelessWidget {
+  //獲取List<Task>任務列表
   TaskCard({Key? key, required this.data}) : super(key: key);
   final List<Task> data;
   @override
   Widget build(BuildContext context) {
+    //生成List項目
     return ListView(
+        //每一項進行生成
         children: data.map((value){
           //偵測點擊跳轉(mission介面)
           return GestureDetector(
@@ -17,7 +20,8 @@ class TaskCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => mission(id: 1),
+                  //回傳任務ID
+                  builder: (context) => mission(id:value.id),
                 ));
           },
           //生成Task Card(任務卡片)
@@ -25,13 +29,13 @@ class TaskCard extends StatelessWidget {
             //陰影
             elevation: 2,
             //外圍距離
-            margin: EdgeInsets.all(30),
+            margin: const EdgeInsets.only(top:15 ,left:30,right: 30,bottom: 15),
             //邊框
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               side: BorderSide(
                 color: Color(0xFF8F8F8F),
               ),
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             //建立盒子
             child: SizedBox(
@@ -43,7 +47,7 @@ class TaskCard extends StatelessWidget {
                 //垂直分割Row(1:6:2:1)
                 children: [
                   //空白
-                  Expanded(
+                  const Expanded(
                       flex: 1,
                       child:Text('')
                   ),
@@ -105,7 +109,7 @@ class TaskCard extends StatelessWidget {
                         progressColor: Color(0xFFECC055),
                       )
                   ),
-                  Expanded(
+                  const Expanded(
                       flex: 1,
                       child:Text('')
                   )
