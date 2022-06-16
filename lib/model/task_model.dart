@@ -1,30 +1,24 @@
-//import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'dart:io';
+import 'package:newocean/model/task_model.dart';
 class Task {
 
   final String name;
   final String imagePath;
   // ...
   Task(this.name,this.imagePath);
-  static List<Task> findAll() {
-    return [
-      Task("1", "nothing"),
-      Task("2", "nothing'"),
-      Task("2", "nothing'"),
-    ];
+
+  static Task addTask(int i) {
+    switch(i) {
+      case 1:
+        return Task("1", "hungry");
+      case 2:
+        return Task("1", "Yummy");
+      default:
+        return Task("1", "nothing");
+    }
   }
 
-  static List<Task> findThis() {
-    /*DatabaseReference ref = FirebaseDatabase.instance.ref();
-    String snapshot =ref.child('users/123').get().toString();
-    if (snapshot.exists) {
-      print(snapshot.value);
-    } else {
-      print('No data available.');
-    }*/
-    return [
-      Task("1", "nothing"),
-    ];
-  }
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,6 +6,7 @@ import 'widget/navigation_drawer_widget.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -43,7 +45,7 @@ class _MainPageState extends State<MainPage> {
       builder: (context) => Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 32),
-        child: Image.asset('images/turtle.png'),
+        child: Image.asset('assets/images/turtle.png'),
       ),
     ),
   );
