@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/screen/shake.dart';
 
+import '../screen/peter_animal.dart';
 import '../screen/peter_task.dart';
 class FriendsPage extends StatelessWidget {
   @override
@@ -34,7 +35,16 @@ class FriendsPage extends StatelessWidget {
                   );
                 },
                 child: Text('測試任務ui'),
-
+              ),
+            ), Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(builder: (context) => new peter_animalDebug()),
+                  );
+                },
+                child: Text('測試動物ui'),
               ),
             ),
           ],

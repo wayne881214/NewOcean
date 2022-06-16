@@ -29,7 +29,6 @@ class _ShakeState extends State<peter_taskDebug> {
           translations: AppLocalization(),
           locale: Get.deviceLocale, //for setting localization strings
           fallbackLocale: Locale('en', 'US'),
-          title: 'peter1421_s_application17',
           initialBinding: InitialBindings(),
           initialRoute: AppRoutes.initialRoute,
           getPages: AppRoutes.pages,

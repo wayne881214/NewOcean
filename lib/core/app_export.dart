@@ -17,7 +17,7 @@ export 'package:get/get.dart';
 //
 // export 'package:connectivity_plus/connectivity_plus.dart';
 //
-// export 'package:peter1421_s_application17/routes/app_routes.dart';
+// export 'package:peter1421_s_application17/routes/animal_app_routes.dart';
 //
 // export 'package:peter1421_s_application17/data/models/selectionPopupModel/selection_popup_model.dart';
 //
