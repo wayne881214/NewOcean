@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/fitness_app/fitness_app_home_screen.dart';
+
 class AchievementsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -8,5 +10,7 @@ class AchievementsPage extends StatelessWidget {
       centerTitle: true,
       backgroundColor: Color(0xFF00BFA5),
     ),
+    body:
+      MyApp2(),
   );
 }

@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../bar_chart/bar_chart_page2.dart';
 import '../fitness_app_theme.dart';
+import '../line_chart/line_chart_page.dart';
+import '../line_chart/samples/line_chart_sample2.dart';
 import '../ui_view/glass_view.dart';
 import '../ui_view/mediterranean_diet_view.dart';
 import '../ui_view/title_view.dart';
@@ -143,15 +146,32 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     //     mainScreenAnimationController: widget.animationController!,
     //   ),
     // );
-
+    // listViews.add(
+    //   WaterView(
+    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //             parent: widget.animationController!,
+    //             curve: Interval((1 / count) * 7, 1.0,
+    //                 curve: Curves.fastOutSlowIn))),
+    //     mainScreenAnimationController: widget.animationController!,
+    //   ),
+    // );
     listViews.add(
-      GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController!,
-                  curve: Interval((1 / count) * 8, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController!),
+      TitleView(
+        titleTxt: '本周數據',
+        subTxt: '數據總覽',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController!,
+      ),
+    );
+    listViews.add(
+        BarChartPage2(),
+    );
+    listViews.add(
+      LineChartSample2(),
     );
   }
 

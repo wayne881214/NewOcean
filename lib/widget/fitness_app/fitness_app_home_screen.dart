@@ -13,6 +13,7 @@ class MyApp2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home:FitnessAppHomeScreen(),
+
     );
   }
 }
