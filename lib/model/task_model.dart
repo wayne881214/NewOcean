@@ -19,7 +19,7 @@ class Task {
         var Mission= ["未解鎖", "任務一 拯救海龜","任務二 收集寶特瓶(一)","任務三 收集寶特瓶(二)","已完成"];
             return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",Mission[state],(state*3/100).ceil());
       case 2:
-        var Mission= ["未解鎖", "任務一 拯救海獅","任務二 收集垃圾(一)","任務三 收集垃圾(二)","已完成"];
+        var Mission= ["未解鎖", "任務-4 拯救海獅","任務二 收集垃圾(一)","任務三 收集垃圾(二)","已完成"];
             return Task(id,state,"assets/images/turtle.png", "拯救海獅大作戰",Mission[state],(state*3/100).ceil());
       default:
         return Task(id,state,"assets/images/turtle.png", "尚未解鎖任務","任務一",50);

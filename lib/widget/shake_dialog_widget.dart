@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -159,7 +160,6 @@ class _task2showDialog extends State<task2showDialog> {
                     flex: 6,
                     child: FutureBuilder(
                         future: storage.downloadURL('$filename'),
-
                         // future: storage.listFiles(),
                         builder:(BuildContext context,
                             AsyncSnapshot<String>snapshot){
@@ -231,6 +231,106 @@ class _task2showDialog extends State<task2showDialog> {
                         ),
                       ))
                 ])))),
+      ),
+    );
+  }
+}
+
+class task3showDialog extends StatefulWidget {
+  @override
+  _task3showDialog createState() => _task3showDialog();
+}
+
+class _task3showDialog extends State<task3showDialog> {
+  int number = 0,op=0;
+  String img = "https://turtleacademy.com/images/turtle.gif";
+  String result = "取消";
+  String filename="2022-06-19-20-28-48.png";
+  final TextEditingController myController = new TextEditingController();
+
+  void initState() {
+    super.initState();
+    setState(() {
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Storage storage =Storage();
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+      child: Container(
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            gradient: new LinearGradient(colors: <Color>[
+              Color(0xffB3E7E7),
+              Color(0xffBCCFF5),
+            ], begin: Alignment.topLeft, end: Alignment.topRight)),
+        child: Card(
+            elevation: 0,
+            color: Colors.transparent,
+            child: SizedBox(
+                width: 350,
+                height: 500,
+                child: Center(
+                    child: Column(children: [
+                      Expanded(
+                        flex: 6,
+                        child: FutureBuilder(
+                            future: storage.downloadURL(filename),
+                            // future: storage.listFiles(),
+                            builder:(BuildContext context,
+                                AsyncSnapshot<String>snapshot){
+                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
+                                return Container(
+                                    width: 300,
+                                    height: 150,
+                                    child:Image.network(
+                                      snapshot.data!,
+                                      fit:BoxFit.cover,
+                                    ));
+                              }
+                              if(snapshot.connectionState==ConnectionState.waiting||
+                                  !snapshot.hasData){
+                                return Text("Stupid flutter");
+                              }
+                              return Text("Stupid flutter");
+                            }
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("請記錄每天喝水量~"),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child:
+                        TextField(
+                          controller: myController,
+                          keyboardType: TextInputType.text,
+                          maxLines: 4,
+                          onChanged: (String value) {
+                            log("${value}");
+                            this.setState(
+                                    ()=>result="確認");
+                          },
+                        ),
+                        ),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            width: 100, // <-- Your width
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text('$result'),
+                            ),
+                          ))
+                    ])))),
       ),
     );
   }

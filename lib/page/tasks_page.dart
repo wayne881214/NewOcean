@@ -25,6 +25,7 @@ class _TaskState extends State<TasksPage> {
     Ref.onChildAdded.listen((event) {
       int id= (event.snapshot.value as Map)["id"];
       int state= (event.snapshot.value as Map)["state"];
+      print("NOW $id $state");
       if(state==1) {
         task.add(Task.addTask(id,state));
       }

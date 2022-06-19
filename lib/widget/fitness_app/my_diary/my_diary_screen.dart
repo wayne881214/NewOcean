@@ -1,11 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../bar_chart/bar_chart_page2.dart';
+import 'bar_chart_sample2.dart';
 import '../fitness_app_theme.dart';
-import '../line_chart/line_chart_page.dart';
-import '../line_chart/samples/line_chart_sample2.dart';
-import '../ui_view/glass_view.dart';
+import 'line_chart_sample2.dart';
 import '../ui_view/mediterranean_diet_view.dart';
 import '../ui_view/title_view.dart';
 
@@ -168,10 +166,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     listViews.add(
-        BarChartPage2(),
+      BarChartSample2(),
     );
     listViews.add(
       LineChartSample2(),
+
     );
   }
 

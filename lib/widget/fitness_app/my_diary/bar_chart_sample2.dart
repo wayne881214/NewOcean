@@ -101,14 +101,14 @@ class BarChartSample2State extends State<BarChartSample2> {
                     width: 38,
                   ),
                   const Text(
-                    '碳排放雙周比較',
+                    '碳排放比較',
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   const Text(
-                    '綠:個人排放 紅:用戶平均 ',
+                    '\n\n綠:個人排放 紅:用戶平均 ',
                     style: TextStyle(color: Color(0xff77839a), fontSize: 16),
                   ),
                 ],
