@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/task_turtle_package/constants/colors.dart';
-import 'package:newocean/task_turtle_package/models/module.dart';
-import 'package:newocean/task_turtle_package/screens/task_turtle_game/widget/course_module.dart';
+import 'package:newocean/constants/colors.dart';
+import 'package:newocean/model/task_course_progress_model.dart';
+import 'package:newocean/widget/task/task_issue/course_module.dart';
+
 
 class CourseProgress extends StatelessWidget {
-  final modulesList = Module.generateModules();
+  final modulesList = Progress.generateModules();
 
 
   @override

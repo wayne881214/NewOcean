@@ -1,8 +1,7 @@
-import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:newocean/screen/task/task_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/model/task_model.dart';
-import 'package:newocean/screen/mission.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 class TaskCard extends StatelessWidget {
   //獲取List<Task>任務列表
@@ -21,7 +20,7 @@ class TaskCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   //回傳任務ID
-                  builder: (context) => mission(id:value.id),
+                  builder: (context) => Task_issue(id:value.id),
                 ));
           },
           //生成Task Card(任務卡片)

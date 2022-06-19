@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:newocean/constants/colors.dart';
 
-import '../../../constants/colors.dart';
-
-class IssueText extends StatelessWidget {
+class IssueStyle extends StatelessWidget {
   final String leftText;
   final String rightText;
-  IssueText(this.leftText, this.rightText);
+  IssueStyle(this.leftText, this.rightText);
 
   @override
   Widget build(BuildContext context) {

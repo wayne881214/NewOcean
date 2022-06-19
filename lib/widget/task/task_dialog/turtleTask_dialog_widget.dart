@@ -8,12 +8,11 @@ import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-class shakeshowDialog extends StatefulWidget {
+class turtleTask1showDialog extends StatefulWidget {
   @override
   _ShakeshowDialog createState() => _ShakeshowDialog();
 }
-
-class _ShakeshowDialog extends State<shakeshowDialog> {
+class _ShakeshowDialog extends State<turtleTask1showDialog> {
   int number = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
@@ -116,12 +115,13 @@ class _ShakeshowDialog extends State<shakeshowDialog> {
   }
 }
 
-class task2showDialog extends StatefulWidget {
+
+class turtleTask2showDialog extends StatefulWidget {
   @override
   _task2showDialog createState() => _task2showDialog();
 }
 
-class _task2showDialog extends State<task2showDialog> {
+class _task2showDialog extends State<turtleTask2showDialog> {
   int number = 0,op=0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
@@ -231,6 +231,127 @@ class _task2showDialog extends State<task2showDialog> {
                         ),
                       ))
                 ])))),
+      ),
+    );
+  }
+}
+
+
+class turtleTask3showDialog extends StatefulWidget {
+  @override
+  _task3showDialog createState() => _task3showDialog();
+}
+
+class _task3showDialog extends State<turtleTask3showDialog> {
+  int number = 0,op=0;
+  String img = "https://turtleacademy.com/images/turtle.gif";
+  String result = "取消";
+  String filename="123.jpg";
+
+  void initState() {
+    super.initState();
+    setState(() {
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Storage storage =Storage();
+    print("2.filename:$filename");
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+      child: Container(
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            gradient: new LinearGradient(colors: <Color>[
+              Color(0xffB3E7E7),
+              Color(0xffBCCFF5),
+            ], begin: Alignment.topLeft, end: Alignment.topRight)),
+        child: Card(
+            elevation: 0,
+            color: Colors.transparent,
+            child: SizedBox(
+                width: 350,
+                height: 500,
+                child: Center(
+                    child: Column(children: [
+                      Expanded(
+                        flex: 6,
+                        child: FutureBuilder(
+                            future: storage.downloadURL('$filename'),
+
+                            // future: storage.listFiles(),
+                            builder:(BuildContext context,
+                                AsyncSnapshot<String>snapshot){
+                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
+                                return Container(
+                                    width: 300,
+                                    height: 250,
+                                    child:Image.network(
+                                      snapshot.data!,
+                                      fit:BoxFit.cover,
+                                    ));
+                              }
+                              if(snapshot.connectionState==ConnectionState.waiting||
+                                  !snapshot.hasData){
+                                return Text("Stupid flutter");
+                              }
+                              return Text("Stupid flutter");
+                            }
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("請上傳照片"),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            final results = await FilePicker.platform.pickFiles(
+                              allowMultiple: false,
+                              type: FileType.custom,
+                              allowedExtensions: ['png', 'jpg'],
+                            );
+                            if (results == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('No file selected'),
+                                ),
+                              );
+                              return null;
+                            }
+                            final path = results.files.single.path!;
+                            final file ="123.jpg";
+
+                            this.setState(
+                                    ()=>result="確認");
+                            print("1.filename:$filename");
+                            storage.uploadFile(path, filename).then((value) =>
+                                this.setState(()=>filename=file));
+                            // Timer timer;
+                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
+                          },
+
+                          child: Text('upload file'),
+
+                        ),
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            width: 100, // <-- Your width
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text('$result'),
+                            ),
+                          ))
+                    ])))),
       ),
     );
   }

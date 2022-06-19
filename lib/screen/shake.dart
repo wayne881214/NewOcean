@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:newocean/widget/shake_dialog_widget.dart';
+import 'package:newocean/widget/task/task_dialog/turtleTask_dialog_widget.dart';
 class shake extends StatefulWidget {
   @override
   _ShakeState createState() => _ShakeState();
@@ -25,7 +25,7 @@ class _ShakeState extends State<shake> {
            showDialog<bool>(
              context: context,
              barrierDismissible: true,
-             builder: (BuildContext context) => task2showDialog(),
+             builder: (BuildContext context) => turtleTask1showDialog(),
            ).then((onValue) {
              if (onValue != null) {
                // 点击确定后返回的业务逻辑。

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:newocean/constants/colors.dart';
 
-import '../../../constants/colors.dart';
+
 
 class SearchInput extends StatelessWidget {
 

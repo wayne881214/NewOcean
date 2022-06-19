@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/task_turtle_package/constants/colors.dart';
-import 'package:newocean/task_turtle_package/models/module.dart';
+import 'package:newocean/constants/colors.dart';
+import 'package:newocean/model/task_course_progress_model.dart';
 class CourseModule extends StatelessWidget {
-  final Module module;
+  final Progress module;
   CourseModule(this.module);
   @override
   Widget build(BuildContext context) {

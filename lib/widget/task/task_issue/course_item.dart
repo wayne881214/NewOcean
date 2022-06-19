@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/task_turtle_package/models/course.dart';
-import 'package:newocean/task_turtle_package/screens/task_turtle_game/widget/detail.dart';
+import 'package:newocean/constants/colors.dart';
+import 'package:newocean/model/task_course_model.dart';
+import 'package:newocean/widget/task/task_issue/detail.dart';
 
-import '../../../constants/colors.dart';
+
+
 
 class CourseItem extends StatelessWidget {
   final Course course;
@@ -17,8 +19,8 @@ class CourseItem extends StatelessWidget {
             height: 250,
             width: 250,
             decoration: BoxDecoration(
-              color: kPrimaryLight,
-              borderRadius: BorderRadius.circular(20)
+                color: kPrimaryLight,
+                borderRadius: BorderRadius.circular(20)
             ),
             child: Column(children: [
               Expanded(
@@ -29,7 +31,7 @@ class CourseItem extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                   child: Image.asset(course.imageUrl,
-                  fit: BoxFit.cover),
+                      fit: BoxFit.cover),
                 ),
               ),
               Expanded(
@@ -44,35 +46,35 @@ class CourseItem extends StatelessWidget {
                           Image.asset(course.authorImg, width: 20,),
                           SizedBox(width: 5),
                           Text(course.author, style: TextStyle(
-                            fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold
                           ),)
                         ],
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 2),
                       Row(
                         children: [
                           Text(course.title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: kFont
-                            )
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: kFont
+                              )
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 5),
                             width: 5,
                             height: 5,
                             decoration: BoxDecoration(
-                              color: kFontLight,
-                              shape: BoxShape.circle
+                                color: kFontLight,
+                                shape: BoxShape.circle
                             ),
                           ),
                           Text('海龜',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: kFontLight
-                          ),)
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: kFontLight
+                            ),)
                         ],
                       )
                     ],
@@ -86,11 +88,11 @@ class CourseItem extends StatelessWidget {
             right: 20,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: kAccent,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                )
+                  primary: kAccent,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                  )
               ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(

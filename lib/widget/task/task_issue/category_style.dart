@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:newocean/constants/colors.dart';
 
-import '../../../constants/colors.dart';
 
-class CategoryTitle extends StatelessWidget {
+
+class CategoryStyle extends StatelessWidget {
   final String leftText;
   final String rightText;
-  CategoryTitle(this.leftText, this.rightText);
+  CategoryStyle(this.leftText, this.rightText);
 
   @override
   Widget build(BuildContext context) {

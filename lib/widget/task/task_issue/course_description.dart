@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/task_turtle_package/constants/colors.dart';
+import 'package:newocean/constants/colors.dart';
+import 'package:newocean/model/task_course_model.dart';
 
-import '../../../models/course.dart';
 
 class CourseDescription extends StatelessWidget {
   final Course course;

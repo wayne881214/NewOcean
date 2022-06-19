@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../task_turtle_package/screens/task_turtle_home/home.dart';
-
 
 class OceanPage extends StatelessWidget {
   @override
@@ -14,16 +12,8 @@ class OceanPage extends StatelessWidget {
     body: Column(
       children: [
         Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                new MaterialPageRoute(builder: (context) => new HomePage()),
-              );
-            },
             child: Text('HomePage'),
           ),
-        ),
       ],
     ),
   );

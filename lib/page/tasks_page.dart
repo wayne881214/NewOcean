@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:newocean/model/task_model.dart';
-import 'package:newocean/widget/task_card_widget.dart';
+import 'package:newocean/widget/task/task_card_widget.dart';
+
+import '../constants/colors.dart';
 
 class TasksPage extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ List<Task> task = [];
 class _TaskState extends State<TasksPage> {
   //生成 TaskCard Widget (任務卡片列表)
   //widget/task_card_widget.dart
-  StatelessWidget card = TaskCard(data:task);
+  TaskCard card = TaskCard(data:task);
   @override
   //初始化
   void initState() {
@@ -38,13 +40,54 @@ class _TaskState extends State<TasksPage> {
   Widget build(BuildContext context) =>
       Scaffold(
         appBar: AppBar(
-          title: Text('Tasks'),
+          title: Text('任務'),
           centerTitle: true,
           backgroundColor: Color(0xFF00BFA5),
         ),
-        body:
-        card,
+        body: card,
+        bottomNavigationBar: _buildBottomNaigationBar(),
       );
+}
+
+BottomNavigationBar _buildBottomNaigationBar() {
+  return BottomNavigationBar(
+    type: BottomNavigationBarType.fixed,
+    backgroundColor: kBackground,
+    showSelectedLabels: false,
+    showUnselectedLabels: false,
+    items: [
+      BottomNavigationBarItem(
+          label: 'issue',
+          icon: Container(
+            padding: EdgeInsets.only(bottom: 5),
+            decoration: BoxDecoration(
+                border:
+                Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text('全部', style: TextStyle(fontWeight: FontWeight.bold),),
+          )
+      ),
+      BottomNavigationBarItem(
+          label: 'issue',
+          icon: Container(
+            padding: EdgeInsets.only(bottom: 5),
+            decoration: BoxDecoration(
+                border:
+                Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text('未完成', style: TextStyle(fontWeight: FontWeight.bold),),
+          )
+      ),
+      BottomNavigationBarItem(
+          label: 'issue',
+          icon: Container(
+            padding: EdgeInsets.only(bottom: 5),
+            decoration: BoxDecoration(
+                border:
+                Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text('已完成', style: TextStyle(fontWeight: FontWeight.bold),),
+          )
+      ),
+    ],
+  );
 }
 
 
