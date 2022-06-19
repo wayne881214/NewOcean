@@ -41,7 +41,7 @@ dependencies:
   sensors: ^0.4.0+1
   firebase_database:
   get: ^4.6.5
-  percent_indicator: ^4.0.1
+  percent_indicator:
   font_awesome_flutter: ^9.0.0
   flutter_rating_bar: ^4.0.0
   intl: ^0.17.0

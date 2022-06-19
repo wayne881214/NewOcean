@@ -4,32 +4,32 @@ import 'package:flutter/material.dart';
 const Map apiTemples = {
   'titles':["一","二","三","四","五","六","日"],
   '一': {
-    'user':1,
-    'avg': 10,
+    'user':1.00,
+    'avg': 10.00,
   },
   '二': {
-    'user':12,
-    'avg': 4,
+    'user':12.00,
+    'avg': 4.00,
   },
   '三': {
-    'user':3,
-    'avg': 4,
+    'user':3.00,
+    'avg': 4.00,
   },
   '四': {
-    'user':5,
-    'avg': 10,
+    'user':5.00,
+    'avg': 10.00,
   },
   '五': {
-    'user':14,
-    'avg': 4,
+    'user':14.00,
+    'avg': 4.00,
   },
   '六': {
-    'user':4,
-    'avg': 10,
+    'user':4.00,
+    'avg': 10.00,
   },
   '日': {
-    'user':11,
-    'avg': 14,
+    'user':11.00,
+    'avg': 14.00,
   },
 };
 
