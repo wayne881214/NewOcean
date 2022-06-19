@@ -11,7 +11,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
   @override
   Widget build(BuildContext context) {
-    final name = 'TING-HSUAN PEI';
+    final name = '王小明';
     final email = 'abcdefg@gmail.com';
     final urlImage = 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg';
     return Drawer(
@@ -36,37 +36,37 @@ class NavigationDrawerWidget extends StatelessWidget {
                 children: [
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: 'Animals',
+                    text: '動物',
                     icon: Icons.adb,
                     onClicked: () => selectedItem(context, 0),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: 'Ocean',
+                    text: '海洋',
                     icon: Icons.water,
                     onClicked: () => selectedItem(context, 1),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: 'tasks',
+                    text: '任務',
                     icon: Icons.task,
                     onClicked: () => selectedItem(context, 2),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: 'Achievements',
+                    text: '成就',
                     icon: Icons.update,
                     onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: 'Friends',
+                    text: '好友',
                     icon: Icons.person_add,
                     onClicked: () => selectedItem(context, 4),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: 'Settings',
+                    text: '設定',
                     icon: Icons.settings,
                     onClicked: () => selectedItem(context, 5),
                   ),

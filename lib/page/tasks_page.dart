@@ -4,7 +4,7 @@ class TasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text('Tasks'),
+      title: Text('任務'),
       centerTitle: true,
       backgroundColor: Color(0xFF00BFA5),
     ),

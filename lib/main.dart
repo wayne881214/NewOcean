@@ -14,7 +14,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'New Ocean';
+  static final String title = '新海';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
       builder: (context) => Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 32),
-        child: Image.asset('images/turtle.png'),
+        child: Image.asset('assets/images/turtle.png'),
       ),
     ),
   );

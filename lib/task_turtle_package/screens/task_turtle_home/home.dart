@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:newocean/task_turtle_package/screens/home/widget/active_course.dart';
-import 'package:newocean/task_turtle_package/screens/home/widget/emoji_text.dart';
-import 'package:newocean/task_turtle_package/screens/home/widget/issue_text.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/active_course.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/emoji_text.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/issue_text.dart';
 import '../../constants/colors.dart';
-import 'package:newocean/task_turtle_package/screens/home/widget/feature_course.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/feature_course.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(
-          label: 'home',
+          label: 'task_turtle_home',
           icon: Container(
             padding: EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(

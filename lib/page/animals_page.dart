@@ -5,7 +5,7 @@ class AnimalsPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         //drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: Text('Animals'),
+          title: Text('動物'),
           centerTitle: true,
           backgroundColor: Color(0xFF00BFA5),
         ),

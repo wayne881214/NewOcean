@@ -5,7 +5,7 @@ class FriendsPage extends StatelessWidget {
   Widget build(BuildContext context) =>
       Scaffold(
         appBar: AppBar(
-          title: Text('Friends'),
+          title: Text('好友'),
           centerTitle: true,
           backgroundColor: Color(0xFF00BFA5),
         ),

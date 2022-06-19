@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/task_turtle_package/models/course.dart';
 
-import 'package:newocean/task_turtle_package/screens/home/widget/category_title.dart';
-import 'package:newocean/task_turtle_package/screens/home/widget/course_item.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/category_title.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/course_item.dart';
 
 class FeatureCourse extends StatelessWidget {
 

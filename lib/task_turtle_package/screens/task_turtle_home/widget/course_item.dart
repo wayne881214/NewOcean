@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/task_turtle_package/models/course.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_game/widget/detail.dart';
 
 import '../../../constants/colors.dart';
 
@@ -91,7 +92,10 @@ class CourseItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)
                 )
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => DetailPage(course)));
+              },
               child: Text('Start'),
             ),
           )

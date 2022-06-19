@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/task_turtle_package/constants/colors.dart';
-import 'package:newocean/task_turtle_package/screens/detail/widget/detail.dart';
-import 'package:newocean/task_turtle_package/screens/home/widget/category_title.dart';
+import 'package:newocean/task_turtle_package/screens/task_turtle_home/widget/category_title.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../../../screen/shake.dart';
 import '../../../constants/colors.dart';
+import '../../task_turtle_game/widget/detail.dart';
 
 class ActiveCourse extends StatelessWidget {
 
@@ -68,7 +68,7 @@ class ActiveCourse extends StatelessWidget {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => DetailPage()));
+                              builder: (context) => shake()));
                         },
                         child: Text('Start'),
                       ),
