@@ -25,7 +25,7 @@ class _ShakeState extends State<shake> {
            showDialog<bool>(
              context: context,
              barrierDismissible: true,
-             builder: (BuildContext context) => shakeshowDialog(),
+             builder: (BuildContext context) => task2showDialog(),
            ).then((onValue) {
              if (onValue != null) {
                // 点击确定后返回的业务逻辑。

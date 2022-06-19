@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:newocean/screen/shake.dart';
 import 'package:newocean/firebase/storage_service.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 
 class upload extends StatefulWidget {
@@ -45,17 +47,36 @@ class _uploadState extends State<shake> {
               child: Text('upload file'),
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(builder: (context) => new shake()),
+          FutureBuilder(
+            future: storage.listFiles(),
+            builder:(BuildContext context,
+            AsyncSnapshot<firebase_storage.ListResult>snapshot){
+              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
+                return Container(
+                  padding:const EdgeInsets.symmetric(horizontal:20),
+                  height:50,
+                  child:ListView.builder(
+                    scrollDirection:Axis.horizontal,
+                    shrinkWrap:true,
+                    itemCount:snapshot.data!.items.length,
+                      itemBuilder: (BuildContext context,int index){
+                      return Padding(
+                        padding:const EdgeInsets.all(8.0),
+                        child:ElevatedButton(
+                          onPressed:(){},
+                          child:Text(snapshot.data!.items[index].name),
+                        ),
+                      );
+                    })
                 );
-              },
-              child: Text('shake'),
-            ),
-          ),
+              }
+              if(snapshot.connectionState==ConnectionState.waiting||
+                  !snapshot.hasData){
+                return Text("Stupid flutter");
+              }
+              return Text("Stupid flutter");
+            }
+          )
         ],
       ),
     );
