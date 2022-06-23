@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:newocean/model/task_model.dart';
 import 'package:newocean/widget/task/task_card_widget.dart';
 
@@ -24,8 +24,8 @@ class _TaskState extends State<TasksPage> {
     task=[];
     task.add(Task.addTask(1,1));
     //讀取用戶任務，將進行中的任務加入List<Task>行列
-    //DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
-    /*Ref.onChildAdded.listen((event) {
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    Ref.onChildAdded.listen((event) {
       int id= (event.snapshot.value as Map)["id"];
       int state= (event.snapshot.value as Map)["state"];
       if(state==1) {
@@ -35,7 +35,7 @@ class _TaskState extends State<TasksPage> {
       setState(() {
         card = TaskCard(data:task);
       });
-    });*/
+    });
   }
   @override
   Widget build(BuildContext context) =>
