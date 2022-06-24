@@ -56,8 +56,8 @@ class CourseItem extends StatelessWidget {
                           Text(course.title,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: kFont
+                                  fontSize: 14,
+                                  color: kFontLight
                               )
                           ),
                           Container(
@@ -69,7 +69,7 @@ class CourseItem extends StatelessWidget {
                                 shape: BoxShape.circle
                             ),
                           ),
-                          Text('海龜',
+                          Text('',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,

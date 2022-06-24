@@ -1,20 +1,25 @@
+import 'dart:ffi';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/screen/shake.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:newocean/widget/task/active_course.dart';
 import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Task_task extends StatefulWidget {
   Task_task({Key? key, required this.id}) : super(key: key);
   final int id;
   _Task_task createState() => _Task_task();
 }
+
 class _Task_task extends State<Task_task>{
   String taskTitle='';
   String issuetext='';
   String featuretext='';
-
+  int Percent=0;
   @override
   void initState() {
     switch(widget.id){
@@ -24,8 +29,8 @@ class _Task_task extends State<Task_task>{
       case 2:
         taskTitle="海獅任務";
         break;
-        //case 3:
-        taskTitle="海龜任務";
+        case 3:
+        taskTitle="鯨魚任務";
         break;
         //case 4:
         taskTitle="海龜任務";
@@ -35,6 +40,18 @@ class _Task_task extends State<Task_task>{
         break;
 
     }
+
+    //讀取用戶任務，將進行中的任務加入List<Task>行列
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    Ref.onChildAdded.listen((event) {
+      int id= (event.snapshot.value as Map)["id"];
+      int state= (event.snapshot.value as Map)["state"];
+      if(id==widget.id) {
+        setState(() {
+          Percent =((state-1)*100/3).ceil();//更新 TaskCard Widget(任務卡片列表)
+        });
+      }
+    });
     super.initState();
   }
   @override
@@ -51,9 +68,19 @@ class _Task_task extends State<Task_task>{
           mainAxisSize: MainAxisSize.min,
           children: [
             emoji_Title(name:"任務列表"),
+            Center(
+            child:CircularPercentIndicator(
+              radius: 80.0,
+              lineWidth: 20.0,
+              percent: Percent/100,
+              center: Text('$Percent%',
+                style: TextStyle(fontWeight: FontWeight.bold),),
+              progressColor: kAccent,
+            )
+            ),
             ActiveCourse(id:widget.id,number:1),
             ActiveCourse(id:widget.id,number:2),
-            ActiveCourse(id:widget.id,number:3)
+            ActiveCourse(id:widget.id,number:3),
           ],),
       ),
       bottomNavigationBar: _buildBottomNaigationBar(),

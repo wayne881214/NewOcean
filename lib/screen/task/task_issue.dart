@@ -29,8 +29,10 @@ class _Task_issue extends State<Task_issue>{
         issuetext='海獅的任務說明\n';
         featuretext='海獅悽慘的照片';
         break;
-      //case 3:
-        taskTitle="海龜任務";
+      case 3:
+        taskTitle="鯨魚";
+        issuetext='船舶噪音會產生海洋噪音，高強度噪音影響鯨魚的聽力，導致仰賴聲音溝通的鯨魚受困於岸上無法自行游回大海，擱淺的鯨魚容易因日曬嚴重脫水而死亡。\n';
+        featuretext='鯨魚擱淺的照片';
         break;
       //case 4:
         taskTitle="海龜任務";
