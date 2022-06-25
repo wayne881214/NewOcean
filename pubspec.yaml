@@ -50,9 +50,14 @@ dependencies:
   flutter_svg: ^0.21.0-nullsafety.0
   equatable: ^2.0.3
   fl_chart:
+  flutter_barcode_scanner: ^2.0.0
+  rename: ^2.0.1
+  barcode_widget: ^2.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  meta: ^1.7.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -73,7 +78,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/icons/
-    - assets/images/tasks/
+#    - assets/images/tasks/
   # To add assets to your application, add an assets section, like this:
 
 

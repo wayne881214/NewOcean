@@ -88,7 +88,7 @@ class _Task_task extends State<Task_task>{
               decoration: BoxDecoration(
                   border:
                   Border(bottom: BorderSide(color: kAccent, width: 2))),
-              child: Text('介紹', style: TextStyle(fontWeight: FontWeight.bold),),
+              child: Text('議題', style: TextStyle(fontWeight: FontWeight.bold),),
             )
         ),
         BottomNavigationBarItem(
@@ -108,7 +108,7 @@ class _Task_task extends State<Task_task>{
               decoration: BoxDecoration(
                   border:
                   Border(bottom: BorderSide(color: kAccent, width: 2))),
-              child: Text('其他', style: TextStyle(fontWeight: FontWeight.bold),),
+              child: Text('問答', style: TextStyle(fontWeight: FontWeight.bold),),
             )
         ),
       ],
