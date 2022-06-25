@@ -50,6 +50,13 @@ dependencies:
   flutter_svg: ^0.21.0-nullsafety.0
   equatable: ^2.0.3
   fl_chart:
+<<<<<<< Updated upstream
+=======
+  flutter_barcode_scanner:
+  rename: ^2.0.1
+  barcode_widget: ^2.0.2
+
+>>>>>>> Stashed changes
 dev_dependencies:
   flutter_test:
     sdk: flutter
