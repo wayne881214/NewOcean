@@ -1,5 +1,7 @@
 import 'dart:async';
 
+
+import 'package:all_sensors/all_sensors.dart' as name;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,45 +9,29 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-
+import 'dart:math';
 class whaleTask1showDialog extends StatefulWidget {
   @override
   _ShakeshowDialog createState() => _ShakeshowDialog();
 }
 class _ShakeshowDialog extends State<whaleTask1showDialog> {
-  int number = 0;
+  double stateX = (Random().nextDouble()*20)-10;
+  double stateY = (Random().nextDouble()*20)-10;
+  double x=0,y=0,z=0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
+  List<StreamSubscription<dynamic>> _streamSubscriptions = <StreamSubscription<dynamic>>[];
 
   void initState() {
-    accelerometerEvents.listen((AccelerometerEvent event) {
-      // 摇一摇阀值,不同手机能达到的最大值不同，如某品牌手机只能达到20。
-      int value = 15;
-      if (event.x >= value ||
-          event.x <= -value ||
-          event.y >= value ||
-          event.y <= -value ||
-          event.z >= value ||
-          event.z <= -value) {
-        if (number < 10) {
-          setState(() {
-            number += 1;
-          });
-        }
-        if (number == 10) {
-          setState(() {
-            img = "https://memeprod.ap-south-1.linodeobjects.com/user-gif-thumbnail/eb4e861fd45a3a55cd2683ab47231d49.gif";
-            result = "完成任務";
-          });
-        }
-        // if(op==1){
-        //   setState(() {
-        //     filename=filename;
-        //   };
-        // }
-      }
-    });
     super.initState();
+    _streamSubscriptions.add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
+      setState(() {
+        x=event.x;
+        y=event.y;
+        z=event.z;
+      });
+    }));
+
   }
 
   @override
@@ -68,13 +54,15 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Expanded(
-                        flex: 6,
-                        child: Image.network(img, height: 300, width: 250),
+                      Align(
+                        widthFactor: 10,
+                        heightFactor: 6,
+                        alignment:Alignment(-1*x/10,y/10),
+                        child: Image.network(img, height: 50, width: 50),
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("搖晃手機以幫助海龜掙脫漁網"),
+                        child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
                       ),
                       Expanded(
                           flex: 2,
@@ -90,8 +78,8 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                                   width: 250,
                                   animation: true,
                                   lineHeight: 20.0,
-                                  animationDuration: 200,
-                                  percent: number * 10 / 100,
+                                  animationDuration: 0,
+                                  percent: (20-(x-stateX).abs()) * 5 / 100,
                                   barRadius: const Radius.circular(16),
                                   progressColor: Color(0XFFFF1C41),
                                 ))
@@ -122,21 +110,32 @@ class whaleTask2showDialog extends StatefulWidget {
 }
 
 class _task2showDialog extends State<whaleTask2showDialog> {
-  int number = 0,op=0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  bool _proximityValues = false;
   String result = "取消";
-  String filename="123.jpg";
+  List<StreamSubscription<dynamic>> _streamSubscriptions = <StreamSubscription<dynamic>>[];
 
   void initState() {
     super.initState();
-    setState(() {
-    });
+    _streamSubscriptions.add(name.proximityEvents!.listen((name.ProximityEvent event) {
+      setState(() {
+        _proximityValues = event.getValue();
+      });
+      if(_proximityValues){
+        setState(() {
+          result = "完成任務";
+        });
+      }
+    }));
   }
-
+  @override
+  void dispose() {
+    super.dispose();
+    for (StreamSubscription<dynamic> subscription in _streamSubscriptions) {
+      subscription.cancel();
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    final Storage storage =Storage();
-    print("2.filename:$filename");
     return Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
@@ -156,66 +155,12 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder:(BuildContext context,
-                                AsyncSnapshot<String>snapshot){
-                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child:Image.network(
-                                      snapshot.data!,
-                                      fit:BoxFit.cover,
-                                    ));
-                              }
-                              if(snapshot.connectionState==ConnectionState.waiting||
-                                  !snapshot.hasData){
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
+                        flex: 8,
                         child: Text("請上傳照片"),
                       ),
                       Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file ="123.jpg";
-
-                            this.setState(
-                                    ()=>result="確認");
-                            print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then((value) =>
-                                this.setState(()=>filename=file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-
-                          child: Text('upload file'),
-
-                        ),
+                        flex: 1,
+                        child: Text("請將環保水壺靠近手機紀錄"),
                       ),
                       Expanded(
                           flex: 1,

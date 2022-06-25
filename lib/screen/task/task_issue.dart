@@ -5,6 +5,7 @@ import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/feature_course.dart';
 import 'package:newocean/widget/task/task_issue/issue_style.dart';
+import 'package:newocean/screen/test.dart';
 
 class Task_issue extends StatefulWidget {
   Task_issue({Key? key, required this.id}) : super(key: key);
@@ -77,7 +78,7 @@ class _Task_issue extends State<Task_issue>{
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => shake()));
+              builder: (context) => VolumeControl()));
     }
   }
 
