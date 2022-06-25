@@ -17,15 +17,8 @@ class Task {
   static Task addTask(int id, int state) {
     switch (id) {
       case 1:
-        var Mission = [
-          "未解鎖",
-          "任務一\n拯救海龜",
-          "任務二\n收集寶特瓶(一)",
-          "任務三\n收集寶特瓶(二)",
-          "已完成"
-        ];
-        return Task(id, state, "assets/images/turtle.png", "拯救海龜大作戰",
-            Mission[state], (state * 3 / 100).ceil());
+        var Mission= ["未解鎖", "任務一\n拯救海龜任務","任務二\n少喝飲料任務","任務三\n使用環保餐任務","已完成"];
+            return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",Mission[state],(state*3/100).ceil());
       case 2:
         var Mission = [
           "未解鎖",

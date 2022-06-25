@@ -83,7 +83,7 @@ class CourseItem extends StatelessWidget {
               )
             ],),
           ),
-          Positioned(
+          /*Positioned(
             bottom: 60,
             right: 20,
             child: ElevatedButton(
@@ -100,7 +100,7 @@ class CourseItem extends StatelessWidget {
               },
               child: Text('Start'),
             ),
-          )
+          )*/
         ],
       ),
     );
