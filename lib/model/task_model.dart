@@ -37,7 +37,7 @@ class Task {
         return Task(id, state, "assets/images/turtle.png", "拯救海獅大作戰",
             Mission[state], (state * 3 / 100).ceil());
       case 4:
-        var Mission = ["未解鎖", "任務一\n拯救牡蠣", "任務二\n環保袋檢查", "任務三\n環保水壺檢查", "已完成"];
+        var Mission = ["未解鎖", "任務一\n生成專屬用具", "任務二\n環保用具檢查", "任務三\n環保商店", "已完成"];
         return Task(id, state, "assets/images/turtle.png", "拯救牡蠣大作戰",
             Mission[state], (state * 3 / 100).ceil());
 
