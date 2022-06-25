@@ -7,8 +7,8 @@ import 'package:newocean/widget/task/task_issue/category_style.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:newocean/widget/task/task_dialog/turtleTask_dialog_widget.dart';
 import 'package:newocean/widget/task/task_dialog/sealionTask_dialog_widget.dart';
-// import '../../screen/shake.dart';
-
+import 'package:newocean/widget/task/task_dialog/whaleTask_dialog_widget.dart';
+import '../../screen/shake.dart';
 class ActiveCourse extends StatefulWidget {
   ActiveCourse({Key? key, required this.id, required this.number})
       : super(key: key);
@@ -71,6 +71,21 @@ class _ActiveCourse extends State<ActiveCourse> {
             break;
         }
         break;
+      case 3:
+        switch(widget.number) {
+          case 1:
+            taskdialog = whaleTask1showDialog();
+            break;
+          case 2:
+            taskdialog = whaleTask2showDialog();
+            break;
+          case 3:
+            taskdialog = whaleTask3showDialog();
+            break;
+          default:
+            break;
+        }
+        break;
       default:
         break;
     }
@@ -82,7 +97,6 @@ class _ActiveCourse extends State<ActiveCourse> {
     return Container(
       child: Column(
         children: [
-          CategoryStyle('任務進度', '60%'),
           Container(
             margin: EdgeInsets.all(25),
             padding: EdgeInsets.all(10),
@@ -111,15 +125,16 @@ class _ActiveCourse extends State<ActiveCourse> {
                               color: kFont),
                         ),
                         Text(
-                          '遊戲進度',
+                          '${task.describe}',
                           style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: kFontLight),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: kFontLight
+                          ),
                         )
                       ],
                     ),
-                    Positioned(
+                    /*Positioned(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: kAccent,
@@ -139,10 +154,33 @@ class _ActiveCourse extends State<ActiveCourse> {
                         },
                         child: Text('Start'),
                       ),
-                    )
+                    )*/
                   ],
                 ),
-                CircularPercentIndicator(
+                Positioned(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: kAccent,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                        )
+                    ),
+                    onPressed: () {
+                      showDialog<bool>(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (BuildContext context) =>taskdialog,
+                      ).then((onValue) {
+                        if (onValue != null) {
+                          // 点击确定后返回的业务逻辑。
+                        }
+                      });
+                    },
+                    child: Text('Start'),
+                  ),
+                )
+                /*CircularPercentIndicator(
                   radius: 30.0,
                   lineWidth: 5.0,
                   percent: 0.60,
@@ -151,7 +189,7 @@ class _ActiveCourse extends State<ActiveCourse> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   progressColor: kAccent,
-                ),
+                ),*/
               ],
             ),
           )

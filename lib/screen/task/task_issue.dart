@@ -6,6 +6,7 @@ import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/feature_course.dart';
 import 'package:newocean/widget/task/task_issue/issue_style.dart';
+import 'package:newocean/screen/test.dart';
 
 class Task_issue extends StatefulWidget {
   Task_issue({Key? key, required this.id}) : super(key: key);
@@ -32,14 +33,16 @@ class _Task_issue extends State<Task_issue> {
         issuetext = '海獅的任務說明\n';
         featuretext = '海獅悽慘的照片';
         break;
-        //case 3:
-        // taskTitle = "海龜任務";
-        // break;
       case 4:
         taskTitle = "牡蠣任務";
         issuetext =
             '隨著溫室效應而來的海水均溫升高、酸化，更直接衝擊台灣最具優勢的養殖業，尤其是牡蠣。原本中秋前後排精卵的生態大亂，隨時消耗能量排精卵的結果，導致牡蠣變「瘦」、附著率大減。\n';
         featuretext = '牡蠣悽慘的照片';
+      break;
+      case 3:
+        taskTitle="鯨魚";
+        issuetext='船舶噪音會產生海洋噪音，高強度噪音影響鯨魚的聽力，導致仰賴聲音溝通的鯨魚受困於岸上無法自行游回大海，擱淺的鯨魚容易因日曬嚴重脫水而死亡。\n';
+        featuretext='鯨魚擱淺的照片';
         break;
       default:
         taskTitle = "海鳥任務";
