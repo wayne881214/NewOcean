@@ -78,14 +78,30 @@ class TaskCard extends StatelessWidget {
                                                 fontWeight: FontWeight.bold, fontSize: 20)
                                           )
                                       ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: Text(
+                                              value.mission,
+                                              textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                  fontSize: 16)
+                                          )
+                                      ),
                                       //task_model Mission(當前任務描述)
                                       Expanded(
-                                          flex: 6,
+                                          flex: 2,
                                           child: Text(
-                                             value.mission,
+                                              value.describe,
                                              textAlign: TextAlign.center,
                                              overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(fontSize: 14)
+                                            style: const TextStyle(color:Color(0xFFB4B7BF),fontSize: 15)
+                                          )
+                                      ),
+                                      Expanded(
+                                          flex: 1,
+                                          child: Text(
+                                              ""
                                           )
                                       )
                                     ]
@@ -98,7 +114,7 @@ class TaskCard extends StatelessWidget {
                   Expanded(
                       flex: 2,
                       child: LinearPercentIndicator(
-                        width: 350,
+                        width: 330,
                         animation: true,
                         lineHeight: 20.0,
                         animationDuration: 200,

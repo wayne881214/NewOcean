@@ -22,13 +22,12 @@ class _TaskState extends State<TasksPage> {
   //初始化
   void initState() {
     task=[];
-    task.add(Task.addTask(1,1));
     //讀取用戶任務，將進行中的任務加入List<Task>行列
     DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
     Ref.onChildAdded.listen((event) {
       int id= (event.snapshot.value as Map)["id"];
       int state= (event.snapshot.value as Map)["state"];
-      if(state==1) {
+      if(state<=4) {
         task.add(Task.addTask(id,state));
       }
       //更新 TaskCard Widget(任務卡片列表)
