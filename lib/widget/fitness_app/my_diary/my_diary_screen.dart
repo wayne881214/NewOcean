@@ -1,6 +1,8 @@
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
+import '../../task/task_dialog/ostrica/DailyListView.dart';
 import '../bar_chart/bar_chart_page2.dart';
 import '../fitness_app_theme.dart';
 import '../line_chart/line_chart_page.dart';
@@ -24,9 +26,17 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+  List jsonResponse = [];
 
   @override
   void initState() {
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
+    Ref.onChildAdded.listen((event)  async{
+      Map userLogValue = (event.snapshot.value as Map);
+      jsonResponse.add(userLogValue);
+      print("TTTTT $jsonResponse");
+    });
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController!,
@@ -58,6 +68,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     super.initState();
   }
 
+
+
   void addAllListData() {
     const int count = 9;
     listViews.add(
@@ -67,7 +79,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
-                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+            Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -76,7 +88,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -157,18 +169,29 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     //   ),
     // );
     listViews.add(
+      ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            new MaterialPageRoute(builder: (context) => DailyList()),
+          );
+        },
+        child: Text('查看所有詳細數據'),
+      ),
+    );
+    listViews.add(
       TitleView(
         titleTxt: '本周數據',
         subTxt: '數據總覽',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
-                Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+            Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
     listViews.add(
-        BarChartPage2(),
+      BarChartPage2(),
     );
     listViews.add(
       LineChartSample2(),
