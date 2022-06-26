@@ -1,7 +1,9 @@
 // import 'dart:async';
 
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:date_format/date_format.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -89,27 +91,29 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                     child: Text("請將QRcode下載並印出貼在你的環保用具上"),
                   ),
                   Expanded(
-                      flex: 2,
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 8,
-                        child: TextField(
-                            maxLength: 50,
-                            decoration: InputDecoration(
-                                hintText: '輸入資料(測試用)',
-                                // ignore: prefer_const_constructors
-                                hintStyle: TextStyle(color: Colors.white),
-                                filled: true,
-                                fillColor: Color(0xFF00BFA5),
-                                // ignore: prefer_const_constructors
-                                border: OutlineInputBorder(
-                                    borderSide:
-                                    // ignore: prefer_const_constructors
-                                    BorderSide(color: Color(0xFF00BFA5), width: 2))),
-                            onChanged: (value) {
-                              qrstr = value;
-                            }),
-                      ),),
+                    flex: 2,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 8,
+                      child: TextField(
+                          maxLength: 50,
+                          decoration: InputDecoration(
+                              hintText: '輸入資料(測試用)',
+                              // ignore: prefer_const_constructors
+                              hintStyle: TextStyle(color: Colors.white),
+                              filled: true,
+                              fillColor: Color(0xFF00BFA5),
+                              // ignore: prefer_const_constructors
+                              border: OutlineInputBorder(
+                                  borderSide:
+                                      // ignore: prefer_const_constructors
+                                      BorderSide(
+                                          color: Color(0xFF00BFA5), width: 2))),
+                          onChanged: (value) {
+                            qrstr = value;
+                          }),
+                    ),
+                  ),
                   Expanded(
                       flex: 1,
                       child: Container(
@@ -118,6 +122,7 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+                            addData();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -126,6 +131,33 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                 ])))),
       ),
     );
+  }
+
+  void addData() {
+    Map returnApiTemplate = {
+      "4-2-1": {
+        "date": "2022-06-21 Tuesday 12:35:48",
+        "task": 4,
+        "carbon": 500
+      },
+    };
+    print(formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]));
+
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log/4-1-1');
+    DatabaseReference childRef = Ref.child("date");
+    childRef.set(formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]));
+    DatabaseReference childRef2 = Ref.child("task");
+    childRef2.set(4);
+    DatabaseReference childRef3 = Ref.child("carbon");
+    childRef3.set(500);
+    DatabaseReference childRef4 = Ref.child("id");
+    childRef4.set("4-1");
+    print("GGGGGGGGGGGGGGGGGGgg");
+    print("GGGGGGGGGGGGGGGGGGgg");
+    print("GGGGGGGGGGGGGGGGGGgg");
+    print("GGGGGGGGGGGGGGGGGGgg");
+    print("GGGGGGGGGGGGGGGGGGgg");
+    print("GGGGGGGGGGGGGGGGGGgg");
   }
 }
 
@@ -211,13 +243,14 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
       ),
     );
   }
+
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)
           .then((value) {
         setState(() {
           qrstr = value;
-          if(qrstr=="1"){
+          if (qrstr == "1") {
             result = "確認";
           }
           print(qrstr);
@@ -239,6 +272,7 @@ class ostricaTask3showDialog extends StatefulWidget {
   @override
   _ostricaTask3showDialog createState() => _ostricaTask3showDialog();
 }
+
 class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
   int number = 0, op = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
@@ -273,57 +307,58 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Expanded(
-                        flex: 1,
-                        child: Text(qrstr,
-                            style: TextStyle(
-                              fontSize: 20,
-                            )),
-                      ),
-                      Expanded(
-                        flex: 6,
-                        child: Icon(
-                          Icons.qr_code_scanner,
-                          size: 200.0,
-                          color: Color(0xFF00BFA5),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
+                  Expanded(
+                    flex: 1,
+                    child: Text(qrstr,
+                        style: TextStyle(
+                          fontSize: 20,
+                        )),
+                  ),
+                  Expanded(
+                    flex: 6,
+                    child: Icon(
+                      Icons.qr_code_scanner,
+                      size: 200.0,
+                      color: Color(0xFF00BFA5),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          scanQR();
+                        },
+                        // ignore: prefer_const_constructors
+                        child: Text('開啟掃描'),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF00BFA5), elevation: 20)),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        width: 100, // <-- Your width
+                        height: 50,
                         child: ElevatedButton(
-                            onPressed: () {
-                              scanQR();
-                            },
-                            // ignore: prefer_const_constructors
-                            child: Text('開啟掃描'),
-                            style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF00BFA5), elevation: 20)),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
-                            ),
-                          ))
-                    ])))),
+                          onPressed: () {
+                            Navigator.of(context).pop(true);
+                          },
+                          child: Text('$result'),
+                        ),
+                      ))
+                ])))),
       ),
     );
   }
+
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)
           .then((value) {
         setState(() {
           qrstr = value;
-          if(qrstr=="store1"||qrstr=="store2"||qrstr=="store3"){
-            result = qrstr+"完成";
+          if (qrstr == "store1" || qrstr == "store2" || qrstr == "store3") {
+            result = qrstr + "完成";
           }
           print(qrstr);
           print(qrstr);

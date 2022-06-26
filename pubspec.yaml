@@ -54,6 +54,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   rename: ^2.0.1
   barcode_widget: ^2.0.2
+  date_format:
 
 dev_dependencies:
   flutter_test:

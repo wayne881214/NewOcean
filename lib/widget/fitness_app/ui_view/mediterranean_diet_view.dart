@@ -19,7 +19,7 @@ class MediterranesnDietView extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
           opacity: animation!,
-          child: new Transform(
+          child: Transform(
             transform: new Matrix4.translationValues(
                 0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Padding(
@@ -319,7 +319,7 @@ class MediterranesnDietView extends StatelessWidget {
                                             HexColor("#8A98E8"),
                                             HexColor("#8A98E8")
                                           ],
-                                          angle: 140 +
+                                          angle: 200 +
                                               (360 - 140) *
                                                   (1.0 - animation!.value)),
                                       child: SizedBox(
