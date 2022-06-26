@@ -11,8 +11,10 @@ class MyApp2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
-        home:FitnessAppHomeScreen(),
+      debugShowCheckedModeBanner: false,
+      home:FitnessAppHomeScreen(),
 
     );
   }

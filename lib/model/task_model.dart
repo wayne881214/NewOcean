@@ -45,7 +45,7 @@ class Task {
           "噪音的傳遞跟海水酸度正相關\n減碳能有效降低海洋酸化",
           "減碳需要持之以恆\n請繼續維持減碳行為一週",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/turtle.png", "拯救鯨魚大作戰",
+        return Task(id,state,"assets/images/turtle.png", "拯救牡蠣大作戰",
                 Mission[state],((state-1)*100/3).ceil(),Describe[state]);          
       default:
         return Task(id,state,"assets/images/turtle.png", "尚未解鎖任務","任務一",50,"你知道");
