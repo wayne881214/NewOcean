@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:newocean/screen/auth/auth.dart';
 import 'package:provider/provider.dart';
 
-import 'authentication_service.dart';
+import '../screen/auth/authentication_service.dart';
 
-class HomePage extends StatelessWidget {
+class SignOutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(

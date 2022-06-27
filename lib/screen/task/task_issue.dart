@@ -30,8 +30,8 @@ class _Task_issue extends State<Task_issue> {
         break;
       case 2:
         taskTitle = "海獅任務";
-        issuetext = '海獅的任務說明\n';
-        featuretext = '海獅悽慘的照片';
+        issuetext = '海獅會被棄置的漁具、繩子或塑膠圈纏繞，當牠們的身體不斷長大時，亦會被身上纏繞的垃圾愈纏愈緊，除了對其活動或成長形成障礙之外，亦會影響其呼吸系統，最終令牠們窒息而死。\n';
+        featuretext = '海獅被漁具、繩子或塑膠圈纏繞';
         break;
       case 4:
         taskTitle = "牡蠣任務";

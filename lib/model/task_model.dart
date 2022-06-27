@@ -19,13 +19,23 @@ class Task {
     switch (id) {
       case 1:
         var Mission= ["未解鎖", "任務一 拯救海龜任務","任務二 少喝飲料任務","任務三 使用環保餐任務","已完成"];
-        var Describe= ["趕快去解鎖第一個任務", "海龜很累","海龜很累","海龜很累","恭喜完成所有任務"];
-            return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",
+        var Describe=
+          ["趕快去解鎖第一個任務",
+           "嗚嗚嗚~鼻孔有異物好痛！",
+           "海龜主要食物為水母\n但因無法分辨水母和塑膠\n而經常誤食塑膠袋與吸管\n嚴重阻塞其消化系統",
+           "多喝水少喝飲料\n對你我健康\n對地球進一份心力",
+           "恭喜完成所有任務"];
+        return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",
                 Mission[state],((state-1)*100/3).ceil(),Describe[state]);
       case 2:
-        var Mission= ["未解鎖", "任務一 拯救海獅","任務二 收集垃圾(一)","任務三 收集垃圾(二)","已完成"];
-        var Describe= ["趕快去解鎖第一個任務", "海獅很累","海獅很累","海獅很累","恭喜完成所有任務"];
-            return Task(id,state,"assets/images/turtle.png", "拯救海獅大作戰",
+        var Mission= ["未解鎖", "任務一 拯救海獅任務","任務二 重複使用橡皮圈","任務三 使用環保餐任務","已完成"];
+        var Describe= [
+          "趕快去解鎖第一個任務",
+          "嗚嗚嗚~脖子被勒住好痛！",
+          "海洋生物經常被塑膠纏繞\n這將影響海獅活動\n甚至阻礙血液循環，影響生長",
+          "綠色生活，拒用免洗餐具\n愛護自己，保護環境\n您我ㄧ筷，健康愉快",
+          "恭喜完成所有任務"];
+        return Task(id,state,"assets/images/sea_lion.png", "拯救海獅大作戰",
                 Mission[state],((state-1)*100/3).ceil(),Describe[state]);
       case 3:
         var Mission= ["未解鎖", "任務一 幫助小鯨魚回家","任務二 減碳行動(一)","任務三 減碳行動(二)","已完成"];

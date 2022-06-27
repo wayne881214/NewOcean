@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:newocean/constants/colors.dart';
+import 'package:newocean/screen/task/task_issue.dart';
+import 'package:newocean/screen/task/task_task.dart';
 import 'package:newocean/widget/task/task_issue/next_button.dart';
 import 'package:newocean/widget/task/task_issue/option_card.dart';
 import 'package:newocean/widget/task/task_issue/question_widget.dart';
@@ -11,67 +13,27 @@ import '../../model/question_model.dart';
 class Task_question extends StatefulWidget {
   const Task_question({Key? key, required this .id}) : super(key: key);
   final int id;
+
   @override
   _Task_questionState createState() => _Task_questionState();
 }
 
 class _Task_questionState extends State<Task_question> {
 
-  /*String questionTitle = '';
-  Map<String, bool> option1 = {};
-  Map<String, bool> option2 = {};
-  Map<String, bool> option3 = {};
+  List<Question> _questions = [];
   @override
   void initState() {
-    switch(widget.id){
-      case 1:
-        questionTitle = '塑膠微粒在學術界的定義為直徑小於幾mm的塑膠碎片？';
-        option1 = {'100': false};
-        option2 = {'10': false};
-        option3 = {'5': false};
-        break;
-      case 2:
-        questionTitle = '塑膠微粒在學術界的定義為直徑小於幾mm的塑膠碎片？';
-        option1 = {'100': false};
-        option2 = {'10': false};
-        option3 = {'5': false};
-        break;
-        case 3:
-
-        break;
-        case 4:
-
-        break;
-      default:
-
-        break;
-
-    }
+    _questions = Question.getquestion(widget.id);
     super.initState();
-  }*/
+  }
 
-  List<Question> _questions = [
+  /*List<Question> _questions = [
     Question(
         id: '10',
         title: '塑膠微粒在學術界的定義為直徑小於幾mm的塑膠碎片？',
         options: {'100': false, '10': false, '5': true},
-    ),
-    /*Question(
-      id: '11',
-      title: '3 + 3 = ?',
-      options: {'6': false, '19': false, '9': true},
-    ),
-    Question(
-      id: '12',
-      title: '5 + 3 = ?',
-      options: {'6': false, '19': false, '8': true},
-    ),
-    Question(
-      id: '13',
-      title: '5 + 5 = ?',
-      options: {'6': false, '19': false, '10': true},
-    )*/
-  ];
+    )
+  ];*/
 
   int index = 0;
   bool isPressed = false;
@@ -168,6 +130,7 @@ class _Task_questionState extends State<Task_question> {
           ],
         ),
       ),
+      bottomNavigationBar: _buildBottomNaigationBar(),
 
 
       floatingActionButton: Padding(
@@ -177,5 +140,65 @@ class _Task_questionState extends State<Task_question> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+
   }
+
+  void _onItemTapped(int index) {
+    if(index==0) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Task_issue(id: widget.id)));
+    }
+    if(index==1) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Task_task(id: widget.id,)));
+    }
+  }
+
+  BottomNavigationBar _buildBottomNaigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: kBackground,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: [
+        BottomNavigationBarItem(
+            label: 'issue',
+            icon: Container(
+              padding: EdgeInsets.only(bottom: 5),
+              decoration: BoxDecoration(
+                  border:
+                  Border(bottom: BorderSide(color: kAccent, width: 2))),
+              child: Text('議題', style: TextStyle(fontWeight: FontWeight.bold),),
+            )
+        ),
+        BottomNavigationBarItem(
+            label: 'issue',
+            icon: Container(
+              padding: EdgeInsets.only(bottom: 5),
+              decoration: BoxDecoration(
+                  border:
+                  Border(bottom: BorderSide(color: kAccent, width: 2))),
+              child: Text('任務', style: TextStyle(fontWeight: FontWeight.bold),),
+            )
+        ),
+        BottomNavigationBarItem(
+            label: 'issue',
+            icon: Container(
+              padding: EdgeInsets.only(bottom: 5),
+              decoration: BoxDecoration(
+                  border:
+                  Border(bottom: BorderSide(color: kAccent, width: 2))),
+              child: Text('問答', style: TextStyle(fontWeight: FontWeight.bold),),
+            )
+        ),
+      ],
+      selectedItemColor: Colors.amber[800],
+      onTap: _onItemTapped,
+    );
+  }
+
 }
