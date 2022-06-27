@@ -8,15 +8,15 @@ class MediterranesnDietView extends StatefulWidget {
   @override
   final AnimationController? animationController;
   final Animation<double>? animation;
+
   const MediterranesnDietView(
       {Key? key, this.animationController, this.animation})
       : super(key: key);
   _MediterranesnDietView createState() => _MediterranesnDietView();
-
 }
-class _MediterranesnDietView extends  State<MediterranesnDietView>  {
 
-  // Map api={"today":11};
+class _MediterranesnDietView extends State<MediterranesnDietView> {
+  Map responseApi = {"daily": 2127, "yesterday": 3000};
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                                       const EdgeInsets.only(
                                                           left: 4, bottom: 3),
                                                   child: Text(
-                                                    '${(1127 * widget.animation!.value).toInt()}',
+                                                    '${(responseApi["daily"] * widget.animation!.value).toInt()}',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
@@ -212,7 +212,7 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                                       const EdgeInsets.only(
                                                           left: 4, bottom: 3),
                                                   child: Text(
-                                                    '${(3000 * widget.animation!.value).toInt()}',
+                                                    '${(responseApi["yesterday"] * widget.animation!.value).toInt()}',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
@@ -287,7 +287,7 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            '${(1873 * widget.animation!.value).toInt()}',
+                                            '${(responseApi["yesterday"] - responseApi["daily"] * widget.animation!.value).toInt()}',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily:
@@ -325,9 +325,8 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                             HexColor("#8A98E8"),
                                             HexColor("#8A98E8")
                                           ],
-                                          angle: 200 +
-                                              (360 - 140) *
-                                                  (1.0 - widget.animation!.value)),
+                                          angle: 360.00-((responseApi["yesterday"] -
+                                              responseApi["daily"])/responseApi["yesterday"])*360),
                                       child: SizedBox(
                                         width: 108,
                                         height: 108,
@@ -387,7 +386,8 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                     child: Row(
                                       children: <Widget>[
                                         Container(
-                                          width: ((70 / 1.2) * widget.animation!.value),
+                                          width: ((70 / 1.2) *
+                                              widget.animation!.value),
                                           height: 4,
                                           decoration: BoxDecoration(
                                             gradient: LinearGradient(colors: [
@@ -455,7 +455,8 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                           children: <Widget>[
                                             Container(
                                               width: ((70 / 2) *
-                                                  widget.animationController!.value),
+                                                  widget.animationController!
+                                                      .value),
                                               height: 4,
                                               decoration: BoxDecoration(
                                                 gradient:
@@ -526,7 +527,8 @@ class _MediterranesnDietView extends  State<MediterranesnDietView>  {
                                           children: <Widget>[
                                             Container(
                                               width: ((70 / 2.5) *
-                                                  widget.animationController!.value),
+                                                  widget.animationController!
+                                                      .value),
                                               height: 4,
                                               decoration: BoxDecoration(
                                                 gradient:
