@@ -239,7 +239,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
   }
   void _pushLog(){
     Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 100,
       "id":"1-2"

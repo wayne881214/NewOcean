@@ -49,7 +49,7 @@ class _getLog extends State<getLog> {
   //初始化
   // OverTaskCard card = OverTaskCard(data: returnApi);
   List a=[];
-
+  Map DailyApi={};
   void initState() {
     // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
     // Ref.onChildAdded.listen((event) {
@@ -75,13 +75,12 @@ class _getLog extends State<getLog> {
   }
   void getApi(){
     DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
-    Ref.onChildAdded.listen((event) {
-      String userLogKey = (event.snapshot.key as String);
+    Ref.onChildAdded.listen((event)  async{
       Map userLogValue = (event.snapshot.value as Map);
-      print("userLogKey:$userLogKey userLogValue:$userLogValue");
-      returnApi[userLogKey] = userLogValue;
-      print("TTTTT $returnApi");
-      // setState(() {});
+      print("jsonResponse $userLogValue");
+      // jsonResponse.add(userLogValue);
+      // print("jsonResponse $jsonResponse");
+
     });
   }
   // List<Widget> _listView() {

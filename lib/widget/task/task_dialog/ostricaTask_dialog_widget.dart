@@ -134,9 +134,9 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
   }
   void _pushLog(){
     Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 4,
-      "carbon": 0,
+      "carbon": 1000,
       "id":"4-1"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
@@ -237,7 +237,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
   }
   void _pushLog(){
     Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 500,
       "id":"4-2"
@@ -366,7 +366,7 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
   }
   void _pushLog(){
     Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 500,
       "id":"4-2"

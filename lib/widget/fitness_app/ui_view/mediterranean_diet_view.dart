@@ -8,18 +8,20 @@ class MediterranesnDietView extends StatefulWidget {
   @override
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final Map? api;
 
   const MediterranesnDietView(
-      {Key? key, this.animationController, this.animation})
+      {Key? key, this.animationController, this.animation,this.api})
       : super(key: key);
   _MediterranesnDietView createState() => _MediterranesnDietView();
 }
 
 class _MediterranesnDietView extends State<MediterranesnDietView> {
-  Map responseApi = {"daily": 2127, "yesterday": 3000};
-
+  // Map responseApi = {"daily": 2127, "yesterday": 3000};
+  Map responseApi = {};
   @override
   Widget build(BuildContext context) {
+    responseApi=widget.api!;
     return AnimatedBuilder(
       animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
