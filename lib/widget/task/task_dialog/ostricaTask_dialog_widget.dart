@@ -122,7 +122,8 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            addData();
+                            // addData();
+                            _pushUser();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -132,7 +133,21 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
       ),
     );
   }
-
+  final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+  void _pushUser(){
+    Map<String,Object> user= {
+      "date": "2022-06-21 Tuesday 12:35:48",
+      "task": 4,
+      "carbon": 999,
+      "id":"4-2"
+    };
+    DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    pushUserDB.set(user).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
   void addData() {
     Map returnApiTemplate = {
       "4-2-1": {
