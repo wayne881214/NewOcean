@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:date_format/date_format.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -225,6 +227,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+                            _checkAndPush();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -233,6 +236,28 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                 ])))),
       ),
     );
+  }
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "task": 4,
+      "carbon": 100,
+      "id":"1-2"
+    };
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
+  void _checkAndPush(){
+    if(result=="確認"){
+      _pushLog();
+    }
   }
 }
 

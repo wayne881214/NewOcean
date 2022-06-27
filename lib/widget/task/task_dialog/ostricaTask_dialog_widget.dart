@@ -21,7 +21,7 @@ class ostricaTask1showDialog extends StatefulWidget {
 class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
   int number = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
-  String result = "取消";
+  String result = "確認";
   String qrstr = 'add data';
 
   void initState() {
@@ -122,8 +122,7 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            // addData();
-                            _pushUser();
+                            _pushLog();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -133,47 +132,24 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
       ),
     );
   }
-  final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
-  void _pushUser(){
-    Map<String,Object> user= {
-      "date": "2022-06-21 Tuesday 12:35:48",
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
       "task": 4,
-      "carbon": 999,
-      "id":"4-2"
+      "carbon": 0,
+      "id":"4-1"
     };
-    DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    pushUserDB.set(user).whenComplete((){
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
       print("user push success");
     }).catchError((error){
       print(error);
     });
   }
-  void addData() {
-    Map returnApiTemplate = {
-      "4-2-1": {
-        "date": "2022-06-21 Tuesday 12:35:48",
-        "task": 4,
-        "carbon": 500
-      },
-    };
-    print(formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]));
 
-    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log/4-1-1');
-    DatabaseReference childRef = Ref.child("date");
-    childRef.set(formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]));
-    DatabaseReference childRef2 = Ref.child("task");
-    childRef2.set(4);
-    DatabaseReference childRef3 = Ref.child("carbon");
-    childRef3.set(500);
-    DatabaseReference childRef4 = Ref.child("id");
-    childRef4.set("4-1");
-    print("GGGGGGGGGGGGGGGGGGgg");
-    print("GGGGGGGGGGGGGGGGGGgg");
-    print("GGGGGGGGGGGGGGGGGGgg");
-    print("GGGGGGGGGGGGGGGGGGgg");
-    print("GGGGGGGGGGGGGGGGGGgg");
-    print("GGGGGGGGGGGGGGGGGGgg");
-  }
 }
 
 class ostricaTask2showDialog extends StatefulWidget {
@@ -250,6 +226,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.of(context).pop(true);
+                            _checkAndPush();
                           },
                           child: Text('$result'),
                         ),
@@ -258,7 +235,28 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
       ),
     );
   }
-
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "task": 4,
+      "carbon": 500,
+      "id":"4-2"
+    };
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
+  void _checkAndPush(){
+    if(result=="確認"){
+      _pushLog();
+    }
+  }
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)
@@ -356,6 +354,7 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+                            _checkAndPush();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -365,7 +364,28 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
       ),
     );
   }
-
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]),
+      "task": 4,
+      "carbon": 500,
+      "id":"4-2"
+    };
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
+  void _checkAndPush(){
+    if(result=="確認"){
+      _pushLog();
+    }
+  }
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)
