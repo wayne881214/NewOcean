@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/screen/auth/auth.dart';
 import 'package:provider/provider.dart';
 
-import '../screen/auth/authentication_service.dart';
+import '../screen/sign_in_up/authentication_service.dart';
+import '../widget/navigation_drawer_widget.dart';
 
-class SignOutPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
+    drawer: NavigationDrawerWidget(),
     appBar: AppBar(
-      title: Text('登出'),
+      title: Text('首頁'),
       centerTitle: true,
       backgroundColor: Color(0xFF00BFA5),
     ),
@@ -16,11 +17,10 @@ class SignOutPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/turtle.png'),
             RaisedButton(
               onPressed: () {
                 context.read<AuthenticationService>().signOut();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AuthScreen()));
               },
               child: Text("登出"),
             ),
