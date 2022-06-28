@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/model/task_model.dart';
+import 'package:newocean/widget/task/task_dialog/ostrica/QRView.dart';
+import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask2.dart';
+import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask3.dart';
 import 'package:newocean/widget/task/task_dialog/ostricaTask_dialog_widget.dart';
 
 import 'package:newocean/widget/task/task_issue/category_style.dart';
