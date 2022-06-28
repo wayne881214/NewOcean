@@ -28,7 +28,10 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   List jsonResponse = [];
   // Map api ={"daily":0,"yesterday":0};
   Map DailyApi = {"daily": 0, "yesterday": 0};
-
+  Map WeeklyApi={
+    "userData" :[0,0,0,0,0,0,0,0,0,0,0,0],
+    "avgsData" :[2100, 1200, 1300, 400,1000, 1200, 2300, 1400,1000, 1200, 300, 1400]
+  };
   @override
   void initState() {
     DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
@@ -47,10 +50,58 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       print("$myD   $todayD OOOOOOOOOOOOOOOOOOOOOOO");
       if (myD == todayD) {
         DailyApi["daily"] += userLogValue["carbon"];
+        // WeeklyApi["userData"][11]+=userLogValue["carbon"];
       }
       if (myD == yesterdayD) {
         DailyApi["yesterday"] += userLogValue["carbon"];
+        // WeeklyApi["userData"][10]+=userLogValue["carbon"];
       }
+
+
+      // weekly API
+      // 之後用迴圈寫
+      for(var i=0;i<12;i++){
+        DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
+            DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*i);
+        String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
+        if (myD == yesterday_2D) {
+          WeeklyApi["userData"][11-i]+=userLogValue["carbon"];
+        }
+      }
+      // DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
+      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*2);
+      // String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
+      // if (myD == yesterday_2D) {
+      //   WeeklyApi["userData"][9]+=userLogValue["carbon"];
+      // }
+      //
+      // DateTime yesterday_3 = new DateTime.fromMillisecondsSinceEpoch(
+      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*3);
+      // String yesterday_3D = formatDate(yesterday_3, [yyyy, '-', mm, '-', dd]);
+      // if (myD == yesterday_3D) {
+      //   WeeklyApi["userData"][8]+=userLogValue["carbon"];
+      // }
+      //
+      // DateTime yesterday_4 = new DateTime.fromMillisecondsSinceEpoch(
+      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*4);
+      // String yesterday_4D = formatDate(yesterday_4, [yyyy, '-', mm, '-', dd]);
+      // if (myD == yesterday_4D) {
+      //   WeeklyApi["userData"][7]+=userLogValue["carbon"];
+      // }
+      //
+      // DateTime yesterday_5 = new DateTime.fromMillisecondsSinceEpoch(
+      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*5);
+      // String yesterday_5D = formatDate(yesterday_5, [yyyy, '-', mm, '-', dd]);
+      // if (myD == yesterday_5D) {
+      //   WeeklyApi["userData"][6]+=userLogValue["carbon"];
+      // }
+      // DateTime yesterday_6 = new DateTime.fromMillisecondsSinceEpoch(
+      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*6);
+      // String yesterday_6D = formatDate(yesterday_6, [yyyy, '-', mm, '-', dd]);
+      // if (myD == yesterday_6D) {
+      //   WeeklyApi["userData"][7]+=userLogValue["carbon"];
+      // }
+
       // DateTime today=formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]);
       // print('!!!!!!! $my_diary vs $today');
       // print('??????? $my_diary vs $today');
@@ -58,6 +109,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       //   DailyApi["daily"]+=userLogValue["carbon"];
       // }
       print("DailyApi $DailyApi");
+      print("WeeklyApi $WeeklyApi");
     });
 
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -138,11 +190,12 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     listViews.add(
-      BarChartSample2(),
+      LineChartSample2(api:WeeklyApi),
     );
     listViews.add(
-      LineChartSample2(),
+      BarChartSample2(),
     );
+
   }
 
   Future<bool> getData() async {
