@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:newocean/screen/shake.dart';
-class FriendsPage extends StatelessWidget {
+import 'package:newocean/page/sign_in_up/authentication_service.dart';
+import 'package:provider/provider.dart';
+class FriendsPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
+  State<FriendsPage> createState() => _FriendsPageState();
+}
+
+class _FriendsPageState extends State<FriendsPage> {
+
+  @override
+  Widget build(BuildContext context) {
+      return Scaffold(
         appBar: AppBar(
           title: Text('好友'),
           centerTitle: true,
@@ -13,8 +20,15 @@ class FriendsPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Center(),
+            RaisedButton(
+              onPressed: () {
+                context.read<AuthenticationService>().signOut();
+                Navigator.pop(context);
+              },
+              child: Text("登出"),
+            ),
           ],
         ),
       );
+    }
 }

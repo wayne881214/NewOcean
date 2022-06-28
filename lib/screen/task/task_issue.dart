@@ -99,10 +99,12 @@ class _Task_issue extends State<Task_issue> {
 
   void _onItemTapped(int index) {
     if (index == 1) {
+      Navigator.pop(context);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => Task_task(id: widget.id)));
     }
     if(index==2) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/page/home_page.dart';
 import 'package:newocean/page/achievements_page.dart';
@@ -10,8 +12,14 @@ import 'package:newocean/page/user_page.dart';
 
 import '../main.dart';
 
-class NavigationDrawerWidget extends StatelessWidget {
+class NavigationDrawerWidget extends StatefulWidget {
+  @override
+  State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
+}
+
+class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   final padding = EdgeInsets.symmetric(horizontal: 20);
+
   @override
   Widget build(BuildContext context) {
     final name = '王小明';
@@ -60,6 +68,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: '成就',
                     icon: Icons.update,
                     onClicked: () => selectedItem(context, 3),
+                  ),
+                  const SizedBox(height: 24),
+                  buildMenuItem(
+                    text: '登出',
+                    icon: Icons.person_add,
+                    onClicked: () => selectedItem(context, 4),
                   ),
                   /*const SizedBox(height: 24),
                   buildMenuItem(
@@ -160,11 +174,16 @@ class NavigationDrawerWidget extends StatelessWidget {
           builder: (context) => FriendsPage(),
         ));
         break;
+      /*case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FriendsPage(),
+        ));
+        break;
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SettingsPage(),
         ));
-        break;
+        break;*/
     }
   }
 }

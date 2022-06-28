@@ -145,12 +145,14 @@ class _Task_questionState extends State<Task_question> {
 
   void _onItemTapped(int index) {
     if(index==0) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => Task_issue(id: widget.id)));
     }
     if(index==1) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(

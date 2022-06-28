@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/screen/shake.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:newocean/screen/task/task_question.dart';
 import 'package:newocean/widget/task/active_course.dart';
@@ -89,12 +86,14 @@ class _Task_task extends State<Task_task>{
   }
   void _onItemTapped(int index) {
     if(index==0) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => Task_issue(id: widget.id)));
     }
     if(index==2) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(

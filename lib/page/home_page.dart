@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/sign_in_up/authentication_service.dart';
@@ -5,12 +6,13 @@ import 'package:provider/provider.dart';
 import '../widget/navigation_drawer_widget.dart';
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Colors.white,
     drawer: NavigationDrawerWidget(),
     appBar: AppBar(
-      title: Text('首頁', style: TextStyle(color: Colors.teal)),
+      title: Text('1', style: TextStyle(color: Colors.teal)),
       centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,
@@ -39,12 +41,6 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/turtle.png'),
-            RaisedButton(
-              onPressed: () {
-                context.read<AuthenticationService>().signOut();
-              },
-              child: Text("登出"),
-            ),
           ],
         ),
       ),
