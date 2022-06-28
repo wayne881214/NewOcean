@@ -68,46 +68,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
           WeeklyApi["userData"][11-i]+=userLogValue["carbon"];
         }
       }
-      // DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
-      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*2);
-      // String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
-      // if (myD == yesterday_2D) {
-      //   WeeklyApi["userData"][9]+=userLogValue["carbon"];
-      // }
-      //
-      // DateTime yesterday_3 = new DateTime.fromMillisecondsSinceEpoch(
-      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*3);
-      // String yesterday_3D = formatDate(yesterday_3, [yyyy, '-', mm, '-', dd]);
-      // if (myD == yesterday_3D) {
-      //   WeeklyApi["userData"][8]+=userLogValue["carbon"];
-      // }
-      //
-      // DateTime yesterday_4 = new DateTime.fromMillisecondsSinceEpoch(
-      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*4);
-      // String yesterday_4D = formatDate(yesterday_4, [yyyy, '-', mm, '-', dd]);
-      // if (myD == yesterday_4D) {
-      //   WeeklyApi["userData"][7]+=userLogValue["carbon"];
-      // }
-      //
-      // DateTime yesterday_5 = new DateTime.fromMillisecondsSinceEpoch(
-      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*5);
-      // String yesterday_5D = formatDate(yesterday_5, [yyyy, '-', mm, '-', dd]);
-      // if (myD == yesterday_5D) {
-      //   WeeklyApi["userData"][6]+=userLogValue["carbon"];
-      // }
-      // DateTime yesterday_6 = new DateTime.fromMillisecondsSinceEpoch(
-      //     DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*6);
-      // String yesterday_6D = formatDate(yesterday_6, [yyyy, '-', mm, '-', dd]);
-      // if (myD == yesterday_6D) {
-      //   WeeklyApi["userData"][7]+=userLogValue["carbon"];
-      // }
 
-      // DateTime today=formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ", DD, " ", HH, ":", nn, ":", ss]);
-      // print('!!!!!!! $my_diary vs $today');
-      // print('??????? $my_diary vs $today');
-      // if(userLogValue["date"]==today){
-      //   DailyApi["daily"]+=userLogValue["carbon"];
-      // }
       print("DailyApi $DailyApi");
       print("WeeklyApi $WeeklyApi");
     });

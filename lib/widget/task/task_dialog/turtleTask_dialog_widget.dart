@@ -106,6 +106,7 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+                            _checkAndPush();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -114,6 +115,28 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
                 ])))),
       ),
     );
+  }
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+      "task": 1,
+      "carbon": 100,
+      "id":"1-1"
+    };
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
+  void _checkAndPush(){
+    if(result=="確認"){
+      _pushLog();
+    }
   }
 }
 
@@ -240,7 +263,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
   void _pushLog(){
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
-      "task": 4,
+      "task": 1,
       "carbon": 100,
       "id":"1-2"
     };
@@ -371,6 +394,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                             height: 50,
                             child: ElevatedButton(
                               onPressed: () {
+                                _checkAndPush();
                                 Navigator.of(context).pop(true);
                               },
                               child: Text('$result'),
@@ -379,5 +403,27 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                     ])))),
       ),
     );
+  }
+  void _pushLog(){
+    Map<String,Object> log= {
+      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+      "task": 1,
+      "carbon": 100,
+      "id":"1-3"
+    };
+    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    DatabaseReference pushUserDB = fireBaseDB.push();
+    //push=>亂碼顯示 有空在設4-1-n
+    pushUserDB.set(log).whenComplete((){
+      print("user push success");
+    }).catchError((error){
+      print(error);
+    });
+  }
+  void _checkAndPush(){
+    if(result=="確認"){
+      _pushLog();
+    }
   }
 }

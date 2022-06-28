@@ -20,6 +20,8 @@ class _Task_task extends State<Task_task>{
   String issuetext='';
   String featuretext='';
   int Percent=0;
+
+
   @override
   void initState() {
     switch(widget.id){
@@ -32,27 +34,28 @@ class _Task_task extends State<Task_task>{
         case 3:
         taskTitle="鯨魚任務";
         break;
-        //case 4:
-        taskTitle="海龜任務";
+        case 4:
+        taskTitle="牡蠣任務";
         break;
       default:
         taskTitle="海鳥任務";
         break;
 
     }
-
-    //讀取用戶任務，將進行中的任務加入List<Task>行列
-    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
-    Ref.onChildAdded.listen((event) {
-      int id= (event.snapshot.value as Map)["id"];
-      int state= (event.snapshot.value as Map)["state"];
-      if(id==widget.id) {
-        setState(() {
-          Percent =((state-1)*100/3).ceil();//更新 TaskCard Widget(任務卡片列表)
-        });
-      }
-    });
-    super.initState();
+    getPercent();
+    // //讀取用戶任務，將進行中的任務加入List<Task>行列
+    // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    // Ref.onChildAdded.listen((event) {
+    //   int id= (event.snapshot.value as Map)["id"];
+    //   int state= (event.snapshot.value as Map)["state"];
+    //   // int state= (event.snapshot.value as Map)["state"];
+    //   if(id==widget.id) {
+    //     setState(() {
+    //       Percent =((state-1)*100/3).ceil();//更新 TaskCard Widget(任務卡片列表)
+    //     });
+    //   }
+    // });
+    // super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -144,4 +147,32 @@ class _Task_task extends State<Task_task>{
     );
   }
 
+  void getPercent() {
+    var Target=1+7+7;
+    int state= 0;
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
+    Ref.onChildAdded.listen((event)  async{
+      Map userLogValue = (event.snapshot.value as Map);
+      print("jsonResponse!!!!! $userLogValue");
+      if(userLogValue["task"]==widget.id){
+        state++;
+      }
+      setState(() {
+        Percent =((state/Target)*100).toInt().ceil();//更新 TaskCard Widget(任務卡片列表)
+      });
+    });
+    //讀取用戶任務，將進行中的任務加入List<Task>行列
+    // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    // Ref.onChildAdded.listen((event) {
+    //   int id= (event.snapshot.value as Map)["id"];
+    //   int state= (event.snapshot.value as Map)["state"]+10;
+    //   // int state= (event.snapshot.value as Map)["state"];
+    //   if(id==widget.id) {
+    //     setState(() {
+    //       Percent =((state)).ceil();//更新 TaskCard Widget(任務卡片列表)
+    //     });
+    //   }
+    // });
+    super.initState();
+  }
 }
