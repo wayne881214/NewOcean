@@ -3,10 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:newocean/screen/auth/auth.dart';
+import 'package:newocean/page/home_page.dart';
+import 'package:newocean/page/sign_in_up/authentication_service.dart';
+import 'package:newocean/page/sign_in_up/sign_in_up_page.dart';
 import 'package:provider/provider.dart';
-import 'screen/auth/authentication_service.dart';
-import 'widget/navigation_drawer_widget.dart';
 import 'firebase_options.dart';
 
 Future main() async {
@@ -48,34 +48,8 @@ class AuthenticationWrapper extends StatelessWidget{
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return MainPage();
+      return HomePage();
     }
-    return AuthScreen();
+    return SignInUpPage();
   }
-
-}
-
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    drawer: NavigationDrawerWidget(),
-    // endDrawer: NavigationDrawerWidget(),
-    appBar: AppBar(
-      title: Text('新海'),
-      centerTitle: true,
-    ),
-    body: Builder(
-      builder: (context) => Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 32),
-        child: Image.asset('assets/images/turtle.png'),
-      ),
-    ),
-  );
-
 }

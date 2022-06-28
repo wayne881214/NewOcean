@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/page/sign_out_page.dart';
+import 'package:newocean/page/home_page.dart';
 import 'package:newocean/page/achievements_page.dart';
 import 'package:newocean/page/friends_page.dart';
 import 'package:newocean/page/ocean_page.dart';
@@ -61,7 +61,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                     icon: Icons.update,
                     onClicked: () => selectedItem(context, 3),
                   ),
-                  const SizedBox(height: 24),
+                  /*const SizedBox(height: 24),
                   buildMenuItem(
                     text: '好友',
                     icon: Icons.person_add,
@@ -72,13 +72,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: '設定',
                     icon: Icons.settings,
                     onClicked: () => selectedItem(context, 5),
-                  ),
-                  const SizedBox(height: 16),
-                  buildMenuItem(
-                    text: '測試',
-                    icon: Icons.settings,
-                    onClicked: () => selectedItem(context, 6),
-                  ),
+                  ),*/
                 ],
               ),
             ),
@@ -169,11 +163,6 @@ class NavigationDrawerWidget extends StatelessWidget {
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SettingsPage(),
-        ));
-        break;
-      case 6:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SignOutPage(),
         ));
         break;
     }

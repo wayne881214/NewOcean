@@ -7,6 +7,7 @@ import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/feature_course.dart';
 import 'package:newocean/widget/task/task_issue/issue_style.dart';
 import 'package:newocean/screen/test.dart';
+import 'package:readmore/readmore.dart';
 
 class Task_issue extends StatefulWidget {
   Task_issue({Key? key, required this.id}) : super(key: key);
@@ -64,7 +65,28 @@ class _Task_issue extends State<Task_issue> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: ReadMoreText(
+                issuetext,
+                trimLines: 5,
+                textAlign: TextAlign.justify,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: " 顯示更多 ",
+                trimExpandedText: " 顯示更少 ",
+                lessStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+                moreStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
             emoji_Title(name:"環境議題"),
             IssueStyle('$issuetext', 'view all\n'),
             FeatureCourse(id:widget.id,name:featuretext),

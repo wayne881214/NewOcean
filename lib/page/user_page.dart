@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UserPage extends StatelessWidget {
   final String name;
@@ -16,6 +17,7 @@ class UserPage extends StatelessWidget {
           backgroundColor: Color(0xFF00BFA5),
           title: Text(name),
           centerTitle: true,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: Image.network(
           urlImage,

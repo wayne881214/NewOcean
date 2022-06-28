@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/services.dart';
 import 'package:newocean/model/task_model.dart';
 import 'package:newocean/widget/task/task_card_widget.dart';
 
@@ -43,6 +44,7 @@ class _TaskState extends State<TasksPage> {
           title: Text('任務'),
           centerTitle: true,
           backgroundColor: Color(0xFF00BFA5),
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: card,
         bottomNavigationBar: _buildBottomNaigationBar(),

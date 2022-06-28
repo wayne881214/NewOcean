@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'authentication_service.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
