@@ -28,9 +28,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   List jsonResponse = [];
   // Map api ={"daily":0,"yesterday":0};
   Map DailyApi = {"daily": 0, "yesterday": 0};
-  Map WeeklyApi={
-    "userData" :[0,0,0,0,0,0,0,0,0,0,0,0],
-    "avgsData" :[2100, 1200, 1300, 400,1000, 1200, 2300, 1400,1000, 1200, 300, 1400]
+  Map WeeklyApi = {
+    "userData": [0, 0, 0, 0, 0, 0, 0],
+    "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
   };
   @override
   void initState() {
@@ -47,30 +47,29 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       String myD = formatDate(my_diary, [yyyy, '-', mm, '-', dd]);
       String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
       String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
-      print("$myD   $todayD OOOOOOOOOOOOOOOOOOOOOOO");
       if (myD == todayD) {
         DailyApi["daily"] += userLogValue["carbon"];
-        // WeeklyApi["userData"][11]+=userLogValue["carbon"];
       }
       if (myD == yesterdayD) {
         DailyApi["yesterday"] += userLogValue["carbon"];
-        // WeeklyApi["userData"][10]+=userLogValue["carbon"];
       }
-
 
       // weekly API
       // 之後用迴圈寫
-      for(var i=0;i<12;i++){
+      var D = 7;
+      for (var i = 0; i < D; i++) {
         DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
-            DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000*i);
+            DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000 * i);
         String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
         if (myD == yesterday_2D) {
-          WeeklyApi["userData"][11-i]+=userLogValue["carbon"];
+          setState(() {
+            WeeklyApi["userData"][D - i - 1] += userLogValue["carbon"];
+          });
         }
       }
-
       print("DailyApi $DailyApi");
       print("WeeklyApi $WeeklyApi");
+      super.initState();
     });
 
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -151,12 +150,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     listViews.add(
-      LineChartSample2(api:WeeklyApi),
+      LineChartSample2(api: WeeklyApi),
     );
     listViews.add(
       BarChartSample2(),
     );
-
   }
 
   Future<bool> getData() async {

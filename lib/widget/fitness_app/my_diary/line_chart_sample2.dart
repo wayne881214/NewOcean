@@ -11,7 +11,7 @@ import '../fitness_app_theme.dart';
 
 //xy軸比例
 const double minX= 0;
-const double maxX= 12;
+const double maxX= 6;
 const double minY= 0;
 const double maxY= 5000;
 
@@ -86,17 +86,11 @@ class _LineChartSample2State extends State<LineChartSample2>  {
     );
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('前九天', style: style);
+      case 0:
+        text = const Text('七天前', style: style);
         break;
-      case 5:
-        text = const Text('前六天', style: style);
-        break;
-      case 8:
-        text = const Text('前三天', style: style);
-        break;
-      case 11:
-        text = const Text('今日', style: style);
+      case 6:
+        text = const Text('本日', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -214,11 +208,11 @@ class _LineChartSample2State extends State<LineChartSample2>  {
             FlSpot(4,responseApi["userData"][4].toDouble()),
             FlSpot(5,responseApi["userData"][5].toDouble()),
             FlSpot(6,responseApi["userData"][6].toDouble()),
-            FlSpot(7,responseApi["userData"][7].toDouble()),
-            FlSpot(8,responseApi["userData"][8].toDouble()),
-            FlSpot(9,responseApi["userData"][9].toDouble()),
-            FlSpot(10,responseApi["userData"][10].toDouble()),
-            FlSpot(11,responseApi["userData"][11].toDouble()),
+            // FlSpot(7,responseApi["userData"][7].toDouble()),
+            // FlSpot(8,responseApi["userData"][8].toDouble()),
+            // FlSpot(9,responseApi["userData"][9].toDouble()),
+            // FlSpot(10,responseApi["userData"][10].toDouble()),
+            // FlSpot(11,responseApi["userData"][11].toDouble()),
           ],
           isCurved: true,
           gradient: LinearGradient(
@@ -309,11 +303,11 @@ class _LineChartSample2State extends State<LineChartSample2>  {
             FlSpot(4,responseApi["avgsData"][4].toDouble()),
             FlSpot(5,responseApi["avgsData"][5].toDouble()),
             FlSpot(6,responseApi["avgsData"][6].toDouble()),
-            FlSpot(7,responseApi["avgsData"][7].toDouble()),
-            FlSpot(8,responseApi["avgsData"][8].toDouble()),
-            FlSpot(9,responseApi["avgsData"][9].toDouble()),
-            FlSpot(10,responseApi["avgsData"][10].toDouble()),
-            FlSpot(11,responseApi["avgsData"][11].toDouble()),
+            // FlSpot(7,responseApi["avgsData"][7].toDouble()),
+            // FlSpot(8,responseApi["avgsData"][8].toDouble()),
+            // FlSpot(9,responseApi["avgsData"][9].toDouble()),
+            // FlSpot(10,responseApi["avgsData"][10].toDouble()),
+            // FlSpot(11,responseApi["avgsData"][11].toDouble()),
             // FlSpot(2.6, 2),
             // FlSpot(4.9, 3.44),
             // FlSpot(6.8, 4),

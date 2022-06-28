@@ -3,7 +3,6 @@ import 'fitness_app_theme.dart';
 import 'models/tabIcon_data.dart';
 import 'my_diary/my_diary_screen.dart';
 
-
 void main() => runApp(const MyApp2());
 
 class MyApp2 extends StatelessWidget {
@@ -11,14 +10,13 @@ class MyApp2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:FitnessAppHomeScreen(),
-
+      home: FitnessAppHomeScreen(),
     );
   }
 }
+
 class FitnessAppHomeScreen extends StatefulWidget {
   @override
   _FitnessAppHomeScreenState createState() => _FitnessAppHomeScreenState();

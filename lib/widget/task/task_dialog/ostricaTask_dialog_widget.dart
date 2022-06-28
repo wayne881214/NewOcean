@@ -132,24 +132,26 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 1000,
-      "id":"4-1"
+      "id": "4-1"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-
 }
 
 class ostricaTask2showDialog extends StatefulWidget {
@@ -235,28 +237,33 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 500,
-      "id":"4-2"
+      "id": "4-2"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-  void _checkAndPush(){
-    if(result=="確認"){
+
+  void _checkAndPush() {
+    if (result == "確認") {
       _pushLog();
     }
   }
+
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)
@@ -364,28 +371,33 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 4,
       "carbon": 500,
-      "id":"4-2"
+      "id": "4-2"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-  void _checkAndPush(){
-    if(result=="確認"){
+
+  void _checkAndPush() {
+    if (result == "確認") {
       _pushLog();
     }
   }
+
   Future<void> scanQR() async {
     try {
       FlutterBarcodeScanner.scanBarcode('#EE3209', 'cancel', true, ScanMode.QR)

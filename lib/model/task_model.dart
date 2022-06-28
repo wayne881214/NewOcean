@@ -18,6 +18,7 @@ class Task {
   int taskState = 1;
 
   Task(this.id,this.state,this.imagePath,this.title,this.mission,this.percent,this.describe);
+
   static Task addTask2(int id,Map stateApi) {
     int state=0;
     if(stateApi["state"]>=15){
@@ -54,9 +55,9 @@ class Task {
         var Mission = ["未解鎖", "任務一 生成專屬用具", "任務二 環保用具檢查", "任務三 環保商店", "已完成"];
         var Describe=
         ["趕快去解鎖第一個任務",
-          "船舶噪音會干擾鯨魚聲納系統\n使其無法找到方向",
-          "噪音的傳遞跟海水酸度正相關\n減碳能有效降低海洋酸化",
-          "減碳需要持之以恆\n請繼續維持減碳行為一週",
+          "請將生成的QRcod貼到環保餐具\n以利完成每日紀錄任務",
+          "請在戶外掃描環保水壺QRcode\n 用一次能減少約500g碳足跡",
+          "請到與本APP合作之無包裝商店\n並掃描店面之QRcode",
           "恭喜完成所有任務"];
         return Task(id,state,"assets/images/turtle.png", "拯救牡蠣大作戰",
             Mission[state],stateApi["percent"].ceil(),Describe[state]);
@@ -89,10 +90,10 @@ class Task {
       case 4:
         var Mission = ["未解鎖", "任務一 生成專屬用具", "任務二 環保用具檢查", "任務三 環保商店", "已完成"];
         var Describe=
-         ["趕快去解鎖第一個任務",
-          "船舶噪音會干擾鯨魚聲納系統\n使其無法找到方向",
-          "噪音的傳遞跟海水酸度正相關\n減碳能有效降低海洋酸化",
-          "減碳需要持之以恆\n請繼續維持減碳行為一週",
+        ["趕快去解鎖第一個任務",
+          "請將生成的QRcod貼到環保餐具\n以利完成每日紀錄任務",
+          "請在戶外掃描環保水壺QRcode\n 用一次能減少約500g碳足跡",
+          "請到與本APP合作之無包裝商店\n並掃描店面之QRcode",
           "恭喜完成所有任務"];
         return Task(id,state,"assets/images/turtle.png", "拯救牡蠣大作戰",
                 Mission[state],((state-1)*100/3).ceil(),Describe[state]);

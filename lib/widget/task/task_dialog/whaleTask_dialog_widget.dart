@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:all_sensors/all_sensors.dart' as name;
 import 'package:date_format/date_format.dart';
 import 'package:file_picker/file_picker.dart';
@@ -12,28 +11,31 @@ import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'dart:math';
+
 class whaleTask1showDialog extends StatefulWidget {
   @override
   _ShakeshowDialog createState() => _ShakeshowDialog();
 }
+
 class _ShakeshowDialog extends State<whaleTask1showDialog> {
-  double stateX = (Random().nextDouble()*20)-10;
-  double stateY = (Random().nextDouble()*20)-10;
-  double x=0,y=0,z=0;
+  double stateX = (Random().nextDouble() * 20) - 10;
+  double stateY = (Random().nextDouble() * 20) - 10;
+  double x = 0, y = 0, z = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
-  List<StreamSubscription<dynamic>> _streamSubscriptions = <StreamSubscription<dynamic>>[];
+  List<StreamSubscription<dynamic>> _streamSubscriptions =
+      <StreamSubscription<dynamic>>[];
 
   void initState() {
     super.initState();
-    _streamSubscriptions.add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
+    _streamSubscriptions
+        .add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
       setState(() {
-        x=event.x;
-        y=event.y;
-        z=event.z;
+        x = event.x;
+        y = event.y;
+        z = event.z;
       });
     }));
-
   }
 
   @override
@@ -56,78 +58,81 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Align(
-                        widthFactor: 10,
-                        heightFactor: 6,
-                        alignment:Alignment(-1*x/10,y/10),
-                        child: Image.network(img, height: 50, width: 50),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
-                      ),
-                      Expanded(
+                  Align(
+                    widthFactor: 10,
+                    heightFactor: 6,
+                    alignment: Alignment(-1 * x / 10, y / 10),
+                    child: Image.network(img, height: 50, width: 50),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
+                  ),
+                  Expanded(
+                      flex: 2,
+                      child: Row(children: [
+                        Expanded(
                           flex: 2,
-                          child: Row(children: [
-                            Expanded(
-                              flex: 2,
-                              child: Image.asset("assets/images/icons/shake.png",
-                                  height: 150.00, width: 150.00),
-                            ),
-                            Expanded(
-                                flex: 8,
-                                child: LinearPercentIndicator(
-                                  width: 250,
-                                  animation: true,
-                                  lineHeight: 20.0,
-                                  animationDuration: 0,
-                                  percent: (20-(x-stateX).abs()) * 5 / 100,
-                                  barRadius: const Radius.circular(16),
-                                  progressColor: Color(0XFFFF1C41),
-                                ))
-                          ])),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
-                            ),
-                          ))
-                    ])))),
+                          child: Image.asset("assets/images/icons/shake.png",
+                              height: 150.00, width: 150.00),
+                        ),
+                        Expanded(
+                            flex: 8,
+                            child: LinearPercentIndicator(
+                              width: 250,
+                              animation: true,
+                              lineHeight: 20.0,
+                              animationDuration: 0,
+                              percent: (20 - (x - stateX).abs()) * 5 / 100,
+                              barRadius: const Radius.circular(16),
+                              progressColor: Color(0XFFFF1C41),
+                            ))
+                      ])),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        width: 100, // <-- Your width
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _checkAndPush();
+                            Navigator.of(context).pop(true);
+                          },
+                          child: Text('$result'),
+                        ),
+                      ))
+                ])))),
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 3,
       "carbon": 100,
-      "id":"3-1"
+      "id": "3-1"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-  void _checkAndPush(){
-    if(result=="確認"){
+
+  void _checkAndPush() {
+    if (result == "確認") {
       _pushLog();
     }
   }
 }
-
 
 class whaleTask2showDialog extends StatefulWidget {
   @override
@@ -137,21 +142,24 @@ class whaleTask2showDialog extends StatefulWidget {
 class _task2showDialog extends State<whaleTask2showDialog> {
   bool _proximityValues = false;
   String result = "取消";
-  List<StreamSubscription<dynamic>> _streamSubscriptions = <StreamSubscription<dynamic>>[];
+  List<StreamSubscription<dynamic>> _streamSubscriptions =
+      <StreamSubscription<dynamic>>[];
 
   void initState() {
     super.initState();
-    _streamSubscriptions.add(name.proximityEvents!.listen((name.ProximityEvent event) {
+    _streamSubscriptions
+        .add(name.proximityEvents!.listen((name.ProximityEvent event) {
       setState(() {
         _proximityValues = event.getValue();
       });
-      if(_proximityValues){
+      if (_proximityValues) {
         setState(() {
           result = "完成任務";
         });
       }
     }));
   }
+
   @override
   void dispose() {
     super.dispose();
@@ -159,6 +167,7 @@ class _task2showDialog extends State<whaleTask2showDialog> {
       subscription.cancel();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -179,56 +188,59 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Expanded(
-                        flex: 8,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請將環保水壺靠近手機紀錄"),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
-                            ),
-                          ))
-                    ])))),
+                  Expanded(
+                    flex: 8,
+                    child: Text("請上傳照片"),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text("請將環保水壺靠近手機紀錄"),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        width: 100, // <-- Your width
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _checkAndPush();
+                            Navigator.of(context).pop(true);
+                          },
+                          child: Text('$result'),
+                        ),
+                      ))
+                ])))),
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 3,
       "carbon": 100,
-      "id":"3-2"
+      "id": "3-2"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-  void _checkAndPush(){
-    if(result=="確認"){
+
+  void _checkAndPush() {
+    if (result == "確認") {
       _pushLog();
     }
   }
 }
-
 
 class whaleTask3showDialog extends StatefulWidget {
   @override
@@ -236,20 +248,19 @@ class whaleTask3showDialog extends StatefulWidget {
 }
 
 class _task3showDialog extends State<whaleTask3showDialog> {
-  int number = 0,op=0;
+  int number = 0, op = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
-  String filename="123.jpg";
+  String filename = "123.jpg";
 
   void initState() {
     super.initState();
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final Storage storage =Storage();
+    final Storage storage = Storage();
     print("2.filename:$filename");
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -269,105 +280,108 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
+                  Expanded(
+                    flex: 6,
+                    child: FutureBuilder(
+                        future: storage.downloadURL('$filename'),
 
-                            // future: storage.listFiles(),
-                            builder:(BuildContext context,
-                                AsyncSnapshot<String>snapshot){
-                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child:Image.network(
-                                      snapshot.data!,
-                                      fit:BoxFit.cover,
-                                    ));
-                              }
-                              if(snapshot.connectionState==ConnectionState.waiting||
-                                  !snapshot.hasData){
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file ="123.jpg";
-
-                            this.setState(
-                                    ()=>result="確認");
-                            print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then((value) =>
-                                this.setState(()=>filename=file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-
-                          child: Text('upload file'),
-
-                        ),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
+                        // future: storage.listFiles(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<String> snapshot) {
+                          if (snapshot.connectionState ==
+                                  ConnectionState.done &&
+                              snapshot.hasData) {
+                            return Container(
+                                width: 300,
+                                height: 250,
+                                child: Image.network(
+                                  snapshot.data!,
+                                  fit: BoxFit.cover,
+                                ));
+                          }
+                          if (snapshot.connectionState ==
+                                  ConnectionState.waiting ||
+                              !snapshot.hasData) {
+                            return Text("Stupid flutter");
+                          }
+                          return Text("Stupid flutter");
+                        }),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text("請上傳照片"),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        final results = await FilePicker.platform.pickFiles(
+                          allowMultiple: false,
+                          type: FileType.custom,
+                          allowedExtensions: ['png', 'jpg'],
+                        );
+                        if (results == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('No file selected'),
                             ),
-                          ))
-                    ])))),
+                          );
+                          return null;
+                        }
+                        final path = results.files.single.path!;
+                        final file = "123.jpg";
+
+                        this.setState(() => result = "確認");
+                        print("1.filename:$filename");
+                        storage.uploadFile(path, filename).then(
+                            (value) => this.setState(() => filename = file));
+                        // Timer timer;
+                        // timer =  new Timer(Duration(milliseconds: 1000), (){});
+                      },
+                      child: Text('upload file'),
+                    ),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        width: 100, // <-- Your width
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _checkAndPush();
+                            Navigator.of(context).pop(true);
+                          },
+                          child: Text('$result'),
+                        ),
+                      ))
+                ])))),
       ),
     );
   }
-  void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
+
+  void _pushLog() {
+    Map<String, Object> log = {
+      "date": formatDate(
+          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 3,
       "carbon": 100,
-      "id":"3-3"
+      "id": "3-3"
     };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
+    final DatabaseReference fireBaseDB =
+        FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
+    pushUserDB.set(log).whenComplete(() {
       print("user push success");
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }
-  void _checkAndPush(){
-    if(result=="確認"){
+
+  void _checkAndPush() {
+    if (result == "確認") {
       _pushLog();
     }
   }

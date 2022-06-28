@@ -11,7 +11,7 @@ class MediterranesnDietView extends StatefulWidget {
   final Map? api;
 
   const MediterranesnDietView(
-      {Key? key, this.animationController, this.animation,this.api})
+      {Key? key, this.animationController, this.animation, this.api})
       : super(key: key);
   _MediterranesnDietView createState() => _MediterranesnDietView();
 }
@@ -21,7 +21,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
   Map responseApi = {};
   @override
   Widget build(BuildContext context) {
-    responseApi=widget.api!;
+    responseApi = widget.api!;
     return AnimatedBuilder(
       animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
@@ -327,8 +327,13 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                             HexColor("#8A98E8"),
                                             HexColor("#8A98E8")
                                           ],
-                                          angle: 360.00-((responseApi["yesterday"] -
-                                              responseApi["daily"])/responseApi["yesterday"])*360),
+                                          angle: 360.00 -
+                                              ((responseApi["yesterday"] -
+                                                          responseApi[
+                                                              "daily"]) /
+                                                      responseApi[
+                                                          "yesterday"]) *
+                                                  360),
                                       child: SizedBox(
                                         width: 108,
                                         height: 108,
