@@ -9,8 +9,10 @@ import '../../../model/task_progress_detail_model.dart';
 
 
 class TaskProgress extends StatelessWidget {
-  TaskProgress({Key? key, required this.id}) : super(key: key);
+  TaskProgress({Key? key, required this.id, required this.state, required this.StateApi}) : super(key: key);
   final int id;
+  final int state;
+  final double StateApi;
   int Percent=0;
 
   @override
@@ -44,7 +46,7 @@ class TaskProgress extends StatelessWidget {
             ],
           ),*/
           SizedBox(height: 20,),
-          ...modulesList.map((e) => TaskProgressModule(e)).toList()
+          ...modulesList.map((e) => TaskProgressModule(e,state,StateApi)).toList()
           //CourseModule(modulesList[0])
         ],
       ),

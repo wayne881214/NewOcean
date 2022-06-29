@@ -5,10 +5,50 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newocean/firebase/User.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+import '../../../firebase/database_service.dart';
+
+class nothingshowDialog extends StatefulWidget {
+  @override
+  _nothingDialog createState() => _nothingDialog();
+}
+
+class _nothingDialog extends State<nothingshowDialog> {
+  void initState() {
+    super.initState();
+    setState(() {
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: Text('你已經完成任務'),
+      content: Text('(解鎖動物互動＿ＡＲ)'),
+      actions: <Widget>[
+        CupertinoDialogAction(
+            child:  TextButton(
+              child: Text("確定"),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            )
+        )
+      ],
+    );
+  }
+}
+
+
+
+
+
+
 
 class turtleTask1showDialog extends StatefulWidget {
   @override
@@ -120,11 +160,13 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 1,
-      "carbon": 100,
+      "carbon": 10,
       "id":"1-1"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    changeTask(1 ,1);
+
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
@@ -134,7 +176,7 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
     });
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }
@@ -230,7 +272,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                         final file ="123.jpg";
 
                         this.setState(
-                                ()=>result="確認");
+                                ()=>result="完成任務");
                         print("1.filename:$filename");
                         storage.uploadFile(path, filename).then((value) =>
                             this.setState(()=>filename=file));
@@ -264,11 +306,13 @@ class _task2showDialog extends State<turtleTask2showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 1,
-      "carbon": 100,
+      "carbon": 10,
       "id":"1-2"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+
+
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
@@ -276,9 +320,10 @@ class _task2showDialog extends State<turtleTask2showDialog> {
     }).catchError((error){
       print(error);
     });
+    changeTask2(1 ,2,API);
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }
@@ -374,7 +419,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                             final file ="123.jpg";
 
                             this.setState(
-                                    ()=>result="確認");
+                                    ()=>result="完成任務");
                             print("1.filename:$filename");
                             storage.uploadFile(path, filename).then((value) =>
                                 this.setState(()=>filename=file));
@@ -408,12 +453,14 @@ class _task3showDialog extends State<turtleTask3showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 1,
-      "carbon": 100,
+      "carbon": 10,
       "id":"1-3"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
+    changeTask2(1 ,3,API);
+
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
       print("user push success");
@@ -422,7 +469,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
     });
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }

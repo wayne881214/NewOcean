@@ -11,6 +11,8 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 
+import '../../../firebase/database_service.dart';
+
 // import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ostricaTask1showDialog extends StatefulWidget {
@@ -21,7 +23,7 @@ class ostricaTask1showDialog extends StatefulWidget {
 class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
   int number = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
-  String result = "確認";
+  String result = "完成任務";
   String qrstr = 'add data';
 
   void initState() {
@@ -122,7 +124,7 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            _pushLog();
+                            _checkAndPush();
                             Navigator.of(context).pop(true);
                           },
                           child: Text('$result'),
@@ -138,19 +140,25 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
       "date": formatDate(
           DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 4,
-      "carbon": 1000,
+      "carbon": 1,
       "id": "4-1"
     };
     final DatabaseReference fireBaseDB =
         FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
+    changeTask(4 ,1);
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete(() {
       print("user push success");
     }).catchError((error) {
       print(error);
     });
+  }
+  void _checkAndPush(){
+    if(result=="完成任務"){
+      _pushLog();
+    }
   }
 }
 //

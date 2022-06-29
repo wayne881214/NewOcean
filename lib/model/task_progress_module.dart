@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
+import 'package:newocean/firebase/User.dart';
 import 'package:newocean/model/task_course_progress_model.dart';
 import 'package:newocean/model/task_progress_detail_model.dart';
 import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask2.dart';
@@ -13,76 +14,86 @@ import '../widget/task/task_dialog/turtleTask_dialog_widget.dart';
 
 class TaskProgressModule extends StatelessWidget {
   final TaskProgressDetailModel module;
-  TaskProgressModule(this.module);
+  final int State;
+  final double StateApi;
+  TaskProgressModule(this.module,this.State,this.StateApi);
   @override
+
   Widget build(BuildContext context) {
+    API=StateApi;
   StatefulWidget taskdialog = turtleTask1showDialog();
-    switch (module.id) {
-      case 1:
-        switch (module.state) {
-          case 1:
-            taskdialog = turtleTask1showDialog();
-            break;
-          case 2:
-            taskdialog = turtleTask2showDialog();
-            break;
-          case 3:
-            taskdialog = turtleTask3showDialog();
-            break;
-          default:
-            break;
-        }
-        break;
-      case 2:
-        switch (module.state) {
-          case 1:
-            taskdialog = sealionTask1showDialog();
-            break;
-          case 2:
-            taskdialog = sealionTask2showDialog();
-            break;
-          case 3:
-            taskdialog = sealionTask3showDialog();
-            break;
-          default:
-            break;
-        }
-
-        break;
-      case 3:
-        switch(module.state) {
-          case 1:
-            taskdialog = whaleTask1showDialog();
-            break;
-          case 2:
-            taskdialog = whaleTask2showDialog();
-            break;
-          case 3:
-            taskdialog = whaleTask3showDialog();
-            break;
-          default:
-            break;
-        }
-        break;
-      case 4:
-        switch (module.state) {
-          case 1:
-            taskdialog = ostricaTask1showDialog();
-            break;
-          case 2:
-            taskdialog = ostricaTask2showDialog();
-            break;
-          case 3:
-            taskdialog = ostricaTask3showDialog();
-            break;
-          default:
-            break;
-        }
-        break;
-
-      default:
-        break;
+    if(State>module.state){
+      taskdialog = nothingshowDialog();
     }
+    else {
+      switch (module.id) {
+        case 1:
+          switch (module.state) {
+            case 1:
+              taskdialog = turtleTask1showDialog();
+              break;
+            case 2:
+              taskdialog = turtleTask2showDialog();
+              break;
+            case 3:
+              taskdialog = turtleTask3showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
+        case 2:
+          switch (module.state) {
+            case 1:
+              taskdialog = sealionTask1showDialog();
+              break;
+            case 2:
+              taskdialog = sealionTask2showDialog();
+              break;
+            case 3:
+              taskdialog = sealionTask3showDialog();
+              break;
+            default:
+              break;
+          }
+
+          break;
+        case 3:
+          switch (module.state) {
+            case 1:
+              taskdialog = whaleTask1showDialog();
+              break;
+            case 2:
+              taskdialog = whaleTask2showDialog();
+              break;
+            case 3:
+              taskdialog = whaleTask3showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
+        case 4:
+          switch (module.state) {
+            case 1:
+              taskdialog = ostricaTask1showDialog();
+              break;
+            case 2:
+              taskdialog = ostricaTask2showDialog();
+              break;
+            case 3:
+              taskdialog = ostricaTask3showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
+
+        default:
+          break;
+      }
+    }
+
     return Container(
       height: 280,
       child: Row(

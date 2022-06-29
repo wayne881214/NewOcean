@@ -10,6 +10,9 @@ import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+import '../../../firebase/User.dart';
+import '../../../firebase/database_service.dart';
+
 class sealionTask1showDialog extends StatefulWidget {
   @override
   _ShakeshowDialog createState() => _ShakeshowDialog();
@@ -120,12 +123,14 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 2,
-      "carbon": 100,
+      "carbon": 10,
       "id":"2-1"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
+    changeTask(2 ,1);
+
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
       print("user push success");
@@ -134,7 +139,7 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
     });
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }
@@ -230,7 +235,7 @@ class _task2showDialog extends State<sealionTask2showDialog> {
                             final file ="123.jpg";
 
                             this.setState(
-                                    ()=>result="確認");
+                                    ()=>result="完成任務");
                             print("1.filename:$filename");
                             storage.uploadFile(path, filename).then((value) =>
                                 this.setState(()=>filename=file));
@@ -264,11 +269,13 @@ class _task2showDialog extends State<sealionTask2showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 2,
-      "carbon": 100,
+      "carbon": 10,
       "id":"2-2"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    changeTask2(2 ,2,API);
+
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
@@ -278,7 +285,7 @@ class _task2showDialog extends State<sealionTask2showDialog> {
     });
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }
@@ -374,7 +381,7 @@ class _task3showDialog extends State<sealionTask3showDialog> {
                             final file ="123.jpg";
 
                             this.setState(
-                                    ()=>result="確認");
+                                    ()=>result="完成任務");
                             print("1.filename:$filename");
                             storage.uploadFile(path, filename).then((value) =>
                                 this.setState(()=>filename=file));
@@ -408,11 +415,13 @@ class _task3showDialog extends State<sealionTask3showDialog> {
     Map<String,Object> log= {
       "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
       "task": 2,
-      "carbon": 100,
+      "carbon": 10,
       "id":"2-3"
     };
     final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    changeTask3(2 ,3,API);
+
     DatabaseReference pushUserDB = fireBaseDB.push();
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete((){
@@ -422,7 +431,7 @@ class _task3showDialog extends State<sealionTask3showDialog> {
     });
   }
   void _checkAndPush(){
-    if(result=="確認"){
+    if(result=="完成任務"){
       _pushLog();
     }
   }
