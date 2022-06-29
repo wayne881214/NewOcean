@@ -7,6 +7,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import '../../../../firebase/User.dart';
+import '../../../../firebase/database_service.dart';
+
 
 
 class ostricaTask2showDialog extends StatefulWidget {
@@ -177,7 +180,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
       setState(() {
         result = scanData;
         if(result!.code=="1"){
-          resultText="確認";
+          resultText="完成任務";
         }
       });
     });
@@ -209,6 +212,8 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
     FirebaseDatabase.instance.ref("User/1/log/");
     // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
     DatabaseReference pushUserDB = fireBaseDB.push();
+    changeTask2(4 ,2,API);
+
     //push=>亂碼顯示 有空在設4-1-n
     pushUserDB.set(log).whenComplete(() {
       print("user push success");
@@ -218,7 +223,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
   }
   // &&result!.code=="store1"&&result!.code=="store2"&&result!.code=="store3"
   void _checkAndPush() {
-    if (resultText == "確認") {
+    if (resultText == "完成任務") {
       _pushLog();
     }
   }

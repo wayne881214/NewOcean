@@ -18,14 +18,45 @@ class Task_task extends StatefulWidget {
 
 class _Task_task extends State<Task_task>{
 
+
   String taskTitle='';
   String issuetext='';
   String featuretext='';
   int Percent=0;
-
+  int State=0;
+  List stateApi = [
+    {"targat": -1, "state": -1, "percent": -1},
+    {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0}
+  ];
 
   @override
   void initState() {
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    Ref.onChildAdded.listen((event) {
+      int id = (event.snapshot.value as Map)["id"];
+      int state = (event.snapshot.value as Map)["state"];
+      if (id ==widget.id&&state <= 4) {
+        setState(() {
+          State=state;
+        });
+      }
+      //更新 TaskCard Widget(任務卡片列表)
+    });
+
+
+    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
+    Ref_log.onChildAdded.listen((event) {
+      Map userLogValue = (event.snapshot.value as Map);
+      print("jsonResponse!!!!! $userLogValue");
+      setState(() {
+        int taskId=userLogValue["task"];
+        stateApi[taskId]["state"]++;
+        stateApi[taskId]["percent"]=(stateApi[taskId]["state"]/stateApi[taskId]["targat"])*100;
+      });
+    });
     switch(widget.id){
       case 1:
         taskTitle="海龜任務";
@@ -57,7 +88,7 @@ class _Task_task extends State<Task_task>{
     //     });
     //   }
     // });
-    // super.initState();
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -111,7 +142,7 @@ class _Task_task extends State<Task_task>{
                   progressColor: kAccent,
                 )
             ),
-            TaskProgress(id:widget.id),
+            TaskProgress(id:widget.id,state:State,StateApi:stateApi[widget.id]["state"]),
           ],),
       ),
       bottomNavigationBar: _buildBottomNaigationBar(),

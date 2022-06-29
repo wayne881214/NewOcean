@@ -152,9 +152,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     listViews.add(
       LineChartSample2(api: WeeklyApi),
     );
-    listViews.add(
-      BarChartSample2(),
-    );
+    // listViews.add(
+    //   BarChartSample2(),
+    // );
   }
 
   Future<bool> getData() async {

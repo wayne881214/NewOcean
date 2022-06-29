@@ -24,10 +24,10 @@ class _TaskState extends State<TasksPage> {
   void initState() {
     List stateApi = [
       {"targat": -1, "state": -1, "percent": -1},
-      {"targat": 15, "state": 0.00, "percent": 0},
-      {"targat": 15, "state": 0.00, "percent": 0},
-      {"targat": 15, "state": 0.00, "percent": 0},
-      {"targat": 15, "state": 0.00, "percent": 0}
+      {"targat": 11, "state": 0.00, "percent": 0},
+      {"targat": 11, "state": 0.00, "percent": 0},
+      {"targat": 11, "state": 0.00, "percent": 0},
+      {"targat": 11, "state": 0.00, "percent": 0}
     ];
 
     DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
@@ -48,7 +48,7 @@ class _TaskState extends State<TasksPage> {
       int state = (event.snapshot.value as Map)["state"];
       if (state <= 4) {
         print("PPPPPPPP $stateApi");
-        task.add(Task.addTask2(id, stateApi[id]));
+        task.add(Task.addTask2(id, state,stateApi[id]));
       }
       //更新 TaskCard Widget(任務卡片列表)
       setState(() {
