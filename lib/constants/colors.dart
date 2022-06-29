@@ -8,8 +8,8 @@ const Color kAccent = Color(0xFFFDCA73);
 const Color kFont = Color(0xFF252435);
 const Color kFontLight = Color(0xFFB4B7BF);
 //Question
-const Color correct = Color(0xFF32AB58);
-const Color incorrect = Color(0xFFAB3232);
+const Color correct = Color(0xFF00E676);
+const Color incorrect = Color(0xFFFF1744);
 const Color neutral = Color(0xFFFCFCFC);
-const Color background = Color(0xFF1A3464);
+const Color background = Color(0xFF2979FF);
 
