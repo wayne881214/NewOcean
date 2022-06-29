@@ -129,7 +129,7 @@ class Task {
           "透過重複使用，替換原本可能會消耗的一次性用品，進而達到減少廢棄物，請在出門採購時自備環保餐盒7次。",
           "恭喜完成所有任務"
         ];
-        return Task(id, state, "assets/images/sea_lion.png", "拯救海獅大作戰",
+        return Task(id, state, "assets/images/animals/sealion.png", "拯救海獅大作戰",
             Mission[state], Perc, 1,Describe[state]);
 
       case 3:

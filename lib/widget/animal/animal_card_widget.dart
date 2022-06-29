@@ -3,6 +3,8 @@ import 'package:newocean/screen/animal/animal_animal.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/model/animal_model.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../constants/colors.dart';
 class AnimalCard extends StatelessWidget {
   //獲取List<Animal>任務列表
   AnimalCard({Key? key, required this.data}) : super(key: key);
@@ -36,7 +38,7 @@ class AnimalCard extends StatelessWidget {
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
                   width: 5.0,
-                  color: Color(0xFF8F8F8F),
+                  color: Color.fromRGBO(176, 226, 217, 1),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(100)),
               ),
@@ -44,7 +46,10 @@ class AnimalCard extends StatelessWidget {
                 width: 180,
                 height:180,
                 child: ClipOval(
-                    child: Image.asset(value.imagePath, height: 100.00, width: 100.00)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Image.asset(value.imagePath, height: 60.00, width: 60.00),
+                    )),
               ),
             ),
             Text("${value.name}")

@@ -41,7 +41,6 @@ class _TaskState extends State<TasksPage> {
       });
     });
     task = [];
-    //讀取用戶任務，將進行中的任務加入List<Task>行列
     DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
     Ref.onChildAdded.listen((event) {
       int id = (event.snapshot.value as Map)["id"];

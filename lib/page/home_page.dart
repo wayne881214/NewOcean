@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/turtle.png'),
+            Image.asset('assets/images/turtle.png',width:400,height:400),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newocean/constants/colors.dart';
 import 'package:newocean/model/animal_model.dart';
 import 'package:sensors/sensors.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,7 +31,7 @@ class  _headshotState extends State<Animal_headshot> {
         shape: const RoundedRectangleBorder(
           side: BorderSide(
             width: 10.0,
-            color: Color(0xFF8F8F8F),
+            color: Color.fromRGBO(176, 226, 217, 1),
           ),
           borderRadius: BorderRadius.all(Radius.circular(180)),
         ),
@@ -38,7 +39,10 @@ class  _headshotState extends State<Animal_headshot> {
           width: 350,
           height:350,
           child: ClipOval(
-              child: Image.asset(widget.img, height: 150.00, width: 150.00)),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Image.asset(widget.img, height: 150.00, width: 150.00),
+              )),
         ),
       ),
     );
