@@ -112,6 +112,9 @@ class _Task_task extends State<Task_task>{
                 )
             ),
             TaskProgress(id:widget.id),
+            /*ActiveCourse(id:widget.id,number:1),
+            ActiveCourse(id:widget.id,number:2),
+            ActiveCourse(id:widget.id,number:3),*/
           ],),
       ),
       bottomNavigationBar: _buildBottomNaigationBar(),

@@ -10,20 +10,20 @@ class Course {
     switch (id) {
       case 1:
         return [
-        Course('一', 'assets/icons/picture.png', '鼻孔裡有異物卡住',
+        Course('圖／翻攝自', 'assets/icons/picture.png', 'Leatherback Trust臉書',
             'assets/images/task_carousel_turtle_1.jpg'),
-        Course('二', 'assets/icons/picture.png', '痛得緊閉雙眼掙扎',
+        Course('圖／翻攝自', 'assets/icons/picture.png', 'Leatherback Trust臉書',
             'assets/images/task_carousel_turtle_2.jpg'),
-        Course('三', 'assets/icons/picture.png', '10公分的塑膠吸管',
+        Course('圖／翻攝自', 'assets/icons/picture.png', 'Leatherback Trust臉書',
             'assets/images/task_carousel_turtle_3.jpg'),
         ];
       case 2:
         return [
-          Course('一', 'assets/icons/picture.png', '脖子被勒住了',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '大愛寵物貓狗控臉書',
               'assets/images/task_carousel_sea_lion_1.png'),
-          Course('二', 'assets/icons/picture.png', '怎麼甩也甩不掉',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '大愛寵物貓狗控臉書',
               'assets/images/task_carousel_sea_lion_2.jpg'),
-          Course('三', 'assets/icons/picture.png', '救救我',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '大愛寵物貓狗控臉書',
               'assets/images/task_carousel_sea_lion_3.png'),
         ];
       case 4:

@@ -39,8 +39,18 @@ class Question {
       return [
         Question(
           id: 12,
-          title: '海獅題目',
-          options: {'100': false, '10': false, '5': true},
+          title: '廢棄物管理措施，以下何者錯誤?',
+          options: {'少用塑膠製品': false, '儘量自帶可清洗再用的飯盒': false, '資源回收與垃圾減量無關': true},
+        ),
+        Question(
+          id: 12,
+          title: '垃圾問題最理想的解決辦法是?',
+          options: {'掩埋方式': false, '焚化爐焚燒方式': false, '垃圾源頭減量方式': true},
+        ),
+        Question(
+          id: 12,
+          title: '垃圾減量 3 原則，分別為源頭減量(Reduce)、再使用(Reuse)以及 物料回收(Recycle)，主要在於推動?',
+          options: {'維修': false, '拒用': false, '回收再生使用': true},
         )
       ];
     } else if (id == 3) {

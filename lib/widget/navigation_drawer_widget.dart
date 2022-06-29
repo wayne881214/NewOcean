@@ -22,8 +22,8 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final name = '王小明';
-    final email = 'abcdefg@gmail.com';
+    final name = 'Wayne';
+    final email = 'wayne@gmail.com';
     final urlImage = 'https://firebasestorage.googleapis.com/v0/b/newocean-444d7.appspot.com/o/image%2027.png?alt=media&token=8edf57e6-c8ba-497b-b9a7-d536b4d306b0';
     return Drawer(
       child: Material(
@@ -36,7 +36,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               email: email,
               onClicked: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => UserPage(
-                  name: 'TING-HSUAN-PEI',
+                  name: '使用者',
                   urlImage: urlImage,
                 ),
               )),

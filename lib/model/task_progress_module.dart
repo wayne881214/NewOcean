@@ -128,7 +128,7 @@ class TaskProgressModule extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: kFontLight,
+                        color: kFont.withOpacity(0.7),
                       ),),
                     Icon(Icons.more_horiz,
                       color: kFontLight,)
@@ -138,7 +138,7 @@ class TaskProgressModule extends StatelessWidget {
                 Text(module.desc,
                   style: TextStyle(
                     fontSize: 16,
-                    color: kFont.withOpacity(0.7),
+                    color: module.buttonFont,
                     fontWeight: FontWeight.bold,
                   ),),
                 SizedBox(height: 5),
@@ -169,7 +169,7 @@ class TaskProgressModule extends StatelessWidget {
                       }
                     });
                   },
-                  child: Text('Start'),
+                  child: Text('開始'),
                 ),
               ],
             ),
