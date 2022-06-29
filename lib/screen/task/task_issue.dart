@@ -121,7 +121,6 @@ class _Task_issue extends State<Task_issue> {
             icon: Container(
               padding: EdgeInsets.only(bottom: 5),
               decoration: BoxDecoration(
-
                   border:
                   Border(bottom: BorderSide(color: kAccent, width: 2))),
               child: Text('問答', style: TextStyle(fontWeight: FontWeight.bold),),
