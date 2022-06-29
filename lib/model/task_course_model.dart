@@ -35,9 +35,9 @@ class Course {
         ];
       case 3:
         return [
-          Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '回家路上擱淺岸邊的鯨魚', 'assets/images/task_carousel_turtle_1.jpg'),
-          Course('鯨魚擱淺(二)', 'assets/icons/bell.png', '描述...', 'assets/images/task_carousel_turtle_2.jpg'),
-          Course('鯨魚擱淺(三)', 'assets/icons/bell.png', '描述...', 'assets/images/task_carousel_turtle_3.jpg'),
+          Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
+          Course('鯨魚擱淺(二)', 'assets/icons/bell.png', '高溫曝曬死亡的鯨魚', 'assets/images/task_carousel_whale_2.png'),
+          Course('鯨魚擱淺(三)', 'assets/icons/bell.png', '時間長了甚至會發生鯨爆', 'assets/images/task_carousel_whale_3.jpg'),
         ];
       default:
         return [

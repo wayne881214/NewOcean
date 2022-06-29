@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:newocean/firebase/database_service.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/model/task_model.dart';
@@ -9,25 +10,60 @@ class TaskCard extends StatelessWidget {
   final List<Task> data;
   @override
   Widget build(BuildContext context) {
+    Color background = Colors.white;
     //生成List項目
     return ListView(
         //每一項進行生成
         children: data.map((value){
+          if(value.state==0){
+            background = Color(0xFFB4B7BF);
+          }
+          else{
+            background = Colors.white;
+          }
           //偵測點擊跳轉(mission介面)
           return GestureDetector(
               onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  //回傳任務ID
-                  builder: (context) => Task_issue(id:value.id),
-                ));
+                if(value.state==0){
+                  showDialog<bool>(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (BuildContext context) =>CupertinoAlertDialog(
+                      title: Text('接受任務?'),
+                      content: Text('(任務進度會在好友圈顯示)'),
+                      actions: <Widget>[
+                        CupertinoDialogAction(
+                            child:  TextButton(
+                              child: Text("確定"),
+                              onPressed: () {
+                                  Navigator.of(context).pop(true);
+                                  changeTask(value.id, value.state);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Task_issue(id:value.id)));
+                              },
+                            )
+                        )
+                      ],
+                    ),
+                  ).then((onValue) {
+                    if (onValue != null) {
+                    }
+                  });
+                }
+                else{
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        //回傳任務ID
+                        builder: (context) => Task_issue(id:value.id),
+                      ));
+                }
           },
           //生成Task Card(任務卡片)
           child: Card(
             //陰影
             elevation: 2,
             //外圍距離
+            color: background,
             margin: const EdgeInsets.only(top:15 ,left:30,right: 30,bottom: 15),
             //邊框
             shape: const RoundedRectangleBorder(
@@ -58,7 +94,7 @@ class TaskCard extends StatelessWidget {
                             //task_model Image(任務圖片)
                             Expanded(
                                 flex: 4,
-                                child: Image.asset(value.imagePath, height: 100.00, width: 100.00)
+                                child: Image.asset(value.imagePath, height: 80.00, width: 80.00)
                             ),
                             Expanded(
                                 flex: 6,
@@ -137,38 +173,3 @@ class TaskCard extends StatelessWidget {
   );
   }
 }
-/*class TaskCard_Simple extends StatelessWidget {
-  TaskCard_Simple({Key? key, required this.data}) : super(key: key);
-  final List<Task> data;
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: data.map((value) {
-        //偵測點擊跳轉(mission介面)
-        return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => mission(id: 1),
-                  ));
-            },
-            //生成Task Card(任務卡片)
-            child: Card(
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Color(0xFF00BFA5),
-                ),
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-              ),
-              child: SizedBox(
-                width: 300,
-                height: 100,
-                child: Center(child: Text(value.imagePath)),
-              ),
-            ));
-      }).toList(),
-    );
-  }
-}*/
