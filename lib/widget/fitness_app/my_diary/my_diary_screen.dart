@@ -1,10 +1,11 @@
-
+import 'package:date_format/date_format.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import '../bar_chart/bar_chart_page2.dart';
+import '../../task/task_dialog/ostrica/DailyListView.dart';
+import 'bar_chart_sample2.dart';
 import '../fitness_app_theme.dart';
-import '../line_chart/line_chart_page.dart';
-import '../line_chart/samples/line_chart_sample2.dart';
+import 'line_chart_sample2.dart';
 import '../ui_view/glass_view.dart';
 import '../ui_view/mediterranean_diet_view.dart';
 import '../ui_view/title_view.dart';
@@ -24,9 +25,53 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
-
+  List jsonResponse = [];
+  // Map api ={"daily":0,"yesterday":0};
+  Map DailyApi = {"daily": 0, "yesterday": 0};
+  Map WeeklyApi = {
+    "userData": [0, 0, 0, 0, 0, 0, 0],
+    "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+  };
   @override
   void initState() {
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
+    Ref.onChildAdded.listen((event) async {
+      Map userLogValue = (event.snapshot.value as Map);
+      jsonResponse.add(userLogValue);
+      print("jsonResponse $jsonResponse");
+      DateTime my_diary = DateTime.parse(userLogValue["date"]);
+      DateTime today = DateTime.now();
+      DateTime yesterday = new DateTime.fromMillisecondsSinceEpoch(
+          DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
+
+      String myD = formatDate(my_diary, [yyyy, '-', mm, '-', dd]);
+      String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
+      String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
+      if (myD == todayD) {
+        DailyApi["daily"] += userLogValue["carbon"];
+      }
+      if (myD == yesterdayD) {
+        DailyApi["yesterday"] += userLogValue["carbon"];
+      }
+
+      // weekly API
+      // 之後用迴圈寫
+      var D = 7;
+      for (var i = 0; i < D; i++) {
+        DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
+            DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000 * i);
+        String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
+        if (myD == yesterday_2D) {
+          setState(() {
+            WeeklyApi["userData"][D - i - 1] += userLogValue["carbon"];
+          });
+        }
+      }
+      print("DailyApi $DailyApi");
+      print("WeeklyApi $WeeklyApi");
+      super.initState();
+    });
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController!,
@@ -58,7 +103,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     super.initState();
   }
 
-  void addAllListData() {
+  void addAllListData() async {
     const int count = 9;
     listViews.add(
       TitleView(
@@ -71,91 +116,28 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
       MediterranesnDietView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController!,
+                  curve: Interval((1 / count) * 1, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController!,
+          api: DailyApi),
+    );
+    listViews.add(
+      ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            new MaterialPageRoute(builder: (context) => DailyList()),
+          );
+        },
+        child: Text('查看所有詳細數據'),
       ),
     );
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Meals today',
-    //     subTxt: 'Customize',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController!,
-    //         curve:
-    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController!,
-    //   ),
-    // );
-    //
-    // listViews.add(
-    //   MealsListView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController!,
-    //             curve: Interval((1 / count) * 3, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Body measurement',
-    //     subTxt: 'Today',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController!,
-    //         curve:
-    //             Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController!,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   BodyMeasurementView(
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController!,
-    //         curve:
-    //             Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController!,
-    //   ),
-    // );
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Water',
-    //     subTxt: 'Aqua SmartBottle',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController!,
-    //         curve:
-    //             Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController!,
-    //   ),
-    // );
-    //
-    // listViews.add(
-    //   WaterView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController!,
-    //             curve: Interval((1 / count) * 7, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController!,
-    //   ),
-    // );
-    // listViews.add(
-    //   WaterView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController!,
-    //             curve: Interval((1 / count) * 7, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController!,
-    //   ),
-    // );
     listViews.add(
       TitleView(
         titleTxt: '本周數據',
@@ -168,10 +150,10 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     listViews.add(
-        BarChartPage2(),
+      LineChartSample2(api: WeeklyApi),
     );
     listViews.add(
-      LineChartSample2(),
+      BarChartSample2(),
     );
   }
 

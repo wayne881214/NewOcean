@@ -1,38 +1,41 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../fitness_app_theme.dart';
 
-//帶入的(用戶/平均)環保行為次數 寫死
-var userData = [11,10,4,22,13,24,3,9,12,14,6,10];
-var avgsData = [21, 12, 13, 4,10, 12, 23, 14,10, 12, 3, 14];
 
+// Map api={
+//   "userData" :[11,10,4,22,13,24,3,9,12,14,6,10],
+//   "avgsData" :[21, 12, 13, 4,10, 12, 23, 14,10, 12, 3, 14]
+// };
 
 //xy軸比例
 const double minX= 0;
-const double maxX= 11;
+const double maxX= 6;
 const double minY= 0;
-const double maxY= 31;
+const double maxY= 5000;
 
 
 class LineChartSample2 extends StatefulWidget {
-  const LineChartSample2({Key? key}) : super(key: key);
-
+  final Map? api;
+  const LineChartSample2({Key? key,this.api}) : super(key: key);
   @override
   _LineChartSample2State createState() => _LineChartSample2State();
 
 }
 
-class _LineChartSample2State extends State<LineChartSample2> {
+class _LineChartSample2State extends State<LineChartSample2>  {
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
-
-
+  Map responseApi = {};
+  // responseApi=widget.api;
   bool showAvg = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+    responseApi=widget.api!;
     return Stack(
       children: <Widget>[
         AspectRatio(
@@ -42,7 +45,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: Color(0xff232d37)),
+                color: FitnessAppTheme.background),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -62,11 +65,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
               });
             },
             child: Text(
-              '環保次數',
+              '點我',
               style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 15,
                   color:
-                      showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
+                      showAvg ? FitnessAppTheme.darkerText : FitnessAppTheme.darkerText),
             ),
           ),
         ),
@@ -75,7 +78,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
 //橫軸
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+  Widget bottomTitleWidgets(double value, TitleMeta meta)  {
     const style = TextStyle(
       color: Color(0xff68737d),
       fontWeight: FontWeight.bold,
@@ -83,14 +86,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
     );
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('三月', style: style);
+      case 0:
+        text = const Text('七天前', style: style);
         break;
-      case 5:
-        text = const Text('六月', style: style);
-        break;
-      case 8:
-        text = const Text('九月', style: style);
+      case 6:
+        text = const Text('本日', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -114,14 +114,17 @@ class _LineChartSample2State extends State<LineChartSample2> {
       case 0:
         text = '0';
         break;
-      case 10:
-        text = '10';
+      case 1000:
+        text = '1000';
         break;
-      case 20:
-        text = '20';
+      case 2000:
+        text = '2000';
         break;
-      case 30:
-        text = '30';
+      case 3000:
+        text = '3000';
+        break;
+      case 4000:
+        text = '4000';
         break;
       default:
         return Container();
@@ -138,13 +141,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: FitnessAppTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: FitnessAppTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
@@ -185,18 +188,31 @@ class _LineChartSample2State extends State<LineChartSample2> {
         LineChartBarData(
           spots:[
             //好像不能塞迴圈
-            FlSpot(0,userData[0].toDouble()),
-            FlSpot(1,userData[1].toDouble()),
-            FlSpot(2,userData[2].toDouble()),
-            FlSpot(3,userData[3].toDouble()),
-            FlSpot(4,userData[4].toDouble()),
-            FlSpot(5,userData[5].toDouble()),
-            FlSpot(6,userData[6].toDouble()),
-            FlSpot(7,userData[7].toDouble()),
-            FlSpot(8,userData[8].toDouble()),
-            FlSpot(9,userData[9].toDouble()),
-            FlSpot(10,userData[10].toDouble()),
-            FlSpot(11,userData[11].toDouble()),
+            // FlSpot(0,userData[0].toDouble()),
+            // FlSpot(1,userData[1].toDouble()),
+            // FlSpot(2,userData[2].toDouble()),
+            // FlSpot(3,userData[3].toDouble()),
+            // FlSpot(4,userData[4].toDouble()),
+            // FlSpot(5,userData[5].toDouble()),
+            // FlSpot(6,userData[6].toDouble()),
+            // FlSpot(7,userData[7].toDouble()),
+            // FlSpot(8,userData[8].toDouble()),
+            // FlSpot(9,userData[9].toDouble()),
+            // FlSpot(10,userData[10].toDouble()),
+            // FlSpot(11,userData[11].toDouble()),
+
+            FlSpot(0,responseApi["userData"][0].toDouble()),
+            FlSpot(1,responseApi["userData"][1].toDouble()),
+            FlSpot(2,responseApi["userData"][2].toDouble()),
+            FlSpot(3,responseApi["userData"][3].toDouble()),
+            FlSpot(4,responseApi["userData"][4].toDouble()),
+            FlSpot(5,responseApi["userData"][5].toDouble()),
+            FlSpot(6,responseApi["userData"][6].toDouble()),
+            // FlSpot(7,responseApi["userData"][7].toDouble()),
+            // FlSpot(8,responseApi["userData"][8].toDouble()),
+            // FlSpot(9,responseApi["userData"][9].toDouble()),
+            // FlSpot(10,responseApi["userData"][10].toDouble()),
+            // FlSpot(11,responseApi["userData"][11].toDouble()),
           ],
           isCurved: true,
           gradient: LinearGradient(
@@ -234,13 +250,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
         horizontalInterval: 1,
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: FitnessAppTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: FitnessAppTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
@@ -280,18 +296,18 @@ class _LineChartSample2State extends State<LineChartSample2> {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0,avgsData[0].toDouble()),
-            FlSpot(1,avgsData[1].toDouble()),
-            FlSpot(2,avgsData[2].toDouble()),
-            FlSpot(3,avgsData[3].toDouble()),
-            FlSpot(4,avgsData[4].toDouble()),
-            FlSpot(5,avgsData[5].toDouble()),
-            FlSpot(6,avgsData[6].toDouble()),
-            FlSpot(7,avgsData[7].toDouble()),
-            FlSpot(8,avgsData[8].toDouble()),
-            FlSpot(9,avgsData[9].toDouble()),
-            FlSpot(10,avgsData[10].toDouble()),
-            FlSpot(11,avgsData[11].toDouble()),
+            FlSpot(0,responseApi["avgsData"][0].toDouble()),
+            FlSpot(1,responseApi["avgsData"][1].toDouble()),
+            FlSpot(2,responseApi["avgsData"][2].toDouble()),
+            FlSpot(3,responseApi["avgsData"][3].toDouble()),
+            FlSpot(4,responseApi["avgsData"][4].toDouble()),
+            FlSpot(5,responseApi["avgsData"][5].toDouble()),
+            FlSpot(6,responseApi["avgsData"][6].toDouble()),
+            // FlSpot(7,responseApi["avgsData"][7].toDouble()),
+            // FlSpot(8,responseApi["avgsData"][8].toDouble()),
+            // FlSpot(9,responseApi["avgsData"][9].toDouble()),
+            // FlSpot(10,responseApi["avgsData"][10].toDouble()),
+            // FlSpot(11,responseApi["avgsData"][11].toDouble()),
             // FlSpot(2.6, 2),
             // FlSpot(4.9, 3.44),
             // FlSpot(6.8, 4),

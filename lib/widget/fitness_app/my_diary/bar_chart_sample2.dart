@@ -1,34 +1,34 @@
-  import 'package:fl_chart/fl_chart.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 const Map apiTemples = {
-  'titles':["一","二","三","四","五","六","日"],
+  'titles': ["一", "二", "三", "四", "五", "六", "日"],
   '一': {
-    'user':1.00,
+    'user': 1.00,
     'avg': 10.00,
   },
   '二': {
-    'user':12.00,
+    'user': 12.00,
     'avg': 4.00,
   },
   '三': {
-    'user':3.00,
+    'user': 3.00,
     'avg': 4.00,
   },
   '四': {
-    'user':5.00,
+    'user': 5.00,
     'avg': 10.00,
   },
   '五': {
-    'user':14.00,
+    'user': 14.00,
     'avg': 4.00,
   },
   '六': {
-    'user':4.00,
+    'user': 4.00,
     'avg': 10.00,
   },
   '日': {
-    'user':11.00,
+    'user': 11.00,
     'avg': 14.00,
   },
 };
@@ -53,13 +53,20 @@ class BarChartSample2State extends State<BarChartSample2> {
   @override
   void initState() {
     super.initState();
-    final barGroup1 = makeGroupData(0, apiTemples["一"]["user"],apiTemples["一"]["avg"]);
-    final barGroup2 = makeGroupData(1, apiTemples["二"]["user"],apiTemples["二"]["avg"]);
-    final barGroup3 = makeGroupData(2, apiTemples["三"]["user"],apiTemples["三"]["avg"]);
-    final barGroup4 = makeGroupData(3, apiTemples["四"]["user"],apiTemples["四"]["avg"]);
-    final barGroup5 = makeGroupData(4, apiTemples["五"]["user"],apiTemples["五"]["avg"]);
-    final barGroup6 = makeGroupData(5, apiTemples["六"]["user"],apiTemples["六"]["avg"]);
-    final barGroup7 = makeGroupData(6, apiTemples["日"]["user"],apiTemples["日"]["avg"]);
+    final barGroup1 =
+        makeGroupData(0, apiTemples["一"]["user"], apiTemples["一"]["avg"]);
+    final barGroup2 =
+        makeGroupData(1, apiTemples["二"]["user"], apiTemples["二"]["avg"]);
+    final barGroup3 =
+        makeGroupData(2, apiTemples["三"]["user"], apiTemples["三"]["avg"]);
+    final barGroup4 =
+        makeGroupData(3, apiTemples["四"]["user"], apiTemples["四"]["avg"]);
+    final barGroup5 =
+        makeGroupData(4, apiTemples["五"]["user"], apiTemples["五"]["avg"]);
+    final barGroup6 =
+        makeGroupData(5, apiTemples["六"]["user"], apiTemples["六"]["avg"]);
+    final barGroup7 =
+        makeGroupData(6, apiTemples["日"]["user"], apiTemples["日"]["avg"]);
 
     final items = [
       barGroup1,
@@ -101,15 +108,15 @@ class BarChartSample2State extends State<BarChartSample2> {
                     width: 38,
                   ),
                   const Text(
-                    '碳排放雙周比較',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    '碳排放比較',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   const Text(
                     '綠:個人排放 紅:用戶平均 ',
-                    style: TextStyle(color: Color(0xff77839a), fontSize: 16),
+                    style: TextStyle(color: Color(0xff77839a), fontSize: 12),
                   ),
                 ],
               ),
@@ -233,7 +240,6 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-
     Widget text = Text(
       apiTemples["titles"][value.toInt()],
       style: const TextStyle(

@@ -17,28 +17,47 @@ List<Task> task = [];
 class _TaskState extends State<TasksPage> {
   //生成 TaskCard Widget (任務卡片列表)
   //widget/task_card_widget.dart
-  TaskCard card = TaskCard(data:task);
+  TaskCard card = TaskCard(data: task);
   @override
   //初始化
   void initState() {
-    task=[];
+    List stateApi = [
+      {"targat": -1, "state": -1, "percent": -1},
+      {"targat": 15, "state": 0.00, "percent": 0},
+      {"targat": 15, "state": 0.00, "percent": 0},
+      {"targat": 15, "state": 0.00, "percent": 0},
+      {"targat": 15, "state": 0.00, "percent": 0}
+    ];
+
+    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
+    Ref_log.onChildAdded.listen((event) {
+      Map userLogValue = (event.snapshot.value as Map);
+      print("jsonResponse!!!!! $userLogValue");
+      setState(() {
+        int taskId=userLogValue["task"];
+        stateApi[taskId]["state"]++;
+        stateApi[taskId]["percent"]=(stateApi[taskId]["state"]/stateApi[taskId]["targat"])*100;
+      });
+    });
+    task = [];
     //讀取用戶任務，將進行中的任務加入List<Task>行列
     DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
     Ref.onChildAdded.listen((event) {
-      int id= (event.snapshot.value as Map)["id"];
-      int state= (event.snapshot.value as Map)["state"];
-      if(state<=4) {
-        task.add(Task.addTask(id,state));
+      int id = (event.snapshot.value as Map)["id"];
+      int state = (event.snapshot.value as Map)["state"];
+      if (state <= 4) {
+        print("PPPPPPPP $stateApi");
+        task.add(Task.addTask2(id, stateApi[id]));
       }
       //更新 TaskCard Widget(任務卡片列表)
       setState(() {
-        card = TaskCard(data:task);
+        card = TaskCard(data: task);
       });
     });
   }
+
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text('任務'),
           centerTitle: true,
@@ -61,34 +80,34 @@ BottomNavigationBar _buildBottomNaigationBar() {
           icon: Container(
             padding: EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('全部', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
+                border: Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text(
+              '全部',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          )),
       BottomNavigationBarItem(
           label: 'issue',
           icon: Container(
             padding: EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('未完成', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
+                border: Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text(
+              '未完成',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          )),
       BottomNavigationBarItem(
           label: 'issue',
           icon: Container(
             padding: EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('已完成', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
+                border: Border(bottom: BorderSide(color: kAccent, width: 2))),
+            child: Text(
+              '已完成',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          )),
     ],
   );
 }
-
-
-
