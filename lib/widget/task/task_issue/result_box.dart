@@ -27,7 +27,8 @@ class ResultBox extends StatelessWidget {
           const SizedBox(height: 20.0),
           CircleAvatar(child: Text('$result/$questionLength',
           style: TextStyle(
-            fontSize: 30.0
+            fontSize: 30.0,
+            color: Colors.white
           ),),
           radius: 70.0,
           backgroundColor: result == questionLength / 2
