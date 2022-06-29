@@ -16,11 +16,25 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      child: Text('題目 ${indexAction + 1}/$totalQuestions:\n$question',
-      style: const TextStyle(
-        fontSize: 24.0,
-        color: kFont,
-      ),),
+      child: Padding(
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('題目 ${indexAction + 1}/$totalQuestions:',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+              color: kFont,
+            ),),
+            Text('$question',
+              style: const TextStyle(
+                fontSize: 18.0,
+                color: kFont,
+              ),),
+          ],
+        ),
+      ),
     );
   }
 

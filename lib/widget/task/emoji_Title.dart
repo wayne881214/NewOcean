@@ -11,17 +11,15 @@ class _emoji_Title extends State<emoji_Title>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 25),
       child: RichText(
         text: TextSpan(children: [
-          TextSpan(text: '📌', style: TextStyle(fontSize: 20)),
+          TextSpan(text: '🌱', style: TextStyle(fontSize: 20)),
           TextSpan(
               text: '${widget.name}',
-
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: kFont
+                  color: kFont,
               )
           )
         ]),

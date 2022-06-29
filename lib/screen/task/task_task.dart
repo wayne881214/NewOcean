@@ -1,13 +1,14 @@
-import 'dart:ffi';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/screen/shake.dart';
 import 'package:newocean/screen/task/task_issue.dart';
+import 'package:newocean/screen/task/task_question.dart';
 import 'package:newocean/widget/task/active_course.dart';
 import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
+import 'package:newocean/widget/task/task_issue/course_progress.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
+import '../../widget/task/task_issue/task_progress.dart';
 
 class Task_task extends StatefulWidget {
   Task_task({Key? key, required this.id}) : super(key: key);
@@ -16,6 +17,7 @@ class Task_task extends StatefulWidget {
 }
 
 class _Task_task extends State<Task_task>{
+
   String taskTitle='';
   String issuetext='';
   String featuretext='';
@@ -70,6 +72,7 @@ class _Task_task extends State<Task_task>{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            TaskProgress(),
             emoji_Title(name:"任務列表"),
             Center(
             child:CircularPercentIndicator(
@@ -91,16 +94,18 @@ class _Task_task extends State<Task_task>{
   }
   void _onItemTapped(int index) {
     if(index==0) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => Task_issue(id: widget.id)));
     }
     if(index==2) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => shake()));
+              builder: (context) => Task_question(id: widget.id,)));
     }
   }
 

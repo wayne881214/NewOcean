@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:newocean/model/animal_model.dart';
 import 'package:newocean/widget/animal/animal_card_widget.dart';
 import '../constants/colors.dart';
+import 'package:flutter/services.dart';
 
 class AnimalsPage extends StatefulWidget {
   @override
@@ -45,6 +47,7 @@ class _AnimalState extends State<AnimalsPage> {
           title: Text('動物'),
           centerTitle: true,
           backgroundColor: Color(0xFF00BFA5),
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: card,
         bottomNavigationBar: _buildBottomNaigationBar(),

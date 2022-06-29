@@ -7,6 +7,7 @@ import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/feature_course.dart';
 import 'package:newocean/widget/task/task_issue/issue_style.dart';
 import 'package:newocean/screen/test.dart';
+import 'package:readmore/readmore.dart';
 
 class Task_issue extends StatefulWidget {
   Task_issue({Key? key, required this.id}) : super(key: key);
@@ -24,14 +25,14 @@ class _Task_issue extends State<Task_issue> {
     switch (widget.id) {
       case 1:
         taskTitle="海龜任務";
-        issuetext='2015年，海龜保育團體The leatherback Trust的研究員在哥斯大黎加海域發現一隻鼻孔裡有異物的欖蠵龜，但由於船上沒有專業器材，離岸邊又有好幾個小時的航程，只好使用瑞士刀為欖蠵龜動手術。經過一番掙扎，用鉗子拔出來之後，發現吸管長達 15 公分。這麼長的吸管從鼻孔插入、嵌在呼吸道組織也不知道有多久了。'
+        issuetext='2015年，海龜保育團體The leatherback Trust的研究員在哥斯大黎加海域發現一隻鼻孔裡有異物的欖蠵龜，但由於船上沒有專業器材，離岸邊又有好幾個小時的航程，只好使用瑞士刀為欖蠵龜動手術。經過一番掙扎，用鉗子拔出來之後，發現吸管長達15公分。這麼長的吸管從鼻孔插入、嵌在呼吸道組織也不知道有多久了。'
             '儘管海龜保育團體能夠幫忙海龜移除這些塑膠吸管，但仍然還有無數的海洋動物吃下了人們丟在海洋中的塑膠垃圾。因此大家必須一起努力去減少使用、重複使用或者是回收這些塑膠製品，這樣子才能減少海洋生物的危害。\n';
         featuretext='海龜保育團體發現一隻欖蠵龜';
         break;
       case 2:
         taskTitle = "海獅任務";
-        issuetext = '海獅的任務說明\n';
-        featuretext = '海獅悽慘的照片';
+        issuetext = '海獅會被棄置的漁具、繩子或塑膠圈纏繞，當牠們的身體不斷長大時，亦會被身上纏繞的垃圾愈纏愈緊，除了對其活動或成長形成障礙之外，亦會影響其呼吸系統，最終令牠們窒息而死。\n';
+        featuretext = '海獅被漁具、繩子或塑膠圈纏繞';
         break;
       case 4:
         taskTitle = "牡蠣任務";
@@ -65,8 +66,34 @@ class _Task_issue extends State<Task_issue> {
           mainAxisSize: MainAxisSize.min,
           children: [
 
-            emoji_Title(name:"環境議題"),
-            IssueStyle('$issuetext', 'view all\n'),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  emoji_Title(name:"環境議題"),
+                  ReadMoreText(
+                    issuetext,
+                    trimLines: 5,
+                    textAlign: TextAlign.justify,
+                    trimMode: TrimMode.Line,
+                    trimCollapsedText: " 顯示更多 ",
+                    trimExpandedText: " 顯示更少 ",
+                    lessStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                    moreStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             FeatureCourse(id:widget.id,name:featuretext),
             //emoji_Title(name:"知識問答"),
           ],),
@@ -77,10 +104,12 @@ class _Task_issue extends State<Task_issue> {
 
   void _onItemTapped(int index) {
     if (index == 1) {
+      Navigator.pop(context);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => Task_task(id: widget.id)));
     }
     if(index==2) {
+      Navigator.pop(context);
       Navigator.push(
           context,
           MaterialPageRoute(
