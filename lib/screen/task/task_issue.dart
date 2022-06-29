@@ -25,7 +25,7 @@ class _Task_issue extends State<Task_issue> {
     switch (widget.id) {
       case 1:
         taskTitle="海龜任務";
-        issuetext='2015年，海龜保育團體The leatherback Trust的研究員在哥斯大黎加海域發現一隻鼻孔裡有異物的欖蠵龜，但由於船上沒有專業器材，離岸邊又有好幾個小時的航程，只好使用瑞士刀為欖蠵龜動手術。經過一番掙扎，用鉗子拔出來之後，發現吸管長達 15 公分。這麼長的吸管從鼻孔插入、嵌在呼吸道組織也不知道有多久了。'
+        issuetext='2015年，海龜保育團體The leatherback Trust的研究員在哥斯大黎加海域發現一隻鼻孔裡有異物的欖蠵龜，但由於船上沒有專業器材，離岸邊又有好幾個小時的航程，只好使用瑞士刀為欖蠵龜動手術。經過一番掙扎，用鉗子拔出來之後，發現吸管長達15公分。這麼長的吸管從鼻孔插入、嵌在呼吸道組織也不知道有多久了。'
             '儘管海龜保育團體能夠幫忙海龜移除這些塑膠吸管，但仍然還有無數的海洋動物吃下了人們丟在海洋中的塑膠垃圾。因此大家必須一起努力去減少使用、重複使用或者是回收這些塑膠製品，這樣子才能減少海洋生物的危害。\n';
         featuretext='海龜保育團體發現一隻欖蠵龜';
         break;
@@ -65,30 +65,35 @@ class _Task_issue extends State<Task_issue> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+
             Padding(
               padding: const EdgeInsets.all(25),
-              child: ReadMoreText(
-                issuetext,
-                trimLines: 5,
-                textAlign: TextAlign.justify,
-                trimMode: TrimMode.Line,
-                trimCollapsedText: " 顯示更多 ",
-                trimExpandedText: " 顯示更少 ",
-                lessStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-                moreStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  emoji_Title(name:"環境議題"),
+                  ReadMoreText(
+                    issuetext,
+                    trimLines: 5,
+                    textAlign: TextAlign.justify,
+                    trimMode: TrimMode.Line,
+                    trimCollapsedText: " 顯示更多 ",
+                    trimExpandedText: " 顯示更少 ",
+                    lessStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                    moreStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
               ),
             ),
-            emoji_Title(name:"環境議題"),
-            IssueStyle('$issuetext', 'view all\n'),
             FeatureCourse(id:widget.id,name:featuretext),
             //emoji_Title(name:"知識問答"),
           ],),

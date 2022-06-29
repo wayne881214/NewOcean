@@ -23,7 +23,7 @@ class SignInUpPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 100),
-            Image.asset('assets/images/login.jpg'),
+            Image.asset('assets/images/logo.png'),
             TextField(
               controller: nameController,
               decoration: InputDecoration(

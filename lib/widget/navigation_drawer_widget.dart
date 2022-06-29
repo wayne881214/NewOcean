@@ -72,7 +72,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   const SizedBox(height: 24),
                   buildMenuItem(
                     text: '登出',
-                    icon: Icons.person_add,
+                    icon: Icons.output,
                     onClicked: () => selectedItem(context, 4),
                   ),
                   /*const SizedBox(height: 24),

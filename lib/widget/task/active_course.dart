@@ -19,8 +19,9 @@ class ActiveCourse extends StatefulWidget {
 }
 
 class _ActiveCourse extends State<ActiveCourse> {
-  @override
+
   Task task = Task.addTask(1, 1);
+  @override
   StatefulWidget taskdialog = turtleTask1showDialog();
   void initState() {
     task = Task.addTask(widget.id, widget.number);

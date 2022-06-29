@@ -5,7 +5,10 @@ import 'package:newocean/screen/task/task_question.dart';
 import 'package:newocean/widget/task/active_course.dart';
 import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
+import 'package:newocean/widget/task/task_issue/course_progress.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
+import '../../widget/task/task_issue/task_progress.dart';
 
 class Task_task extends StatefulWidget {
   Task_task({Key? key, required this.id}) : super(key: key);
@@ -14,6 +17,7 @@ class Task_task extends StatefulWidget {
 }
 
 class _Task_task extends State<Task_task>{
+
   String taskTitle='';
   String issuetext='';
   String featuretext='';
@@ -65,6 +69,7 @@ class _Task_task extends State<Task_task>{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            TaskProgress(),
             emoji_Title(name:"任務列表"),
             Center(
             child:CircularPercentIndicator(
