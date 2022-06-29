@@ -1,8 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:newocean/model/task_model.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:newocean/screen/task/task_question.dart';
-import 'package:newocean/widget/task/active_course.dart';
 import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/course_progress.dart';
@@ -72,21 +72,50 @@ class _Task_task extends State<Task_task>{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            TaskProgress(),
-            emoji_Title(name:"任務列表"),
-            Center(
-            child:CircularPercentIndicator(
-              radius: 80.0,
-              lineWidth: 20.0,
-              percent: Percent/100,
-              center: Text('$Percent%',
-                style: TextStyle(fontWeight: FontWeight.bold),),
-              progressColor: kAccent,
-            )
+        Container(
+        padding: EdgeInsets.all(25),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
+                Column(
+                  children: [
+                    Text('任務進度列表', style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: kFont
+                    )
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Image.asset('assets/icons/process.png', width: 20),
+                    SizedBox(width: 15),
+                    Image.asset('assets/icons/combine.png', width: 25),
+                  ],
+                )
+              ],
             ),
-            ActiveCourse(id:widget.id,number:1),
+  ])),
+
+            Center(
+                child:CircularPercentIndicator(
+                  radius: 80.0,
+                  lineWidth: 20.0,
+                  percent: Percent/100,
+                  center: Text('$Percent%',
+                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  progressColor: kAccent,
+                )
+            ),
+            TaskProgress(id:widget.id),
+            emoji_Title(name:"任務列表"),
+            /*ActiveCourse(id:widget.id,number:1),
             ActiveCourse(id:widget.id,number:2),
-            ActiveCourse(id:widget.id,number:3),
+            ActiveCourse(id:widget.id,number:3),*/
           ],),
       ),
       bottomNavigationBar: _buildBottomNaigationBar(),

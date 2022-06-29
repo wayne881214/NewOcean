@@ -3,28 +3,37 @@ import 'package:newocean/constants/colors.dart';
 import 'package:newocean/model/task_course_progress_model.dart';
 import 'package:newocean/widget/task/task_issue/course_module.dart';
 import 'package:newocean/model/task_progress_module.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../model/task_progress_detail_model.dart';
 
 
 class TaskProgress extends StatelessWidget {
-  final modulesList = TaskProgressDetailModel.generateModules();
-
+  TaskProgress({Key? key, required this.id}) : super(key: key);
+  final int id;
+  int Percent=0;
 
   @override
   Widget build(BuildContext context) {
+    final modulesList = TaskProgressDetailModel.generateModules(id);
     return Container(
       padding: EdgeInsets.all(25),
       child: Column(
         children: [
-          Row(
+          /*Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('任務進度列表', style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: kFont
-              ),),
+
+              Column(
+                children: [
+                  Text('任務進度列表', style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: kFont
+                  )
+                  ),
+                ],
+              ),
               Row(
                 children: [
                   Image.asset('assets/icons/process.png', width: 20),
@@ -33,7 +42,7 @@ class TaskProgress extends StatelessWidget {
                 ],
               )
             ],
-          ),
+          ),*/
           SizedBox(height: 20,),
           ...modulesList.map((e) => TaskProgressModule(e)).toList()
           //CourseModule(modulesList[0])

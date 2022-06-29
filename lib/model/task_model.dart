@@ -32,12 +32,12 @@ class Task {
     }
     switch (id) {
       case 1:
-        var Mission= ["未解鎖", "任務一 拯救海龜任務","任務二 少喝飲料任務","任務三 使用環保餐任務","已完成"];
+        var Mission= ["未解鎖", "任務一 拯救海龜","任務二 少喝包裝飲料","任務三 使用環保餐具","已完成"];
         var Describe=
           ["趕快去解鎖第一個任務",
-           "嗚嗚嗚~鼻孔有異物好痛！",
-           "海龜主要食物為水母\n但因無法分辨水母和塑膠\n而經常誤食塑膠袋與吸管\n嚴重阻塞其消化系統",
-           "多喝水少喝飲料\n對你我健康\n對地球進一份心力",
+           "點擊開始第一項任務，幫助小海龜脫離痛苦。",
+           "常喝手搖飲影響健康，而且用完的吸管被丟入海洋還會危害海洋生物!請維持一週不喝飲料改喝水，健康又環保",
+           "What we didn\'t know\n about catastrophe.",
            "恭喜完成所有任務"];
         return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",
                 Mission[state],stateApi["percent"].ceil(),Describe[state]);
@@ -97,13 +97,13 @@ class Task {
     }
     switch (id) {
       case 1:
-        var Mission= ["未解鎖", "任務一 拯救海龜任務","任務二 少喝飲料任務","任務三 使用環保餐任務","已完成"];
-       var Describe=
-          ["趕快去解鎖第一個任務",
-           "嗚嗚嗚~鼻孔有異物好痛！",
-           "海龜主要食物為水母\n但因無法分辨水母和塑膠\n而經常誤食塑膠袋與吸管\n嚴重阻塞其消化系統",
-           "多喝水少喝飲料\n對你我健康\n對地球進一份心力",
-           "恭喜完成所有任務"];
+        var Mission= ["未解鎖", "任務一 拯救海龜","任務二 少喝包裝飲料","任務三 使用環保餐具","已完成"];
+        var Describe=
+        ["趕快去解鎖第一個任務",
+          "點擊開始第一項任務，幫助小海龜脫離痛苦。",
+          "常喝手搖飲影響健康，而且用完的吸管被丟入海洋還會危害海洋生物!請維持一週不喝飲料改喝水，健康又環保",
+          "What we didn\'t know\n about catastrophe.",
+          "恭喜完成所有任務"];
         return Task(id,state,"assets/images/turtle.png", "拯救海龜大作戰",
                 Mission[state],Perc,Describe[state]);
       case 2:
