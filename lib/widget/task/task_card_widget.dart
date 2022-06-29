@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/firebase/database_service.dart';
+import 'package:newocean/page/tasks_page.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/model/task_model.dart';
@@ -36,9 +37,10 @@ class TaskCard extends StatelessWidget {
                             child:  TextButton(
                               child: Text("確定"),
                               onPressed: () {
+                                Navigator.pop(context);
                                   Navigator.of(context).pop(true);
                                   changeTask(value.id, value.state);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Task_issue(id:value.id)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => TasksPage()));
                               },
                             )
                         )
