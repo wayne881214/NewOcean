@@ -112,10 +112,6 @@ class _Task_task extends State<Task_task>{
                 )
             ),
             TaskProgress(id:widget.id),
-            emoji_Title(name:"任務列表"),
-            /*ActiveCourse(id:widget.id,number:1),
-            ActiveCourse(id:widget.id,number:2),
-            ActiveCourse(id:widget.id,number:3),*/
           ],),
       ),
       bottomNavigationBar: _buildBottomNaigationBar(),
