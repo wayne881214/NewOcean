@@ -235,9 +235,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                   ),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
+                      /*SizedBox(
                         height: MediaQuery.of(context).padding.top,
-                      ),
+                      ),*/
                       Padding(
                         padding: EdgeInsets.only(
                             left: 16,
