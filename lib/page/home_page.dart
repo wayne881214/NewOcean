@@ -1,11 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/sign_in_up/authentication_service.dart';
 import 'package:provider/provider.dart';
 import '../widget/navigation_drawer_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -41,6 +48,30 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/turtle.png'),
+            ElevatedButton(onPressed: () async {
+              User? user = FirebaseAuth.instance.currentUser;
+              if( user != null ) {
+                String uid = user.uid;
+                DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
+                for (int i = 1; i < 5; i++)
+                await taskRef.child('task$i').set(
+                    {
+                      'state': '0',
+                      'id': '$i',
+                    }
+                );
+              }
+            }, child: const Text('生成任務')),
+            ElevatedButton(onPressed: () async {
+              User? user = FirebaseAuth.instance.currentUser;
+              if( user != null ) {
+                String uid = user.uid;
+                DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/$uid/task1');
+                await taskRef.update({
+                  'state': '1',
+                });
+              }
+            }, child: const Text('Task1更改至進行中'))
           ],
         ),
       ),

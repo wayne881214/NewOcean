@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -58,17 +59,27 @@ class SignInUpPage extends StatelessWidget {
                 ),
                 RaisedButton(
                   onPressed: () async {
+                    var name = nameController.text.trim();
+                    var email = emailController.text.trim();
+                    var password = passwordController.text.trim();
                     try {
-                      String? key = database.child('Users/').push().key;
-                      await UsersRef.child(key!).set({
-                        'id': key,
-                        'name': nameController.text,
-                        'email': emailController.text,
-                        'password': passwordController.text,
-                      },);
-                      print('object');
+                      FirebaseAuth auth = FirebaseAuth.instance;
+                      UserCredential userCredential =
+                      await auth.createUserWithEmailAndPassword(
+                          email: email, password: password);
+                      if (userCredential.user != null) {
+                        DatabaseReference userRef = FirebaseDatabase.instance.reference().child('Users/');
+                        String uid = userCredential.user!.uid;
+                        await userRef.child(uid).set({
+                          'name': name,
+                          'email': email,
+                          'uid': uid,
+                          'profileImage': ''
+                        });
+                        print('success');
+                      }
                     } catch (e) {
-                      print('objectsfa $e');
+                      print('error $e');
                     }
                     context.read<AuthenticationService>().signUp(
                       email: emailController.text.trim(),

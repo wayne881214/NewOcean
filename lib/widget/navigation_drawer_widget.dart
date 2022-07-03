@@ -19,11 +19,32 @@ class NavigationDrawerWidget extends StatefulWidget {
 
 class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   final padding = EdgeInsets.symmetric(horizontal: 20);
+  final database = FirebaseDatabase.instance.reference();
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+  String userName = '';
+  String userEmail = '';
+
+  @override
+  void initState() {
+    super.initState();
+    userData();
+  }
+
+  void userData() {
+    database.child('Users/$currentUser').onValue.listen((event) {
+      String name = (event.snapshot.value as Map)["name"];
+      String email = (event.snapshot.value as Map)["email"];
+      setState(() {
+        userName = '$name';
+        userEmail = '$email';
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final name = 'Wayne';
-    final email = 'wayne@gmail.com';
+    final name = userName;
+    final email = userEmail;
     final urlImage = 'https://firebasestorage.googleapis.com/v0/b/newocean-444d7.appspot.com/o/image%2027.png?alt=media&token=8edf57e6-c8ba-497b-b9a7-d536b4d306b0';
     return Drawer(
       child: Material(

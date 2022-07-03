@@ -41,6 +41,10 @@ dependencies:
   file_picker: ^4.0.3
   sensors: ^0.4.0+1
   firebase_database:
+  fluttertoast:
+  ndialog:
+  image_picker:
+  path_provider:
   #ar_flutter_plugin: ^0.6.4
   get: ^4.6.5
   percent_indicator:
