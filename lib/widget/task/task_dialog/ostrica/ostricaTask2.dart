@@ -205,7 +205,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
       "date": formatDate(
           DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
       "task": 4,
-      "carbon": 500,
+      "carbon": 50,
       "id": "4-2"
     };
     final DatabaseReference fireBaseDB =

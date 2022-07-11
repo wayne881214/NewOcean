@@ -24,7 +24,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
   double stateX = (Random().nextDouble() * 20) - 10;
   double stateY = (Random().nextDouble() * 20) - 10;
   double x = 0, y = 0, z = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  String img = "assets/images/animals/whale.png";
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
       <StreamSubscription<dynamic>>[];
@@ -65,7 +65,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                     widthFactor: 10,
                     heightFactor: 6,
                     alignment: Alignment(-1 * x / 10, y / 10),
-                    child: Image.network(img, height: 50, width: 50),
+                    child: Image.asset(img, height: 50.00, width: 50.00),
                   ),
                   Expanded(
                     flex: 1,
@@ -195,7 +195,7 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                     child: Column(children: [
                   Expanded(
                     flex: 8,
-                    child: Text("請上傳照片"),
+                    child: Image.asset('assets/images/animals/whale.png', height: 300, width: 300),
                   ),
                   Expanded(
                     flex: 1,

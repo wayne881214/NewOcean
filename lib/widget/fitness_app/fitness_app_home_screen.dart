@@ -1,23 +1,29 @@
+import 'package:date_format/date_format.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'fitness_app_theme.dart';
 import 'models/tabIcon_data.dart';
 import 'my_diary/my_diary_screen.dart';
 
-void main() => runApp(const MyApp2());
-
-class MyApp2 extends StatelessWidget {
-  const MyApp2({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FitnessAppHomeScreen(),
-    );
-  }
-}
+// void main() => runApp(const MyApp2());
+//
+// class MyApp2 extends StatelessWidget {
+//   const MyApp2({Key? key,this.DailyApi,this.WeeklyApi}) : super(key: key);
+//   final Map? DailyApi;
+//   final Map? WeeklyApi;
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: FitnessAppHomeScreen(),
+//     );
+//   }
+// }
 
 class FitnessAppHomeScreen extends StatefulWidget {
+  const FitnessAppHomeScreen({Key? key, this.DailyApi,this.WeeklyApi}) : super(key: key);
+  final Map? DailyApi;
+  final Map? WeeklyApi;
   @override
   _FitnessAppHomeScreenState createState() => _FitnessAppHomeScreenState();
 }
@@ -41,8 +47,10 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+
+
     super.initState();
+    tabBody = MyDiaryScreen(animationController: animationController,DailyApi:widget.DailyApi,WeeklyApi: widget.WeeklyApi);
   }
 
   @override

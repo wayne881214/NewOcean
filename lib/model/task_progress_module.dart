@@ -51,7 +51,7 @@ class TaskProgressModule extends StatelessWidget {
               taskdialog = sealionTask2showDialog();
               break;
             case 3:
-              taskdialog = sealionTask3showDialog();
+              taskdialog = ostricaTask3showDialog();
               break;
             default:
               break;
@@ -67,7 +67,7 @@ class TaskProgressModule extends StatelessWidget {
               taskdialog = whaleTask2showDialog();
               break;
             case 3:
-              taskdialog = whaleTask3showDialog();
+              taskdialog = ostricaTask3showDialog();
               break;
             default:
               break;
