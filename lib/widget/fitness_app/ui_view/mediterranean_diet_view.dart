@@ -17,8 +17,8 @@ class MediterranesnDietView extends StatefulWidget {
 }
 
 class _MediterranesnDietView extends State<MediterranesnDietView> {
-  // Map responseApi = {"daily": 2127, "yesterday": 3000};
-  Map responseApi = {};
+  Map responseApi = {"daily": 2127, "yesterday": 3000};
+  // Map responseApi = {};
   @override
   Widget build(BuildContext context) {
     responseApi = widget.api!;
@@ -413,7 +413,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                    '589 g',
+                                    '50 g',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: FitnessAppTheme.fontName,
@@ -483,7 +483,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        '489 g ',
+                                        '40 g ',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: FitnessAppTheme.fontName,
@@ -555,7 +555,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        '300 g',
+                                        '30 g',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: FitnessAppTheme.fontName,
