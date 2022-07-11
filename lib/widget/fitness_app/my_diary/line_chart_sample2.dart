@@ -13,7 +13,7 @@ import '../fitness_app_theme.dart';
 const double minX= 0;
 const double maxX= 6;
 const double minY= 0;
-const double maxY= 5000;
+const double maxY= 500;
 
 
 class LineChartSample2 extends StatefulWidget {
@@ -114,17 +114,17 @@ class _LineChartSample2State extends State<LineChartSample2>  {
       case 0:
         text = '0';
         break;
-      case 1000:
-        text = '1000';
+      case 100:
+        text = '100';
         break;
-      case 2000:
-        text = '2000';
+      case 200:
+        text = '200';
         break;
-      case 3000:
-        text = '3000';
+      case 300:
+        text = '300';
         break;
-      case 4000:
-        text = '4000';
+      case 400:
+        text = '400';
         break;
       default:
         return Container();

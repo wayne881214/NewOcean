@@ -30,7 +30,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   Map DailyApi = {"daily": 0, "yesterday": 0};
   Map WeeklyApi = {
     "userData": [0, 0, 0, 0, 0, 0, 0],
-    "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+    "avgsData": [210, 120, 130, 40, 100, 120, 230]
   };
   @override
   void initState() {
@@ -69,7 +69,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       }
       print("DailyApi $DailyApi");
       print("WeeklyApi $WeeklyApi");
-      super.initState();
+      // super.initState();
     });
 
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -105,49 +105,68 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
 
   void addAllListData() async {
     const int count = 9;
-    listViews.add(
-      TitleView(
-        titleTxt: '減碳總覽',
-        subTxt: '查看詳細',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: '減碳總覽',
+    //     subTxt: '查看詳細',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
 
+    // listViews.add(
+    //   MediterranesnDietView(
+    //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //           CurvedAnimation(
+    //               parent: widget.animationController!,
+    //               curve: Interval((1 / count) * 1, 1.0,
+    //                   curve: Curves.fastOutSlowIn))),
+    //       animationController: widget.animationController!,
+    //       api: DailyApi),
+    // );
+    // listViews.add(
+    //   ElevatedButton(
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         new MaterialPageRoute(builder: (context) => DailyList()),
+    //       );
+    //     },
+    //     child: Text('查看所有詳細數據'),
+    //   ),
+    // );
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: '本周數據',
+    //     subTxt: '數據總覽',
+    //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
     listViews.add(
-      MediterranesnDietView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController!,
-                  curve: Interval((1 / count) * 1, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController!,
-          api: DailyApi),
-    );
-    listViews.add(
-      ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            new MaterialPageRoute(builder: (context) => DailyList()),
-          );
-        },
-        child: Text('查看所有詳細數據'),
-      ),
-    );
-    listViews.add(
-      TitleView(
-        titleTxt: '本周數據',
-        subTxt: '數據總覽',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(builder: (context) => DailyList()),
+            );
+          },
+          child: new TitleView(
+            titleTxt: '本周數據',
+            subTxt: '數據總覽',
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+                parent: widget.animationController!,
+                curve:
                 Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
+            animationController: widget.animationController!,
+          ),
+        ),
     );
     listViews.add(
       LineChartSample2(api: WeeklyApi),
@@ -251,7 +270,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  '本日數據',
+                                  '減碳數據',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
