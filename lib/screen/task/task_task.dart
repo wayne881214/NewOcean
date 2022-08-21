@@ -1,11 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/model/task_model.dart';
 import 'package:newocean/screen/task/task_issue.dart';
 import 'package:newocean/screen/task/task_question.dart';
-import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
-import 'package:newocean/widget/task/task_issue/course_progress.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../widget/task/task_issue/task_progress.dart';

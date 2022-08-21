@@ -11,6 +11,7 @@ import 'package:newocean/page/tasks_page.dart';
 import 'package:newocean/page/user_page.dart';
 
 import '../main.dart';
+import '../page/sign_out_page.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
   @override
@@ -92,16 +93,16 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   ),
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: '登出',
-                    icon: Icons.output,
-                    onClicked: () => selectedItem(context, 4),
-                  ),
-                  /*const SizedBox(height: 24),
-                  buildMenuItem(
                     text: '好友',
                     icon: Icons.person_add,
                     onClicked: () => selectedItem(context, 4),
                   ),
+                  const SizedBox(height: 24),
+                  buildMenuItem(
+                    text: '登出',
+                    icon: Icons.output,
+                    onClicked: () => selectedItem(context, 5),
+                  ),/*
                   const SizedBox(height: 16),
                   buildMenuItem(
                     text: '設定',
@@ -195,12 +196,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
           builder: (context) => FriendsPage(),
         ));
         break;
-      /*case 4:
+      case 5:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FriendsPage(),
+          builder: (context) => SignOutPage(),
         ));
         break;
-      case 5:
+      /*case 5:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SettingsPage(),
         ));

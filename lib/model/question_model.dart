@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 class Question {
   final int id;
   final String title;

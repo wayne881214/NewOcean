@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/firebase/User.dart';
-import 'package:newocean/model/task_course_progress_model.dart';
 import 'package:newocean/model/task_progress_detail_model.dart';
 import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask2.dart';
 import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask3.dart';

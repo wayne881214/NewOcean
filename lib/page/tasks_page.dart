@@ -76,13 +76,13 @@ class _TaskState extends State<TasksPage> {
       Ref.onChildAdded.listen((event) {
         int id= (event.snapshot.value as Map)["id"];
         int state= (event.snapshot.value as Map)["state"];
-        if(index==0&&state<=4) {
+        if(index == 0 && state <= 4) {
           task.add(Task.addTask(id,state));
         }
-        if(index==1&&state<=3&&state>=1) {
+        if(index == 1 && state <= 3 && state >= 1) {
           task.add(Task.addTask(id,state));
         }
-        if (index==2&&state == 4) {
+        if (index == 2 && state == 4) {
           task.add(Task.addTask(id, state));
         }
         //更新 TaskCard Widget(任務卡片列表)

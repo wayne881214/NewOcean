@@ -28,7 +28,6 @@ class Course {
         ];
       case 4:
         return [
-          // 牡蠣在台灣俗稱「蚵仔」，從夜市蚵仔煎到餐廳生蠔料理都能看見牠的身影，因為牠的美妙滋味與營養價值，牡蠣作為海鮮已是重要台灣生活中的重要美食
           Course('照片一', 'assets/icons/picture.png', '台灣經典美食-蚵仔',
               'assets/images/task_carousel_ostrica_1.jpg'),
           Course('照片二', 'assets/icons/picture.png', '塑膠微粒污染最嚴重',
