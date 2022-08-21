@@ -43,7 +43,7 @@ class TaskProgressDetailModel {
     if(progress_detail_state == 1){
       return [
         //進行中
-        TaskProgressDetailModel(kAccent, kAccent, Colors.white, Icons.play_arrow_rounded,task1.mission, task1.describe, kPrimaryLight,
+        TaskProgressDetailModel(kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task1.mission, task1.describe, kAccent1,
             kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
         //鎖住
         TaskProgressDetailModel(
@@ -59,7 +59,7 @@ class TaskProgressDetailModel {
         TaskProgressDetailModel(kAccent, kAccent, Colors.white, Icons.check,task1.mission, task1.describe, kPrimaryLight,
             kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
         TaskProgressDetailModel(
-            kAccent, kAccent, Colors.white, Icons.play_arrow_rounded,task2.mission, task2.describe, kPrimaryLight,
+            kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task2.mission, task2.describe, kAccent1,
             kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,2),
         //鎖住
         TaskProgressDetailModel(
@@ -75,7 +75,7 @@ class TaskProgressDetailModel {
             kAccent, kAccent, Colors.white, Icons.check,task2.mission, task2.describe, kPrimaryLight,
             kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,2),
         TaskProgressDetailModel(
-            kAccent, kAccent, Colors.white, Icons.play_arrow_rounded,task3.mission, task3.describe, kPrimaryLight,
+            kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task3.mission, task3.describe, kAccent1,
             kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,3),
       ];
     } else {

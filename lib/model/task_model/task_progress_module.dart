@@ -163,7 +163,7 @@ class TaskProgressModule extends StatelessWidget {
                 SizedBox(height: 5),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: kAccent,
+                      primary: module.iconBorder,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
