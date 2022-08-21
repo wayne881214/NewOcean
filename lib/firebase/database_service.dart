@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:newocean/firebase/User.dart';
 void changeTask(int id ,int state){
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {
     "id": id,
     "state": state+1
   };
-  DatabaseReference Ref = FirebaseDatabase.instance.ref('User/'+Username+'/task/task'+id.toString());
+  DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/'+currentUser+'/task'+id.toString());
   Ref.set(Task).whenComplete(() {
   }).catchError((error) {
     print(error);
@@ -14,13 +16,14 @@ void changeTask(int id ,int state){
 
 
 void changeTask2(int id ,int state,double stateApi) {
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {
     "id": id,
     "state": state + 1
   };
   if (stateApi >= 4) {
     DatabaseReference Ref = FirebaseDatabase.instance.ref(
-        'User/' + Username + '/task/task' + id.toString());
+        'Tasks/'+currentUser+'/task'+id.toString());
     Ref.set(Task).whenComplete(() {}).catchError((error) {
       print(error);
     });
@@ -29,13 +32,14 @@ void changeTask2(int id ,int state,double stateApi) {
 
 
 void changeTask3(int id ,int state,double stateApi){
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {
     "id": id,
     "state": state+1
   };
   if(stateApi>=11) {
     DatabaseReference Ref = FirebaseDatabase.instance.ref(
-        'User/' + Username + '/task/task' + id.toString());
+        'Tasks/'+currentUser+'/task'+id.toString());
     Ref.set(Task).whenComplete(() {}).catchError((error) {
       print(error);
     });

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../widget/fitness_app/fitness_app_home_screen.dart';
+import '../../widget/achievements/fitness_app/fitness_app_home_screen.dart';
+
 
 class AchievementsPage extends StatelessWidget {
   @override

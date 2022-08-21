@@ -56,8 +56,8 @@ class _HomePageState extends State<HomePage> {
                 for (int i = 1; i < 5; i++)
                 await taskRef.child('task$i').set(
                     {
-                      'state': '0',
-                      'id': '$i',
+                      'state': 0,
+                      'id': i,
                     }
                 );
               }

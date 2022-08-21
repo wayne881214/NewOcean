@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,7 @@ class _TaskState extends State<TasksPage> {
   //生成 TaskCard Widget (任務卡片列表)
   //widget/task_card_widget.dart
   TaskCard card = TaskCard(data: task);
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   @override
   //初始化
   void initState() {
@@ -42,7 +44,7 @@ class _TaskState extends State<TasksPage> {
     });
     task = [];
     //讀取用戶任務，將進行中的任務加入List<Task>行列
-    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/$currentUser');
     Ref.onChildAdded.listen((event) {
       int id = (event.snapshot.value as Map)["id"];
       int state = (event.snapshot.value as Map)["state"];
@@ -72,7 +74,7 @@ class _TaskState extends State<TasksPage> {
 
   void _onItemTapped(int index) {
       task=[];
-      DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/task');
+      DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/$currentUser');
       Ref.onChildAdded.listen((event) {
         int id= (event.snapshot.value as Map)["id"];
         int state= (event.snapshot.value as Map)["state"];
