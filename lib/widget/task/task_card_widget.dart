@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/firebase/database_service.dart';
-import 'package:newocean/page/tasks_page.dart';
-import 'package:newocean/screen/task/task_issue.dart';
+import 'package:newocean/page/tasks/tasks_page.dart';
+import 'package:newocean/page/tasks/screen/task_issue.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/model/task_model.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../model/task_model/task_model.dart';
 class TaskCard extends StatelessWidget {
   //獲取List<Task>任務列表
   TaskCard({Key? key, required this.data}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/model/task_course_model.dart';
+import 'package:newocean/model/task_model/task_course_model.dart';
 import 'package:newocean/widget/task/task_issue/course_item.dart';
 import 'category_style.dart';
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:newocean/widget/animal/aniaml_describe.dart';
 import 'package:newocean/widget/animal/animal_interact.dart';
 import 'package:sensors/sensors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/widget/animal/animal_headshot.dart';
-
-import '../../../model/animal_model/animal_model.dart';
 
 class Animal_animal extends StatefulWidget {
   Animal_animal({Key? key, required this.id}) : super(key: key);

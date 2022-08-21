@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/sign_in_up/authentication_service.dart';
 import 'package:provider/provider.dart';
-import '../widget/navigation_drawer_widget.dart';
+import '../../widget/navigation_drawer_widget.dart';
 
 class HomePage extends StatefulWidget {
 

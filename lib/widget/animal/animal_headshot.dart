@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newocean/model/animal_model.dart';
+import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:sensors/sensors.dart';
 import 'package:flutter/cupertino.dart';
 

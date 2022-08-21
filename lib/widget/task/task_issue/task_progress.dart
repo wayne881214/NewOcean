@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
-import 'package:newocean/model/task_course_progress_model.dart';
+import 'package:newocean/model/task_model/task_course_progress_model.dart';
 import 'package:newocean/widget/task/task_issue/course_module.dart';
-import 'package:newocean/model/task_progress_module.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../../model/task_progress_detail_model.dart';
+import '../../../model/task_model/task_progress_detail_model.dart';
+import '../../../model/task_model/task_progress_module.dart';
 
 
 class TaskProgress extends StatelessWidget {

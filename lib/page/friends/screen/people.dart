@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'chatdetail.dart';
 
+
 class PeoplePage extends StatefulWidget {
   const PeoplePage({Key? key}) : super(key: key);
 

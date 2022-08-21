@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:newocean/constants/colors.dart';
-import 'package:newocean/screen/task/task_issue.dart';
-import 'package:newocean/screen/task/task_task.dart';
+import 'package:newocean/page/tasks/screen/task_issue.dart';
+import 'package:newocean/page/tasks/screen/task_task.dart';
 import 'package:newocean/widget/task/task_issue/next_button.dart';
 import 'package:newocean/widget/task/task_issue/option_card.dart';
 import 'package:newocean/widget/task/task_issue/question_widget.dart';
 import 'package:newocean/widget/task/task_issue/result_box.dart';
 
-import '../../model/question_model.dart';
+import '../../../model/task_model/question_model.dart';
 
 class Task_question extends StatefulWidget {
   const Task_question({Key? key, required this .id}) : super(key: key);

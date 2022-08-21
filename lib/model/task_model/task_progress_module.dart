@@ -11,6 +11,7 @@ import 'package:newocean/widget/task/task_dialog/whaleTask_dialog_widget.dart';
 
 import '../../widget/task/task_dialog/turtleTask_dialog_widget.dart';
 
+
 class TaskProgressModule extends StatelessWidget {
   final TaskProgressDetailModel module;
   final int State;

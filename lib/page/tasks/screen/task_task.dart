@@ -1,11 +1,11 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/screen/task/task_issue.dart';
-import 'package:newocean/screen/task/task_question.dart';
+import 'package:newocean/page/tasks/screen/task_issue.dart';
+import 'package:newocean/page/tasks/screen/task_question.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../widget/task/task_issue/task_progress.dart';
+import '../../../widget/task/task_issue/task_progress.dart';
 
 class Task_task extends StatefulWidget {
   Task_task({Key? key, required this.id}) : super(key: key);

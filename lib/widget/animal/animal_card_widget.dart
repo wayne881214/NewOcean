@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:newocean/screen/animal/animal_animal.dart';
+import 'package:newocean/page/animals/screen/animal_animal.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/model/animal_model.dart';
+import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 class AnimalCard extends StatelessWidget {
   //獲取List<Animal>任務列表

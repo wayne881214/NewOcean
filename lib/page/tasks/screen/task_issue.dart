@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/screen/shake.dart';
-import 'package:newocean/screen/task/task_question.dart';
-import 'package:newocean/screen/task/task_task.dart';
+import 'package:newocean/page/tasks/screen/task_question.dart';
+import 'package:newocean/page/tasks/screen/task_task.dart';
 import 'package:newocean/widget/task/emoji_Title.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/widget/task/task_issue/feature_course.dart';
 import 'package:newocean/widget/task/task_issue/issue_style.dart';
-import 'package:newocean/screen/test.dart';
 import 'package:readmore/readmore.dart';
 
 class Task_issue extends StatefulWidget {

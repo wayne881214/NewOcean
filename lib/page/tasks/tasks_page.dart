@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
-import 'package:newocean/model/task_model.dart';
 import 'package:newocean/widget/task/task_card_widget.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
+import '../../model/task_model/task_model.dart';
 
 class TasksPage extends StatefulWidget {
   @override
