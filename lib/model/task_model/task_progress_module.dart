@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/firebase/User.dart';
-import 'package:newocean/model/task_progress_detail_model.dart';
+import 'package:newocean/model/task_model/task_progress_detail_model.dart';
 import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask2.dart';
 import 'package:newocean/widget/task/task_dialog/ostrica/ostricaTask3.dart';
 import 'package:newocean/widget/task/task_dialog/ostricaTask_dialog_widget.dart';
 import 'package:newocean/widget/task/task_dialog/sealionTask_dialog_widget.dart';
 import 'package:newocean/widget/task/task_dialog/whaleTask_dialog_widget.dart';
 
-import '../widget/task/task_dialog/turtleTask_dialog_widget.dart';
+import '../../widget/task/task_dialog/turtleTask_dialog_widget.dart';
 
 class TaskProgressModule extends StatelessWidget {
   final TaskProgressDetailModel module;

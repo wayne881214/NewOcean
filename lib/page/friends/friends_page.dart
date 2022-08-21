@@ -1,13 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/page/settings_page.dart';
-import 'package:newocean/screen/calls.dart';
-import 'package:newocean/screen/chats.dart';
-import 'package:newocean/screen/people.dart';
-
-import '../screen/setting.dart';
-import '../states/lib.dart';
+import 'package:newocean/page/friends/screen/chats.dart';
+import 'package:newocean/page/friends/screen/people.dart';
 
 class FriendsPage extends StatefulWidget {
   @override

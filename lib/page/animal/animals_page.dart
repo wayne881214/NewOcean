@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:newocean/model/animal_model.dart';
 import 'package:newocean/widget/animal/animal_card_widget.dart';
-import '../constants/colors.dart';
 import 'package:flutter/services.dart';
+
+import '../../constants/colors.dart';
+import '../../model/animal_model/animal_model.dart';
 
 class AnimalsPage extends StatefulWidget {
   @override

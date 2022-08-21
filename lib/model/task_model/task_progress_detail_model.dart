@@ -1,6 +1,6 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
-import 'package:newocean/model/task_model.dart';
 
 class TaskProgressDetailModel {
   Color iconBorder;
