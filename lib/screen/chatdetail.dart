@@ -24,6 +24,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   var chatDocId;
   var _textController = new TextEditingController();
   _ChatDetailPageState(this.friendUid, this.friendName);
+
   @override
   void initState() {
     super.initState();
@@ -127,7 +128,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                             child: ChatBubble(
                               clipper: ChatBubbleClipper6(
                                 nipSize: 0,
-                                radius: 0,
+                                radius: 30,
                                 type: isSender(data['uid'].toString())
                                     ? BubbleType.sendBubble
                                     : BubbleType.receiverBubble,
@@ -150,6 +151,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                       children: [
                                         Text(data['msg'],
                                             style: TextStyle(
+                                              fontSize: 20,
                                                 color: isSender(
                                                     data['uid'].toString())
                                                     ? Colors.white

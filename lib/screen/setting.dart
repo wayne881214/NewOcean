@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatefulWidget {
+class AddFriendsPage extends StatefulWidget {
   @override
-  State<SettingPage> createState() => _SettingPageState();
+  State<AddFriendsPage> createState() => _AddFriendsPageState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+class _AddFriendsPageState extends State<AddFriendsPage> {
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Settings"),
+        child: Text("Add Friends"),
       ),
     );
   }

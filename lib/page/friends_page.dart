@@ -16,7 +16,8 @@ class FriendsPage extends StatefulWidget {
 
 class _FriendsPageState extends State<FriendsPage> {
 
-  var screens = [ChatsPage(), CallsPage(), PeoplePage(), SettingPage()];
+  var screens = [ChatsPage(), PeoplePage(), AddFriendsPage()];
+
   @override
   void initState() {
     chatState.refreshChatsForCurrentUser();
@@ -45,16 +46,12 @@ class _FriendsPageState extends State<FriendsPage> {
                   icon: Icon(CupertinoIcons.chat_bubble_2_fill),
                 ),
                 BottomNavigationBarItem(
-                  label: "Calls",
-                  icon: Icon(CupertinoIcons.phone),
-                ),
-                BottomNavigationBarItem(
                   label: "People",
                   icon: Icon(CupertinoIcons.person_alt_circle),
                 ),
                 BottomNavigationBarItem(
-                  label: "Settings",
-                  icon: Icon(CupertinoIcons.settings_solid),
+                  label: "AddFriends",
+                  icon: Icon(CupertinoIcons.person_3_fill),
                 ),
               ],
             ), tabBuilder: (BuildContext context, int index) {
