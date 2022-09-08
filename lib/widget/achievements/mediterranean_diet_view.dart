@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import '../fitness_app_theme.dart';
-import '../my_diary/water_view.dart';
+import '../../constants/achievements_theme.dart';
 
 class MediterranesnDietView extends StatefulWidget {
   @override
@@ -13,15 +12,23 @@ class MediterranesnDietView extends StatefulWidget {
   const MediterranesnDietView(
       {Key? key, this.animationController, this.animation, this.api})
       : super(key: key);
+
   _MediterranesnDietView createState() => _MediterranesnDietView();
 }
 
 class _MediterranesnDietView extends State<MediterranesnDietView> {
-  // Map responseApi = {"daily": 2127, "yesterday": 3000};
+  // Map responseApi = {"daily": 800, "yesterday": 1};
+  // Map responseApi = {"daily": 2127, "yesterday": 0};
   Map responseApi = {};
   @override
   Widget build(BuildContext context) {
     responseApi = widget.api!;
+    double angle = 360.00 -
+        ((responseApi["yesterday"] - responseApi["daily"]) /
+                responseApi["yesterday"]) *
+            360;
+    angle = (angle >= 0) ? angle : 0;
+    print("angle:$angle");
     return AnimatedBuilder(
       animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
@@ -321,19 +328,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: CustomPaint(
-                                      painter: CurvePainter(
-                                          colors: [
-                                            FitnessAppTheme.nearlyDarkBlue,
-                                            HexColor("#8A98E8"),
-                                            HexColor("#8A98E8")
-                                          ],
-                                          angle: 360.00 -
-                                              ((responseApi["yesterday"] -
-                                                          responseApi[
-                                                              "daily"]) /
-                                                      responseApi[
-                                                          "yesterday"]) *
-                                                  360),
+                                      painter: CurvePainter(colors: [
+                                        FitnessAppTheme.nearlyDarkBlue,
+                                        HexColor("#8A98E8"),
+                                        HexColor("#8A98E8")
+                                      ], angle: angle),
                                       child: SizedBox(
                                         width: 108,
                                         height: 108,
@@ -698,5 +697,17 @@ class CurvePainter extends CustomPainter {
   double degreeToRadians(double degree) {
     var redian = (math.pi / 180) * degree;
     return redian;
+  }
+}
+
+class HexColor extends Color {
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF' + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
   }
 }

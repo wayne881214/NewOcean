@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../fitness_app_theme.dart';
+import '../../constants/achievements_theme.dart';
 
 class TitleView extends StatelessWidget {
   final String titleTxt;

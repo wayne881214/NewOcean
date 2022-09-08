@@ -14,6 +14,8 @@ import 'dart:math';
 
 import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
+import '../../../firebase/log_service.dart';
+import '../../../model/achievements_model/logs_model.dart';
 
 class whaleTask1showDialog extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
-      <StreamSubscription<dynamic>>[];
+  <StreamSubscription<dynamic>>[];
 
   void initState() {
     super.initState();
@@ -61,75 +63,59 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                  Align(
-                    widthFactor: 10,
-                    heightFactor: 6,
-                    alignment: Alignment(-1 * x / 10, y / 10),
-                    child: Image.network(img, height: 50, width: 50),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
-                  ),
-                  Expanded(
-                      flex: 2,
-                      child: Row(children: [
-                        Expanded(
+                      Align(
+                        widthFactor: 10,
+                        heightFactor: 6,
+                        alignment: Alignment(-1 * x / 10, y / 10),
+                        child: Image.network(img, height: 50, width: 50),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
+                      ),
+                      Expanded(
                           flex: 2,
-                          child: Image.asset("assets/images/icons/shake.png",
-                              height: 150.00, width: 150.00),
-                        ),
-                        Expanded(
-                            flex: 8,
-                            child: LinearPercentIndicator(
-                              width: 250,
-                              animation: true,
-                              lineHeight: 20.0,
-                              animationDuration: 0,
-                              percent: (20 - (x - stateX).abs()) * 5 / 100,
-                              barRadius: const Radius.circular(16),
-                              progressColor: Color(0XFFFF1C41),
-                            ))
-                      ])),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(5.0),
-                        width: 100, // <-- Your width
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _checkAndPush();
-                            Navigator.of(context).pop(true);
-                          },
-                          child: Text('$result'),
-                        ),
-                      ))
-                ])))),
+                          child: Row(children: [
+                            Expanded(
+                              flex: 2,
+                              child: Image.asset("assets/images/icons/shake.png",
+                                  height: 150.00, width: 150.00),
+                            ),
+                            Expanded(
+                                flex: 8,
+                                child: LinearPercentIndicator(
+                                  width: 250,
+                                  animation: true,
+                                  lineHeight: 20.0,
+                                  animationDuration: 0,
+                                  percent: (20 - (x - stateX).abs()) * 5 / 100,
+                                  barRadius: const Radius.circular(16),
+                                  progressColor: Color(0XFFFF1C41),
+                                ))
+                          ])),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            width: 100, // <-- Your width
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _checkAndPush();
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text('$result'),
+                            ),
+                          ))
+                    ])))),
       ),
     );
   }
 
   void _pushLog() {
-    Map<String, Object> log = {
-      "date": formatDate(
-          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
-      "task": 3,
-      "carbon": 10,
-      "id": "3-1"
-    };
-    final DatabaseReference fireBaseDB =
-        FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    changeTask(3 ,1);
-
-    DatabaseReference pushUserDB = fireBaseDB.push();
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete(() {
-      print("user push success");
-    }).catchError((error) {
-      print(error);
-    });
+    Log resquestLog = Log.addTaskLog(3,1);
+    addLog(resquestLog);
+    changeTask(3,1);
   }
 
   void _checkAndPush() {
@@ -148,7 +134,7 @@ class _task2showDialog extends State<whaleTask2showDialog> {
   bool _proximityValues = false;
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
-      <StreamSubscription<dynamic>>[];
+  <StreamSubscription<dynamic>>[];
 
   void initState() {
     super.initState();
@@ -193,53 +179,37 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                  Expanded(
-                    flex: 8,
-                    child: Text("請上傳照片"),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text("請將環保水壺靠近手機紀錄"),
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(5.0),
-                        width: 100, // <-- Your width
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _checkAndPush();
-                            Navigator.of(context).pop(true);
-                          },
-                          child: Text('$result'),
-                        ),
-                      ))
-                ])))),
+                      Expanded(
+                        flex: 8,
+                        child: Text("請上傳照片"),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("請將環保水壺靠近手機紀錄"),
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            width: 100, // <-- Your width
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _checkAndPush();
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text('$result'),
+                            ),
+                          ))
+                    ])))),
       ),
     );
   }
 
   void _pushLog() {
-    Map<String, Object> log = {
-      "date": formatDate(
-          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
-      "task": 3,
-      "carbon": 10,
-      "id": "3-2"
-    };
-    final DatabaseReference fireBaseDB =
-        FirebaseDatabase.instance.ref("User/1/log/");
-    changeTask2(3 ,2,API);
-
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    DatabaseReference pushUserDB = fireBaseDB.push();
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete(() {
-      print("user push success");
-    }).catchError((error) {
-      print(error);
-    });
+    Log resquestLog = Log.addTaskLog(3,2);
+    addLog(resquestLog);
+    changeTask(3,2);
   }
 
   void _checkAndPush() {
@@ -287,106 +257,90 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                  Expanded(
-                    flex: 6,
-                    child: FutureBuilder(
-                        future: storage.downloadURL('$filename'),
+                      Expanded(
+                        flex: 6,
+                        child: FutureBuilder(
+                            future: storage.downloadURL('$filename'),
 
-                        // future: storage.listFiles(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<String> snapshot) {
-                          if (snapshot.connectionState ==
+                            // future: storage.listFiles(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<String> snapshot) {
+                              if (snapshot.connectionState ==
                                   ConnectionState.done &&
-                              snapshot.hasData) {
-                            return Container(
-                                width: 300,
-                                height: 250,
-                                child: Image.network(
-                                  snapshot.data!,
-                                  fit: BoxFit.cover,
-                                ));
-                          }
-                          if (snapshot.connectionState ==
+                                  snapshot.hasData) {
+                                return Container(
+                                    width: 300,
+                                    height: 250,
+                                    child: Image.network(
+                                      snapshot.data!,
+                                      fit: BoxFit.cover,
+                                    ));
+                              }
+                              if (snapshot.connectionState ==
                                   ConnectionState.waiting ||
-                              !snapshot.hasData) {
-                            return Text("Stupid flutter");
-                          }
-                          return Text("Stupid flutter");
-                        }),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text("請上傳照片"),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        final results = await FilePicker.platform.pickFiles(
-                          allowMultiple: false,
-                          type: FileType.custom,
-                          allowedExtensions: ['png', 'jpg'],
-                        );
-                        if (results == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('No file selected'),
-                            ),
-                          );
-                          return null;
-                        }
-                        final path = results.files.single.path!;
-                        final file = "123.jpg";
-
-                        this.setState(() => result = "完成任務");
-                        print("1.filename:$filename");
-                        storage.uploadFile(path, filename).then(
-                            (value) => this.setState(() => filename = file));
-                        // Timer timer;
-                        // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                      },
-                      child: Text('upload file'),
-                    ),
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(5.0),
-                        width: 100, // <-- Your width
-                        height: 50,
+                                  !snapshot.hasData) {
+                                return Text("Stupid flutter");
+                              }
+                              return Text("Stupid flutter");
+                            }),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("請上傳照片"),
+                      ),
+                      Expanded(
+                        flex: 2,
                         child: ElevatedButton(
-                          onPressed: () {
-                            _checkAndPush();
-                            Navigator.of(context).pop(true);
+                          onPressed: () async {
+                            final results = await FilePicker.platform.pickFiles(
+                              allowMultiple: false,
+                              type: FileType.custom,
+                              allowedExtensions: ['png', 'jpg'],
+                            );
+                            if (results == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('No file selected'),
+                                ),
+                              );
+                              return null;
+                            }
+                            final path = results.files.single.path!;
+                            final file = "123.jpg";
+
+                            this.setState(() => result = "完成任務");
+                            print("1.filename:$filename");
+                            storage.uploadFile(path, filename).then(
+                                    (value) => this.setState(() => filename = file));
+                            // Timer timer;
+                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
                           },
-                          child: Text('$result'),
+                          child: Text('upload file'),
                         ),
-                      ))
-                ])))),
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            width: 100, // <-- Your width
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _checkAndPush();
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text('$result'),
+                            ),
+                          ))
+                    ])))),
       ),
     );
   }
 
   void _pushLog() {
-    Map<String, Object> log = {
-      "date": formatDate(
-          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
-      "task": 3,
-      "carbon": 10,
-      "id": "3-3"
-    };
-    final DatabaseReference fireBaseDB =
-        FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    changeTask3(3 ,3,API);
-
-    DatabaseReference pushUserDB = fireBaseDB.push();
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete(() {
-      print("user push success");
-    }).catchError((error) {
-      print(error);
-    });
+    Log resquestLog = Log.addTaskLog(3,3);
+    addLog(resquestLog);
+    changeTask(3,3);
   }
 
   void _checkAndPush() {

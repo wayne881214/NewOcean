@@ -12,6 +12,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
+import '../../../firebase/log_service.dart';
+import '../../../model/achievements_model/logs_model.dart';
 
 class sealionTask1showDialog extends StatefulWidget {
   @override
@@ -120,23 +122,9 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
     );
   }
   void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
-      "task": 2,
-      "carbon": 10,
-      "id":"2-1"
-    };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    DatabaseReference pushUserDB = fireBaseDB.push();
+    Log resquestLog = Log.addTaskLog(2 ,1);
+    addLog(resquestLog);
     changeTask(2 ,1);
-
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
-      print("user push success");
-    }).catchError((error){
-      print(error);
-    });
   }
   void _checkAndPush(){
     if(result=="完成任務"){
@@ -266,23 +254,9 @@ class _task2showDialog extends State<sealionTask2showDialog> {
     );
   }
   void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
-      "task": 2,
-      "carbon": 10,
-      "id":"2-2"
-    };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    Log resquestLog = Log.addTaskLog(2, 2);
+    addLog(resquestLog);
     changeTask2(2 ,2,API);
-
-    DatabaseReference pushUserDB = fireBaseDB.push();
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
-      print("user push success");
-    }).catchError((error){
-      print(error);
-    });
   }
   void _checkAndPush(){
     if(result=="完成任務"){
@@ -412,23 +386,9 @@ class _task3showDialog extends State<sealionTask3showDialog> {
     );
   }
   void _pushLog(){
-    Map<String,Object> log= {
-      "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
-      "task": 2,
-      "carbon": 10,
-      "id":"2-3"
-    };
-    final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
+    Log resquestLog = Log.addTaskLog(2, 3);
+    addLog(resquestLog);
     changeTask3(2 ,3,API);
-
-    DatabaseReference pushUserDB = fireBaseDB.push();
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete((){
-      print("user push success");
-    }).catchError((error){
-      print(error);
-    });
   }
   void _checkAndPush(){
     if(result=="完成任務"){

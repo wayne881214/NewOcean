@@ -13,9 +13,10 @@ void changeTask(int id ,int state){
     print(error);
   });
 }
-
+//
 
 void changeTask2(int id ,int state,double stateApi) {
+  print("changeTask2 stateApi: $stateApi");
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {
     "id": id,
@@ -32,6 +33,7 @@ void changeTask2(int id ,int state,double stateApi) {
 
 
 void changeTask3(int id ,int state,double stateApi){
+  print("changeTask3 stateApi: $stateApi");
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {
     "id": id,

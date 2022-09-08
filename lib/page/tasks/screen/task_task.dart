@@ -45,8 +45,9 @@ class _Task_task extends State<Task_task>{
       //更新 TaskCard Widget(任務卡片列表)
     });
 
+    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('Logs/' + currentUser);
 
-    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
+    // DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
     Ref_log.onChildAdded.listen((event) {
       Map userLogValue = (event.snapshot.value as Map);
       print("jsonResponse!!!!! $userLogValue");
@@ -63,10 +64,10 @@ class _Task_task extends State<Task_task>{
       case 2:
         taskTitle="海獅任務";
         break;
-        case 3:
+      case 3:
         taskTitle="鯨魚任務";
         break;
-        case 4:
+      case 4:
         taskTitle="牡蠣任務";
         break;
       default:
@@ -102,34 +103,34 @@ class _Task_task extends State<Task_task>{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-        Container(
-        padding: EdgeInsets.all(25),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+            Container(
+                padding: EdgeInsets.all(25),
+                child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
 
-                Column(
-                  children: [
-                    Text('任務進度列表', style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: kFont
-                    )
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Image.asset('assets/icons/process.png', width: 20),
-                    SizedBox(width: 15),
-                    Image.asset('assets/icons/combine.png', width: 25),
-                  ],
-                )
-              ],
-            ),
-  ])),
+                          Column(
+                            children: [
+                              Text('任務進度列表', style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: kFont
+                              )
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/icons/process.png', width: 20),
+                              SizedBox(width: 15),
+                              Image.asset('assets/icons/combine.png', width: 25),
+                            ],
+                          )
+                        ],
+                      ),
+                    ])),
 
             Center(
                 child:CircularPercentIndicator(
@@ -211,7 +212,8 @@ class _Task_task extends State<Task_task>{
   void getPercent() {
     var Target=1+7+7;
     int state= 0;
-    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('Logs/' + currentUser);
+    // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
     Ref.onChildAdded.listen((event)  async{
       Map userLogValue = (event.snapshot.value as Map);
       print("jsonResponse!!!!! $userLogValue");

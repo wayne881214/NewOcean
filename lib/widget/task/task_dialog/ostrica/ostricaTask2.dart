@@ -9,6 +9,8 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../../firebase/User.dart';
 import '../../../../firebase/database_service.dart';
+import '../../../../firebase/log_service.dart';
+import '../../../../model/achievements_model/logs_model.dart';
 
 
 
@@ -201,25 +203,9 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
     super.dispose();
   }
   void _pushLog() {
-    Map<String, Object> log = {
-      "date": formatDate(
-          DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]),
-      "task": 4,
-      "carbon": 500,
-      "id": "4-2"
-    };
-    final DatabaseReference fireBaseDB =
-    FirebaseDatabase.instance.ref("User/1/log/");
-    // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-    DatabaseReference pushUserDB = fireBaseDB.push();
+    Log resquestLog = Log.addTaskLog(4, 2);
+    addLog(resquestLog);
     changeTask2(4 ,2,API);
-
-    //push=>亂碼顯示 有空在設4-1-n
-    pushUserDB.set(log).whenComplete(() {
-      print("user push success");
-    }).catchError((error) {
-      print(error);
-    });
   }
   // &&result!.code=="store1"&&result!.code=="store2"&&result!.code=="store3"
   void _checkAndPush() {

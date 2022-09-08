@@ -71,7 +71,40 @@ class _HomePageState extends State<HomePage> {
                   'state': '1',
                 });
               }
-            }, child: const Text('Task1更改至進行中'))
+            }, child: const Text('Task1更改至進行中')),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AchievementsPage(),
+                ));
+              },
+              child: Text('成就連結'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => LogList(),
+                ));
+              },
+              child: Text('詳細資料'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Log resquestLog=Log.addTaskLog(4,2);
+                addLog(resquestLog);
+              },
+              child: Text('一鍵送出任務'),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Achievement.initAchievements();
+                },
+                child: const Text('初始化成就')),
+            ElevatedButton(
+                onPressed: () {
+                  updateAchievement();
+                },
+                child: const Text('手動更新'))
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../fitness_app_theme.dart';
+import '../../../../constants/achievements_theme.dart';
 
 
 // Map api={

@@ -31,8 +31,7 @@ class _TaskState extends State<TasksPage> {
       {"targat": 11, "state": 0.00, "percent": 0},
       {"targat": 11, "state": 0.00, "percent": 0}
     ];
-
-    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
+    DatabaseReference Ref_log = FirebaseDatabase.instance.ref('Logs/' + currentUser);
     Ref_log.onChildAdded.listen((event) {
       Map userLogValue = (event.snapshot.value as Map);
       print("jsonResponse!!!!! $userLogValue");
@@ -61,37 +60,37 @@ class _TaskState extends State<TasksPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('任務'),
-          centerTitle: true,
-          backgroundColor: Color(0xFF00BFA5),
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-        ),
-        body: card,
-        bottomNavigationBar: _buildBottomNaigationBar(),
-      );
+    appBar: AppBar(
+      title: Text('任務'),
+      centerTitle: true,
+      backgroundColor: Color(0xFF00BFA5),
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+    ),
+    body: card,
+    bottomNavigationBar: _buildBottomNaigationBar(),
+  );
 
 
   void _onItemTapped(int index) {
-      task=[];
-      DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/$currentUser');
-      Ref.onChildAdded.listen((event) {
-        int id= (event.snapshot.value as Map)["id"];
-        int state= (event.snapshot.value as Map)["state"];
-        if(index == 0 && state <= 4) {
-          task.add(Task.addTask(id,state));
-        }
-        if(index == 1 && state <= 3 && state >= 1) {
-          task.add(Task.addTask(id,state));
-        }
-        if (index == 2 && state == 4) {
-          task.add(Task.addTask(id, state));
-        }
-        //更新 TaskCard Widget(任務卡片列表)
-        setState(() {
-          card = TaskCard(data:task);
-        });
+    task=[];
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/$currentUser');
+    Ref.onChildAdded.listen((event) {
+      int id= (event.snapshot.value as Map)["id"];
+      int state= (event.snapshot.value as Map)["state"];
+      if(index == 0 && state <= 4) {
+        task.add(Task.addTask(id,state));
+      }
+      if(index == 1 && state <= 3 && state >= 1) {
+        task.add(Task.addTask(id,state));
+      }
+      if (index == 2 && state == 4) {
+        task.add(Task.addTask(id, state));
+      }
+      //更新 TaskCard Widget(任務卡片列表)
+      setState(() {
+        card = TaskCard(data:task);
       });
+    });
   }
 
   BottomNavigationBar _buildBottomNaigationBar() {
