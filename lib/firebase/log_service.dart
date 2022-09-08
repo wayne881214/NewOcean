@@ -64,6 +64,7 @@ List<Log> getAllLog() {
 void updateAchievement() {
   List<Achievement> allAchievement = getAllAchievement();
   List<Log> allLog = getAllLog();
+  // allLog.forEach((item) => print("item" +item.carbon));
   List<Achievement> resquest = [];
   allAchievement.forEach((achievement) {
     int points = 0;

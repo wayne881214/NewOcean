@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/sign_in_up/authentication_service.dart';
 import 'package:provider/provider.dart';
+import '../../firebase/log_service.dart';
+import '../../model/achievements_model/achievement_model.dart';
+import '../../model/achievements_model/logs_model.dart';
+import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
+import '../achievements/achievements_page.dart';
 
 class HomePage extends StatefulWidget {
 
