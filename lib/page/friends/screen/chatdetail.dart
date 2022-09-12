@@ -94,8 +94,12 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: Text("Loading"),
+          return Center(/*
+            child: Text("Loading",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.black,
+                decoration: TextDecoration.none,),),*/
           );
         }
 
@@ -152,6 +156,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                         Text(data['msg'],
                                             style: TextStyle(
                                               fontSize: 20,
+                                                decoration: TextDecoration.none,
                                                 color: isSender(
                                                     data['uid'].toString())
                                                     ? Colors.white
@@ -171,6 +176,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                               .toString(),
                                           style: TextStyle(
                                               fontSize: 10,
+                                              decoration: TextDecoration.none,
                                               color: isSender(
                                                   data['uid'].toString())
                                                   ? Colors.white

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,8 @@ class _PeoplePageState extends State<PeoplePage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("users").where('uid', isNotEqualTo: currentUser).snapshots(),
+        //stream: FirebaseFirestore.instance.collection("users").where('uid', isNotEqualTo: currentUser).snapshots(),
+        stream: FirebaseFirestore.instance.collection("friends").where('uid', isEqualTo: currentUser).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
           if (snapshot.hasError) {
@@ -38,14 +40,14 @@ class _PeoplePageState extends State<PeoplePage> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: Text("Loading"),);
+            return Center();
           }
 
           if (snapshot.hasData) {
             return CustomScrollView(
               slivers: [
                 CupertinoSliverNavigationBar(
-                  largeTitle: Text('People'),
+                  largeTitle: Text('好友列表'),
                 ),
                 SliverList(
                     delegate: SliverChildListDelegate(
@@ -53,8 +55,8 @@ class _PeoplePageState extends State<PeoplePage> {
                           Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                           return CupertinoListTile(
                               onTap: () => callChatDetailScreen(
-                            context, data['name'], data['uid']),
-                            title: Text(data['name']),
+                            context, data['friendname'], data['frienduid']),
+                            title: Text(data['friendname']),
                           );
                         }).toList()))
               ],

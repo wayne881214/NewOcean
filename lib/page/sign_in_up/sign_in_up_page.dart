@@ -73,6 +73,7 @@ class SignInUpPage extends StatelessWidget {
                           'name': name,
                           'email': email,
                           'uid': uid,
+                          'ststus': 'Unavalible',
                           'profileImage': ''
                         });
                         DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
@@ -86,7 +87,9 @@ class SignInUpPage extends StatelessWidget {
                         users.add({
                           'name': name,
                           'email': email,
-                          'uid': uid,}
+                          'uid': uid,
+                          'ststus': 'Unavalible',
+                        }
                         );
                         print('success');
                       }
