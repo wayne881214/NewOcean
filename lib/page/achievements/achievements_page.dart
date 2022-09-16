@@ -113,7 +113,7 @@ class _AchievementsPage extends State<AchievementsPage>
 
   void _onItemTapped(int index) {
     screen = page[index];
-    print("onItemTapped $index");
+    // print("onItemTapped $index");
     setState(() {
       screen = page[index];
     });

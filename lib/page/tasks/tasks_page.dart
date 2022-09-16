@@ -34,7 +34,7 @@ class _TaskState extends State<TasksPage> {
     DatabaseReference Ref_log = FirebaseDatabase.instance.ref('Logs/' + currentUser);
     Ref_log.onChildAdded.listen((event) {
       Map userLogValue = (event.snapshot.value as Map);
-      print("jsonResponse!!!!! $userLogValue");
+      // print("jsonResponse!!!!! $userLogValue");
       setState(() {
         int taskId=userLogValue["task"];
         stateApi[taskId]["state"]++;
@@ -48,7 +48,7 @@ class _TaskState extends State<TasksPage> {
       int id = (event.snapshot.value as Map)["id"];
       int state = (event.snapshot.value as Map)["state"];
       if (state <= 4) {
-        print("PPPPPPPP $stateApi");
+        // print("PPPPPPPP $stateApi");
         task.add(Task.addTask2(id, state,stateApi[id]));
       }
       //更新 TaskCard Widget(任務卡片列表)

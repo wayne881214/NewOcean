@@ -28,7 +28,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                 responseApi["yesterday"]) *
             360;
     angle = (angle >= 0) ? angle : 0;
-    print("angle:$angle");
+    // print("angle:$angle");
     return AnimatedBuilder(
       animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {

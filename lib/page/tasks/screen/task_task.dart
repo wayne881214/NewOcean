@@ -50,7 +50,7 @@ class _Task_task extends State<Task_task>{
     // DatabaseReference Ref_log = FirebaseDatabase.instance.ref('User/1/log');
     Ref_log.onChildAdded.listen((event) {
       Map userLogValue = (event.snapshot.value as Map);
-      print("jsonResponse!!!!! $userLogValue");
+      // print("jsonResponse!!!!! $userLogValue");
       setState(() {
         int taskId=userLogValue["task"];
         stateApi[taskId]["state"]++;
@@ -216,7 +216,7 @@ class _Task_task extends State<Task_task>{
     // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
     Ref.onChildAdded.listen((event)  async{
       Map userLogValue = (event.snapshot.value as Map);
-      print("jsonResponse!!!!! $userLogValue");
+      // print("jsonResponse!!!!! $userLogValue");
       if(userLogValue["task"]==widget.id){
         state++;
       }

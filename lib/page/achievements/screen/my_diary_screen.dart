@@ -44,7 +44,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     Ref.onChildAdded.listen((event) async {
       Map userLogValue = (event.snapshot.value as Map);
       jsonResponse.add(userLogValue);
-      print("jsonResponse $jsonResponse");
+      // print("jsonResponse $jsonResponse");
       DateTime my_diary = DateTime.parse(userLogValue["date"]);
       DateTime today = DateTime.now();
       DateTime yesterday = new DateTime.fromMillisecondsSinceEpoch(
@@ -75,8 +75,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         if(DailyApi["yesterday"]==0){
           DailyApi["yesterday"]++;
         }
-        print("DailyApi $DailyApi");
-        print("WeeklyApi $WeeklyApi");
+        // print("DailyApi $DailyApi");
+        // print("WeeklyApi $WeeklyApi");
         super.initState();
     });
 

@@ -185,7 +185,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
-    print("2.filename:$filename");
+    // print("2.filename:$filename");
     return Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
@@ -256,7 +256,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                             final file = "123.jpg";
 
                             this.setState(() => result = "完成任務");
-                            print("1.filename:$filename");
+                            // print("1.filename:$filename");
                             storage.uploadFile(path, filename).then(
                                     (value) => this.setState(() => filename = file));
                             // Timer timer;
@@ -337,7 +337,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
-    print("2.filename:$filename");
+    // print("2.filename:$filename");
     return Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
@@ -408,7 +408,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                             final file = "123.jpg";
 
                             this.setState(() => result = "完成任務");
-                            print("1.filename:$filename");
+                            // print("1.filename:$filename");
                             storage.uploadFile(path, filename).then(
                                     (value) => this.setState(() => filename = file));
                             // Timer timer;
