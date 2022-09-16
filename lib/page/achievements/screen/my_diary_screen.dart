@@ -159,7 +159,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     listViews.add(
-      LineChartSample2(api: WeeklyApi),
+      LineChart_widget(api: WeeklyApi),
     );
     // listViews.add(
     //   BarChartSample2(),

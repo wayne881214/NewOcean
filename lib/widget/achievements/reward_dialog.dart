@@ -30,7 +30,7 @@ class _rewardDialog extends State<rewardDialog> {
     if (progress >= 100) {
       result = "領取獎勵";
     } else {
-      result = "尚未完成($progress)";
+      result = "尚未完成($progress)%";
     }
     return Dialog(
       shape: RoundedRectangleBorder(

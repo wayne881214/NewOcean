@@ -33,14 +33,14 @@ const Map apiTemples = {
   },
 };
 
-class BarChartSample2 extends StatefulWidget {
-  const BarChartSample2({Key? key}) : super(key: key);
+class BarChart_widget extends StatefulWidget {
+  const BarChart_widget({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => BarChartSample2State();
+  State<StatefulWidget> createState() => BarChart_widgetState();
 }
 
-class BarChartSample2State extends State<BarChartSample2> {
+class BarChart_widgetState extends State<BarChart_widget> {
   final Color leftBarColor = const Color(0xff53fdd7);
   final Color rightBarColor = const Color(0xffff5182);
   final double width = 7;

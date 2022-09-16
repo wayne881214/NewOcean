@@ -16,15 +16,15 @@ const double minY= 0;
 const double maxY= 5000;
 
 
-class LineChartSample2 extends StatefulWidget {
+class LineChart_widget extends StatefulWidget {
   final Map? api;
-  const LineChartSample2({Key? key,this.api}) : super(key: key);
+  const LineChart_widget({Key? key,this.api}) : super(key: key);
   @override
-  _LineChartSample2State createState() => _LineChartSample2State();
+  _LineChart_widgetState createState() => _LineChart_widgetState();
 
 }
 
-class _LineChartSample2State extends State<LineChartSample2>  {
+class _LineChart_widgetState extends State<LineChart_widget>  {
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
