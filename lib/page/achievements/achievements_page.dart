@@ -17,7 +17,7 @@ class _AchievementsPage extends State<AchievementsPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   Widget screen = Container(
-    color: FitnessAppTheme.background,
+    color: achievementTheme.background,
   );
   int index = 1;
   List<Widget> page=[];

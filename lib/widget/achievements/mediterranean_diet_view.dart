@@ -42,7 +42,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: FitnessAppTheme.white,
+                  color: achievementTheme.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -50,7 +50,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: FitnessAppTheme.grey.withOpacity(0.2),
+                        color: achievementTheme.grey.withOpacity(0.2),
                         offset: Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -96,11 +96,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontFamily:
-                                                      FitnessAppTheme.fontName,
+                                                      achievementTheme.fontName,
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 16,
                                                   letterSpacing: -0.1,
-                                                  color: FitnessAppTheme.grey
+                                                  color: achievementTheme.grey
                                                       .withOpacity(0.5),
                                                 ),
                                               ),
@@ -126,12 +126,12 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          FitnessAppTheme
+                                                          achievementTheme
                                                               .fontName,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color: FitnessAppTheme
+                                                      color: achievementTheme
                                                           .darkerText,
                                                     ),
                                                   ),
@@ -145,13 +145,13 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          FitnessAppTheme
+                                                          achievementTheme
                                                               .fontName,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 12,
                                                       letterSpacing: -0.2,
-                                                      color: FitnessAppTheme
+                                                      color: achievementTheme
                                                           .grey
                                                           .withOpacity(0.5),
                                                     ),
@@ -195,11 +195,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontFamily:
-                                                      FitnessAppTheme.fontName,
+                                                      achievementTheme.fontName,
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 16,
                                                   letterSpacing: -0.1,
-                                                  color: FitnessAppTheme.grey
+                                                  color: achievementTheme.grey
                                                       .withOpacity(0.5),
                                                 ),
                                               ),
@@ -225,12 +225,12 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          FitnessAppTheme
+                                                          achievementTheme
                                                               .fontName,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color: FitnessAppTheme
+                                                      color: achievementTheme
                                                           .darkerText,
                                                     ),
                                                   ),
@@ -244,13 +244,13 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          FitnessAppTheme
+                                                          achievementTheme
                                                               .fontName,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 12,
                                                       letterSpacing: -0.2,
-                                                      color: FitnessAppTheme
+                                                      color: achievementTheme
                                                           .grey
                                                           .withOpacity(0.5),
                                                     ),
@@ -279,13 +279,13 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                        color: FitnessAppTheme.white,
+                                        color: achievementTheme.white,
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(100.0),
                                         ),
                                         border: new Border.all(
                                             width: 4,
-                                            color: FitnessAppTheme
+                                            color: achievementTheme
                                                 .nearlyDarkBlue
                                                 .withOpacity(0.2)),
                                       ),
@@ -300,11 +300,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily:
-                                                  FitnessAppTheme.fontName,
+                                                  achievementTheme.fontName,
                                               fontWeight: FontWeight.normal,
                                               fontSize: 24,
                                               letterSpacing: 0.0,
-                                              color: FitnessAppTheme
+                                              color: achievementTheme
                                                   .nearlyDarkBlue,
                                             ),
                                           ),
@@ -313,11 +313,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily:
-                                                  FitnessAppTheme.fontName,
+                                                  achievementTheme.fontName,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12,
                                               letterSpacing: 0.0,
-                                              color: FitnessAppTheme.grey
+                                              color: achievementTheme.grey
                                                   .withOpacity(0.5),
                                             ),
                                           ),
@@ -329,7 +329,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     padding: const EdgeInsets.all(4.0),
                                     child: CustomPaint(
                                       painter: CurvePainter(colors: [
-                                        FitnessAppTheme.nearlyDarkBlue,
+                                        achievementTheme.nearlyDarkBlue,
                                         HexColor("#8A98E8"),
                                         HexColor("#8A98E8")
                                       ], angle: angle),
@@ -352,7 +352,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                       child: Container(
                         height: 2,
                         decoration: BoxDecoration(
-                          color: FitnessAppTheme.background,
+                          color: achievementTheme.background,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
@@ -371,11 +371,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                   '減塑類任務',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontFamily: FitnessAppTheme.fontName,
+                                    fontFamily: achievementTheme.fontName,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                     letterSpacing: -0.2,
-                                    color: FitnessAppTheme.darkText,
+                                    color: achievementTheme.darkText,
                                   ),
                                 ),
                                 Padding(
@@ -415,11 +415,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     '589 g',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: FitnessAppTheme.fontName,
+                                      fontFamily: achievementTheme.fontName,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
                                       color:
-                                          FitnessAppTheme.grey.withOpacity(0.5),
+                                          achievementTheme.grey.withOpacity(0.5),
                                     ),
                                   ),
                                 ),
@@ -439,11 +439,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                       '節能類任務',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: FitnessAppTheme.fontName,
+                                        fontFamily: achievementTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: FitnessAppTheme.darkText,
+                                        color: achievementTheme.darkText,
                                       ),
                                     ),
                                     Padding(
@@ -485,10 +485,10 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                         '489 g ',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: FitnessAppTheme.fontName,
+                                          fontFamily: achievementTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: FitnessAppTheme.grey
+                                          color: achievementTheme.grey
                                               .withOpacity(0.5),
                                         ),
                                       ),
@@ -510,11 +510,11 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     Text(
                                       '其他類任務',
                                       style: TextStyle(
-                                        fontFamily: FitnessAppTheme.fontName,
+                                        fontFamily: achievementTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: FitnessAppTheme.darkText,
+                                        color: achievementTheme.darkText,
                                       ),
                                     ),
                                     Padding(
@@ -557,10 +557,10 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                         '300 g',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: FitnessAppTheme.fontName,
+                                          fontFamily: achievementTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: FitnessAppTheme.grey
+                                          color: achievementTheme.grey
                                               .withOpacity(0.5),
                                         ),
                                       ),

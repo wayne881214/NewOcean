@@ -8,6 +8,8 @@ import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/achievement_model.dart';
 import '../../../model/achievements_model/logs_model.dart';
 import '../../../widget/achievements/mediterranean_diet_view.dart';
+import '../../../widget/achievements/reward_dialog.dart';
+import '../../../widget/task/task_dialog/sealionTask_dialog_widget.dart';
 
 List jsonResponse = [];
 
@@ -75,23 +77,22 @@ class _AchievementsListView extends State<AchievementsListView> {
     return ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          double progress =
-              (data[index].points / data[index].target).toDouble() * 100;
-          progress=(progress<=100)?progress:100;
-          return _tile(data[index].name.toString(), data[index].description,
-              progress, Icons.work);
+          return _tile(data[index], Icons.work);
         });
   }
 
-  int _count = 0;
-
   @override
-  Card _tile(String title, String subtitle, double progress, IconData icon) {
+  Card _tile(Achievement achievement, IconData icon) {
+    String title = achievement.name.toString();
+    String subtitle = achievement.description;
+    double progress = (achievement.points / achievement.target).toDouble() * 100;
+    progress = (progress <= 100) ? progress : 100;
+
     return Card(
         shape: RoundedRectangleBorder(
           side: BorderSide(
             width: 4.0,
-            color: Colors.green.shade300,
+            color: Colors.teal,
           ),
           borderRadius: BorderRadius.circular(15.0),
         ),
@@ -102,7 +103,17 @@ class _AchievementsListView extends State<AchievementsListView> {
                 children: [
               ListTile(
                 minVerticalPadding: 30,
-                onTap: () => setState(() => _count++),
+                onTap: () {
+                  showDialog<bool>(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (BuildContext context) => rewardDialog(achievement:achievement),
+                  ).then((onValue) {
+                    if (onValue != null) {
+                      // 点击确定后返回的业务逻辑。
+                    }
+                  });
+                },
                 title: Text(title,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -111,7 +122,7 @@ class _AchievementsListView extends State<AchievementsListView> {
                 subtitle: Text("$subtitle \n進度:$progress%"),
                 leading: Icon(
                   Icons.audiotrack,
-                  color: Colors.green,
+                  color: Colors.teal,
                   size: 120.0,
                 ),
               ),
@@ -121,7 +132,7 @@ class _AchievementsListView extends State<AchievementsListView> {
                   height: 20,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: HexColor('#00aeae').withOpacity(0.2),
+                    color: Colors.teal.withOpacity(0.2),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
                   child: Row(
@@ -131,8 +142,8 @@ class _AchievementsListView extends State<AchievementsListView> {
                         height: 20,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(colors: [
-                            HexColor('#00aeae'),
-                            HexColor('#00aeae').withOpacity(0.5),
+                            Colors.teal,
+                            Colors.teal.withOpacity(0.5),
                           ]),
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),

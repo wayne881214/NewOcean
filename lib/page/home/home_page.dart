@@ -53,30 +53,6 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/turtle.png'),
-            ElevatedButton(onPressed: () async {
-              User? user = FirebaseAuth.instance.currentUser;
-              if( user != null ) {
-                String uid = user.uid;
-                DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
-                for (int i = 1; i < 5; i++)
-                await taskRef.child('task$i').set(
-                    {
-                      'state': 0,
-                      'id': i,
-                    }
-                );
-              }
-            }, child: const Text('生成任務')),
-            ElevatedButton(onPressed: () async {
-              User? user = FirebaseAuth.instance.currentUser;
-              if( user != null ) {
-                String uid = user.uid;
-                DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/$uid/task1');
-                await taskRef.update({
-                  'state': '1',
-                });
-              }
-            }, child: const Text('Task1更改至進行中')),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -84,21 +60,6 @@ class _HomePageState extends State<HomePage> {
                 ));
               },
               child: Text('成就連結'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => LogList(),
-                ));
-              },
-              child: Text('詳細資料'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Log resquestLog=Log.addTaskLog(4,2);
-                addLog(resquestLog);
-              },
-              child: Text('一鍵送出任務'),
             ),
             ElevatedButton(
                 onPressed: () {

@@ -45,7 +45,7 @@ class _LineChartSample2State extends State<LineChartSample2>  {
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: FitnessAppTheme.background),
+                color: achievementTheme.background),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -69,7 +69,7 @@ class _LineChartSample2State extends State<LineChartSample2>  {
               style: TextStyle(
                   fontSize: 15,
                   color:
-                      showAvg ? FitnessAppTheme.darkerText : FitnessAppTheme.darkerText),
+                      showAvg ? achievementTheme.darkerText : achievementTheme.darkerText),
             ),
           ),
         ),
@@ -141,13 +141,13 @@ class _LineChartSample2State extends State<LineChartSample2>  {
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: FitnessAppTheme.nearlyWhite,
+            color: achievementTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: FitnessAppTheme.nearlyWhite,
+            color: achievementTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
@@ -250,13 +250,13 @@ class _LineChartSample2State extends State<LineChartSample2>  {
         horizontalInterval: 1,
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: FitnessAppTheme.nearlyWhite,
+            color: achievementTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: FitnessAppTheme.nearlyWhite,
+            color: achievementTheme.nearlyWhite,
             strokeWidth: 1,
           );
         },
