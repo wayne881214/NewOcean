@@ -11,7 +11,8 @@ import '../../../widget/achievements/loglist_view.dart';
 import '../../../widget/achievements/mediterranean_diet_view.dart';
 
 class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
+  final DateTime today;
+  const MyDiaryScreen({Key? key, this.animationController,required this.today}) : super(key: key);
 
   final AnimationController? animationController;
 
@@ -31,53 +32,57 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   // Map api ={"daily":0,"yesterday":0};
   Map DailyApi = {"daily": 0, "yesterday": 0};
   Map WeeklyApi = {
-    "userData": [0, 0, 0, 0, 0, 0, 0],
-    "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+    "avgsData": [0, 0, 0, 0, 0, 0, 0],
+    "userData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
   };
+  late DateTime today= widget.today;
+  late DateTime yesterday=new DateTime.fromMillisecondsSinceEpoch(
+      today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
+
+  late String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
+  late String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
 
   @override
   void initState() {
-    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    DailyApi = {"daily": 0, "yesterday": 0};
+    WeeklyApi = {
+      "userData": [0, 0, 0, 0, 0, 0, 0],
+      "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+    };
     DatabaseReference Ref =
-        FirebaseDatabase.instance.ref('Logs/' + currentUser);
-    // DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/log');
+    FirebaseDatabase.instance.ref('Logs/' + currentUser);
     Ref.onChildAdded.listen((event) async {
       Map userLogValue = (event.snapshot.value as Map);
       jsonResponse.add(userLogValue);
       // print("jsonResponse $jsonResponse");
       DateTime my_diary = DateTime.parse(userLogValue["date"]);
-      DateTime today = DateTime.now();
-      DateTime yesterday = new DateTime.fromMillisecondsSinceEpoch(
-          DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
-
       String myD = formatDate(my_diary, [yyyy, '-', mm, '-', dd]);
-      String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
-      String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
+
       if (myD == todayD) {
         DailyApi["daily"] += userLogValue["carbon"];
       }
       if (myD == yesterdayD) {
         DailyApi["yesterday"] += userLogValue["carbon"];
       }
-        // weekly API
-        var D = 7;
-        for (var i = 0; i < D; i++) {
-          DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
-              DateTime.now().millisecondsSinceEpoch - 24 * 60 * 60 * 1000 * i);
-          String yesterday_2D =
-              formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
-          if (myD == yesterday_2D) {
-            setState(() {
-              WeeklyApi["userData"][D - i - 1] += userLogValue["carbon"];
-            });
-          }
+      // weekly API
+      var D = 7;
+      for (var i = 0; i < D; i++) {
+        DateTime yesterday_2 = new DateTime.fromMillisecondsSinceEpoch(
+            today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000 * i);
+        String yesterday_2D = formatDate(yesterday_2, [yyyy, '-', mm, '-', dd]);
+        if (myD == yesterday_2D) {
+          setState(() {
+            WeeklyApi["userData"][D - i - 1] += userLogValue["carbon"];
+          });
         }
-        if(DailyApi["yesterday"]==0){
-          DailyApi["yesterday"]++;
-        }
-        // print("DailyApi $DailyApi");
-        // print("WeeklyApi $WeeklyApi");
-        super.initState();
+      }
+
+      // print("DailyApi $DailyApi");
+      // print("WeeklyApi $WeeklyApi");
+      listViews = <Widget>[];
+      addAllListData();
+      super.initState();
     });
 
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -85,13 +90,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
             parent: widget.animationController!,
             curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
     addAllListData();
-
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
         if (topBarOpacity != 1.0) {
           setState(() {
             topBarOpacity = 1.0;
-
           });
         }
       } else if (scrollController.offset <= 24 &&
@@ -279,7 +282,18 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(32.0)),
-                                onTap: () {},
+                                onTap: () async {
+                                  this.setState(() {
+                                    today = yesterday;
+                                    yesterday = new DateTime.fromMillisecondsSinceEpoch(
+                                        today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
+                                    todayD = formatDate(
+                                        today, [yyyy, '-', mm, '-', dd]);
+                                    yesterdayD = formatDate(
+                                        yesterday, [yyyy, '-', mm, '-', dd]);
+                                    initState();
+                                  });
+                                },
                                 child: Center(
                                   child: Icon(
                                     Icons.keyboard_arrow_left,
@@ -304,7 +318,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    '$todayD',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: achievementTheme.fontName,
@@ -324,7 +338,20 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(32.0)),
-                                onTap: () {},
+                                onTap: () {
+                                  print('!!!!!!!!!!!!!!!\n$today');
+                                  setState(() {
+                                    today = new DateTime.fromMillisecondsSinceEpoch(
+                                        today.millisecondsSinceEpoch + 24 * 60 * 60 * 1000);;
+                                    yesterday = new DateTime.fromMillisecondsSinceEpoch(
+                                        today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
+                                    todayD = formatDate(
+                                        today, [yyyy, '-', mm, '-', dd]);
+                                    yesterdayD = formatDate(
+                                        yesterday, [yyyy, '-', mm, '-', dd]);
+                                  });
+                                  initState();
+                                },
                                 child: Center(
                                   child: Icon(
                                     Icons.keyboard_arrow_right,

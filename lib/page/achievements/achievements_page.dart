@@ -29,8 +29,8 @@ class _AchievementsPage extends State<AchievementsPage>
 
 
 
-
-    page = [MyDiaryScreen(animationController: animationController), AchievementsList(),  AchievementsList()];
+    late DateTime today= DateTime.now();
+    page = [MyDiaryScreen(animationController: animationController,today:today), AchievementsList(),  AchievementsList()];
     screen = page[index];
     super.initState();
   }
@@ -100,7 +100,7 @@ class _AchievementsPage extends State<AchievementsPage>
               decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: kAccent, width: 2))),
               child: Text(
-                '稱號',
+                '背包',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             )),

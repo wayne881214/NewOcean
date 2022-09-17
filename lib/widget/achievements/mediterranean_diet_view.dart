@@ -20,12 +20,14 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
   // Map responseApi = {"daily": 800, "yesterday": 1};
   // Map responseApi = {"daily": 2127, "yesterday": 0};
   Map responseApi = {};
+
   @override
   Widget build(BuildContext context) {
     responseApi = widget.api!;
+
     double angle = 360.00 -
         ((responseApi["yesterday"] - responseApi["daily"]) /
-                responseApi["yesterday"]) *
+                (responseApi["yesterday"]+1)) *
             360;
     angle = (angle >= 0) ? angle : 0;
     // print("angle:$angle");
@@ -418,8 +420,8 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                       fontFamily: achievementTheme.fontName,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
-                                      color:
-                                          achievementTheme.grey.withOpacity(0.5),
+                                      color: achievementTheme.grey
+                                          .withOpacity(0.5),
                                     ),
                                   ),
                                 ),

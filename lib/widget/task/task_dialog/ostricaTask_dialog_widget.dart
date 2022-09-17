@@ -150,7 +150,6 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
   }
 }
 
-// 環保用具  https://i.imgur.com/SZkKNQw.png
-// 環保商店1 https://i.imgur.com/oMgFHGW.png
-// 環保商店2 https://i.imgur.com/ZsAhmXp.png
-// 環保商店3 https://i.imgur.com/JknJtFY.png
+// 環保用具  https://i.imgur.com/8HvBrIe.jpg
+// 環保商店1 https://i.imgur.com/Z7hvZNe.jpg
+

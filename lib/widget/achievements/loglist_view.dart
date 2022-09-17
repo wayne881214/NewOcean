@@ -61,22 +61,25 @@ class LogListView extends StatelessWidget {
     return ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return _tile(data[index].task_id.toString(), data[index].date,
-              data[index].carbon.toString(), Icons.work);
+          return _tile(data[index], Icons.work);
         });
   }
 
-  ListTile _tile(String title, String subtitle, String carbon, IconData icon) =>
-      ListTile(
-        title: Text("任務ID:" + title,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-            )),
-        subtitle: Text("碳足跡減量:" + carbon + "\n" + "完成時間:" + subtitle),
-        leading: Icon(
-          icon,
-          color: Colors.blue[500],
-        ),
-      );
+  ListTile _tile(Log data, IconData icon) {
+    String title= data.task_id.toString()+'-'+data.task_state.toString();
+    String subtitle= data.date;
+    String carbon =data.carbon.toString();
+    return ListTile(
+      title: Text("任務ID:" + title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          )),
+      subtitle: Text("碳足跡減量:" + carbon + "\n" + "完成時間:" + subtitle),
+      leading: Icon(
+        icon,
+        color: Colors.blue[500],
+      ),
+    );
+  }
 }

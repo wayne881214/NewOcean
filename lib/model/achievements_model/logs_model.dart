@@ -17,7 +17,11 @@ class Log {
     createApi(resquestLog);
     return resquestLog;
   }
-
+  static Log addOtherLog(int id) {
+    Log resquestLog = setOtherLog(id);
+    createApi(resquestLog);
+    return resquestLog;
+  }
   static Log setTaskLog(int task_id, int task_state) {
     List<String> labels = [];
     labels.add("任務");
@@ -32,11 +36,11 @@ class Log {
           case 2:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           case 3:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -48,11 +52,11 @@ class Log {
           case 2:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           case 3:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -64,11 +68,11 @@ class Log {
           case 2:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           case 3:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -80,14 +84,32 @@ class Log {
           case 2:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           case 3:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 100, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
+      default:
+        return Log(0, 0, 0, date, labels);
+    }
+  }
+  static Log setOtherLog(int id) {
+    List<String> labels = [];
+    String date = formatDate(
+        DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]);
+    switch (id) {
+      case 1:
+        labels.add("登入");
+        return Log(id, 0, 0, date, labels);
+      case 2:
+        labels.add("好友");
+        return Log(id, 0, 0, date, labels);
+      case 3:
+        labels.add("購買");
+        return Log(id, 0, 0, date, labels);
       default:
         return Log(0, 0, 0, date, labels);
     }

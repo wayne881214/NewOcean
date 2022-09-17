@@ -78,7 +78,13 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => MyHomePage(),
                   ));
                 },
-                child: const Text('商店與背包'))
+                child: const Text('商店與背包')),
+            ElevatedButton(
+                onPressed: () {
+                  Log resquestLog = Log.addOtherLog(1);
+                  addLog(resquestLog);
+                },
+                child: const Text('簽到'))
           ],
         ),
       ),

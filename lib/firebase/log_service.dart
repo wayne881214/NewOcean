@@ -1,6 +1,10 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:date_format/date_format.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../model/achievements_model/achievement_model.dart';
 import '../model/achievements_model/logs_model.dart';
@@ -12,6 +16,7 @@ void addLog(Log Data) {
       '/' +
       formatDate(
           DateTime.now(), [yyyy, "-", mm, "-", dd, " ", HH, ":", nn, ":", ss]));
+  show("資料已送出");
   Ref.set(Data.api).whenComplete(() {}).catchError((error) {
     print(error);
   });
@@ -85,4 +90,15 @@ void updateAchievement() {
     resquest.add(achievement);
   });
   resquest.forEach((item) => addAchievements(item));
+}
+
+void show(msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 3,
+      backgroundColor: Color(0xffB3E7E7),
+      textColor: Colors.black,
+      fontSize: 16.0);
 }

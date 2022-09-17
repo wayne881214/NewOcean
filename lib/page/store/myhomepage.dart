@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage>
           title: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Shoes Shop',
+              '商店',
               style: style.copyWith(color: Colors.black, fontSize: 16),
             ),
           ),
@@ -126,13 +126,13 @@ class _MyHomePageState extends State<MyHomePage>
                       text: 'All',
                     ),
                     Tab(
-                      text: 'Sport',
+                      text: '實體道具',
                     ),
                     Tab(
-                      text: 'Men',
+                      text: '裝扮',
                     ),
                     Tab(
-                      text: 'Women',
+                      text: '動物',
                     ),
                   ]),
               const SizedBox(

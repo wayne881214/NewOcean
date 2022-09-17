@@ -44,6 +44,14 @@ class Achievement {
         labels = ["拍照", ""];
         target = 5;
         break;
+      case "簽到老人":
+        labels = ["登入", ""];
+        target = 10;
+        break;
+      case "社交達人":
+        labels = ["好友", ""];
+        target = 5;
+        break;
       default:
         break;
     }
@@ -56,9 +64,12 @@ class Achievement {
   static void initAchievements() {
     List<Achievement> resquest = [];
     resquest.add(setAchievement(1, "任務", "任務高手", "完成10次任務", 1,  0));
-    resquest.add(setAchievement(2, "任務", "動物愛好者", "收集2個動物", 1,  0));
-    resquest.add(setAchievement(3, "任務", "這遊戲怎麼要一直拍照", "完成5次需要鏡頭的任務", 3, 0));
+    resquest.add(setAchievement(2, "任務", "簽到老人", "登入10天", 3,  0));
+    resquest.add(setAchievement(3, "任務", "社交達人", "擁有5個好友", 3,  0));
     resquest.add(setAchievement(4, "任務", "減塑專家", "完成5次減塑類任務", 2,  0));
+    resquest.add(setAchievement(5, "任務", "動物愛好者", "收集2個動物", 1,  0));
+    resquest.add(setAchievement(6, "任務", "這遊戲怎麼要一直拍照", "完成5次需要鏡頭的任務", 3, 0));
+
     resquest.forEach((item) => addAchievements(item));
   }
 

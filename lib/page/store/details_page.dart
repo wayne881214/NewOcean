@@ -61,7 +61,7 @@ class _DetailsPageState extends State<DetailsPage> {
               height: 10,
             ),
             Text(
-              'Size',
+              '!!!!',
               style: style.copyWith(
                   fontWeight: FontWeight.w100,
                   fontSize: 20,
