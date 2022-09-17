@@ -15,25 +15,28 @@ class Achievement {
   final int target;
   int points;
   final List<String> label;
+  final Map reward;
   late final Map<String, Object> api;
 
   Achievement(this.id, this.type, this.name, this.description, this.star,
-       this.target, this.points, this.label);
-
+       this.target, this.points, this.label, this.reward);
   static Achievement setAchievement(int id, String type, String name,
       String description, int star,  int points) {
     List<String> labels = [];
+    Map reward = {'經驗':100,'金錢':200,'道具1':'道具1'};
+
+    // List<String> reward = ["test"];
     int target = 0;
     switch (name) {
-      case "任務高手1":
+      case "任務高手":
         labels = ["任務", ""];
         target = 10;
         break;
-      case "動物愛好者1":
+      case "動物愛好者":
         labels = ["動物", ""];
         target = 5;
         break;
-      case "減塑專家1":
+      case "減塑專家":
         labels = ["減塑", ""];
         target = 5;
         break;
@@ -45,17 +48,17 @@ class Achievement {
         break;
     }
     Achievement resquest = Achievement(
-        id, type, name, description, star, target, points, labels);
+        id, type, name, description, star, target, points, labels,reward);
     createApi(resquest);
     return resquest;
   }
 
   static void initAchievements() {
     List<Achievement> resquest = [];
-    resquest.add(setAchievement(1, "任務", "任務高手1", "完成10次任務", 1,  0));
-    resquest.add(setAchievement(2, "任務", "動物愛好者1", "收集2個動物", 1,  0));
+    resquest.add(setAchievement(1, "任務", "任務高手", "完成10次任務", 1,  0));
+    resquest.add(setAchievement(2, "任務", "動物愛好者", "收集2個動物", 1,  0));
     resquest.add(setAchievement(3, "任務", "這遊戲怎麼要一直拍照", "完成5次需要鏡頭的任務", 3, 0));
-    resquest.add(setAchievement(4, "任務", "減塑專家1", "完成5次減塑類任務", 2,  0));
+    resquest.add(setAchievement(4, "任務", "減塑專家", "完成5次減塑類任務", 2,  0));
     resquest.forEach((item) => addAchievements(item));
   }
 
@@ -71,6 +74,7 @@ class Achievement {
       json['target'],
       json['points'],
       labels,
+      json['reward'],
     );
   }
 }
@@ -85,5 +89,6 @@ void createApi(Achievement achievement) {
     "target": achievement.target,
     "points": achievement.points,
     "label": achievement.label,
+    "reward": achievement.reward,
   };
 }

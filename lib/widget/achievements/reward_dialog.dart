@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../constants/achievements_theme.dart';
 import '../../model/achievements_model/achievement_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class rewardDialog extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _rewardDialog extends State<rewardDialog> {
     if (progress >= 100) {
       result = "領取獎勵";
     } else {
-      result = "尚未完成($progress)%";
+      result = "尚未完成($progress%)";
     }
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -65,6 +66,8 @@ class _rewardDialog extends State<rewardDialog> {
                       )),
                   Expanded(flex: 4, child: Text(achievement.description)),
                   Expanded(
+                      flex: 4, child: Text(getAllrewards(achievement.reward))),
+                  Expanded(
                       flex: 2,
                       child: Container(
                         padding: EdgeInsets.all(5.0),
@@ -83,11 +86,28 @@ class _rewardDialog extends State<rewardDialog> {
     );
   }
 
-  void _pushLog() {}
+  void _pushLog() {
+    Fluttertoast.showToast(
+        msg: "已取得獎勵",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Color(0xffB3E7E7),
+        textColor: Colors.black,
+        fontSize: 16.0);
+  }
 
   void _checkAndPush() {
-    if (result == "完成任務") {
+    if (result == "領取獎勵") {
       _pushLog();
     }
+  }
+
+  String getAllrewards(Map rewards) {
+    String str = '';
+    rewards.forEach((key, value) {
+      str += "$key:$value\n";
+    });
+    return str;
   }
 }

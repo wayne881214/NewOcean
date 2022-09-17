@@ -31,6 +31,7 @@ class _AchievementsList extends State<AchievementsList> {
       Map userLogValue = (event.snapshot.value as Map);
       this.setState(
           () => jsonResponse.add(new Map<String, dynamic>.from(userLogValue)));
+
     });
     super.initState();
   }
@@ -56,6 +57,7 @@ class _AchievementsListView extends State<AchievementsListView> {
     return FutureBuilder<List<Achievement>>(
       future: _fetchLogs(),
       builder: (context, snapshot) {
+        List<Achievement>? data = snapshot.data;
         if (snapshot.hasData) {
           List<Achievement>? data = snapshot.data;
           return _logsListView(data);

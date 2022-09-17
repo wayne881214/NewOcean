@@ -1,6 +1,13 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/achievements/screen/achievements_screen.dart';
+import 'package:newocean/page/achievements/temp/layout/shop_app/shoplayout.dart';
+import 'package:newocean/page/achievements/temp/main.dart';
+import 'package:newocean/page/achievements/temp/shared/bloc_observer.dart';
+import 'package:newocean/page/achievements/temp/shared/components/constants.dart';
+import 'package:newocean/page/achievements/temp/shared/network/local/cache_helper.dart';
+import 'package:newocean/page/achievements/temp/shared/network/remote/dio_helper.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/achievements_theme.dart';
@@ -26,7 +33,20 @@ class _AchievementsPage extends State<AchievementsPage>
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
 
-    page = [MyDiaryScreen(animationController: animationController), AchievementsList(), AchievementsList()];
+
+
+
+    Bloc.observer = MyBlocObserver();
+    WidgetsFlutterBinding.ensureInitialized();
+
+    DioHelper.init();
+    CacheHelper.init();
+    Widget widget;
+    widget = ShopLayoutScreen();
+
+
+
+    page = [MyDiaryScreen(animationController: animationController), AchievementsList(), Shop(true, widget, 'token')];
     screen = page[index];
     super.initState();
   }
