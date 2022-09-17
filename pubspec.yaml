@@ -73,6 +73,14 @@ dependencies:
   fluttertoast: ^8.0.9
 
 
+  animate_do: ^2.1.0
+  flutter_custom_clippers: ^2.0.0
+  google_fonts: ^2.2.0
+  page_transition: ^2.0.4
+  badges: ^2.0.2
+  awesome_dialog: ^2.1.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

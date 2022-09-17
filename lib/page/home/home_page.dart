@@ -10,6 +10,7 @@ import '../../model/achievements_model/logs_model.dart';
 import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
+import '../store/myhomepage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -73,9 +74,9 @@ class _HomePageState extends State<HomePage> {
                 child: const Text('手動更新')),
             ElevatedButton(
                 onPressed: () {
-
-
-                  // updateAchievement();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MyHomePage(),
+                  ));
                 },
                 child: const Text('商店與背包'))
           ],
