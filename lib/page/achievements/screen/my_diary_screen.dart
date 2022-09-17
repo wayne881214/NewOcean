@@ -11,8 +11,9 @@ import '../../../widget/achievements/loglist_view.dart';
 import '../../../widget/achievements/mediterranean_diet_view.dart';
 
 class MyDiaryScreen extends StatefulWidget {
+  final currentUser;
   final DateTime today;
-  const MyDiaryScreen({Key? key, this.animationController,required this.today}) : super(key: key);
+  const MyDiaryScreen({Key? key, this.animationController,required this.currentUser,required this.today}) : super(key: key);
 
   final AnimationController? animationController;
 
@@ -41,7 +42,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
 
   late String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
   late String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
-  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+
+  late String currentUser = widget.currentUser;
 
   @override
   void initState() {
@@ -119,7 +121,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     const int count = 9;
     listViews.add(
       TitleView(
-        titleTxt: '減碳總覽',
+        titleTxt: '$currentUser的\n減碳總覽',
         subTxt: '查看詳細',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,

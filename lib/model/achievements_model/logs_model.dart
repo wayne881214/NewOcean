@@ -110,6 +110,12 @@ class Log {
       case 3:
         labels.add("購買");
         return Log(id, 0, 0, date, labels);
+      case 4:
+        labels.add("查看他人");
+        return Log(id, 0, 0, date, labels);
+      case 5:
+        labels.add("動物互動");
+        return Log(id, 0, 0, date, labels);
       default:
         return Log(0, 0, 0, date, labels);
     }

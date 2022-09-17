@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/achievements/screen/achievements_screen.dart';
+import 'package:newocean/page/achievements/screen/friend_show.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/achievements_theme.dart';
@@ -25,12 +27,9 @@ class _AchievementsPage extends State<AchievementsPage>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-
-
-
-
     late DateTime today= DateTime.now();
-    page = [MyDiaryScreen(animationController: animationController,today:today), AchievementsList(),  AchievementsList()];
+    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    page = [MyDiaryScreen(animationController: animationController,currentUser:currentUser,today:today), AchievementsList(),  PeopleShow()];
     screen = page[index];
     super.initState();
   }
@@ -100,7 +99,7 @@ class _AchievementsPage extends State<AchievementsPage>
               decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: kAccent, width: 2))),
               child: Text(
-                '背包',
+                '查看他人',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             )),
