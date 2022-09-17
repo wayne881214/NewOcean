@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,6 @@ import '../../model/achievements_model/logs_model.dart';
 import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
-import '../achievements/temp/layout/shop_app/shoplayout.dart';
-import '../achievements/temp/main.dart';
-import '../achievements/temp/shared/bloc_observer.dart';
-import '../achievements/temp/shared/network/local/cache_helper.dart';
-import '../achievements/temp/shared/network/remote/dio_helper.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -80,16 +74,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
                 onPressed: () {
 
-                  Bloc.observer = MyBlocObserver();
-                  WidgetsFlutterBinding.ensureInitialized();
 
-                  DioHelper.init();
-                  CacheHelper.init();
-                  Widget widget;
-                  widget = ShopLayoutScreen();
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Shop(true, widget, 'token'),
-                  ));
                   // updateAchievement();
                 },
                 child: const Text('商店與背包'))

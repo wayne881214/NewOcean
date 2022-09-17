@@ -15,16 +15,11 @@ MERGED from [:file_picker] D:\siemens\temp\0916\NewOcean\build\file_picker\inter
 MERGED from [:flutter_barcode_scanner] D:\siemens\temp\0916\NewOcean\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\siemens\temp\0916\NewOcean\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:sqflite] D:\siemens\temp\0916\NewOcean\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:all_sensors] D:\siemens\temp\0916\NewOcean\build\all_sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider_android] D:\siemens\temp\0916\NewOcean\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:qr_code_scanner] D:\siemens\temp\0916\NewOcean\build\qr_code_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
-MERGED from [:webview_flutter_android] D:\siemens\temp\0916\NewOcean\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:shared_preferences_android] D:\siemens\temp\0916\NewOcean\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_chat_bubble] D:\siemens\temp\0916\NewOcean\build\flutter_chat_bubble\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sensors] D:\siemens\temp\0916\NewOcean\build\sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:hexcolor] D:\siemens\temp\0916\NewOcean\build\hexcolor\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:fluttertoast] D:\siemens\temp\0916\NewOcean\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_sound] D:\siemens\temp\0916\NewOcean\build\flutter_sound\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Administrator\.gradle\caches\transforms-3\f211e44387b08c029b905c2f448b3a3a\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
@@ -44,7 +39,6 @@ MERGED from [com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Administra
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\97d642fd8be7d898aebcaa5cb7761edb\transformed\constraintlayout-2.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.4.2] C:\Users\Administrator\.gradle\caches\transforms-3\3daf1a24dc3681762bc6138c149908bf\transformed\appcompat-1.4.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\bec2d16d590438842d09662fd9f373f4\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.webkit:webkit:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\f2cd9f1dd7344eb13d381ce6248459c2\transformed\webkit-1.5.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media:media:1.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\e8f308715a59d372a9c755ee440a8910\transformed\media-1.4.1\AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Administrator\.gradle\caches\transforms-3\27f55002c4d1cff5e2198e3b16ad6ace\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\130fe65d2f7423c65f4ab04dbb3681a9\transformed\jetified-firebase-database-collection-18.0.1\AndroidManifest.xml:2:1-9:12
@@ -89,13 +83,13 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Administrator\
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\b007c717d42b1e6fa0c237d639fa79a1\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\d67ed74e34c53af4c765cc013fbcf4be\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\c26932f8eba0add526f5e7c0e60a567b\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\1daca3f1287af475501dad6c63daebb1\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-3\2c298e909f3ee2f28f29153de0ef8394\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9d1247f5110460ea4f031ec249850ef\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-3\fd5cb6565c6cd3537abc398afbfc2915\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\c054415fb4f237d3220a04cb18d27f00\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\3782035ffe4ce697595a3580a77301d4\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\a3ae8d5260c246dec8ddc3bdab262be9\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-3\4da7d16cc2286cfabecb110079313035\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\Administrator\.gradle\caches\transforms-3\9c7e385dc6d435b33c4a63762b138a50\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:17:1-24:12
@@ -142,8 +136,6 @@ MERGED from [:flutter_barcode_scanner] D:\siemens\temp\0916\NewOcean\build\flutt
 MERGED from [:flutter_barcode_scanner] D:\siemens\temp\0916\NewOcean\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-19:19
 MERGED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-12:19
-MERGED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Administrator\.gradle\caches\transforms-3\108d839f0ce0db383c8ebdf7f1abc40a\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Administrator\.gradle\caches\transforms-3\108d839f0ce0db383c8ebdf7f1abc40a\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-functions:20.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9a29114b9e0c3d4e27a86014fe4f9b0\transformed\jetified-firebase-functions-20.1.0\AndroidManifest.xml:14:5-22:19
@@ -286,26 +278,16 @@ MERGED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_pi
 MERGED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] D:\siemens\temp\0916\NewOcean\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] D:\siemens\temp\0916\NewOcean\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\siemens\temp\0916\NewOcean\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\siemens\temp\0916\NewOcean\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:all_sensors] D:\siemens\temp\0916\NewOcean\build\all_sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:all_sensors] D:\siemens\temp\0916\NewOcean\build\all_sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] D:\siemens\temp\0916\NewOcean\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] D:\siemens\temp\0916\NewOcean\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:qr_code_scanner] D:\siemens\temp\0916\NewOcean\build\qr_code_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-9:67
 MERGED from [:qr_code_scanner] D:\siemens\temp\0916\NewOcean\build\qr_code_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-9:67
-MERGED from [:webview_flutter_android] D:\siemens\temp\0916\NewOcean\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:webview_flutter_android] D:\siemens\temp\0916\NewOcean\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_android] D:\siemens\temp\0916\NewOcean\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_android] D:\siemens\temp\0916\NewOcean\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_chat_bubble] D:\siemens\temp\0916\NewOcean\build\flutter_chat_bubble\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_chat_bubble] D:\siemens\temp\0916\NewOcean\build\flutter_chat_bubble\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sensors] D:\siemens\temp\0916\NewOcean\build\sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sensors] D:\siemens\temp\0916\NewOcean\build\sensors\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:hexcolor] D:\siemens\temp\0916\NewOcean\build\hexcolor\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:hexcolor] D:\siemens\temp\0916\NewOcean\build\hexcolor\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] D:\siemens\temp\0916\NewOcean\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] D:\siemens\temp\0916\NewOcean\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_sound] D:\siemens\temp\0916\NewOcean\build\flutter_sound\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -344,8 +326,6 @@ MERGED from [androidx.appcompat:appcompat:1.4.2] C:\Users\Administrator\.gradle\
 MERGED from [androidx.appcompat:appcompat:1.4.2] C:\Users\Administrator\.gradle\caches\transforms-3\3daf1a24dc3681762bc6138c149908bf\transformed\appcompat-1.4.2\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\bec2d16d590438842d09662fd9f373f4\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\bec2d16d590438842d09662fd9f373f4\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.webkit:webkit:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\f2cd9f1dd7344eb13d381ce6248459c2\transformed\webkit-1.5.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.webkit:webkit:1.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\f2cd9f1dd7344eb13d381ce6248459c2\transformed\webkit-1.5.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\e8f308715a59d372a9c755ee440a8910\transformed\media-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.media:media:1.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\e8f308715a59d372a9c755ee440a8910\transformed\media-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Administrator\.gradle\caches\transforms-3\27f55002c4d1cff5e2198e3b16ad6ace\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:5:5-44
@@ -434,8 +414,6 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Administrator\.gradle\cach
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\d67ed74e34c53af4c765cc013fbcf4be\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\c26932f8eba0add526f5e7c0e60a567b\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\c26932f8eba0add526f5e7c0e60a567b\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\1daca3f1287af475501dad6c63daebb1\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\1daca3f1287af475501dad6c63daebb1\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-3\2c298e909f3ee2f28f29153de0ef8394\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
@@ -448,6 +426,8 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\ca
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\c054415fb4f237d3220a04cb18d27f00\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\3782035ffe4ce697595a3580a77301d4\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\3782035ffe4ce697595a3580a77301d4\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-3\bbe4159d4c357d16618d016d5d2831f1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\a3ae8d5260c246dec8ddc3bdab262be9\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\a3ae8d5260c246dec8ddc3bdab262be9\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Administrator\.gradle\caches\transforms-3\4da7d16cc2286cfabecb110079313035\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
@@ -626,14 +606,6 @@ ADDED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_pic
 		ADDED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-72
 	android:name
 		ADDED from [:image_picker_android] D:\siemens\temp\0916\NewOcean\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-67
-activity#io.flutter.plugins.urllauncher.WebViewActivity
-ADDED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
-	android:exported
-		ADDED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
-	android:theme
-		ADDED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
-	android:name
-		ADDED from [:url_launcher_android] D:\siemens\temp\0916\NewOcean\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Administrator\.gradle\caches\transforms-3\108d839f0ce0db383c8ebdf7f1abc40a\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required
