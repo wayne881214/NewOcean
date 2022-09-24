@@ -4,7 +4,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 import '../../constants/consts.dart';
 import '../../model/store_model/cart_model.dart';
-import 'myhomepage.dart';
+import 'storeHomepage.dart';
 
 class CheckoutPage extends StatefulWidget {
   final List<CartModel> cartModel;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../model/store_model/cart_model.dart';
-import '../model/store_model/shoes_model.dart';
+import '../model/store_model/temp_model.dart';
 
 final TextStyle style = GoogleFonts.lato(
     fontSize: 30, color: Colors.white, fontWeight: FontWeight.w700);

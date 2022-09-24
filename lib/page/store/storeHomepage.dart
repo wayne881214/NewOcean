@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 
 import '../../constants/consts.dart';
-import '../../model/store_model/shoes_model.dart';
+import '../../firebase/store_service.dart';
+import '../../model/store_model/temp_model.dart';
 import 'details_page.dart';
 import 'my_favorite.dart';
-import 'mycart.dart';
+import 'bag_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   void initState() {
+    this.setState(() => boughtitems=getAllCartModel());
     super.initState();
 
     _controller = TabController(length: 4, vsync: this);

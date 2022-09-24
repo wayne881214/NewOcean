@@ -284,54 +284,54 @@ class _MyCartState extends State<MyCart> {
   Widget _additems({required int item, required int index}) {
     return Row(
       children: [
-        InkWell(
-          onTap: () {
-            setState(() {
-              final originalprice =
-                  boughtitems[index].price / boughtitems[index].items;
-
-              boughtitems[index].items++;
-
-              boughtitems[index].price =
-                  originalprice * boughtitems[index].items;
-              total = total + originalprice;
-            });
-          },
-          child: Text('+',
-              style: style.copyWith(
-                fontSize: 20,
-              )),
-        ),
-        Container(
-          padding: const EdgeInsets.all(5),
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
-            color: Colors.black,
-          ),
-          child: Text(item.toString(),
-              style: style.copyWith(
-                fontSize: 12,
-              )),
-        ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              final originalprice =
-                  boughtitems[index].price / boughtitems[index].items;
-
-              if (boughtitems[index].items > 1) {
-                boughtitems[index].items--;
-                boughtitems[index].price =
-                    boughtitems[index].price - originalprice;
-
-                total = total - originalprice;
-              }
-            });
-          },
-          child: Text('-',
-              style: style.copyWith(fontSize: 20, fontWeight: FontWeight.w900)),
-        ),
+        // InkWell(
+        //   onTap: () {
+        //     setState(() {
+        //       final originalprice =
+        //           boughtitems[index].price / boughtitems[index].items;
+        //
+        //       boughtitems[index].items++;
+        //
+        //       boughtitems[index].price =
+        //           originalprice * boughtitems[index].items;
+        //       total = total + originalprice;
+        //     });
+        //   },
+        //   child: Text('+',
+        //       style: style.copyWith(
+        //         fontSize: 20,
+        //       )),
+        // ),
+        // Container(
+        //   padding: const EdgeInsets.all(5),
+        //   margin: const EdgeInsets.all(8),
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(6),
+        //     color: Colors.black,
+        //   ),
+        //   child: Text(item.toString(),
+        //       style: style.copyWith(
+        //         fontSize: 12,
+        //       )),
+        // ),
+        // InkWell(
+        //   onTap: () {
+        //     setState(() {
+        //       final originalprice =
+        //           boughtitems[index].price / boughtitems[index].items;
+        //
+        //       if (boughtitems[index].items > 1) {
+        //         boughtitems[index].items--;
+        //         boughtitems[index].price =
+        //             boughtitems[index].price - originalprice;
+        //
+        //         total = total - originalprice;
+        //       }
+        //     });
+        //   },
+        //   child: Text('-',
+        //       style: style.copyWith(fontSize: 20, fontWeight: FontWeight.w900)),
+        // ),
       ],
     );
   }

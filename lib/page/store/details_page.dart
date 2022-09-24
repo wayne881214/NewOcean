@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:newocean/page/store/storeHomepage.dart';
 
 import '../../constants/consts.dart';
 import '../../firebase/store_service.dart';
 import '../../model/store_model/cart_model.dart';
-import '../../model/store_model/shoes_model.dart';
+import '../../model/store_model/temp_model.dart';
 
 class DetailsPage extends StatefulWidget {
   final ShoesModel item;
@@ -24,14 +25,17 @@ class _DetailsPageState extends State<DetailsPage> {
   int money = -2;
 
   void initState() {
+    this.setState(() => boughtitems = getAllCartModel());
     final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
     DatabaseReference Ref =
-    FirebaseDatabase.instance.ref('Money/' + currentUser + '/');
+        FirebaseDatabase.instance.ref('Money/' + currentUser + '/');
     Ref.onChildAdded.listen((event) async {
       this.setState(() => money = (event.snapshot.value as int));
     });
+
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     var _screenheight = MediaQuery.of(context).size.height;
@@ -105,41 +109,43 @@ class _DetailsPageState extends State<DetailsPage> {
             borderRadius: BorderRadius.circular(10), color: widget.item.color),
         child: MaterialButton(
           onPressed: () {
+            var num = 1;
             if (boughtitems
                 .map((item) => item.name)
                 .contains(widget.item.name)) {
-              show("已擁有道具");
-              // final snackBar = SnackBar(
-              //     backgroundColor: Colors.teal,
-              //     duration: const Duration(seconds: 2),
-              //     content: Text(
-              //       'This Item is already added please go back and change it.',
-              //       style: style.copyWith(fontSize: 14, color: Colors.white),
-              //     ));
-              // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            } else {
-              CartModel cartModel = new CartModel(
-                name: widget.item.name,
-                price: widget.item.price,
-                img: widget.item.img,
-                color: widget.item.color,
-                items: 1,
-                size: sizes[value],
-              );
-              if(money-widget.item.price>=0){
-                int newMoney=(money-widget.item.price).toInt();
-                setMoney(newMoney);
-                createApi(cartModel);
-                addCartModels(cartModel);
-                initState();
-              }else{
-                show("餘額不足");
-              }
-
-              // boughtitems.add(cartModel);
-              total = total + widget.item.price;
-              Navigator.pop(context);
+              var a = boughtitems.map((item) {
+                print(item.name);
+                print(item.items);
+                if (widget.item.name == item.name) {
+                  num = item.items + 1;
+                }
+              });
+              print(a);
             }
+            this.setState(() => boughtitems = getAllCartModel());
+            Navigator.pop(context);
+            show("已$num個擁有道具");
+            CartModel cartModel = new CartModel(
+              name: widget.item.name,
+              price: widget.item.price,
+              img: widget.item.img,
+              color: widget.item.color,
+              items: num,
+              size: sizes[value],
+            );
+            if (money - widget.item.price >= 0) {
+              int newMoney = (money - widget.item.price).toInt();
+              setMoney(newMoney);
+              createApi(cartModel);
+              addCartModels(cartModel);
+              initState();
+            } else {
+              show("餘額不足");
+            }
+            total = total + widget.item.price;
+            //
+
+            this.setState(() => boughtitems = getAllCartModel());
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -11,7 +11,7 @@ import '../../model/achievements_model/logs_model.dart';
 import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
-import '../store/myhomepage.dart';
+import '../store/storeHomepage.dart';
 
 class HomePage extends StatefulWidget {
   @override
