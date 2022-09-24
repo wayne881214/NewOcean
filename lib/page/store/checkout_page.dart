@@ -138,8 +138,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 flex: 1,
                                 child: Column(
                                   children: const [
-                                    Text('www.shoesshop.com'),
-                                    Text('0983645537'),
+                                    Text('dddddddddddd'),
                                   ],
                                 )),
                             const SizedBox(

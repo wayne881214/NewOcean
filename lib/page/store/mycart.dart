@@ -1,8 +1,13 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/consts.dart';
+import '../../firebase/store_service.dart';
 import 'checkout_page.dart';
+
+
 
 class MyCart extends StatefulWidget {
   const MyCart({Key? key}) : super(key: key);
@@ -13,7 +18,12 @@ class MyCart extends StatefulWidget {
 
 class _MyCartState extends State<MyCart> {
   var index = 0;
+  int op=0;
   @override
+  void initState() {
+    this.setState(() => boughtitems=getAllCartModel());
+    super.initState();
+  }
   Widget build(BuildContext context) {
     var _screenheight = MediaQuery.of(context).size.height;
     var _screenwidth = MediaQuery.of(context).size.width;
@@ -34,7 +44,7 @@ class _MyCartState extends State<MyCart> {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: Text(
-            'My Cart',
+            '背包',
             style: style.copyWith(
               color: Colors.black,
               fontSize: 20,
@@ -77,47 +87,87 @@ class _MyCartState extends State<MyCart> {
                                     color: bleu),
                                 child: MaterialButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => CheckoutPage(
-                                                  cartModel: boughtitems,
-                                                )));
+                                    initState();
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (_) => CheckoutPage(
+                                    //               cartModel: boughtitems,
+                                    //             )));
                                   },
                                   child: Text(
-                                    'Chekout',
+                                    '刷新資料',
                                     style: style.copyWith(
                                         color: white, fontSize: 20),
                                   ),
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Text(
-                                'Total = \$$total',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: style.copyWith(
-                                    fontSize: 14, color: Colors.black),
-                              ),
-                            )
+                            // const SizedBox(
+                            //   width: 10,
+                            // ),
+                            // Expanded(
+                            //   flex: 1,
+                            //   child: Text(
+                            //     'Total = \$ $total',
+                            //     maxLines: 2,
+                            //     overflow: TextOverflow.ellipsis,
+                            //     style: style.copyWith(
+                            //         fontSize: 14, color: Colors.black),
+                            //   ),
+                            // )
                           ],
                         ),
                       )
                     ],
                   )
                 : Center(
-                    child: Text(
-                      'Nothing To Show',
-                      style: style.copyWith(
-                        color: Colors.black,
-                        fontSize: 24,
+                    child:   Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              width: _screenwidth * .4,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: bleu),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  initState();
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (_) => CheckoutPage(
+                                  //               cartModel: boughtitems,
+                                  //             )));
+                                },
+                                child: Text(
+                                  '刷新資料',
+                                  style: style.copyWith(
+                                      color: white, fontSize: 20),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // const SizedBox(
+                          //   width: 10,
+                          // ),
+                          // Expanded(
+                          //   flex: 1,
+                          //   child: Text(
+                          //     'Total = \$ $total',
+                          //     maxLines: 2,
+                          //     overflow: TextOverflow.ellipsis,
+                          //     style: style.copyWith(
+                          //         fontSize: 14, color: Colors.black),
+                          //   ),
+                          // )
+                        ],
                       ),
-                    ),
+                    )
                   )),
       ),
     );
@@ -197,7 +247,7 @@ class _MyCartState extends State<MyCart> {
                         color: Colors.black),
                   ),
                   Text(
-                    'Items : ${boughtitems[index].items}',
+                    '數量 : ${boughtitems[index].items}',
                     style: style.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -215,14 +265,14 @@ class _MyCartState extends State<MyCart> {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  'Size:${boughtitems[index].size}',
-                  maxLines: 1,
-                  style: style.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
-                ),
+                // Text(
+                //   'Size:${boughtitems[index].size}',
+                //   maxLines: 1,
+                //   style: style.copyWith(
+                //       fontSize: 14,
+                //       fontWeight: FontWeight.w600,
+                //       color: Colors.black),
+                // ),
               ],
             )
           ],

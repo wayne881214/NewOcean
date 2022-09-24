@@ -20,35 +20,51 @@ class Achievement {
 
   Achievement(this.id, this.type, this.name, this.description, this.star,
        this.target, this.points, this.label, this.reward);
-  static Achievement setAchievement(int id, String type, String name,
-      String description, int star,  int points) {
+  static Achievement setAchievement(int id) {
+    String type="任務";
+    String name="";
+    String description="";
+    int star=0;
+    int target = 0;
+    int points=0;
     List<String> labels = [];
     Map reward = {'經驗':100,'金錢':200,'道具1':'道具1'};
 
     // List<String> reward = ["test"];
-    int target = 0;
-    switch (name) {
-      case "任務高手":
+    switch (id) {
+      case 1:
+        name= "任務高手";
+        description="完成10次任務";
         labels = ["任務", ""];
         target = 10;
         break;
-      case "動物愛好者":
+      case 2:
+        name= "動物愛好者";
+        description="收集2個動物";
         labels = ["動物", ""];
         target = 5;
         break;
-      case "減塑專家":
+      case 3:
+        name= "減塑專家";
+        description="完成5次減塑類任務";
         labels = ["減塑", ""];
         target = 5;
         break;
-      case "這遊戲怎麼要一直拍照":
+      case 4:
+        name= "這遊戲怎麼要一直拍照";
+        description="完成5次需要鏡頭的任務";
         labels = ["拍照", ""];
         target = 5;
         break;
-      case "簽到老人":
+      case 5:
+        name= "簽到老人";
+        description="登入10天";
         labels = ["登入", ""];
         target = 10;
         break;
-      case "社交達人":
+      case 6:
+        name= "社交達人";
+        description="擁有5個好友";
         labels = ["好友", ""];
         target = 5;
         break;
@@ -63,12 +79,12 @@ class Achievement {
 
   static void initAchievements() {
     List<Achievement> resquest = [];
-    resquest.add(setAchievement(1, "任務", "任務高手", "完成10次任務", 1,  0));
-    resquest.add(setAchievement(2, "任務", "簽到老人", "登入10天", 3,  0));
-    resquest.add(setAchievement(3, "任務", "社交達人", "擁有5個好友", 3,  0));
-    resquest.add(setAchievement(4, "任務", "減塑專家", "完成5次減塑類任務", 2,  0));
-    resquest.add(setAchievement(5, "任務", "動物愛好者", "收集2個動物", 1,  0));
-    resquest.add(setAchievement(6, "任務", "這遊戲怎麼要一直拍照", "完成5次需要鏡頭的任務", 3, 0));
+    resquest.add(setAchievement(1));
+    resquest.add(setAchievement(2));
+    resquest.add(setAchievement(3));
+    resquest.add(setAchievement(4));
+    resquest.add(setAchievement(5));
+    resquest.add(setAchievement(6));
 
     resquest.forEach((item) => addAchievements(item));
   }

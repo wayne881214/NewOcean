@@ -341,7 +341,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(32.0)),
                                 onTap: () {
-                                  print('!!!!!!!!!!!!!!!\n$today');
                                   setState(() {
                                     today = new DateTime.fromMillisecondsSinceEpoch(
                                         today.millisecondsSinceEpoch + 24 * 60 * 60 * 1000);;

@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage>
                       width: 3,
                     ),
                     Text(
-                      'Pay',
+                      '背包',
                       style: style.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w900,
@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage>
                   unselectedLabelColor: Colors.grey.shade800,
                   tabs: const [
                     Tab(
-                      text: 'All',
+                      text: '全部',
                     ),
                     Tab(
                       text: '實體道具',

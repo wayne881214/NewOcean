@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/consts.dart';
+import '../../firebase/store_service.dart';
 import '../../model/store_model/cart_model.dart';
 import '../../model/store_model/shoes_model.dart';
 
@@ -18,6 +21,17 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   int value = 0;
+  int money = -2;
+
+  void initState() {
+    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    DatabaseReference Ref =
+    FirebaseDatabase.instance.ref('Money/' + currentUser + '/');
+    Ref.onChildAdded.listen((event) async {
+      this.setState(() => money = (event.snapshot.value as int));
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var _screenheight = MediaQuery.of(context).size.height;
@@ -60,13 +74,13 @@ class _DetailsPageState extends State<DetailsPage> {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              '!!!!',
-              style: style.copyWith(
-                  fontWeight: FontWeight.w100,
-                  fontSize: 20,
-                  color: Colors.black),
-            ),
+            // Text(
+            //   '!!!!',
+            //   style: style.copyWith(
+            //       fontWeight: FontWeight.w100,
+            //       fontSize: 20,
+            //       color: Colors.black),
+            // ),
             const SizedBox(
               height: 20,
             ),
@@ -94,25 +108,35 @@ class _DetailsPageState extends State<DetailsPage> {
             if (boughtitems
                 .map((item) => item.name)
                 .contains(widget.item.name)) {
-              final snackBar = SnackBar(
-                  backgroundColor: Colors.teal,
-                  duration: const Duration(seconds: 2),
-                  content: Text(
-                    'This Item is already added please go back and change it.',
-                    style: style.copyWith(fontSize: 14, color: Colors.white),
-                  ));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              show("已擁有道具");
+              // final snackBar = SnackBar(
+              //     backgroundColor: Colors.teal,
+              //     duration: const Duration(seconds: 2),
+              //     content: Text(
+              //       'This Item is already added please go back and change it.',
+              //       style: style.copyWith(fontSize: 14, color: Colors.white),
+              //     ));
+              // ScaffoldMessenger.of(context).showSnackBar(snackBar);
             } else {
-              boughtitems.add(
-                CartModel(
-                  name: widget.item.name,
-                  price: widget.item.price,
-                  img: widget.item.img,
-                  color: widget.item.color,
-                  items: 1,
-                  size: sizes[value],
-                ),
+              CartModel cartModel = new CartModel(
+                name: widget.item.name,
+                price: widget.item.price,
+                img: widget.item.img,
+                color: widget.item.color,
+                items: 1,
+                size: sizes[value],
               );
+              if(money-widget.item.price>=0){
+                int newMoney=(money-widget.item.price).toInt();
+                setMoney(newMoney);
+                createApi(cartModel);
+                addCartModels(cartModel);
+                initState();
+              }else{
+                show("餘額不足");
+              }
+
+              // boughtitems.add(cartModel);
               total = total + widget.item.price;
               Navigator.pop(context);
             }
@@ -128,7 +152,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 width: 10,
               ),
               Text(
-                'Add To Cart',
+                '購買',
                 style: style.copyWith(fontSize: 18, color: Colors.white),
               ),
             ],
@@ -208,13 +232,13 @@ class _DetailsPageState extends State<DetailsPage> {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          children: [
-            _buildsizesitem(index: 0, title: sizes[0]),
-            _buildsizesitem(index: 1, title: sizes[1]),
-            _buildsizesitem(index: 2, title: sizes[2]),
-            _buildsizesitem(index: 3, title: sizes[3]),
-            _buildsizesitem(index: 4, title: sizes[4]),
-          ],
+          // children: [
+          //   _buildsizesitem(index: 0, title: sizes[0]),
+          //   _buildsizesitem(index: 1, title: sizes[1]),
+          //   _buildsizesitem(index: 2, title: sizes[2]),
+          //   _buildsizesitem(index: 3, title: sizes[3]),
+          //   _buildsizesitem(index: 4, title: sizes[4]),
+          // ],
         ));
   }
 

@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../constants/achievements_theme.dart';
+import '../../firebase/store_service.dart';
 import '../../model/achievements_model/achievement_model.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -15,10 +18,18 @@ class rewardDialog extends StatefulWidget {
 
 class _rewardDialog extends State<rewardDialog> {
   int number = 0;
+  int money=0;
   String result = "取消";
   late Achievement achievement;
 
   void initState() {
+    money=0;
+    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    DatabaseReference Ref =
+    FirebaseDatabase.instance.ref('Money/' + currentUser + '/');
+    Ref.onChildAdded.listen((event) async {
+      this.setState(() => money = (event.snapshot.value as int));
+    });
     super.initState();
   }
 
@@ -87,6 +98,9 @@ class _rewardDialog extends State<rewardDialog> {
   }
 
   void _pushLog() {
+    int newMoney=(money+achievement.reward['金錢']).toInt();
+    setMoney(newMoney);
+    initState();
     Fluttertoast.showToast(
         msg: "已取得獎勵",
         toastLength: Toast.LENGTH_SHORT,

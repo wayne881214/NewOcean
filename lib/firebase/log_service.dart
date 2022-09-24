@@ -102,3 +102,14 @@ void show(msg) {
       textColor: Colors.black,
       fontSize: 16.0);
 }
+
+
+void pushTaskLog(int id,int state) {
+  Log resquestLog = Log.addTaskLog(id,state);
+  addLog(resquestLog);
+}
+
+void pushOtherLog(int id) {
+  Log resquestLog = Log.addOtherLog(id);
+  addLog(resquestLog);
+}
