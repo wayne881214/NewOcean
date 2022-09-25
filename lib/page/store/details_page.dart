@@ -22,7 +22,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   int value = 0;
-  int money = -2;
+  int money = 0;
 
   void initState() {
     this.setState(() => boughtitems = getAllCartModel());
@@ -114,8 +114,6 @@ class _DetailsPageState extends State<DetailsPage> {
                 .map((item) => item.name)
                 .contains(widget.item.name)) {
               var a = boughtitems.map((item) {
-                print(item.name);
-                print(item.items);
                 if (widget.item.name == item.name) {
                   num = item.items + 1;
                 }
@@ -124,7 +122,6 @@ class _DetailsPageState extends State<DetailsPage> {
             }
             this.setState(() => boughtitems = getAllCartModel());
             Navigator.pop(context);
-            show("已$num個擁有道具");
             CartModel cartModel = new CartModel(
               name: widget.item.name,
               price: widget.item.price,
@@ -138,6 +135,7 @@ class _DetailsPageState extends State<DetailsPage> {
               setMoney(newMoney);
               createApi(cartModel);
               addCartModels(cartModel);
+              update();
               initState();
             } else {
               show("餘額不足");

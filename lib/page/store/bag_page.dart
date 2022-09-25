@@ -8,7 +8,6 @@ import '../../firebase/store_service.dart';
 import 'checkout_page.dart';
 
 
-
 class MyCart extends StatefulWidget {
   const MyCart({Key? key}) : super(key: key);
 
@@ -18,15 +17,26 @@ class MyCart extends StatefulWidget {
 
 class _MyCartState extends State<MyCart> {
   var index = 0;
-  int op=0;
+  int op = 0;
+
   @override
   void initState() {
-    this.setState(() => boughtitems=getAllCartModel());
+    this.setState(() {
+      boughtitems=[];
+      boughtitems = getAllCartModel();
+    });
     super.initState();
   }
+
   Widget build(BuildContext context) {
-    var _screenheight = MediaQuery.of(context).size.height;
-    var _screenwidth = MediaQuery.of(context).size.width;
+    var _screenheight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var _screenwidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[200],
@@ -56,119 +66,120 @@ class _MyCartState extends State<MyCart> {
             padding: const EdgeInsets.all(20.0),
             child: boughtitems.isNotEmpty
                 ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                    height: _screenheight * .7,
+                    child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: boughtitems.length,
+                        itemBuilder: (context, index) {
+                          return index % 2 == 0
+                              ? BounceInLeft(
+                              child: _buildcartitem(index: index))
+                              : BounceInRight(
+                              child: _buildcartitem(index: index));
+                        })),
+                const SizedBox(
+                  height: 39,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                          height: _screenheight * .7,
-                          child: ListView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              itemCount: boughtitems.length,
-                              itemBuilder: (context, index) {
-                                return index % 2 == 0
-                                    ? BounceInLeft(
-                                        child: _buildcartitem(index: index))
-                                    : BounceInRight(
-                                        child: _buildcartitem(index: index));
-                              })),
-                      const SizedBox(
-                        height: 39,
-                      ),
                       Expanded(
-                        flex: 1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                width: _screenwidth * .4,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: bleu),
-                                child: MaterialButton(
-                                  onPressed: () {
-                                    initState();
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (_) => CheckoutPage(
-                                    //               cartModel: boughtitems,
-                                    //             )));
-                                  },
-                                  child: Text(
-                                    '刷新資料',
-                                    style: style.copyWith(
-                                        color: white, fontSize: 20),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // const SizedBox(
-                            //   width: 10,
-                            // ),
-                            // Expanded(
-                            //   flex: 1,
-                            //   child: Text(
-                            //     'Total = \$ $total',
-                            //     maxLines: 2,
-                            //     overflow: TextOverflow.ellipsis,
-                            //     style: style.copyWith(
-                            //         fontSize: 14, color: Colors.black),
-                            //   ),
-                            // )
-                          ],
-                        ),
-                      )
-                    ],
-                  )
-                : Center(
-                    child:   Expanded(
-                      flex: 1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              width: _screenwidth * .4,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: bleu),
-                              child: MaterialButton(
-                                onPressed: () {
-                                  initState();
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (_) => CheckoutPage(
-                                  //               cartModel: boughtitems,
-                                  //             )));
-                                },
-                                child: Text(
-                                  '刷新資料',
-                                  style: style.copyWith(
-                                      color: white, fontSize: 20),
-                                ),
-                              ),
+                        flex: 2,
+                        child: Container(
+                          width: _screenwidth * .4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: bleu),
+                          child: MaterialButton(
+                            onPressed: () {
+                              initState();
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (_) => CheckoutPage(
+                              //               cartModel: boughtitems,
+                              //             )));
+                            },
+                            child: Text(
+                              '刷新資料',
+                              style: style.copyWith(
+                                  color: white, fontSize: 20),
                             ),
                           ),
-                          // const SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Expanded(
-                          //   flex: 1,
-                          //   child: Text(
-                          //     'Total = \$ $total',
-                          //     maxLines: 2,
-                          //     overflow: TextOverflow.ellipsis,
-                          //     style: style.copyWith(
-                          //         fontSize: 14, color: Colors.black),
-                          //   ),
-                          // )
-                        ],
+                        ),
                       ),
-                    )
-                  )),
+                      // const SizedBox(
+                      //   width: 10,
+                      // ),
+                      // Expanded(
+                      //   flex: 1,
+                      //   child: Text(
+                      //     'Total = \$ $total',
+                      //     maxLines: 2,
+                      //     overflow: TextOverflow.ellipsis,
+                      //     style: style.copyWith(
+                      //         fontSize: 14, color: Colors.black),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                )
+              ],
+            )
+                : Center(
+                child: Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: _screenwidth * .4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: bleu),
+                          child: MaterialButton(
+                            onPressed: () {
+                              update();
+                              initState();
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (_) => CheckoutPage(
+                              //               cartModel: boughtitems,
+                              //             )));
+                            },
+                            child: Text(
+                              '刷新資料',
+                              style: style.copyWith(
+                                  color: white, fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   width: 10,
+                      // ),
+                      // Expanded(
+                      //   flex: 1,
+                      //   child: Text(
+                      //     'Total = \$ $total',
+                      //     maxLines: 2,
+                      //     overflow: TextOverflow.ellipsis,
+                      //     style: style.copyWith(
+                      //         fontSize: 14, color: Colors.black),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                )
+            )),
       ),
     );
   }

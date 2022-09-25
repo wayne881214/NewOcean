@@ -82,3 +82,7 @@ List<CartModel> getAllCartModel() {
   }
   return jsonResponse2.map((log) => new CartModel.fromJson(log)).toList();
 }
+void update(){
+  jsonResponse2=[];
+  op2=0;
+}

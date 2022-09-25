@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:newocean/widget/achievements/title_view.dart';
 
 import '../../../../../constants/achievements_theme.dart';
+import '../../../firebase/log_service.dart';
 import '../../../widget/achievements/bar_chart.dart';
 import '../../../widget/achievements/line_chart.dart';
 import '../../../widget/achievements/loglist_view.dart';
@@ -13,7 +14,13 @@ import '../../../widget/achievements/mediterranean_diet_view.dart';
 class MyDiaryScreen extends StatefulWidget {
   final currentUser;
   final DateTime today;
-  const MyDiaryScreen({Key? key, this.animationController,required this.currentUser,required this.today}) : super(key: key);
+
+  const MyDiaryScreen(
+      {Key? key,
+      this.animationController,
+      required this.currentUser,
+      required this.today})
+      : super(key: key);
 
   final AnimationController? animationController;
 
@@ -36,8 +43,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     "avgsData": [0, 0, 0, 0, 0, 0, 0],
     "userData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
   };
-  late DateTime today= widget.today;
-  late DateTime yesterday=new DateTime.fromMillisecondsSinceEpoch(
+  late DateTime today = widget.today;
+  late DateTime yesterday = new DateTime.fromMillisecondsSinceEpoch(
       today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
 
   late String todayD = formatDate(today, [yyyy, '-', mm, '-', dd]);
@@ -53,7 +60,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
     };
     DatabaseReference Ref =
-    FirebaseDatabase.instance.ref('Logs/' + currentUser);
+        FirebaseDatabase.instance.ref('Logs/' + currentUser);
     Ref.onChildAdded.listen((event) async {
       Map userLogValue = (event.snapshot.value as Map);
       jsonResponse.add(userLogValue);
@@ -285,16 +292,22 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(32.0)),
                                 onTap: () async {
-                                  this.setState(() {
-                                    today = yesterday;
-                                    yesterday = new DateTime.fromMillisecondsSinceEpoch(
-                                        today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
-                                    todayD = formatDate(
-                                        today, [yyyy, '-', mm, '-', dd]);
-                                    yesterdayD = formatDate(
-                                        yesterday, [yyyy, '-', mm, '-', dd]);
-                                    initState();
-                                  });
+                                  try {
+                                    this.setState(() {
+                                      today = yesterday;
+                                      yesterday = new DateTime
+                                              .fromMillisecondsSinceEpoch(
+                                          today.millisecondsSinceEpoch -
+                                              24 * 60 * 60 * 1000);
+                                      todayD = formatDate(
+                                          today, [yyyy, '-', mm, '-', dd]);
+                                      yesterdayD = formatDate(
+                                          yesterday, [yyyy, '-', mm, '-', dd]);
+                                      initState();
+                                    });
+                                  } catch (e) {
+                                    show('警告');
+                                  }
                                 },
                                 child: Center(
                                   child: Icon(
@@ -341,17 +354,26 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(32.0)),
                                 onTap: () {
-                                  setState(() {
-                                    today = new DateTime.fromMillisecondsSinceEpoch(
-                                        today.millisecondsSinceEpoch + 24 * 60 * 60 * 1000);;
-                                    yesterday = new DateTime.fromMillisecondsSinceEpoch(
-                                        today.millisecondsSinceEpoch - 24 * 60 * 60 * 1000);
-                                    todayD = formatDate(
-                                        today, [yyyy, '-', mm, '-', dd]);
-                                    yesterdayD = formatDate(
-                                        yesterday, [yyyy, '-', mm, '-', dd]);
-                                  });
-                                  initState();
+                                  try {
+                                    setState(() {
+                                      today = new DateTime
+                                              .fromMillisecondsSinceEpoch(
+                                          today.millisecondsSinceEpoch +
+                                              24 * 60 * 60 * 1000);
+                                      ;
+                                      yesterday = new DateTime
+                                              .fromMillisecondsSinceEpoch(
+                                          today.millisecondsSinceEpoch -
+                                              24 * 60 * 60 * 1000);
+                                      todayD = formatDate(
+                                          today, [yyyy, '-', mm, '-', dd]);
+                                      yesterdayD = formatDate(
+                                          yesterday, [yyyy, '-', mm, '-', dd]);
+                                    });
+                                    initState();
+                                  } catch (e) {
+                                    show('警告');
+                                  }
                                 },
                                 child: Center(
                                   child: Icon(

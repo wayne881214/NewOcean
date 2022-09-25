@@ -70,18 +70,12 @@ class _HomePageState extends State<HomePage> {
             children: [
               Image.asset('assets/images/turtle.png'),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AchievementsPage(),
-                  ));
-                },
-                child: Text('成就連結'),
-              ),
-              ElevatedButton(
                   onPressed: () {
+                    //初始化成就+金錢
                     Achievement.initAchievements();
+                    setMoney(100);
                   },
-                  child: const Text('初始化成就')),
+                  child: const Text('初始化')),
               ElevatedButton(
                   onPressed: () {
                     initState();
