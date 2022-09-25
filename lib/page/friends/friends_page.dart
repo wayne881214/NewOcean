@@ -5,8 +5,9 @@ import 'package:newocean/page/friends/screen/calls.dart';
 import 'package:newocean/page/friends/screen/chats.dart';
 import 'package:newocean/page/friends/screen/people.dart';
 import 'package:newocean/page/friends/states/lib.dart';
+import 'package:newocean/page/friends/screen/chatroom.dart';
 
-import 'screen/setting.dart';
+import 'screen/addfriend.dart';
 
 class FriendsPage extends StatefulWidget {
   @override
@@ -14,7 +15,6 @@ class FriendsPage extends StatefulWidget {
 }
 
 class _FriendsPageState extends State<FriendsPage> {
-
   var screens = [ChatsPage(), PeoplePage(), AddFriendsPage()];
 
   @override

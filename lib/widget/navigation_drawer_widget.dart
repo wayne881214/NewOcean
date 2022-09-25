@@ -7,6 +7,7 @@ import 'package:newocean/page/friends/friends_page.dart';
 import 'package:newocean/page/ocean/ocean_page.dart';
 import 'package:newocean/page/animals/animals_page.dart';
 import 'package:newocean/page/tasks/tasks_page.dart';
+import 'package:newocean/page/test/test.dart';
 import 'package:newocean/page/user/user_page.dart';
 
 import '../main.dart';
@@ -101,13 +102,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                     text: '登出',
                     icon: Icons.output,
                     onClicked: () => selectedItem(context, 5),
-                  ),/*
+                  ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: '設定',
+                    text: '測試',
                     icon: Icons.settings,
-                    onClicked: () => selectedItem(context, 5),
-                  ),*/
+                    onClicked: () => selectedItem(context, 6),
+                  ),
                 ],
               ),
             ),
@@ -200,11 +201,11 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
           builder: (context) => SignOutPage(),
         ));
         break;
-      /*case 5:
+      case 6:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SettingsPage(),
+          builder: (context) => HomeScreen(),
         ));
-        break;*/
+        break;
     }
   }
 }
