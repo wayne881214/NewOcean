@@ -4,6 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../firebase/store_service.dart';
+import '../../model/achievements_model/achievement_model.dart';
 import 'authentication_service.dart';
 
 class SignInUpPage extends StatelessWidget {
@@ -91,6 +93,8 @@ class SignInUpPage extends StatelessWidget {
                           'ststus': 'Unavalible',
                         }
                         );
+                        Achievement.initAchievements();
+                        setMoney(100);
                         print('success');
                       }
                     } catch (e) {

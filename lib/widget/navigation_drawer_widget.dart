@@ -6,6 +6,7 @@ import 'package:newocean/page/achievements/achievements_page.dart';
 import 'package:newocean/page/friends/friends_page.dart';
 import 'package:newocean/page/ocean/ocean_page.dart';
 import 'package:newocean/page/animals/animals_page.dart';
+import 'package:newocean/page/store/storeHomepage.dart';
 import 'package:newocean/page/tasks/tasks_page.dart';
 import 'package:newocean/page/test/test.dart';
 import 'package:newocean/page/user/user_page.dart';
@@ -105,7 +106,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: '測試',
+                    text: '商店',
                     icon: Icons.settings,
                     onClicked: () => selectedItem(context, 6),
                   ),
@@ -203,7 +204,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
         break;
       case 6:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => MyHomePage(),
         ));
         break;
     }

@@ -69,26 +69,13 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/turtle.png'),
-              ElevatedButton(
-                  onPressed: () {
-                    //初始化成就+金錢
-                    Achievement.initAchievements();
-                    setMoney(100);
-                  },
-                  child: const Text('初始化')),
+
               ElevatedButton(
                   onPressed: () {
                     initState();
                     updateAchievement();
                   },
                   child: const Text('手動更新')),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => MyHomePage(),
-                    ));
-                  },
-                  child: const Text('商店與背包')),
               ElevatedButton(
                   onPressed: () {
                     pushOtherLog(1);
