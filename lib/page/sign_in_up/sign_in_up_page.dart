@@ -49,7 +49,7 @@ class SignInUpPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () {
                     context.read<AuthenticationService>().signIn(
                       email: emailController.text.trim(),
@@ -58,7 +58,7 @@ class SignInUpPage extends StatelessWidget {
                   },
                   child: Text("登入"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     var name = nameController.text.trim();
                     var email = emailController.text.trim();

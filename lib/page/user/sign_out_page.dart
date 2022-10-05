@@ -20,7 +20,7 @@ class _SignOutPageState extends State<SignOutPage> {
       ),
       body: Column(
         children: [
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
               context.read<AuthenticationService>().signOut();
               Navigator.pop(context);

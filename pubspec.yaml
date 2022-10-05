@@ -80,6 +80,14 @@ dependencies:
   badges: ^2.0.2
   awesome_dialog: ^2.1.2
 
+#map相關
+  amap_flutter_location: ^2.0.0
+  permission_handler: 10.0.0
+  amap_flutter_map: ^2.0.1
+  latlong2: ^0.8.1
+  connectivity_plus: ^2.3.6+1
+  flutter_map: ^2.2.0
+
 
 dev_dependencies:
   flutter_test:
