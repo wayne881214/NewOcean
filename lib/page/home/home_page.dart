@@ -11,6 +11,7 @@ import '../../model/achievements_model/logs_model.dart';
 import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
+import '../map/show_map_page.dart';
 import '../store/storeHomepage.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,7 +81,16 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     pushOtherLog(1);
                   },
-                  child: const Text('簽到'))
+                  child: const Text('簽到')),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return ShowMapPage();
+                  }));
+                },
+                child: new Text('地圖'),
+              )
             ],
           ),
         ),

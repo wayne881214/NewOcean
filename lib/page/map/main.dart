@@ -21,7 +21,7 @@ class Mymap extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ShowMapPage(),
     );
   }
 }
@@ -237,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return ShowMapPage();
                 }));
               },
-              child: new Text('跳转到地图2'),
+              child: new Text('地圖'),
             ),
             ...widgets,
           ],

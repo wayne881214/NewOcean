@@ -7,12 +7,14 @@ import 'package:amap_flutter_map/amap_flutter_map.dart';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 
+import '../../firebase/log_service.dart';
+
 class ShowMapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('地图'),
+        title: Text('地圖'),
       ),
       body: _ShowMapPageBody(),
     );
@@ -46,14 +48,16 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     });
     _locationPlugin.startLocation();
   }
+
   final Map<String, Marker> initMarkerMap = <String, Marker>{};
   AMapController? _controller;
   bool isChangeLocation = false;
-  late LatLng mapCenter=LatLng(24.171087778636508, 120.64362036428265);
+  late LatLng myLoc = LatLng(24.171087778636508, 120.64362036428265);
+  late LatLng mapCenter = LatLng(24.171087778636508, 120.64362036428265);
 
-  void _moveCamera(LatLng currentLatLng) {
+  moveCamera(LatLng currentLatLng) {
     if (null != _controller) {
-      mapCenter=currentLatLng;
+      mapCenter = currentLatLng;
       _controller!.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: currentLatLng,
         zoom: 16,
@@ -61,20 +65,21 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     }
   }
 
+  // InfoWindow n1 = InfoWindow("rrr","rrr");
   @override
   Widget build(BuildContext context) {
-    // final AMapWidget map = AMapWidget(
-    //   onMapCreated: onMapCreated,
-    //   // 定位小蓝点配置
-    //   myLocationStyleOptions: MyLocationStyleOptions(true),
-    //   // 是否指南针
-    //   compassEnabled: true,
-    // );
-    for(int i=0; i< 10; i++) {
+    for (int i = 0; i < 10; i++) {
       LatLng position = LatLng(
-          mapCenter.latitude + 0.0001*i,
-          mapCenter.longitude +  0.001*i );
-      Marker marker = Marker(position: position,draggable:true);
+          mapCenter.latitude + 0.0001 * i, mapCenter.longitude + 0.001 * i);
+      Marker marker = Marker(
+        position: position,
+        draggable: true,
+        infoWindow: InfoWindow(
+          title: "垃圾桶",
+          snippet: "這裡有垃圾桶!!",
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+      );
       initMarkerMap[marker.id] = marker;
     }
 
@@ -84,8 +89,8 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         target: mapCenter,
         zoom: 16,
       ),
-      buildingsEnabled:true,
-      trafficEnabled:true,
+      buildingsEnabled: true,
+      trafficEnabled: true,
       // mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(
@@ -93,6 +98,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         circleFillColor: Colors.lightBlue,
         circleStrokeColor: Colors.blue,
         circleStrokeWidth: 1,
+        // icon: BitmapDescriptor.defaultMarker,
       ),
 
       /// 地图创建成功回调
@@ -103,7 +109,8 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       /// 定位回调
       onLocationChanged: (AMapLocation location) {
         if (!isChangeLocation) {
-          _moveCamera(location.latLng);
+          myLoc = location.latLng;
+          moveCamera(myLoc);
           print('location.latLng');
           print(location.latLng);
           isChangeLocation = true;
@@ -118,26 +125,25 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       compassEnabled: true,
     );
 
-    return ConstrainedBox(
-      constraints: BoxConstraints.expand(),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: map,
-          ),
-          Positioned(
-              right: 10,
-              bottom: 15,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: _approvalNumberWidget),
-              ))
-        ],
+    return Scaffold(
+      body: ConstrainedBox(
+        constraints: BoxConstraints.expand(),
+        child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: map,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          moveCamera(myLoc);
+        },
+        tooltip: '定位',
+        child: const Icon(Icons.brightness_high),
       ),
     );
   }
