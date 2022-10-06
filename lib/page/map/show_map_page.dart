@@ -91,11 +91,12 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     allMap.forEach((item) {
       LatLng position = LatLng(item.latitude, item.longitude);
       Marker marker = Marker(
+        icon:BitmapDescriptor.fromIconPath("assets/images/sea_lion.png"),
         position: position,
         draggable: true,
         onTap: (s) async {
-          if (item.latitude - mapCenter.latitude <= 0.0001 &&
-              item.longitude - mapCenter.longitude <= 0.0001) {
+          if (item.latitude - mapCenter.latitude <= 0.001 &&
+              item.longitude - mapCenter.longitude <= 0.001) {
             show('完成任務');
           } else {
             show('太遠了');
@@ -105,7 +106,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           title: item.title,
           snippet: item.snippet,
         ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
       );
       initMarkerMap[marker.id] = marker;
     });
@@ -145,6 +146,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       /// 地图创建成功回调
       onMapCreated: (AMapController controller) async {
         _controller = controller;
+
       },
 
       /// 定位回调
@@ -183,7 +185,9 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
           FloatingActionButton(
             child: Icon(Icons.emoji_people),
-            onPressed: () {},
+            onPressed: () async {
+              show("暫無功能");
+            },
             heroTag: null,
           ),
           SizedBox(
@@ -194,11 +198,11 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
             onPressed: () {
               final currentUser =
                   FirebaseAuth.instance.currentUser!.uid.toString();
-              for (int i = 0; i < 10; i++) {
+              for (int i = 0; i < 5; i++) {
                 MapData mapData = MapData(
                     currentUser,
-                    mapCenter.latitude + 0.0001 * i,
-                    mapCenter.longitude + 0.0001 * i,
+                    mapCenter.latitude + 0.01 * i+0.0001,
+                    mapCenter.longitude + 0.01 * i+0.0001,
                     "垃圾桶",
                     "垃圾桶",
                     "這是垃圾桶");
