@@ -28,6 +28,8 @@ class _Task_task extends State<Task_task>{
     {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0}
   ];
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
@@ -75,6 +77,15 @@ class _Task_task extends State<Task_task>{
         break;
       case 5:
         taskTitle="GPS任務";
+        break;
+      case 6:
+        taskTitle="海馬任務";
+        break;
+      case 7:
+        taskTitle="珊瑚任務";
+        break;
+      case 8:
+        taskTitle="水母任務";
         break;
       default:
         taskTitle="海鳥任務";

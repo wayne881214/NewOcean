@@ -104,6 +104,51 @@ class TaskProgressModule extends StatelessWidget {
               break;
           }
           break;
+        case 6:
+          switch (module.state) {
+            case 1:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 2:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 3:
+              taskdialog = gpsTask1showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
+        case 7:
+          switch (module.state) {
+            case 1:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 2:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 3:
+              taskdialog = gpsTask1showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
+        case 8:
+          switch (module.state) {
+            case 1:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 2:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 3:
+              taskdialog = gpsTask1showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
         default:
           break;
       }
