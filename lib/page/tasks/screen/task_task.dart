@@ -27,12 +27,15 @@ class _Task_task extends State<Task_task>{
     {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0},
+    {"targat": 11, "state": 0.00, "percent": 0},
     {"targat": 11, "state": 0.00, "percent": 0}
   ];
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
 
   @override
   void initState() {
+    print("initState");
+    print(widget.id);
     DatabaseReference Ref = FirebaseDatabase.instance.ref('Tasks/$currentUser');
     Ref.onChildAdded.listen((event) {
       int id = (event.snapshot.value as Map)["id"];
@@ -69,6 +72,9 @@ class _Task_task extends State<Task_task>{
         break;
       case 4:
         taskTitle="牡蠣任務";
+        break;
+      case 5:
+        taskTitle="GPS任務";
         break;
       default:
         taskTitle="海鳥任務";

@@ -69,6 +69,16 @@ class Task {
           "恭喜完成所有任務"];
         return Task(id,state,"assets/images/animals/ostrica.png", "拯救牡蠣大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
+      case 5:
+        var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
+        var Describe = [
+          "趕快去解鎖第一個任務",
+          "標記環保商店",
+          "標記垃圾桶",
+          "垃圾桶打卡",
+          "恭喜完成所有任務"];
+        return Task(id,state,"assets/images/animals/ostrica.png", "GPS大作戰",
+            Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       default:
         return Task(id,state,"assets/images/animals/ostrica.png", "尚未解鎖任務","任務一",50,stateApi["state"],"你知道");
     }
@@ -152,6 +162,16 @@ class Task {
           "恭喜完成所有任務"];
         return Task(id,state,"assets/images/animals/ostrica.png", "拯救牡蠣大作戰",
                 Mission[state],Perc,1,Describe[state]);
+      case 5:
+        var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
+        var Describe = [
+          "趕快去解鎖第一個任務",
+          "標記環保商店",
+          "標記垃圾桶",
+          "垃圾桶打卡",
+          "恭喜完成所有任務"];
+        return Task(id,state,"assets/images/animals/ostrica.png", "GPS大作戰",
+            Mission[state],Perc,1,Describe[state]);
       default:
         return Task(id,state,"assets/images/animals/turtle.png", "尚未解鎖任務","任務一",50,1,"你知道");
     }

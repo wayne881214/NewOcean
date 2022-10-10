@@ -79,7 +79,7 @@ class SignInUpPage extends StatelessWidget {
                           'profileImage': ''
                         });
                         DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
-                        for (int i = 1; i < 5; i++)
+                        for (int i = 1; i < 6; i++)
                           await taskRef.child('task$i').set(
                               {
                                 'state': 0,
