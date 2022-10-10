@@ -9,17 +9,19 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 
+import '../../firebase/database_service.dart';
 import '../../firebase/log_service.dart';
 import '../../firebase/map_service.dart';
+import '../../model/achievements_model/logs_model.dart';
 import '../../model/map_model/map_model.dart';
 
 class ShowMapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('地圖'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('地圖'),
+      // ),
       body: _ShowMapPageBody(),
     );
   }
@@ -38,6 +40,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
   final Map<String, Marker> initMarkerMap = <String, Marker>{};
   List jsonResponse = [];
   List<MapData> allMap = [];
+  var result;
 
   @override
   void initState() {
@@ -98,13 +101,15 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           if (item.latitude - mapCenter.latitude <= 0.001 &&
               item.longitude - mapCenter.longitude <= 0.001) {
             show('完成任務');
+            result='完成任務';
+            _checkAndPush();
           } else {
             show('太遠了');
           }
         },
         infoWindow: InfoWindow(
           title: item.title,
-          snippet: item.snippet,
+          snippet: "\n簡介"+item.snippet+"\n添加者:"+item.user,
         ),
         // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
       );
@@ -186,13 +191,29 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           FloatingActionButton(
             child: Icon(Icons.emoji_people),
             onPressed: () async {
-              show("暫無功能");
+              changeTask(5 ,0);
+              show("還原任務->0");
+              Navigator.of(context).pop(true);
+
             },
             heroTag: null,
           ),
           SizedBox(
             height: 10,
           ),
+              FloatingActionButton(
+                child: Icon(Icons.emoji_people),
+                onPressed: () async {
+                  changeTask(5 ,1);
+                  show("還原任務->1");
+                  Navigator.of(context).pop(true);
+
+                },
+                heroTag: null,
+              ),
+              SizedBox(
+                height: 10,
+              ),
           FloatingActionButton(
             child: Icon(Icons.delete),
             onPressed: () {
@@ -208,6 +229,10 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
                     "這是垃圾桶");
                 createApi(mapData);
                 addMap(mapData);
+                Log resquestLog = Log.addTaskLog(5 ,2);
+                addLog(resquestLog);
+                changeTask(5 ,2);
+                Navigator.of(context).pop(true);
               }
             },
             heroTag: null,
@@ -222,7 +247,17 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           )
         ]));
   }
-
+  void _pushLog(){
+    Log resquestLog = Log.addTaskLog(5 ,3);
+    addLog(resquestLog);
+    changeTask(5 ,2);
+  }
+  void _checkAndPush(){
+    if(result=="完成任務"){
+      _pushLog();
+      Navigator.of(context).pop(true);
+    }
+  }
   AMapController? _mapController;
 
   void onMapCreated(AMapController controller) {
@@ -252,3 +287,4 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     print('地图审图号（卫星地图): $satelliteImageApprovalNumber');
   }
 }
+

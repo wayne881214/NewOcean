@@ -9,6 +9,7 @@ import 'package:newocean/widget/task/task_dialog/ostricaTask_dialog_widget.dart'
 import 'package:newocean/widget/task/task_dialog/sealionTask_dialog_widget.dart';
 import 'package:newocean/widget/task/task_dialog/whaleTask_dialog_widget.dart';
 
+import '../../widget/task/task_dialog/gpsTask_dialog_widget.dart';
 import '../../widget/task/task_dialog/turtleTask_dialog_widget.dart';
 
 
@@ -88,7 +89,21 @@ class TaskProgressModule extends StatelessWidget {
               break;
           }
           break;
-
+        case 5:
+          switch (module.state) {
+            case 1:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 2:
+              taskdialog = gpsTask1showDialog();
+              break;
+            case 3:
+              taskdialog = gpsTask1showDialog();
+              break;
+            default:
+              break;
+          }
+          break;
         default:
           break;
       }

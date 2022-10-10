@@ -35,6 +35,15 @@ class Course {
           Course('照片三', 'assets/icons/picture.png', '海溫上升使牡蠣變瘦',
               'assets/images/task_carousel_ostrica_3.jpg'),
         ];
+      case 5:
+        return [
+          Course('照片一', 'assets/icons/picture.png', 'GPS',
+              'assets/images/task_carousel_ostrica_1.jpg'),
+          Course('照片二', 'assets/icons/picture.png', 'GPS',
+              'assets/images/task_carousel_ostrica_2.jpg'),
+          Course('照片三', 'assets/icons/picture.png', 'GPS',
+              'assets/images/task_carousel_ostrica_3.jpg'),
+        ];
       case 3:
         return [
           Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
