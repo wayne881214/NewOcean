@@ -41,7 +41,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   Map DailyApi = {"daily": 0, "yesterday": 0};
   Map WeeklyApi = {
     "avgsData": [0, 0, 0, 0, 0, 0, 0],
-    "userData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+    "userData": [210000, 12000, 13000, 4000, 10000, 12000, 23000]
   };
   late DateTime today = widget.today;
   late DateTime yesterday = new DateTime.fromMillisecondsSinceEpoch(
@@ -57,7 +57,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     DailyApi = {"daily": 0, "yesterday": 0};
     WeeklyApi = {
       "userData": [0, 0, 0, 0, 0, 0, 0],
-      "avgsData": [2100, 1200, 1300, 400, 1000, 1200, 2300]
+      "avgsData": [1000000, 2000000, 13000, 4000, 10000, 12000, 23000]
     };
     DatabaseReference Ref =
         FirebaseDatabase.instance.ref('Logs/' + currentUser);

@@ -13,8 +13,15 @@ import '../../../../constants/achievements_theme.dart';
 const double minX= 0;
 const double maxX= 6;
 const double minY= 0;
-const double maxY= 5000;
+const double maxY= 500;
+//縮放
+const double inSize= 10000;
 
+// double size_1_5= (maxY/5*1)*inSize;
+// const double size_2_5= (maxY/5*2)*inSize;
+// const double size_3_5= (maxY/5*3)*inSize;
+// const double size_4_5= (maxY/5*4)*inSize;
+//  double size_5_5= (maxY/5*5)*inSize;
 
 class LineChart_widget extends StatefulWidget {
   final Map? api;
@@ -114,17 +121,17 @@ class _LineChart_widgetState extends State<LineChart_widget>  {
       case 0:
         text = '0';
         break;
-      case 1000:
-        text = '1000';
+      case 100:
+        text = (100).toString()+'g';
         break;
-      case 2000:
-        text = '2000';
+      case 200:
+        text = (200).toString()+'g';
         break;
-      case 3000:
-        text = '3000';
+      case 300:
+        text = (300).toString()+'g';
         break;
-      case 4000:
-        text = '4000';
+      case 400:
+        text = (400).toString()+'g';
         break;
       default:
         return Container();
@@ -188,31 +195,15 @@ class _LineChart_widgetState extends State<LineChart_widget>  {
         LineChartBarData(
           spots:[
             //好像不能塞迴圈
-            // FlSpot(0,userData[0].toDouble()),
-            // FlSpot(1,userData[1].toDouble()),
-            // FlSpot(2,userData[2].toDouble()),
-            // FlSpot(3,userData[3].toDouble()),
-            // FlSpot(4,userData[4].toDouble()),
-            // FlSpot(5,userData[5].toDouble()),
-            // FlSpot(6,userData[6].toDouble()),
-            // FlSpot(7,userData[7].toDouble()),
-            // FlSpot(8,userData[8].toDouble()),
-            // FlSpot(9,userData[9].toDouble()),
-            // FlSpot(10,userData[10].toDouble()),
-            // FlSpot(11,userData[11].toDouble()),
 
-            FlSpot(0,responseApi["userData"][0].toDouble()),
-            FlSpot(1,responseApi["userData"][1].toDouble()),
-            FlSpot(2,responseApi["userData"][2].toDouble()),
-            FlSpot(3,responseApi["userData"][3].toDouble()),
-            FlSpot(4,responseApi["userData"][4].toDouble()),
-            FlSpot(5,responseApi["userData"][5].toDouble()),
-            FlSpot(6,responseApi["userData"][6].toDouble()),
-            // FlSpot(7,responseApi["userData"][7].toDouble()),
-            // FlSpot(8,responseApi["userData"][8].toDouble()),
-            // FlSpot(9,responseApi["userData"][9].toDouble()),
-            // FlSpot(10,responseApi["userData"][10].toDouble()),
-            // FlSpot(11,responseApi["userData"][11].toDouble()),
+            FlSpot(0,responseApi["userData"][0]/inSize.toDouble()),
+            FlSpot(1,responseApi["userData"][1]/inSize.toDouble()),
+            FlSpot(2,responseApi["userData"][2]/inSize.toDouble()),
+            FlSpot(3,responseApi["userData"][3]/inSize.toDouble()),
+            FlSpot(4,responseApi["userData"][4]/inSize.toDouble()),
+            FlSpot(5,responseApi["userData"][5]/inSize.toDouble()),
+            FlSpot(6,responseApi["userData"][6]/inSize.toDouble()),
+
           ],
           isCurved: true,
           gradient: LinearGradient(
@@ -241,6 +232,9 @@ class _LineChart_widgetState extends State<LineChart_widget>  {
   }
 //平均資料設定
   LineChartData avgData() {
+    print('DDDD');
+    print(responseApi["avgsData"][0]);
+    print(responseApi["avgsData"][0]/inSize);
     return LineChartData(
       lineTouchData: LineTouchData(enabled: false),
       gridData: FlGridData(
@@ -296,13 +290,13 @@ class _LineChart_widgetState extends State<LineChart_widget>  {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0,responseApi["avgsData"][0].toDouble()),
-            FlSpot(1,responseApi["avgsData"][1].toDouble()),
-            FlSpot(2,responseApi["avgsData"][2].toDouble()),
-            FlSpot(3,responseApi["avgsData"][3].toDouble()),
-            FlSpot(4,responseApi["avgsData"][4].toDouble()),
-            FlSpot(5,responseApi["avgsData"][5].toDouble()),
-            FlSpot(6,responseApi["avgsData"][6].toDouble()),
+            FlSpot(0,responseApi["avgsData"][0]/inSize.toDouble()),
+            FlSpot(1,responseApi["avgsData"][1]/inSize.toDouble()),
+            FlSpot(2,responseApi["avgsData"][2]/inSize.toDouble()),
+            FlSpot(3,responseApi["avgsData"][3]/inSize.toDouble()),
+            FlSpot(4,responseApi["avgsData"][4]/inSize.toDouble()),
+            FlSpot(5,responseApi["avgsData"][5]/inSize.toDouble()),
+            FlSpot(6,responseApi["avgsData"][6]/inSize.toDouble()),
             // FlSpot(7,responseApi["avgsData"][7].toDouble()),
             // FlSpot(8,responseApi["avgsData"][8].toDouble()),
             // FlSpot(9,responseApi["avgsData"][9].toDouble()),

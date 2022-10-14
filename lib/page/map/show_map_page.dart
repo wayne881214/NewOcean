@@ -88,13 +88,12 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     }
   }
 
-  // InfoWindow n1 = InfoWindow("rrr","rrr");
   @override
   Widget build(BuildContext context) {
     allMap.forEach((item) {
       LatLng position = LatLng(item.latitude, item.longitude);
       Marker marker = Marker(
-        icon:BitmapDescriptor.fromIconPath("assets/images/sea_lion.png"),
+        icon:BitmapDescriptor.fromIconPath("assets/images/glass.png"),
         position: position,
         draggable: true,
         onTap: (s) async {
@@ -115,20 +114,6 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       );
       initMarkerMap[marker.id] = marker;
     });
-    // for (int i = 0; i < 10; i++) {
-    //   LatLng position = LatLng(
-    //       mapCenter.latitude + 0.0001 * i, mapCenter.longitude + 0.001 * i);
-    //   Marker marker = Marker(
-    //     position: position,
-    //     draggable: true,
-    //     infoWindow: InfoWindow(
-    //       title: "垃圾桶",
-    //       snippet: "這裡有垃圾桶!!",
-    //     ),
-    //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
-    //   );
-    //   initMarkerMap[marker.id] = marker;
-    // }
 
     final AMapWidget map = AMapWidget(
       ///初始化中心定
@@ -157,7 +142,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       /// 定位回调
       onLocationChanged: (AMapLocation location) {
         if (!isChangeLocation) {
-          myLoc = location.latLng;
+          myLoc = mapCenter;
           moveCamera(myLoc);
           print('location.latLng');
           print(location.latLng);
@@ -189,7 +174,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         floatingActionButton:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
           FloatingActionButton(
-            child: Icon(Icons.emoji_people),
+            child: Icon(Icons.shower_outlined),
             onPressed: () async {
               changeTask(5 ,0);
               show("還原任務->0");
@@ -202,12 +187,11 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
             height: 10,
           ),
               FloatingActionButton(
-                child: Icon(Icons.emoji_people),
+                child: Icon(Icons.shopping_cart_sharp),
                 onPressed: () async {
                   changeTask(5 ,1);
                   show("還原任務->1");
                   Navigator.of(context).pop(true);
-
                 },
                 heroTag: null,
               ),
@@ -219,11 +203,10 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
             onPressed: () {
               final currentUser =
                   FirebaseAuth.instance.currentUser!.uid.toString();
-              for (int i = 0; i < 5; i++) {
                 MapData mapData = MapData(
                     currentUser,
-                    mapCenter.latitude + 0.01 * i+0.0001,
-                    mapCenter.longitude + 0.01 * i+0.0001,
+                    mapCenter.latitude,
+                    mapCenter.longitude ,
                     "垃圾桶",
                     "垃圾桶",
                     "這是垃圾桶");
@@ -233,7 +216,6 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
                 addLog(resquestLog);
                 changeTask(5 ,2);
                 Navigator.of(context).pop(true);
-              }
             },
             heroTag: null,
           ),
@@ -241,7 +223,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
             height: 10,
           ),
           FloatingActionButton(
-            child: Icon(Icons.brightness_high),
+            child: Icon(Icons.gps_fixed),
             onPressed: () => moveCamera(myLoc),
             heroTag: null,
           )
