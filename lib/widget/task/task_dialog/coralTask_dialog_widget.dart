@@ -15,34 +15,6 @@ import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
 
-class nothingshowDialog extends StatefulWidget {
-  @override
-  _nothingDialog createState() => _nothingDialog();
-}
-
-class _nothingDialog extends State<nothingshowDialog> {
-  void initState() {
-    super.initState();
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoAlertDialog(
-      title: Text('你已經完成任務'),
-      content: Text('(解鎖動物互動＿ＡＲ)'),
-      actions: <Widget>[
-        CupertinoDialogAction(
-            child: TextButton(
-              child: Text("確定"),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-            ))
-      ],
-    );
-  }
-}
 
 class coralTask1showDialog extends StatefulWidget {
   @override
