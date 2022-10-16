@@ -51,7 +51,7 @@ class _Task_issue extends State<Task_issue> {
       case 7:
         taskTitle="珊瑚";
         issuetext='一些海洋垃圾如漁網或塑膠袋等會在珊瑚上覆蓋或纏繞，阻礙了珊瑚進行光合作用繼而使珊瑚無法吸收陽光及氧氣因而死亡。而且塑膠垃圾更有機會攜帶病菌，也進一步加劇珊瑚礁的死去。\n';
-        featuretext='鯨魚擱淺的照片';
+        featuretext='珊瑚白化的照片';
         break;
       case 8:
         taskTitle="鯨魚";

@@ -214,7 +214,7 @@ class Task {
         return Task(id,state,"assets/images/animals/ostrica.png", "海馬大作戰",
             Mission[state],Perc,1,Describe[state]);
       case 7:
-        var Mission = ["未解鎖", "任務一 擺脫塑膠袋", "任務二 重複使用環保袋<一>", "任務三 重複使用環保袋<二>", "已完成"];
+        var Mission = ["未解鎖", "任務一 擺脫塑膠袋", "任務二 重複使用環保袋(1)", "任務三 重複使用環保袋(2)", "已完成"];
         var Describe = [
           "趕快去解鎖第一個任務",
           "珊瑚礁被海洋塑膠袋套住了",
