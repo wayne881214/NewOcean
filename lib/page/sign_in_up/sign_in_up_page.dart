@@ -24,22 +24,22 @@ class SignInUpPage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            SizedBox(height: 100),
-            Image.asset('assets/images/logo.png'),
+            Image.asset('assets/images/logo.png',width: 155,
+              height: 155,),
             TextField(
               controller: nameController,
               decoration: InputDecoration(
                   labelText: "Name", border: OutlineInputBorder()
               ),
             ),
-            SizedBox(height: 10),
+            //SizedBox(height: 5),
             TextField(
               controller: emailController,
               decoration: InputDecoration(
                 labelText: "Email", border: OutlineInputBorder()
               ),
             ),
-            SizedBox(height: 10),
+            //SizedBox(height: 5),
             TextField(
               controller: passwordController,
               decoration: InputDecoration(

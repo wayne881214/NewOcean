@@ -97,7 +97,7 @@ class _Task_questionState extends State<Task_question> {
         backgroundColor: Color(0xFF00BFA5),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.all(15.0),
             child: Text('得分: $score',
             style: const TextStyle(fontSize: 18.0),),
           )

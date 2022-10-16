@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:newocean/widget/task/task_card_widget.dart';
 
 import '../../constants/colors.dart';
+import '../../firebase/log_service.dart';
 import '../../model/task_model/task_model.dart';
 
 class TasksPage extends StatefulWidget {
@@ -65,7 +66,18 @@ class _TaskState extends State<TasksPage> {
       centerTitle: true,
       backgroundColor: Color(0xFF00BFA5),
       systemOverlayStyle: SystemUiOverlayStyle.light,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: ElevatedButton(
+              onPressed: () {
+                pushOtherLog(1);
+              },
+              child: const Text('簽到')),
+        )
+      ],
     ),
+
     body: card,
     bottomNavigationBar: _buildBottomNaigationBar(),
   );
