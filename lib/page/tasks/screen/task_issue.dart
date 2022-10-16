@@ -49,8 +49,8 @@ class _Task_issue extends State<Task_issue> {
         featuretext='鯨魚擱淺的照片';
         break;
       case 7:
-        taskTitle="鯨魚";
-        issuetext='船舶噪音會產生海洋噪音，高強度噪音影響鯨魚的聽力，導致仰賴聲音溝通的鯨魚受困於岸上無法自行游回大海，擱淺的鯨魚容易因日曬嚴重脫水而死亡。\n';
+        taskTitle="珊瑚";
+        issuetext='一些海洋垃圾如漁網或塑膠袋等會在珊瑚上覆蓋或纏繞，阻礙了珊瑚進行光合作用繼而使珊瑚無法吸收陽光及氧氣因而死亡。而且塑膠垃圾更有機會攜帶病菌，也進一步加劇珊瑚礁的死去。\n';
         featuretext='鯨魚擱淺的照片';
         break;
       case 8:

@@ -41,7 +41,7 @@ class  _AnimalState extends State<Animal_animal> {
           children: [
             Animal_headshot(img:animal.imagePath),
             Animal_describe(site:animal.site,food:animal.food,describe:animal.describe),
-            Animal_interact(state:animal.state),
+            Animal_interact(id:widget.id,state:animal.state),
           ],
         ),
       ),
