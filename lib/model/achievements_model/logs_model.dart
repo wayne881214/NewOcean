@@ -34,11 +34,9 @@ class Log {
           case 1:
             return Log(task_id, task_state, 1, date, labels);
           case 2:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           case 3:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           default:
@@ -50,11 +48,9 @@ class Log {
           case 1:
             return Log(task_id, task_state, 1, date, labels);
           case 2:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           case 3:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           default:
@@ -66,11 +62,9 @@ class Log {
           case 1:
             return Log(task_id, task_state, 1, date, labels);
           case 2:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           case 3:
-            labels.add("QRcode");
             labels.add("拍照");
             return Log(task_id, task_state, 100, date, labels);
           default:
