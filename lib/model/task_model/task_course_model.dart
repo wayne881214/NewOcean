@@ -46,9 +46,12 @@ class Course {
         ];
       case 6:
         return [
-          Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
-          Course('鯨魚擱淺(二)', 'assets/icons/bell.png', '高溫曝曬死亡的鯨魚', 'assets/images/task_carousel_whale_2.png'),
-          Course('鯨魚擱淺(三)', 'assets/icons/bell.png', '時間長了甚至會發生鯨爆', 'assets/images/task_carousel_whale_3.jpg'),
+          Course('圖／翻攝自', 'assets/icons/bell.png', '海洋攝影師Justin Hofman',
+              'assets/images/task_carousel_hofman_1.png'),
+          Course('圖／翻攝自', 'assets/icons/bell.png', 'OCEAN DEFENDER - Hawaii',
+              'assets/images/task_carousel_hofman_2.png'),
+          Course('圖／翻攝自', 'assets/icons/bell.png', '海洋攝影師 Kerim Sabuncuoğlu',
+              'assets/images/task_carousel_hofman_3.png'),
         ];
       case 7:
         return [

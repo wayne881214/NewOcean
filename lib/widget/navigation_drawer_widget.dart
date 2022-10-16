@@ -68,7 +68,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               padding: padding,
               child: Column(
                 children: [
-                  const SizedBox(height: 24),
+                  //const SizedBox(height: 5),
                   buildMenuItem(
                     text: '動物',
                     icon: Icons.adb,
@@ -100,13 +100,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   ),
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: '登出',
+                    text: '商店',
                     icon: Icons.output,
                     onClicked: () => selectedItem(context, 5),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: '商店',
+                    text: '登出',
                     icon: Icons.settings,
                     onClicked: () => selectedItem(context, 6),
                   ),
@@ -199,12 +199,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
         break;
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SignOutPage(),
+          builder: (context) => MyHomePage(),
         ));
         break;
       case 6:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MyHomePage(),
+          builder: (context) => SignOutPage(),
         ));
         break;
     }
