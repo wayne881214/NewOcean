@@ -127,8 +127,8 @@ class Question {
       return [
         Question(
           id: 12,
-          title: '由於鯨魚視力極度退化，因此他們一般使用回聲測量距離，也透過聲波彼此溝通，請問鯨魚發出的聲音，一般介於何者?',
-          options: {'15-25 Hz': true, '25-50 Hz': false, '100-120 Hz': false},
+          title: '珊瑚礁也由於地球暖化而面臨生存環境改變，請問珊瑚礁的適宜溫度為何?',
+          options: {'16~22度': true, '22~26度': false, '28~34度': false},
         ),
         Question(
           id: 12,

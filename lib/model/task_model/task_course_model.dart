@@ -52,9 +52,9 @@ class Course {
         ];
       case 7:
         return [
-          Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
-          Course('鯨魚擱淺(二)', 'assets/icons/bell.png', '高溫曝曬死亡的鯨魚', 'assets/images/task_carousel_whale_2.png'),
-          Course('鯨魚擱淺(三)', 'assets/icons/bell.png', '時間長了甚至會發生鯨爆', 'assets/images/task_carousel_whale_3.jpg'),
+          Course('珊瑚白化(一)', 'assets/icons/bell.png', '珊瑚被塑膠袋套住', 'assets/images/task_carousel_coral_1.png'),
+          Course('珊瑚白化(二)', 'assets/icons/bell.png', '珊瑚受地球暖化白化', 'assets/images/task_carousel_coral_2.png'),
+          Course('珊瑚白化(三)', 'assets/icons/bell.png', '大量珊瑚礁死亡', 'assets/images/task_carousel_coral_3.jpg'),
         ];
       case 8:
         return [
