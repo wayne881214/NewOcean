@@ -77,7 +77,7 @@ class Task {
           "標記垃圾桶",
           "垃圾桶打卡",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "拯救水母大作戰",
+        return Task(id,state,"assets/images/animals/jellyfish.png", "拯救水母大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       case 6:
         var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
@@ -87,7 +87,7 @@ class Task {
           "標記垃圾桶",
           "垃圾桶打卡",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "海馬大作戰",
+        return Task(id,state,"assets/images/animals/hippocampus.png", "海馬大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       case 7:
         var Mission = ["未解鎖", "任務一 擺脫塑膠袋", "任務二 重複使用環保袋<一>", "任務三 重複使用環保袋<二>", "已完成"];
@@ -97,7 +97,7 @@ class Task {
           "重複使用環保袋<一>\n",
           "重複使用環保袋<二>\n",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "珊瑚大作戰",
+        return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       case 8:
         var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
@@ -107,7 +107,7 @@ class Task {
           "標記垃圾桶",
           "垃圾桶打卡",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "珊瑚大作戰",
+        return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       default:
         return Task(id,state,"assets/images/animals/ostrica.png", "尚未解鎖任務","任務一",50,stateApi["state"],"你知道");
@@ -200,7 +200,7 @@ class Task {
           "一起到環保商店消費，鼓勵無塑產品的購買吧!",
           "利用New Ocean找出地圖上標記的環保地標，實地參訪吧!",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "拯救水母大作戰",
+        return Task(id,state,"assets/images/animals/jellyfish.png", "拯救水母大作戰",
             Mission[state],Perc,1,Describe[state]);
 
       case 6:
@@ -211,7 +211,7 @@ class Task {
           "海馬都知道要隨手撿垃圾，身為垃圾製造者的人類，是不是更應該隨手撿垃圾丟到垃圾桶內，請隨手撿垃圾回收後記錄三次。",
           "資源回收很重要，但錯誤的分類會讓辛苦回收再利用的塑膠廢料報銷，你知道塑膠也有分種類嗎?",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "海馬大作戰",
+        return Task(id,state,"assets/images/animals/hippocampus.png", "海馬大作戰",
             Mission[state],Perc,1,Describe[state]);
       case 7:
         var Mission = ["未解鎖", "任務一 擺脫塑膠袋", "任務二 重複使用環保袋(1)", "任務三 重複使用環保袋(2)", "已完成"];
@@ -221,7 +221,7 @@ class Task {
           "重複使用環保袋<一>\n",
           "重複使用環保袋<二>\n",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "珊瑚大作戰",
+        return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
             Mission[state],Perc,1,Describe[state]);
 
       case 8:
