@@ -62,6 +62,7 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
 
   @override
   Widget build(BuildContext context) {
+    qrstr = '1';
     return Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
@@ -92,32 +93,33 @@ class _ostricaTask1showDialog extends State<ostricaTask1showDialog> {
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("請將QRcode下載並印出貼在你的環保用具上"),
+                        child: Text("請將QRcode截圖並印出貼在你的環保用具上"),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * 8,
-                          child: TextField(
-                              maxLength: 50,
-                              decoration: InputDecoration(
-                                  hintText: '輸入資料(測試用)',
-                                  // ignore: prefer_const_constructors
-                                  hintStyle: TextStyle(color: Colors.white),
-                                  filled: true,
-                                  fillColor: Color(0xFF00BFA5),
-                                  // ignore: prefer_const_constructors
-                                  border: OutlineInputBorder(
-                                      borderSide:
-                                      // ignore: prefer_const_constructors
-                                      BorderSide(
-                                          color: Color(0xFF00BFA5), width: 2))),
-                              onChanged: (value) {
-                                qrstr = value;
-                              }),
-                        ),
-                      ),
+                      // Expanded(
+                      //   flex: 2,
+                      //   child: Container(
+                      //     alignment: Alignment.center,
+                      //     width: MediaQuery.of(context).size.width * 8,
+                      //     child: TextField(
+                      //         maxLength: 50,
+                      //         // decoration: InputDecoration(
+                      //         //     hintText: '輸入資料(測試用)',
+                      //         //     // ignore: prefer_const_constructors
+                      //         //     hintStyle: TextStyle(color: Colors.white),
+                      //         //     filled: true,
+                      //         //     fillColor: Color(0xFF00BFA5),
+                      //         //     // ignore: prefer_const_constructors
+                      //         //     border: OutlineInputBorder(
+                      //         //         borderSide:
+                      //         //         // ignore: prefer_const_constructors
+                      //         //         BorderSide(
+                      //         //             color: Color(0xFF00BFA5), width: 2))),
+                      //         // onChanged: (value) {
+                      //         //   qrstr = value;
+                      //         // }
+                      //         ),
+                      //   ),
+                      // ),
                       Expanded(
                           flex: 1,
                           child: Container(

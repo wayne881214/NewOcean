@@ -3,11 +3,7 @@ class Question {
   final String title;
   final Map<String, bool> options;
 
-  Question({
-    required this.id,
-    required this.title,
-    required this.options
-  });
+  Question({required this.id, required this.title, required this.options});
 
   @override
   String toString() {
@@ -25,20 +21,32 @@ class Question {
         Question(
           id: 11,
           title: '有環保觀念的消費者購物時應盡量？',
-          options: {'購買包裝精美之商品': false, '選擇一次性包裝材料之商品': false, '拒絕購買包裝袋而自備購物袋': true},
+          options: {
+            '購買包裝精美之商品': false,
+            '選擇一次性包裝材料之商品': false,
+            '拒絕購買包裝袋而自備購物袋': true
+          },
         ),
         Question(
           id: 11,
           title: '所謂的「一多三少」是指？',
-          options: {'產品份量少、包裝材料多、\n種類少、印刷少': false, '產品份量多、包裝材料少、\n種類少、印刷多': false, '產品份量多、包裝材料少、\n種類少、印刷少': true},
+          options: {
+            '產品份量少、包裝材料多、\n種類少、印刷少': false,
+            '產品份量多、包裝材料少、\n種類少、印刷多': false,
+            '產品份量多、包裝材料少、\n種類少、印刷少': true
+          },
         ),
       ];
-    } else if (id == 2){
+    } else if (id == 2) {
       return [
         Question(
           id: 12,
           title: '廢棄物管理措施，以下何者錯誤?',
-          options: {'少用塑膠製品': false, '儘量自帶可清洗再用的飯盒': false, '資源回收與垃圾減量無關': true},
+          options: {
+            '少用塑膠製品': false,
+            '儘量自帶可清洗再用的飯盒': false,
+            '資源回收與垃圾減量無關': true
+          },
         ),
         Question(
           id: 12,
@@ -66,10 +74,14 @@ class Question {
         Question(
           id: 12,
           title: '鯨魚會因為噪音而干擾回聲定位，因而擱淺在岸上，若時間久了，甚至會發生鯨魚爆炸事件(通稱為鯨爆)，請問鯨爆的發生原因為何?',
-          options: {'受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false, '內部蓄積過多腐敗氣體而造成身軀爆裂': true, '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false},
+          options: {
+            '受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false,
+            '內部蓄積過多腐敗氣體而造成身軀爆裂': true,
+            '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false
+          },
         )
       ];
-    }else if (id == 4) {
+    } else if (id == 4) {
       return [
         Question(
           id: 12,
@@ -84,32 +96,45 @@ class Question {
         Question(
           id: 12,
           title: '鯨魚會因為噪音而干擾回聲定位，因而擱淺在岸上，若時間久了，甚至會發生鯨魚爆炸事件(通稱為鯨爆)，請問鯨爆的發生原因為何?',
-          options: {'受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false, '內部蓄積過多腐敗氣體而造成身軀爆裂': true, '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false},
+          options: {
+            '受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false,
+            '內部蓄積過多腐敗氣體而造成身軀爆裂': true,
+            '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false
+          },
         )
       ];
-    }else if (id == 5) {
+    } else if (id == 5) {
       return [
         Question(
           id: 12,
-          title: '由於鯨魚視力極度退化，因此他們一般使用回聲測量距離，也透過聲波彼此溝通，請問鯨魚發出的聲音，一般介於何者?',
-          options: {'15-25 Hz': true, '25-50 Hz': false, '100-120 Hz': false},
-        ),
-        Question(
-          id: 12,
-          title: '在海上運行的船舶，除了帶給人們物資外，卻也為海洋動物帶來噪音，請問在海洋中，船舶的噪音程度等同現實生活中的哪項噪音?',
-          options: {'飛機起降聲': false, '工地擴建': true, '吵架聲': false},
+          title: '面對水母大量繁殖，何者較可能為主因?',
+          options: {'全球暖化': true, '海平面上升': false, '噪音汙染': false},
         ),
         Question(
           id: 12,
           title: '鯨魚會因為噪音而干擾回聲定位，因而擱淺在岸上，若時間久了，甚至會發生鯨魚爆炸事件(通稱為鯨爆)，請問鯨爆的發生原因為何?',
-          options: {'受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false, '內部蓄積過多腐敗氣體而造成身軀爆裂': true, '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false},
+          options: {
+            '暖化造成洋流改變，水母也順著海流漂向各地。': false,
+            '候危機使海洋的含氧量降低，能耐受低氧環境的水母將更具生存優勢': false,
+            '以上皆是': true
+          },
+        ),
+        Question(
+          id: 12,
+          title: '以下何者為水母爆發的危害?',
+          options: {
+            '水母吃掉魚群幼生及魚卵，導致魚群補充量減少': false,
+            '螫咬而致人傷亡': false,
+            '以上皆是': true
+          },
         )
       ];
-    }else if (id == 6) {
+    } else if (id == 6) {
       return [
         Question(
           id: 12,
-          title: '塑膠分類標誌（Resin identification code）是美國塑膠工業協會所發展出來的分類編碼方式，請問塑膠分為幾類?',
+          title:
+              '塑膠分類標誌（Resin identification code）是美國塑膠工業協會所發展出來的分類編碼方式，請問塑膠分為幾類?',
           options: {'7類': true, '5類': false, '6類': false},
         ),
         Question(
@@ -123,7 +148,7 @@ class Question {
           options: {'已失去價值可棄置': false, '交清潔隊回收': true, '置於不燃性垃圾中': false},
         )
       ];
-    }else if (id == 7) {
+    } else if (id == 7) {
       return [
         Question(
           id: 12,
@@ -138,10 +163,14 @@ class Question {
         Question(
           id: 12,
           title: '鯨魚會因為噪音而干擾回聲定位，因而擱淺在岸上，若時間久了，甚至會發生鯨魚爆炸事件(通稱為鯨爆)，請問鯨爆的發生原因為何?',
-          options: {'受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false, '內部蓄積過多腐敗氣體而造成身軀爆裂': true, '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false},
+          options: {
+            '受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false,
+            '內部蓄積過多腐敗氣體而造成身軀爆裂': true,
+            '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false
+          },
         )
       ];
-    }else if (id == 8) {
+    } else if (id == 8) {
       return [
         Question(
           id: 12,
@@ -156,11 +185,14 @@ class Question {
         Question(
           id: 12,
           title: '鯨魚會因為噪音而干擾回聲定位，因而擱淺在岸上，若時間久了，甚至會發生鯨魚爆炸事件(通稱為鯨爆)，請問鯨爆的發生原因為何?',
-          options: {'受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false, '內部蓄積過多腐敗氣體而造成身軀爆裂': true, '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false},
+          options: {
+            '受高溫影響，鯨魚內部的瓦斯氣體被點燃爆炸': false,
+            '內部蓄積過多腐敗氣體而造成身軀爆裂': true,
+            '指將炸藥塞入鯨魚體內引爆，以方便分解流程': false
+          },
         )
       ];
-    }
-    else {
+    } else {
       return [
         Question(
           id: 12,
@@ -170,12 +202,20 @@ class Question {
         Question(
           id: 12,
           title: '請問為什麼溫室效應會導致牡蠣品質與產量逐漸下降，甚至供不應求？',
-          options: {'因為海溫上升與酸化，導致牡蠣排精卵生態大亂，開始變瘦': true, '溫室效應讓天氣太熱，導致大家想吃海鮮解暑，使牡蠣供不應求': false, '因為海水太熱，因此牡蠣熱死在海裡': false},
+          options: {
+            '因為海溫上升與酸化，導致牡蠣排精卵生態大亂，開始變瘦': true,
+            '溫室效應讓天氣太熱，導致大家想吃海鮮解暑，使牡蠣供不應求': false,
+            '因為海水太熱，因此牡蠣熱死在海裡': false
+          },
         ),
         Question(
           id: 12,
           title: '關於牡蠣敘述，何者錯誤?',
-          options: {'牡蠣殼成分為碳酸鈣，在生成時會消耗二氧化碳，因此有較高的固碳能力': false, '食用牡蠣具有防老抗衰已經防止心血管疾病等優點': false, '主要生活於熱帶的淡水海域內': true},
+          options: {
+            '牡蠣殼成分為碳酸鈣，在生成時會消耗二氧化碳，因此有較高的固碳能力': false,
+            '食用牡蠣具有防老抗衰已經防止心血管疾病等優點': false,
+            '主要生活於熱帶的淡水海域內': true
+          },
         )
       ];
     }

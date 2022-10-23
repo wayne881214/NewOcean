@@ -40,8 +40,8 @@ class _Task_issue extends State<Task_issue> {
       break;
       case 5:
         taskTitle="GPS";
-        issuetext='GPS會產生海洋噪音，高強度噪音影響鯨魚的聽力，導致仰賴聲音溝通的鯨魚受困於岸上無法自行游回大海，擱淺的鯨魚容易因日曬嚴重脫水而死亡。\n';
-        featuretext='GPS擱淺的照片';
+        issuetext='「水逾來逾熱，水母群隨之成長。」因為全球暖化的因素，導致了喜好高溫的水母大量繁殖，不只搶奪食物和棲息地，也導致了其他海洋生物的生存壓力。如今蘇伊士運河也面臨了同樣的情況，成為水母從紅海入侵地中海的管道。\n';
+        featuretext='水母爆炸的照片';
         break;
       case 6:
         taskTitle="海馬";

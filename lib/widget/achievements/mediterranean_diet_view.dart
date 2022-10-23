@@ -414,7 +414,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                    '589 g',
+                                    '??? g',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: achievementTheme.fontName,
@@ -484,7 +484,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        '489 g ',
+                                        '??? g ',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: achievementTheme.fontName,
@@ -556,7 +556,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        '300 g',
+                                        '??? g',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: achievementTheme.fontName,

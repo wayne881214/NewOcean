@@ -31,7 +31,6 @@ class _AchievementsList extends State<AchievementsList> {
       Map userLogValue = (event.snapshot.value as Map);
       this.setState(
           () => jsonResponse.add(new Map<String, dynamic>.from(userLogValue)));
-
     });
     super.initState();
   }
@@ -87,8 +86,25 @@ class _AchievementsListView extends State<AchievementsListView> {
   Card _tile(Achievement achievement, IconData icon) {
     String title = achievement.name.toString();
     String subtitle = achievement.description;
-    double progress = (achievement.points / achievement.target).toDouble() * 100;
+    double progress =
+        (achievement.points / achievement.target).toDouble() * 100;
     progress = (progress <= 100) ? progress : 100;
+    Icon icon;
+    switch (achievement.type) {
+      case '任務':
+        icon = Icon(
+          Icons.task_sharp,
+          color: Colors.teal,
+          size: 120.0,
+        );
+        break;
+      default:
+        icon = Icon(
+          Icons.task_outlined,
+          color: Colors.teal,
+          size: 120.0,
+        );
+    }
 
     return Card(
         shape: RoundedRectangleBorder(
@@ -109,7 +125,8 @@ class _AchievementsListView extends State<AchievementsListView> {
                   showDialog<bool>(
                     context: context,
                     barrierDismissible: true,
-                    builder: (BuildContext context) => rewardDialog(achievement:achievement),
+                    builder: (BuildContext context) =>
+                        rewardDialog(achievement: achievement),
                   ).then((onValue) {
                     if (onValue != null) {
                       // 点击确定后返回的业务逻辑。
@@ -122,11 +139,7 @@ class _AchievementsListView extends State<AchievementsListView> {
                       fontSize: 20,
                     )),
                 subtitle: Text("$subtitle \n進度:$progress%"),
-                leading: Icon(
-                  Icons.audiotrack,
-                  color: Colors.teal,
-                  size: 120.0,
-                ),
+                leading: icon,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),

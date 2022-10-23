@@ -5,9 +5,14 @@ import '../model/store_model/temp_model.dart';
 
 final TextStyle style = GoogleFonts.lato(
     fontSize: 30, color: Colors.white, fontWeight: FontWeight.w700);
-const Color bleu = Color(0xFF148BFF);
+const Color bleu = Color(0xff00cbcb);
 const Color red = Color(0xFFC3011B);
 const Color white = Color(0xFFDCDBEB);
+const Color green = Color(0xFF00FF0B);
+
+const Color green1 = Color(0xff00cbcb);
+const Color green2 = Color(0xFF00aeae);
+const Color green3 = Colors.teal;
 
 List<ShoesModel> sportshoeslist = [
   ShoesModel(
@@ -16,21 +21,21 @@ List<ShoesModel> sportshoeslist = [
       company: '合作商店',
       price: 100,
       isselected: false,
-      color: red),
+      color: green1),
   ShoesModel(
       name: '環保杯5折優惠券',
       img: 'assets/images/glass.png',
       company: '合作商店',
       price: 300,
       isselected: false,
-      color: Colors.amber.shade700),
+      color: green2),
   ShoesModel(
       name: '環保杯免費兌換券',
       img: 'assets/images/glass.png',
       company: '合作商店',
       price: 500,
       isselected: false,
-      color: bleu),
+      color: green3),
 ];
 
 List<ShoesModel> menshoeslist = [
@@ -40,21 +45,21 @@ List<ShoesModel> menshoeslist = [
       company: '普通稀有度',
       price: 100,
       isselected: false,
-      color: Colors.teal),
+      color: green1),
   ShoesModel(
       name: '裝扮轉蛋2',
       img: 'assets/images/burned.png',
       company: '特別稀有度',
       price: 300,
       isselected: false,
-      color: Colors.amber.shade700),
+      color: green2),
   ShoesModel(
       name: '裝扮轉蛋3',
       img: 'assets/images/burned.png',
       company: '高級稀有度',
       price: 109,
       isselected: false,
-      color: bleu),
+      color: green3),
 ];
 
 List<ShoesModel> womenshoeslist = [
@@ -64,21 +69,21 @@ List<ShoesModel> womenshoeslist = [
       company: '普通稀有度',
       price: 100,
       isselected: false,
-      color: Colors.amber.shade700),
+      color: green1),
   ShoesModel(
       name: '動物轉蛋2',
       img: 'assets/images/eaten.png',
       company: '特別稀有度',
       price: 300,
       isselected: false,
-      color: bleu),
+      color: green2),
   ShoesModel(
       name: '動物轉蛋3',
       img: 'assets/images/eaten.png',
       company: '高級稀有度',
       price: 500,
       isselected: false,
-      color: red),
+      color: green3),
 ];
 
 List<ShoesModel> allshoes = sportshoeslist + menshoeslist + womenshoeslist;
