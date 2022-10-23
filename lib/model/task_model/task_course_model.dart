@@ -28,21 +28,21 @@ class Course {
         ];
       case 4:
         return [
-          Course('照片一', 'assets/icons/picture.png', '台灣經典美食-蚵仔',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '台灣經典美食-蚵仔',
               'assets/images/task_carousel_ostrica_1.jpg'),
-          Course('照片二', 'assets/icons/picture.png', '塑膠微粒污染最嚴重',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '塑膠微粒污染最嚴重',
               'assets/images/task_carousel_ostrica_2.jpg'),
-          Course('照片三', 'assets/icons/picture.png', '海溫上升使牡蠣變瘦',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '海溫上升使牡蠣變瘦',
               'assets/images/task_carousel_ostrica_3.jpg'),
         ];
       case 5:
         return [
-          Course('照片一', 'assets/icons/picture.png', 'GPS',
-              'assets/images/task_carousel_ostrica_1.jpg'),
-          Course('照片二', 'assets/icons/picture.png', 'GPS',
-              'assets/images/task_carousel_ostrica_2.jpg'),
-          Course('照片三', 'assets/icons/picture.png', 'GPS',
-              'assets/images/task_carousel_ostrica_3.jpg'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '澳洲毒水母爆發的生態悲歌',
+              'assets/images/task_jellyfish1.jpg'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '水母大爆發背後的警訊',
+              'assets/images/task_jellyfish2.jpg'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '摧毀海洋生態、破壞核電廠',
+              'assets/images/task_jellyfish3.jpg'),
         ];
       case 6:
         return [

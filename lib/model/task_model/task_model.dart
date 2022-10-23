@@ -77,7 +77,7 @@ class Task {
           "標記垃圾桶",
           "垃圾桶打卡",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "GPS大作戰",
+        return Task(id,state,"assets/images/animals/ostrica.png", "拯救水母大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       case 6:
         var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
@@ -193,14 +193,14 @@ class Task {
         return Task(id,state,"assets/images/animals/ostrica.png", "拯救牡蠣大作戰",
                 Mission[state],Perc,1,Describe[state]);
       case 5:
-        var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
+        var Mission = ["未解鎖", "任務一 標記環保地區", "任務二 環保商店打卡", "任務三 環保地區打卡", "已完成"];
         var Describe = [
           "趕快去解鎖第一個任務",
-          "標記環保商店",
-          "標記垃圾桶",
-          "垃圾桶打卡",
+          "社區中很多環保地標，像推廣無塑的環保商店或是簡單的垃圾桶，一起填補地標資訊吧!",
+          "一起到環保商店消費，鼓勵無塑產品的購買吧!",
+          "利用New Ocean找出地圖上標記的環保地標，實地參訪吧!",
           "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "GPS大作戰",
+        return Task(id,state,"assets/images/animals/ostrica.png", "拯救水母大作戰",
             Mission[state],Perc,1,Describe[state]);
 
       case 6:

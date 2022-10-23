@@ -6,6 +6,7 @@ import 'package:newocean/widget/achievements/title_view.dart';
 
 import '../../../../../constants/achievements_theme.dart';
 import '../../../firebase/log_service.dart';
+import '../../../model/task_model/task_progress_detail_model.dart';
 import '../../../widget/achievements/bar_chart.dart';
 import '../../../widget/achievements/line_chart.dart';
 import '../../../widget/achievements/loglist_view.dart';
@@ -51,7 +52,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   late String yesterdayD = formatDate(yesterday, [yyyy, '-', mm, '-', dd]);
 
   late String currentUser = widget.currentUser;
-
+  String userName = '';
+  String userEmail = '';
   @override
   void initState() {
     DailyApi = {"daily": 0, "yesterday": 0};
@@ -121,14 +123,25 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         }
       }
     });
+    userData();
     super.initState();
   }
-
+  void userData() async{
+    database.child('Users/$currentUser').onValue.listen((event) {
+      String name = (event.snapshot.value as Map)["name"];
+      String email = (event.snapshot.value as Map)["email"];
+      setState(() {
+        userName = '$name';
+        userEmail = '$email';
+      });
+    });
+  }
   void addAllListData() async {
     const int count = 9;
     listViews.add(
       TitleView(
-        titleTxt: '$currentUser的\n減碳總覽',
+        titleTxt: '$userName減碳總覽',
+        // titleTxt: '$currentUser的\n減碳總覽',
         subTxt: '查看詳細',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
