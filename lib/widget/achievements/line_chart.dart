@@ -15,7 +15,7 @@ const double maxX= 6;
 const double minY= 0;
 const double maxY= 500;
 //縮放
-const double inSize= 10000;
+const double inSize= 1000;
 
 // double size_1_5= (maxY/5*1)*inSize;
 // const double size_2_5= (maxY/5*2)*inSize;
