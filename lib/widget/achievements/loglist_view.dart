@@ -66,11 +66,22 @@ class LogListView extends StatelessWidget {
   }
 
   ListTile _tile(Log data, IconData icon) {
-    String title= data.task_id.toString()+'-'+data.task_state.toString();
-    String subtitle= data.date;
-    String carbon =data.carbon.toString();
+    var Mission = [
+      ["其他", "其他", "其他", "其他", "其他"],
+      ["未解鎖", "1-1 拯救海龜", "1-2 少喝包裝飲料", "1-3 使用環保餐具", "已完成"],
+      ["未解鎖", "2-1 拯救海獅任務", "2-2 重複使用橡皮圈", "2-3 使用環保餐任務", "已完成"],
+      ["未解鎖", "3-1 幫助小鯨魚回家", "3-2 減碳行動(一)", "3-3 減碳行動(二)", "已完成"],
+      ["未解鎖", "4-1 生成專屬用具", "4-2 環保用具檢查", "4-3 環保商店", "已完成"],
+      ["未解鎖", "5-1 標記環保商店", "5-2 標記垃圾桶", "5-3 垃圾桶打卡", "已完成"],
+      ["未解鎖", "6-1 標記環保商店", "6-2 標記垃圾桶", "6-3 垃圾桶打卡", "已完成"],
+      ["未解鎖", "7-1 擺脫塑膠袋", "7-2 重複使用環保袋<一>", "7-3 重複使用環保袋<二>", "已完成"]
+    ];
+
+    String title = Mission[data.task_id][data.task_state];
+    String subtitle = data.date;
+    String carbon = data.carbon.toString();
     return ListTile(
-      title: Text("任務ID:" + title,
+      title: Text("任務:" + title,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 20,

@@ -142,7 +142,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       TitleView(
         titleTxt: '$userName減碳總覽',
         // titleTxt: '$currentUser的\n減碳總覽',
-        subTxt: '查看詳細',
+        subTxt: '加油',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -175,7 +175,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     listViews.add(
       TitleView(
         titleTxt: '本周數據',
-        subTxt: '數據總覽',
+        subTxt: '加油',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:

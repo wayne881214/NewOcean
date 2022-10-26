@@ -22,6 +22,7 @@ class Log {
     createApi(resquestLog);
     return resquestLog;
   }
+  // https://www.huansuan-danwei.info/duliang-danwei-jisuan-qi.php?type=masse
   static Log setTaskLog(int task_id, int task_state) {
     List<String> labels = [];
     labels.add("任務");
@@ -32,13 +33,13 @@ class Log {
         labels.add("海龜");
         switch (task_state) {
           case 1:
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 0, date, labels);
           case 2:
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 5333, date, labels);
           case 3:
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 57000, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -46,13 +47,14 @@ class Log {
         labels.add("海獅");
         switch (task_state) {
           case 1:
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 0, date, labels);
           case 2:
+            //找不到橡皮經 用免洗筷代替
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 20000, date, labels);
           case 3:
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 20000, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -60,13 +62,13 @@ class Log {
         labels.add("鯨魚");
         switch (task_state) {
           case 1:
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 0, date, labels);
           case 2:
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 5333, date, labels);
           case 3:
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 20000, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }
@@ -74,15 +76,55 @@ class Log {
         labels.add("牡蠣");
         switch (task_state) {
           case 1:
-            return Log(task_id, task_state, 1, date, labels);
+            return Log(task_id, task_state, 0, date, labels);
           case 2:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 5333, date, labels);
           case 3:
             labels.add("QRcode");
             labels.add("拍照");
-            return Log(task_id, task_state, 100, date, labels);
+            return Log(task_id, task_state, 57000, date, labels);
+          default:
+            return Log(0, 0, 0, date, labels);
+        }
+      case 5:
+        labels.add("水母");
+        labels.add("GPS");
+        switch (task_state) {
+          case 1:
+            return Log(task_id, task_state, 0, date, labels);
+          case 2:
+            labels.add("環保商店");
+            return Log(task_id, task_state, 57000, date, labels);
+          case 3:
+            return Log(task_id, task_state, 0, date, labels);
+          default:
+            return Log(0, 0, 0, date, labels);
+        }
+      case 6:
+        labels.add("海馬");
+        labels.add("減塑");
+        switch (task_state) {
+          case 1:
+            return Log(task_id, task_state, 0, date, labels);
+          case 2:
+            return Log(task_id, task_state, 0, date, labels);
+          case 3:
+            return Log(task_id, task_state, 0, date, labels);
+          default:
+            return Log(0, 0, 0, date, labels);
+        }
+      case 7:
+        labels.add("珊瑚");
+        labels.add("減塑");
+        switch (task_state) {
+          case 1:
+            return Log(task_id, task_state, 0, date, labels);
+          case 2:
+            return Log(task_id, task_state, 57000, date, labels);
+          case 3:
+            return Log(task_id, task_state, 57000, date, labels);
           default:
             return Log(0, 0, 0, date, labels);
         }

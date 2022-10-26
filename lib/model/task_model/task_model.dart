@@ -99,18 +99,18 @@ class Task {
           "恭喜完成所有任務"];
         return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
             Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
-      case 8:
-        var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
-        var Describe = [
-          "趕快去解鎖第一個任務",
-          "標記環保商店",
-          "標記垃圾桶",
-          "垃圾桶打卡",
-          "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
-            Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
+      // case 8:
+      //   var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
+      //   var Describe = [
+      //     "趕快去解鎖第一個任務",
+      //     "標記環保商店",
+      //     "標記垃圾桶",
+      //     "垃圾桶打卡",
+      //     "恭喜完成所有任務"];
+      //   return Task(id,state,"assets/images/animals/coral.png", "珊瑚大作戰",
+      //       Mission[state],stateApi["percent"].ceil(),stateApi["state"],Describe[state]);
       default:
-        return Task(id,state,"assets/images/animals/ostrica.png", "尚未解鎖任務","任務一",50,stateApi["state"],"你知道");
+        return Task(id,state,"assets/images/animals/ostrica.png", "尚未解鎖任務","出現錯誤",50,stateApi["state"],"出現錯誤");
     }
   }
 
@@ -225,14 +225,14 @@ class Task {
             Mission[state],Perc,1,Describe[state]);
 
       case 8:
-        var Mission = ["未解鎖", "任務一 標記環保商店", "任務二 標記垃圾桶", "任務三 垃圾桶打卡", "已完成"];
+        var Mission = ["未解鎖", "任務一 出現錯誤", "任務二 出現錯誤", "任務三 出現錯誤", "出現錯誤"];
         var Describe = [
-          "趕快去解鎖第一個任務",
-          "標記環保商店",
-          "標記垃圾桶",
-          "垃圾桶打卡",
-          "恭喜完成所有任務"];
-        return Task(id,state,"assets/images/animals/ostrica.png", "水母大作戰",
+          "出現錯誤",
+          "出現錯誤",
+          "出現錯誤",
+          "出現錯誤",
+          "出現錯誤"];
+        return Task(id,state,"assets/images/animals/ostrica.png", "出現錯誤 請忽視",
             Mission[state],Perc,1,Describe[state]);
       default:
         return Task(id,state,"assets/images/animals/turtle.png", "尚未解鎖任務","任務一",50,1,"你知道");

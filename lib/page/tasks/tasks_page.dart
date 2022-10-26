@@ -25,6 +25,7 @@ class _TaskState extends State<TasksPage> {
   @override
   //初始化
   void initState() {
+    _onItemTapped(0);
     List stateApi = [
       {"targat": -1, "state": -1, "percent": -1},
       {"targat": 11, "state": 0.00, "percent": 0},
