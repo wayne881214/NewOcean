@@ -126,9 +126,9 @@ class _ShakeshowDialog extends State<coralTask1showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(1, 1);
+    Log resquestLog = Log.addTaskLog(7, 1);
     addLog(resquestLog);
-    changeTask(1, 1);
+    changeTask(7, 1);
   }
 
   void _checkAndPush() {
@@ -278,9 +278,9 @@ class _task2showDialog extends State<coralTask2showDialog> {
   // }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(1, 2);
+    Log resquestLog = Log.addTaskLog(7, 2);
     addLog(resquestLog);
-    changeTask2(1, 2, API);
+    changeTask2(7, 2, API);
   }
 
   void _checkAndPush() {
@@ -409,9 +409,9 @@ class _task3showDialog extends State<coralTask3showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(1, 3);
+    Log resquestLog = Log.addTaskLog(7, 3);
     addLog(resquestLog);
-    changeTask2(1, 3, API);
+    changeTask2(7, 3, API);
   }
 
   void _checkAndPush() {

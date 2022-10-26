@@ -30,7 +30,9 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                 (responseApi["yesterday"]+1)) *
             360;
     angle = (angle >= 0) ? angle : 0;
-    // print("angle:$angle");
+    angle = (angle <= 360) ? angle : 360;
+    print("angle:$angle");
+    print("responseApi:$responseApi");
     return AnimatedBuilder(
       animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
@@ -124,7 +126,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                       const EdgeInsets.only(
                                                           left: 4, bottom: 3),
                                                   child: Text(
-                                                    '${(responseApi["daily"] * widget.animation!.value).toInt()}',
+                                                    '${((responseApi["daily"]*0.001) * widget.animation!.value).toInt()}',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
@@ -298,7 +300,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            '${(responseApi["yesterday"] - responseApi["daily"] * widget.animation!.value).toInt()}',
+                                            '${((responseApi["yesterday"] - responseApi["daily"]*0.001)* widget.animation!.value).toInt()}',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily:

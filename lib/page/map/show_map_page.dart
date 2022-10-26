@@ -93,14 +93,14 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     allMap.forEach((item) {
       LatLng position = LatLng(item.latitude, item.longitude);
       Marker marker = Marker(
-        icon:BitmapDescriptor.fromIconPath("assets/images/glass.png"),
+        icon: BitmapDescriptor.fromIconPath("assets/images/glass.png"),
         position: position,
         draggable: true,
         onTap: (s) async {
           if (item.latitude - mapCenter.latitude <= 0.001 &&
               item.longitude - mapCenter.longitude <= 0.001) {
             show('完成任務');
-            result='完成任務';
+            result = '完成任務';
             _checkAndPush();
           } else {
             show('太遠了');
@@ -108,7 +108,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         },
         infoWindow: InfoWindow(
           title: item.title,
-          snippet: "\n簡介"+item.snippet+"\n添加者:"+item.user,
+          snippet: "\n簡介" + item.snippet + "\n添加者:" + item.user,
         ),
         // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
       );
@@ -136,7 +136,6 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       /// 地图创建成功回调
       onMapCreated: (AMapController controller) async {
         _controller = controller;
-
       },
 
       /// 定位回调
@@ -173,49 +172,43 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         ),
         floatingActionButton:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          FloatingActionButton(
-            child: Icon(Icons.shower_outlined),
-            onPressed: () async {
-              changeTask(5 ,0);
-              show("還原任務->0");
-              Navigator.of(context).pop(true);
-
-            },
-            heroTag: null,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-              FloatingActionButton(
-                child: Icon(Icons.shopping_cart_sharp),
-                onPressed: () async {
-                  changeTask(5 ,1);
-                  show("還原任務->1");
-                  Navigator.of(context).pop(true);
-                },
-                heroTag: null,
-              ),
-              SizedBox(
-                height: 10,
-              ),
+          // FloatingActionButton(
+          //   child: Icon(Icons.shower_outlined),
+          //   onPressed: () async {
+          //     changeTask(5, 0);
+          //     show("還原任務->0");
+          //     Navigator.of(context).pop(true);
+          //   },
+          //   heroTag: null,
+          // ),
+          // SizedBox(
+          //   height: 10,
+          // ),
+          // FloatingActionButton(
+          //   child: Icon(Icons.shopping_cart_sharp),
+          //   onPressed: () async {
+          //     changeTask(5, 1);
+          //     show("還原任務->1");
+          //     Navigator.of(context).pop(true);
+          //   },
+          //   heroTag: null,
+          // ),
+          // SizedBox(
+          //   height: 10,
+          // ),
           FloatingActionButton(
             child: Icon(Icons.delete),
             onPressed: () {
               final currentUser =
                   FirebaseAuth.instance.currentUser!.uid.toString();
-                MapData mapData = MapData(
-                    currentUser,
-                    mapCenter.latitude,
-                    mapCenter.longitude ,
-                    "垃圾桶",
-                    "垃圾桶",
-                    "這是垃圾桶");
-                createApi(mapData);
-                addMap(mapData);
-                Log resquestLog = Log.addTaskLog(5 ,2);
-                addLog(resquestLog);
-                changeTask(5 ,2);
-                Navigator.of(context).pop(true);
+              MapData mapData = MapData(currentUser, mapCenter.latitude,
+                  mapCenter.longitude, "垃圾桶", "垃圾桶", "這是垃圾桶");
+              createApi(mapData);
+              addMap(mapData);
+              Log resquestLog = Log.addTaskLog(5, 2);
+              addLog(resquestLog);
+              changeTask(5, 2);
+              Navigator.of(context).pop(true);
             },
             heroTag: null,
           ),
@@ -229,17 +222,20 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           )
         ]));
   }
-  void _pushLog(){
-    Log resquestLog = Log.addTaskLog(5 ,3);
+
+  void _pushLog() {
+    Log resquestLog = Log.addTaskLog(5, 3);
     addLog(resquestLog);
-    changeTask(5 ,2);
+    changeTask(5, 2);
   }
-  void _checkAndPush(){
-    if(result=="完成任務"){
+
+  void _checkAndPush() {
+    if (result == "完成任務") {
       _pushLog();
       Navigator.of(context).pop(true);
     }
   }
+
   AMapController? _mapController;
 
   void onMapCreated(AMapController controller) {
@@ -269,4 +265,3 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     print('地图审图号（卫星地图): $satelliteImageApprovalNumber');
   }
 }
-
