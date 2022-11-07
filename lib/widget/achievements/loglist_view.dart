@@ -9,15 +9,17 @@ List jsonResponse = [];
 
 class LogList extends StatefulWidget {
   @override
+  const LogList({Key? key, required this.currentUser}) : super(key: key);
+  final currentUser;
   _LogList createState() => _LogList();
 }
 
 class _LogList extends State<LogList> {
   @override
   void initState() {
-    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    // final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
     DatabaseReference Ref =
-        FirebaseDatabase.instance.ref('Logs/' + currentUser);
+        FirebaseDatabase.instance.ref('Logs/' + widget.currentUser);
     jsonResponse = [];
     Ref.onChildAdded.listen((event) async {
       Map userLogValue = (event.snapshot.value as Map);
@@ -79,7 +81,7 @@ class LogListView extends StatelessWidget {
 
     String title = Mission[data.task_id][data.task_state];
     String subtitle = data.date;
-    String carbon = (data.carbon/1000).toString();
+    String carbon = (data.carbon / 1000).toString();
     return ListTile(
       title: Text("任務:" + title,
           style: TextStyle(

@@ -56,9 +56,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   String userEmail = '';
   @override
   void initState() {
-    DailyApi = {"daily": 0, "yesterday": 0};
+    DailyApi = {"daily": 1, "yesterday": 1};
     WeeklyApi = {
-      "userData": [0, 0, 0, 0, 0, 0, 0],
+      "userData": [1, 1, 1, 1, 1, 1, 1],
       "avgsData": [1000000, 2000000, 13000, 4000, 10000, 12000, 23000]
     };
     DatabaseReference Ref =
@@ -166,10 +166,18 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         onPressed: () {
           Navigator.push(
             context,
-            new MaterialPageRoute(builder: (context) => LogList()),
+            new MaterialPageRoute(builder: (context) => LogList(currentUser:widget.currentUser)),
           );
         },
         child: Text('查看所有詳細數據'),
+      ),
+    );
+    listViews.add(
+      ElevatedButton(
+        onPressed: () {
+          initState();
+        },
+        child: Text('重新整理'),
       ),
     );
     listViews.add(
