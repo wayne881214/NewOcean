@@ -80,6 +80,7 @@ dependencies:
   badges: ^2.0.2
   awesome_dialog: ^2.1.2
 
+
 #map相關
   amap_flutter_location: ^2.0.0
   permission_handler: 10.0.0
@@ -88,6 +89,7 @@ dependencies:
   connectivity_plus: ^2.3.6+1
   flutter_map: ^2.2.0
 
+  video_player: ^2.4.8
 
 dev_dependencies:
   flutter_test:
@@ -112,8 +114,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/
     - assets/images/
     - assets/icons/
+    - assets/video/
     - assets/images/icons/
     - assets/images/animals/
 
