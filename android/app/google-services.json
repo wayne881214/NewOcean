@@ -10,10 +10,18 @@
       "client_info": {
         "mobilesdk_app_id": "1:223238297413:android:f77ea9e53ffc2df4add02c",
         "android_client_info": {
-          "package_name": "com.example.newocean"
+          "package_name": "com.fcu.newocean"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "223238297413-2ssm915kils2k7ghf7mjpu1gsruphbcc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fcu.newocean",
+            "certificate_hash": "9e0d85b06599573aedf09bfb151c8a519fb582a9"
+          }
+        },
         {
           "client_id": "223238297413-ag4i6u14gjj3m8rtb4925qgsuuh4n0un.apps.googleusercontent.com",
           "client_type": 3
@@ -35,7 +43,7 @@
               "client_id": "223238297413-a97pm4iffs4hl2i2bs2mac1gcsoa8opv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.newocean"
+                "bundle_id": "com.fcu.newocean"
               }
             }
           ]

@@ -225,7 +225,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                                       const EdgeInsets.only(
                                                           left: 4, bottom: 3),
                                                   child: Text(
-                                                    '${(responseApi["yesterday"] * widget.animation!.value).toInt()}',
+                                                    '${((responseApi["yesterday"]*0.001) * widget.animation!.value).toInt()}',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
@@ -300,7 +300,7 @@ class _MediterranesnDietView extends State<MediterranesnDietView> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            '${((responseApi["yesterday"] - responseApi["daily"]*0.001)* widget.animation!.value).toInt()}',
+                                            '${(((responseApi["yesterday"] - responseApi["daily"])*0.001)* widget.animation!.value).toInt()}',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily:

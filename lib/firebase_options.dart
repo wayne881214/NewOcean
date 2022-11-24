@@ -73,6 +73,6 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://newocean-444d7-default-rtdb.firebaseio.com',
     storageBucket: 'newocean-444d7.appspot.com',
     iosClientId: '223238297413-a97pm4iffs4hl2i2bs2mac1gcsoa8opv.apps.googleusercontent.com',
-    iosBundleId: 'com.example.newocean',
+    iosBundleId: 'com.fcu.newocean',
   );
 }

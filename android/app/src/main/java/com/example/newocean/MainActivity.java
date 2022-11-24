@@ -1,4 +1,4 @@
-package com.example.newocean;
+package com.fcu.newocean;
 
 import io.flutter.embedding.android.FlutterActivity;
 

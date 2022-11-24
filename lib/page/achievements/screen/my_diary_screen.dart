@@ -151,6 +151,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
     // Map DailyApi2 = {"daily": 800, "yesterday": 0};
+    print('DailyApi $DailyApi');
     listViews.add(
       MediterranesnDietView(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
