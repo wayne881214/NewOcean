@@ -107,10 +107,10 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
       if (didAddAnchor==true) {
         String Url="https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
       if(widget.id==1){
-        Url="https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/BarramundiFish/glTF-Binary/BarramundiFish.glb";
+        Url="https://github.com/wayne881214/NewOcean/raw/main/lib/ttt.glb";
       }
       else if(widget.id==2){
-        Url="https://github.com/wayne881214/NewOcean/raw/main/lib/turtle.glb";
+        Url="https://github.com/wayne881214/NewOcean/raw/main/lib/jeilfish.glb";
       }else{
         Url="https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
       }
@@ -119,7 +119,7 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
         var newNode = ARNode(
             type: NodeType.webGLB,
             uri: Url,
-            scale: Vector3(12, 12, 12),
+            scale: Vector3(0.3, 0.3, 0.3),
             position: Vector3(0.0, 0.0, 0.0),
             rotation: Vector4(1.0, 0.0, 0.0, 0.0));
         bool? didAddNodeToAnchor =
