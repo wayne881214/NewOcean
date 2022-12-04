@@ -20,7 +20,8 @@ class VideoPlayerApp extends StatelessWidget {
 
 class VideoPlayerScreen extends StatefulWidget {
   final String? path;
-  const VideoPlayerScreen({Key? key,this.path}): super(key: key);
+  final double? volume;
+  const VideoPlayerScreen({Key? key,this.path,this.volume}): super(key: key);
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -42,7 +43,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     //   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
     // );
     String videoPath=widget.path!;
-
+    double volume = widget.volume!;
     _controller = VideoPlayerController.asset(videoPath);
 
     // Initialize the controller and store the Future for later use.
@@ -50,6 +51,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
     // Use the controller to loop the video.
     _controller.setLooping(true);
+    _controller.setVolume(volume);
   }
 
   @override
