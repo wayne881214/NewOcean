@@ -276,7 +276,7 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                                 return Container(
                                     width: 300,
                                     height: 250,
-                                    child: const VideoPlayerScreen(path:'assets/video/video.mp4',volume:1.0));
+                                    child: const VideoPlayerScreen(path:'assets/video/video.mp4',volume:1.0,height: 0,width:0));
                               }
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting ||

@@ -21,7 +21,9 @@ class VideoPlayerApp extends StatelessWidget {
 class VideoPlayerScreen extends StatefulWidget {
   final String? path;
   final double? volume;
-  const VideoPlayerScreen({Key? key,this.path,this.volume}): super(key: key);
+  final double? width;
+  final double? height;
+  const VideoPlayerScreen({Key? key,this.path,this.volume,this.width,this.height}): super(key: key);
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -44,30 +46,31 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // );
     String videoPath=widget.path!;
     double volume = widget.volume!;
-    _controller = VideoPlayerController.asset(videoPath);
 
+    _controller = VideoPlayerController.asset(videoPath);
     // Initialize the controller and store the Future for later use.
     _initializeVideoPlayerFuture = _controller.initialize();
-
     // Use the controller to loop the video.
     _controller.setLooping(true);
     _controller.setVolume(volume);
+    _controller.play();
   }
 
   @override
   void dispose() {
     // Ensure disposing of the VideoPlayerController to free up resources.
     _controller.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Butterfly Video'),
-      ),
+    double width = widget.width!;
+    double height = widget.height!;
+    return Container(
+     width: width,
+     height: height,
+     child: Scaffold(
       // Use a FutureBuilder to display a loading spinner while waiting for the
       // VideoPlayerController to finish initializing.
       body: FutureBuilder(
@@ -109,6 +112,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ),
-    );
+    ));
   }
 }
