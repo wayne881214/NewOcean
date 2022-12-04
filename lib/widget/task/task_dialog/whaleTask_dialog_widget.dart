@@ -16,6 +16,7 @@ import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
+import '../../../video.dart';
 
 class whaleTask1showDialog extends StatefulWidget {
   @override
@@ -275,10 +276,7 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                                 return Container(
                                     width: 300,
                                     height: 250,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
+                                    child: VideoPlayerScreen(path:'assets/video/video.mp4'));
                               }
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting ||
