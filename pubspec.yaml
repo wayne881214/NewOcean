@@ -90,6 +90,7 @@ dependencies:
   latlong2:
   connectivity_plus:
   flutter_map:
+  video_player:
 
 
 dev_dependencies:
@@ -115,8 +116,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/
     - assets/images/
     - assets/icons/
+    - assets/video/
     - assets/images/icons/
     - assets/images/animals/
 
