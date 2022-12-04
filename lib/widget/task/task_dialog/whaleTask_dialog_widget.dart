@@ -76,7 +76,9 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
+                        child:Container(
+                         child: const VideoPlayerScreen(path:'assets/video/video.mp4',volume:1.0,height: 250,width:300)
+                        )
                       ),
                       Expanded(
                           flex: 2,
@@ -190,6 +192,7 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                       ),
                       Expanded(
                         flex: 1,
+
                         child: Text("請將環保水壺靠近手機紀錄"),
                       ),
                       Expanded(
