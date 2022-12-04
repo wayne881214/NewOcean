@@ -33,12 +33,16 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
 
   void initState() {
     super.initState();
-    _streamSubscriptions
-        .add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
+    _streamSubscriptions.add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
       setState(() {
-        x = event.x;
-        y = event.y;
-        z = event.z;
+        if(x-stateX < 0) {
+          x = event.x;
+          y = event.y;
+          z = event.z;
+        }
+        if(x - stateX > 0 ){
+          result = "完成任務";
+        }
       });
     }));
   }
@@ -71,7 +75,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("搖晃手機幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
+                        child: Text("幫助鯨魚判斷回家方向\n越接近鯨魚群進度條與海洋噪音會越小"),
                       ),
                       Expanded(
                           flex: 2,
