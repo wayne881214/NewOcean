@@ -70,6 +70,15 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/turtle.png'),
+              new ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return ShowMapPage();
+                  }));
+                },
+                child: new Text('地圖'),
+              ),
             ],
           ),
         ),
