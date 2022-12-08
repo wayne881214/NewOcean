@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../firebase/database_service.dart';
 import '../../firebase/log_service.dart';
@@ -56,6 +57,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       });
     });
     super.initState();
+    requestPermission();
 
     AMapLocationOption loacationOption = AMapLocationOption(
       onceLocation: true,
@@ -69,21 +71,51 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     _locationPlugin.startLocation();
   }
 
+  /// 动态申请定位权限
+  void requestPermission() async {
+    // 申请权限
+    bool hasLocationPermission = await requestLocationPermission();
+    if (hasLocationPermission) {
+      print("定位权限申请通过");
+    } else {
+      print("定位权限申请不通过");
+    }
+  }
+
+  /// 申请定位权限
+  /// 授予定位权限返回true， 否则返回false
+  Future<bool> requestLocationPermission() async {
+    //获取当前的权限
+    var status = await Permission.location.status;
+    if (status == PermissionStatus.granted) {
+      //已经授权
+      return true;
+    } else {
+      //未授权则发起一次申请
+      status = await Permission.location.request();
+      if (status == PermissionStatus.granted) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   Future<List<MapData>> _fetchLogs() async {
     return jsonResponse.map((item) => new MapData.fromJson(item)).toList();
   }
 
   AMapController? _controller;
   bool isChangeLocation = false;
-  late LatLng myLoc = LatLng(24.171087778636508, 120.64362036428265);
-  late LatLng mapCenter = LatLng(24.171087778636508, 120.64362036428265);
+  late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
+  late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
 
   moveCamera(LatLng currentLatLng) {
     if (null != _controller) {
       mapCenter = currentLatLng;
       _controller!.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: currentLatLng,
-        zoom: 16,
+        zoom: 50,
       )));
     }
   }
@@ -93,8 +125,10 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
     allMap.forEach((item) {
       LatLng position = LatLng(item.latitude, item.longitude);
       Marker marker = Marker(
-        icon: BitmapDescriptor.fromIconPath("assets/images/glass.png"),
+        icon: BitmapDescriptor.fromIconPath(
+            "assets/images/animals/whale_map.png"),
         position: position,
+        infoWindowEnable: true,
         draggable: true,
         onTap: (s) async {
           if (item.latitude - mapCenter.latitude <= 0.001 &&
@@ -119,7 +153,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       ///初始化中心定
       initialCameraPosition: CameraPosition(
         target: mapCenter,
-        zoom: 2,
+        zoom: 50,
       ),
       buildingsEnabled: true,
       trafficEnabled: true,
@@ -127,9 +161,10 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(
         true,
+        // icon:BitmapDescriptor.defaultMarkerWithHue(240.0),
         circleFillColor: Colors.lightBlue,
         circleStrokeColor: Colors.blue,
-        circleStrokeWidth: 1,
+        circleStrokeWidth: 3,
         // icon: BitmapDescriptor.defaultMarker,
       ),
 
@@ -140,12 +175,17 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
 
       /// 定位回调
       onLocationChanged: (AMapLocation location) {
+        print('location.latLng isChangeLocation');
+
         if (!isChangeLocation) {
           myLoc = mapCenter;
+          myLoc = location.latLng;
           moveCamera(myLoc);
-          print('location.latLng');
+          print('location.latLng onLocationChanged');
+          print(myLoc);
           print(location.latLng);
           isChangeLocation = true;
+          super.initState();
         }
       },
       markers: Set<Marker>.of(initMarkerMap.values),
@@ -217,7 +257,13 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
           ),
           FloatingActionButton(
             child: Icon(Icons.gps_fixed),
-            onPressed: () => moveCamera(myLoc),
+            onPressed: () {
+              {
+                moveCamera(myLoc);
+                print('moveCamera to');
+                print(myLoc);
+              }
+            },
             heroTag: null,
           )
         ]));
