@@ -160,7 +160,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
       buildingsEnabled: true,
       trafficEnabled: true,
       labelsEnabled:true,
-      mapType:MapType.satellite,
+      // mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(
         true,
