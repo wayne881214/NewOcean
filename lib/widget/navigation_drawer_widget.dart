@@ -76,39 +76,33 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: '海洋',
-                    icon: Icons.water,
-                    onClicked: () => selectedItem(context, 1),
-                  ),
-                  const SizedBox(height: 16),
-                  buildMenuItem(
                     text: '任務',
                     icon: Icons.task,
-                    onClicked: () => selectedItem(context, 2),
+                    onClicked: () => selectedItem(context, 1),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
                     text: '成就',
                     icon: Icons.update,
-                    onClicked: () => selectedItem(context, 3),
+                    onClicked: () => selectedItem(context, 2),
                   ),
                   const SizedBox(height: 24),
                   buildMenuItem(
                     text: '好友',
                     icon: Icons.person_add,
-                    onClicked: () => selectedItem(context, 4),
+                    onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 24),
                   buildMenuItem(
                     text: '商店',
                     icon: Icons.output,
-                    onClicked: () => selectedItem(context, 5),
+                    onClicked: () => selectedItem(context, 4),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
                     text: '登出',
                     icon: Icons.settings,
-                    onClicked: () => selectedItem(context, 6),
+                    onClicked: () => selectedItem(context, 5),
                   ),
                 ],
               ),
@@ -179,30 +173,25 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => OceanPage(),
+          builder: (context) => TasksPage(),
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TasksPage(),
+          builder: (context) => AchievementsPage(),
         ));
         break;
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AchievementsPage(),
+          builder: (context) => FriendsPage(),
         ));
         break;
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FriendsPage(),
-        ));
-        break;
-      case 5:
-        Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => MyHomePage(),
         ));
         break;
-      case 6:
+      case 5:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SignOutPage(),
         ));

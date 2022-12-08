@@ -37,13 +37,13 @@ class _HomePageState extends State<HomePage> {
         if(state == 0) {
             word = "救救我!!!";
         } else if(state == 1) {
-            word = "任務一提示";
+            word = "嗚嗚嗚~吸管卡在鼻子好痛!";
         }else if(state == 2){
-            word = "任務二提示";
+            word = "嗚嗚嗚~在幫我一次!";
         }else if(state == 3){
-            word = "任務三提示";
+            word = "嗚嗚嗚~謝謝你!";
         }else{
-            word = "謝謝你";
+            word = "現在海洋好乾淨~";
         }
       });//更新 TaskCard Widget(任務卡片列表)
     });
