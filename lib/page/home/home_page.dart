@@ -11,6 +11,7 @@ import '../../model/achievements_model/logs_model.dart';
 import '../../widget/achievements/loglist_view.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
+import '../map/map_video.dart';
 import '../map/show_map_page.dart';
 import '../store/storeHomepage.dart';
 import '../tasks/screen/task_issue.dart';
@@ -107,7 +108,18 @@ class _HomePageState extends State<HomePage> {
                     return ShowMapPage();
                   }));
                 },
+                  // Map_VideoPage
                 child: new Text('地圖'),
+              ),
+              new ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return Map_VideoPage();
+                  }));
+                },
+                //
+                child: new Text('地圖(鯨魚)'),
               ),
             ],
           ),
