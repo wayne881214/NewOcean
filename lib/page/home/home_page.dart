@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
 
   void initState() {
     final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
-    print('yuyyyystate');
     DatabaseReference TaskRef =
         FirebaseDatabase.instance.ref('Tasks/$currentUser/task1');
     TaskRef.onValue.listen((event){
@@ -60,7 +59,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: Text('1', style: TextStyle(color: Colors.teal)),
+          title: Text('LV:1', style: TextStyle(color: Colors.teal)),
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
