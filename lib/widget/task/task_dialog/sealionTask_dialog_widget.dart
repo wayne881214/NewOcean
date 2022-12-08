@@ -21,7 +21,7 @@ class sealionTask1showDialog extends StatefulWidget {
 }
 class _ShakeshowDialog extends State<sealionTask1showDialog> {
   int number = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  String img = "assets/images/task_carousel_sea_lion_2.jpg";
   String result = "取消";
 
   void initState() {
@@ -34,14 +34,14 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
           event.y <= -value ||
           event.z >= value ||
           event.z <= -value) {
-        if (number < 10) {
+        if (number < 50) {
           setState(() {
             number += 1;
           });
         }
-        if (number == 10) {
+        if (number == 50) {
           setState(() {
-            img = "https://memeprod.ap-south-1.linodeobjects.com/user-gif-thumbnail/eb4e861fd45a3a55cd2683ab47231d49.gif";
+            img = "assets/images/animals/sealion.png";
             result = "完成任務";
           });
         }
@@ -77,7 +77,8 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
                     child: Column(children: [
                       Expanded(
                         flex: 6,
-                        child: Image.network(img, height: 300, width: 250),
+                        child: Image.asset(img ,
+                            height: 300.00, width: 250.00)
                       ),
                       Expanded(
                         flex: 1,
@@ -98,7 +99,7 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
                                   animation: true,
                                   lineHeight: 20.0,
                                   animationDuration: 200,
-                                  percent: number * 10 / 100,
+                                  percent: number * 2  / 100,
                                   barRadius: const Radius.circular(16),
                                   progressColor: Color(0XFFFF1C41),
                                 ))
@@ -140,7 +141,7 @@ class sealionTask2showDialog extends StatefulWidget {
 }
 
 class _task2showDialog extends State<sealionTask2showDialog> {
-  int number = 0,op=0;
+  int number = 0, op = 0;
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
   String filename="123.jpg";

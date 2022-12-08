@@ -1,16 +1,10 @@
 import 'dart:async';
-
-import 'package:date_format/date_format.dart';
+import 'package:all_sensors/all_sensors.dart' as name;
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/firebase/User.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
@@ -46,44 +40,37 @@ class _nothingDialog extends State<nothingshowDialog> {
 
 class turtleTask1showDialog extends StatefulWidget {
   @override
-  _ShakeshowDialog createState() => _ShakeshowDialog();
+  _task1showDialog createState() => _task1showDialog();
 }
-
-class _ShakeshowDialog extends State<turtleTask1showDialog> {
-  int number = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+class _task1showDialog extends State<turtleTask1showDialog> {
+  bool _proximityValues = false;
   String result = "取消";
+  String img = "assets/images/task_carousel_turtle_1.jpg";
+  List<StreamSubscription<dynamic>> _streamSubscriptions =
+  <StreamSubscription<dynamic>>[];
 
   void initState() {
-    accelerometerEvents.listen((AccelerometerEvent event) {
-      // 摇一摇阀值,不同手机能达到的最大值不同，如某品牌手机只能达到20。
-      int value = 15;
-      if (event.x >= value ||
-          event.x <= -value ||
-          event.y >= value ||
-          event.y <= -value ||
-          event.z >= value ||
-          event.z <= -value) {
-        if (number < 10) {
-          setState(() {
-            number += 1;
-          });
-        }
-        if (number == 10) {
-          setState(() {
-            img =
-            "https://memeprod.ap-south-1.linodeobjects.com/user-gif-thumbnail/eb4e861fd45a3a55cd2683ab47231d49.gif";
-            result = "完成任務";
-          });
-        }
-        // if(op==1){
-        //   setState(() {
-        //     filename=filename;
-        //   };
-        // }
-      }
-    });
     super.initState();
+    _streamSubscriptions
+        .add(name.proximityEvents!.listen((name.ProximityEvent event) {
+      setState(() {
+        _proximityValues = event.getValue();
+      });
+      if (_proximityValues) {
+        setState(() {
+          img = "assets/images/animals/turtle.png";
+          result = "完成任務";
+        });
+      }
+    }));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    for (StreamSubscription<dynamic> subscription in _streamSubscriptions) {
+      subscription.cancel();
+    }
   }
 
   @override
@@ -107,33 +94,14 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
-                        child: Image.network(img, height: 300, width: 250),
+                        flex: 8,
+                        child: Image.asset( img , height: 350.00, width: 350.00)
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("搖晃手機以幫助海龜掙脫漁網"),
+
+                        child: Text("請將環保水壺靠近手機紀錄"),
                       ),
-                      Expanded(
-                          flex: 2,
-                          child: Row(children: [
-                            Expanded(
-                              flex: 2,
-                              child: Image.asset("assets/images/icons/shake.png",
-                                  height: 150.00, width: 150.00),
-                            ),
-                            Expanded(
-                                flex: 8,
-                                child: LinearPercentIndicator(
-                                  width: 250,
-                                  animation: true,
-                                  lineHeight: 20.0,
-                                  animationDuration: 200,
-                                  percent: number * 10 / 100,
-                                  barRadius: const Radius.circular(16),
-                                  progressColor: Color(0XFFFF1C41),
-                                ))
-                          ])),
                       Expanded(
                           flex: 1,
                           child: Container(
@@ -154,9 +122,9 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(1, 1);
+    Log resquestLog = Log.addTaskLog(3,2);
     addLog(resquestLog);
-    changeTask(1, 1);
+    changeTask(3,2);
   }
 
   void _checkAndPush() {
@@ -165,6 +133,122 @@ class _ShakeshowDialog extends State<turtleTask1showDialog> {
     }
   }
 }
+// class _ShakeshowDialog extends State<turtleTask1showDialog> {
+//   int number = 0;
+//   String img = "https://turtleacademy.com/images/turtle.gif";
+//   String result = "取消";
+//
+//   void initState() {
+//     accelerometerEvents.listen((AccelerometerEvent event) {
+//       // 摇一摇阀值,不同手机能达到的最大值不同，如某品牌手机只能达到20。
+//       int value = 15;
+//       if (event.x >= value ||
+//           event.x <= -value ||
+//           event.y >= value ||
+//           event.y <= -value ||
+//           event.z >= value ||
+//           event.z <= -value) {
+//         if (number < 10) {
+//           setState(() {
+//             number += 1;
+//           });
+//         }
+//         if (number == 10) {
+//           setState(() {
+//             img =
+//             "https://memeprod.ap-south-1.linodeobjects.com/user-gif-thumbnail/eb4e861fd45a3a55cd2683ab47231d49.gif";
+//             result = "完成任務";
+//           });
+//         }
+//         // if(op==1){
+//         //   setState(() {
+//         //     filename=filename;
+//         //   };
+//         // }
+//       }
+//     });
+//     super.initState();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Dialog(
+//       shape: RoundedRectangleBorder(
+//           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+//       child: Container(
+//         decoration: new BoxDecoration(
+//             borderRadius: BorderRadius.all(Radius.circular(15)),
+//             gradient: new LinearGradient(colors: <Color>[
+//               Color(0xffB3E7E7),
+//               Color(0xffBCCFF5),
+//             ], begin: Alignment.topLeft, end: Alignment.topRight)),
+//         child: Card(
+//             elevation: 0,
+//             color: Colors.transparent,
+//             child: SizedBox(
+//                 width: 350,
+//                 height: 500,
+//                 child: Center(
+//                     child: Column(children: [
+//                       Expanded(
+//                         flex: 6,
+//                         child: Image.network(img, height: 300, width: 250),
+//                       ),
+//                       Expanded(
+//                         flex: 1,
+//                         child: Text("搖晃手機以幫助海龜掙脫漁網"),
+//                       ),
+//                       Expanded(
+//                           flex: 2,
+//                           child: Row(children: [
+//                             Expanded(
+//                               flex: 2,
+//                               child: Image.asset("assets/images/icons/shake.png",
+//                                   height: 150.00, width: 150.00),
+//                             ),
+//                             Expanded(
+//                                 flex: 8,
+//                                 child: LinearPercentIndicator(
+//                                   width: 250,
+//                                   animation: true,
+//                                   lineHeight: 20.0,
+//                                   animationDuration: 200,
+//                                   percent: number * 10 / 100,
+//                                   barRadius: const Radius.circular(16),
+//                                   progressColor: Color(0XFFFF1C41),
+//                                 ))
+//                           ])),
+//                       Expanded(
+//                           flex: 1,
+//                           child: Container(
+//                             padding: EdgeInsets.all(5.0),
+//                             width: 100, // <-- Your width
+//                             height: 50,
+//                             child: ElevatedButton(
+//                               onPressed: () {
+//                                 _checkAndPush();
+//                                 Navigator.of(context).pop(true);
+//                               },
+//                               child: Text('$result'),
+//                             ),
+//                           ))
+//                     ])))),
+//       ),
+//     );
+//   }
+//
+//   void _pushLog() {
+//     Log resquestLog = Log.addTaskLog(1, 1);
+//     addLog(resquestLog);
+//     changeTask(1, 1);
+//   }
+//
+//   void _checkAndPush() {
+//     if (result == "完成任務") {
+//       _pushLog();
+//     }
+//   }
+// }
 
 class turtleTask2showDialog extends StatefulWidget {
   @override

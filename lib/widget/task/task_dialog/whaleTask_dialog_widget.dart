@@ -27,6 +27,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
   double stateX = (Random().nextDouble() * 20) - 10;
   double stateY = (Random().nextDouble() * 20) - 10;
   double x = 0, y = 0, z = 0 ;
+  double? sizeX = 50, sizeY = 50;
   double? volumes = 1.0;
   VideoPlayerScreen newVideoPlayerScreen = VideoPlayerScreen(path:'assets/video/voice1.mp4',volume:1,height: 0,width:0);
   String img = "assets/images/animals/whale.png";
@@ -46,6 +47,9 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
           z = event.z;
         }
         if((x - stateX).abs() <= 3 ){
+          x = stateX ;
+          sizeX = 50;
+          sizeY = 50;
           result = "完成任務";
         }
       });
@@ -76,8 +80,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                         widthFactor: 10,
                         heightFactor: 6,
                         alignment: Alignment(-1 * x / 10, y / 10),
-                        child: Image.asset( img ,
-                            height: 50.00, width: 50.00)
+                        child: Image.asset( img ,height: sizeX, width: sizeY)
                       ),
                       Expanded(
                         flex: 1,
