@@ -258,13 +258,15 @@ class turtleTask2showDialog extends StatefulWidget {
 
 class _task2showDialog extends State<turtleTask2showDialog> {
   int number = 0, op = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   String result = "取消";
-  String filename = "123.jpg";
+  String filename = "";
 
   void initState() {
     super.initState();
-    setState(() {});
+    setState(() {
+      filename = currentUser +"123.jpg";
+    });
   }
 
   @override
@@ -291,7 +293,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
+                        flex: 7,
                         child: FutureBuilder(
                             future: storage.downloadURL('$filename'),
 
@@ -312,9 +314,9 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting ||
                                   !snapshot.hasData) {
-                                return Text("Stupid flutter");
+                                return Text("載入中");
                               }
-                              return Text("Stupid flutter");
+                              return Text("未上傳照片");
                             }),
                       ),
                       Expanded(
@@ -322,7 +324,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                         child: Text("請上傳照片"),
                       ),
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: ElevatedButton(
                           onPressed: () async {
                             final results = await FilePicker.platform.pickFiles(
@@ -339,7 +341,7 @@ class _task2showDialog extends State<turtleTask2showDialog> {
                               return null;
                             }
                             final path = results.files.single.path!;
-                            final file = "123.jpg";
+                            final file = filename;
 
                             this.setState(() => result = "完成任務");
                             // print("1.filename:$filename");
@@ -369,27 +371,6 @@ class _task2showDialog extends State<turtleTask2showDialog> {
       ),
     );
   }
-
-  // void _pushLog(){
-  //   Map<String,Object> log= {
-  //     "date": formatDate(DateTime.now(), [yyyy, "-", mm, "-", dd, " ",  HH, ":", nn, ":", ss]),
-  //     "task": 1,
-  //     "carbon": 10,
-  //     "id":"1-2"
-  //   };
-  //   final DatabaseReference fireBaseDB = FirebaseDatabase.instance.ref("User/1/log/");
-  //   // DatabaseReference pushUserDB = fireBaseDB.child("4-2-3");
-  //
-  //
-  //   DatabaseReference pushUserDB = fireBaseDB.push();
-  //   //push=>亂碼顯示 有空在設4-1-n
-  //   pushUserDB.set(log).whenComplete((){
-  //     print("user push success");
-  //   }).catchError((error){
-  //     print(error);
-  //   });
-  //   changeTask2(1 ,2,API);
-  // }
 
   void _pushLog() {
     Log resquestLog = Log.addTaskLog(1, 2);
