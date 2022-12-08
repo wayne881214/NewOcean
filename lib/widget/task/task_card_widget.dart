@@ -20,7 +20,7 @@ class TaskCard extends StatelessWidget {
       //每一項進行生成
       children: data.map((value) {
         if (value.state == 0) {
-          background = Color(0xFFB4B7BF);
+          background = Color(0xFFC0C1C4);
         } else {
           background = Colors.white;
         }
@@ -129,7 +129,7 @@ class TaskCard extends StatelessWidget {
                                                     textAlign: TextAlign.center,
                                                     overflow: TextOverflow.ellipsis,
                                                     style: const TextStyle(
-                                                        color: Color(0xFFB4B7BF),
+                                                        color: Color(0xAE00A295),
                                                         fontSize: 15))),
                                             Expanded(flex: 1, child: Text(""))
                                           ]))

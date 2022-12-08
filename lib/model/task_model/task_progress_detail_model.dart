@@ -44,53 +44,53 @@ class TaskProgressDetailModel {
       return [
         //進行中
         TaskProgressDetailModel(kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task1.mission, task1.describe, kAccent1,
-            kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
+            kPrimaryLight, kPrimary, kPrimaryDark, 'once', '獎勵/分享',id,1),
         //鎖住
         TaskProgressDetailModel(
             kFontLight.withOpacity(0.3), Colors.white, kFontLight.withOpacity(0.7), Icons.lock_outline_rounded, task2.mission, task2.describe,
-            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '3 day', '領取獎勵/分享',id,2),
+            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '7 days', '獎勵/分享',id,2),
         TaskProgressDetailModel(
             kFontLight.withOpacity(0.3), Colors.white, kFontLight.withOpacity(0.7), Icons.lock_outline_rounded, task3.mission, task3.describe,
-            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '7 day', '領取獎勵/分享',id,3)
+            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '21 days', '獎勵/分享',id,3)
       ];
     } else if(progress_detail_state == 2){
       return[
         //進行中
         TaskProgressDetailModel(
             kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task2.mission, task2.describe, kAccent1,
-            kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,2),
+            kPrimaryLight, kPrimary, kPrimaryDark, '7 days', '獎勵/分享',id,2),
         //鎖住
         TaskProgressDetailModel(
             kFontLight.withOpacity(0.3), Colors.white, kFontLight.withOpacity(0.7), Icons.lock_outline_rounded, task3.mission, task3.describe,
-            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '7 day', '領取獎勵/分享',id,3),
+            kPrimaryLight, Colors.white, Colors.grey.withOpacity(0.2), Colors.grey, '21 days', '獎勵/分享',id,3),
         //完成
         TaskProgressDetailModel(kAccent, kAccent, Colors.white, Icons.check,task1.mission, task1.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
+            kPrimaryLight, kPrimary, kPrimaryDark, 'once', '獎勵/分享',id,1),
       ];
     } else if(progress_detail_state == 3){
       return[
         //進行中
         TaskProgressDetailModel(
             kAccent1, kAccent1, Colors.white, Icons.play_arrow_rounded,task3.mission, task3.describe, kAccent1,
-            kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,3),
+            kPrimaryLight, kPrimary, kPrimaryDark, '21 days', '獎勵/分享',id,3),
         //完成
         TaskProgressDetailModel(kAccent, kAccent, Colors.white, Icons.check,task1.mission, task1.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
+            kPrimaryLight, kPrimary, kPrimaryDark, 'once', '獎勵/分享',id,1),
         TaskProgressDetailModel(
             kAccent, kAccent, Colors.white, Icons.check,task2.mission, task2.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,2),
+            kPrimaryLight, kPrimary, kPrimaryDark, '7 days', '獎勵/分享',id,2),
       ];
     } else {
       return[
         //完成
         TaskProgressDetailModel(kAccent, kAccent, Colors.white, Icons.check,task1.mission, task1.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '5 sec', '領取獎勵/分享',id,1),
+            kPrimaryLight, kPrimary, kPrimaryDark, 'once', '獎勵/分享',id,1),
         TaskProgressDetailModel(
             kAccent, kAccent, Colors.white, Icons.check,task2.mission, task2.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,2),
+            kPrimaryLight, kPrimary, kPrimaryDark, '7 days', '獎勵/分享',id,2),
         TaskProgressDetailModel(
             kAccent, kAccent, Colors.white, Icons.check,task3.mission, task3.describe, kPrimaryLight,
-            kPrimaryLight, kPrimary, kPrimaryDark, '3 day', '領取獎勵/分享',id,3),
+            kPrimaryLight, kPrimary, kPrimaryDark, '21 days', '獎勵/分享',id,3),
       ];
     }
 

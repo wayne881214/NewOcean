@@ -11,6 +11,7 @@ import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+import '../../../constants/colors.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
@@ -23,7 +24,7 @@ class coralTask1showDialog extends StatefulWidget {
 
 class _ShakeshowDialog extends State<coralTask1showDialog> {
   int number = 0;
-  String img = "https://coralacademy.com/images/coral.gif";
+  String img = "assets/images/task_carousel_coral_1.png";
   String result = "取消";
 
   void initState() {
@@ -36,15 +37,15 @@ class _ShakeshowDialog extends State<coralTask1showDialog> {
           event.y <= -value ||
           event.z >= value ||
           event.z <= -value) {
-        if (number < 10) {
+        if (number < 50) {
           setState(() {
             number += 1;
           });
         }
-        if (number == 10) {
+        if (number == 50) {
           setState(() {
             img =
-            "https://memeprod.ap-south-1.linodeobjects.com/user-gif-thumbnail/eb4e861fd45a3a55cd2683ab47231d49.gif";
+            "assets/images/animals/coral.png";
             result = "完成任務";
           });
         }
@@ -80,11 +81,11 @@ class _ShakeshowDialog extends State<coralTask1showDialog> {
                     child: Column(children: [
                       Expanded(
                         flex: 6,
-                        child: Image.network(img, height: 300, width: 250),
+                        child: Image.asset(img, height: 300, width: 250),
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("搖晃手機以幫助海龜掙脫漁網"),
+                        child: Text("搖晃手機以幫助珊瑚掙脫塑膠袋"),
                       ),
                       Expanded(
                           flex: 2,
@@ -101,7 +102,7 @@ class _ShakeshowDialog extends State<coralTask1showDialog> {
                                   animation: true,
                                   lineHeight: 20.0,
                                   animationDuration: 200,
-                                  percent: number * 10 / 100,
+                                  percent: number * 2 / 100,
                                   barRadius: const Radius.circular(16),
                                   progressColor: Color(0XFFFF1C41),
                                 ))
@@ -146,7 +147,7 @@ class coralTask2showDialog extends StatefulWidget {
 class _task2showDialog extends State<coralTask2showDialog> {
   int number = 0, op = 0;
   String img = "https://coralacademy.com/images/coral.gif";
-  String result = "取消";
+  String result = "完成任務";
   String filename = "123.jpg";
 
   void initState() {
@@ -177,64 +178,32 @@ class _task2showDialog extends State<coralTask2showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<String> snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file = "123.jpg";
-
-                            this.setState(() => result = "完成任務");
-                            // print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then(
-                                    (value) => this.setState(() => filename = file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-                          child: Text('upload file'),
+                        flex: 9,
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(text: '✔STEP 1', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n準備材料:\n1. 橘子\n2. 酒精\n3. 蘇打粉\n4. 可二次使用容器\n5. 湯匙\n6. 剪刀\n',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            ),TextSpan(text: '✔STEP 2', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n吃完橘子後，將橘子皮內層的白色纖維用湯匙刮掉，使用剪刀將橘子皮剪成小碎片，裝入容器中。\n',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            ),TextSpan(text: '✔STEP 3', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n到入酒精蓋過橘子皮，加入蘇打粉，蓋上蓋子靜置2-3天，最天然無毒的洗潔劑就完成囉!',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            )
+                          ]),
                         ),
                       ),
                       Expanded(
@@ -329,64 +298,32 @@ class _task3showDialog extends State<coralTask3showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<String> snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child: Image.network(
-                                      snapshot.data!,
-                                      fit: BoxFit.cover,
-                                    ));
-                              }
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file = "123.jpg";
-
-                            this.setState(() => result = "完成任務");
-                            // print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then(
-                                    (value) => this.setState(() => filename = file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-                          child: Text('upload file'),
+                        flex: 9,
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(text: '✔STEP 1', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n準備一個老絲瓜，找地方掛起來晒，當表皮由綠色變成枯黃的褐色時，就是做菜瓜布的最佳時機。\n',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            ),TextSpan(text: '✔STEP 2', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n將老絲瓜的皮與肉分離，取出絲瓜纖維，用水泡濕並搓揉洗淨，中途會產生滑手的絲瓜水，絲瓜水是護膚化美容聖品，用來洗手護膚很不錯喔! 洗完後輕輕拍打，把絲瓜籽拍出。\n',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            ),TextSpan(text: '✔STEP 3', style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: '\n完成以上步驟後拿去晒乾，最天然無毒的菜瓜布就大功告成囉!',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kFont,
+                                )
+                            )
+                          ]),
                         ),
                       ),
                       Expanded(
