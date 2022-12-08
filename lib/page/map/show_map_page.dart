@@ -107,8 +107,8 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
 
   AMapController? _controller;
   bool isChangeLocation = false;
-  late LatLng myLoc = LatLng(24.171087778636508, 120.74362036428265);
-  late LatLng mapCenter = LatLng(24.171087778636508, 120.74362036428265);
+  late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
+  late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
 
   moveCamera(LatLng currentLatLng) {
     if (null != _controller) {
