@@ -13,6 +13,7 @@ import '../../widget/navigation_drawer_widget.dart';
 import '../achievements/achievements_page.dart';
 import '../map/show_map_page.dart';
 import '../store/storeHomepage.dart';
+import '../tasks/screen/task_issue.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,9 +23,31 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   int money = -2;
+  String word = "救救我!!!";
+  int state = 0;
 
   void initState() {
     final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    print('yuyyyystate');
+    DatabaseReference TaskRef =
+        FirebaseDatabase.instance.ref('Tasks/$currentUser/task1');
+    TaskRef.onValue.listen((event){
+      setState((){
+        state = (event.snapshot.value as Map)["state"];
+        if(state == 0) {
+            word = "救救我!!!";
+        } else if(state == 1) {
+            word = "任務一提示";
+        }else if(state == 2){
+            word = "任務二提示";
+        }else if(state == 3){
+            word = "任務三提示";
+        }else{
+            word = "謝謝你";
+        }
+      });//更新 TaskCard Widget(任務卡片列表)
+    });
+
     DatabaseReference Ref =
         FirebaseDatabase.instance.ref('Money/' + currentUser + '/');
     Ref.onChildAdded.listen((event) async {
@@ -69,6 +92,14 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              IconButton(
+              icon: const Icon(Icons.info_outline),
+              color: Colors.red,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Task_issue(id:1)));
+              }),
+              Text('$word',style: TextStyle(color: Colors.red, fontSize: 27,)),
               Image.asset('assets/images/turtle.png'),
               new ElevatedButton(
                 onPressed: () {
