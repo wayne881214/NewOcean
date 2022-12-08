@@ -26,7 +26,9 @@ class whaleTask1showDialog extends StatefulWidget {
 class _ShakeshowDialog extends State<whaleTask1showDialog> {
   double stateX = (Random().nextDouble() * 20) - 10;
   double stateY = (Random().nextDouble() * 20) - 10;
-  double x = 0, y = 0, z = 0;
+  double x = 0, y = 0, z = 0 ;
+  double? volumes = 1.0;
+  VideoPlayerScreen newVideoPlayerScreen = VideoPlayerScreen(path:'assets/video/voice1.mp4',volume:1,height: 0,width:0);
   String img = "https://turtleacademy.com/images/turtle.gif";
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
@@ -36,12 +38,14 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
     super.initState();
     _streamSubscriptions.add(name.accelerometerEvents!.listen((name.AccelerometerEvent event) {
       setState(() {
-        if(x-stateX < 0) {
+        if((x-stateX).abs() > 3 ) {
+          volumes = 1- ( (x-stateX).abs()/10);
+          newVideoPlayerScreen.run(volumes!);
           x = event.x;
           y = event.y;
           z = event.z;
         }
-        if(x - stateX > 0 ){
+        if((x - stateX).abs() <= 3 ){
           result = "完成任務";
         }
       });
@@ -77,7 +81,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                       Expanded(
                         flex: 1,
                         child:Container(
-                         child: const VideoPlayerScreen(path:'assets/video/video.mp4',volume:1.0,height: 250,width:300)
+                         child: newVideoPlayerScreen
                         )
                       ),
                       Expanded(

@@ -17,6 +17,7 @@ class VideoPlayerApp extends StatelessWidget {
     );
   }
 }
+double finalvolume = 1.0;
 
 class VideoPlayerScreen extends StatefulWidget {
   final String? path;
@@ -27,6 +28,8 @@ class VideoPlayerScreen extends StatefulWidget {
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
+
+  void run(double volumes) {finalvolume = volumes;}
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
@@ -37,23 +40,22 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   void initState() {
     super.initState();
 
-    // Create and store the VideoPlayerController. The VideoPlayerController
-    // offers several different constructors to play videos from assets, files,
-    // or the internet.
-
-    // _controller = VideoPlayerController.network(
-    //   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    // );
     String videoPath=widget.path!;
-    double volume = widget.volume!;
-
+    finalvolume = widget.volume!;
     _controller = VideoPlayerController.asset(videoPath);
+
     // Initialize the controller and store the Future for later use.
     _initializeVideoPlayerFuture = _controller.initialize();
+
     // Use the controller to loop the video.
     _controller.setLooping(true);
-    _controller.setVolume(volume);
     _controller.play();
+
+    var period = const Duration(milliseconds: 1);
+    Timer.periodic(period, (timer) {
+      _controller.setVolume(finalvolume);
+    });
+
   }
 
   @override
