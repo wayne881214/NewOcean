@@ -108,6 +108,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
 
   AMapController? _controller;
   bool isChangeLocation = false;
+  late LatLng myLoc222 = LatLng(24.17328, 120.64407);
   late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
   late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
 
@@ -130,7 +131,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     Marker marker = Marker(
       icon:
           BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
-      position: target,
+      position:myLoc222,
       infoWindowEnable: true,
       draggable: true,
       onTap: (s) async {
@@ -158,7 +159,8 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
       ),
       buildingsEnabled: true,
       trafficEnabled: true,
-      // mapType:MapType.satellite,
+      labelsEnabled:true,
+      mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(
         true,
@@ -262,8 +264,8 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
             onPressed: () {
               {
                 moveCamera(myLoc);
-                print('moveCamera to');
-                print(myLoc);
+                // print('moveCamera to');
+                // print(myLoc);
               }
             },
             heroTag: null,
