@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:all_sensors/all_sensors.dart' as name;
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/firebase/User.dart';
@@ -269,8 +270,9 @@ class _task2showDialog extends State<turtleTask2showDialog> {
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
-    // print("2.filename:$filename");
+
     return Dialog(
+
       shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
       child: Container(
@@ -409,13 +411,15 @@ class turtleTask3showDialog extends StatefulWidget {
 
 class _task3showDialog extends State<turtleTask3showDialog> {
   int number = 0, op = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   String result = "取消";
-  String filename = "123.jpg";
+  String filename ="";
 
   void initState() {
     super.initState();
-    setState(() {});
+    setState(() {
+      filename = currentUser + "123.jpg";
+    });
   }
 
   @override
@@ -441,10 +445,9 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                 child: Center(
                     child: Column(children: [
                       Expanded(
-                        flex: 6,
+                        flex: 7,
                         child: FutureBuilder(
                             future: storage.downloadURL('$filename'),
-
                             // future: storage.listFiles(),
                             builder: (BuildContext context,
                                 AsyncSnapshot<String> snapshot) {
@@ -462,9 +465,9 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting ||
                                   !snapshot.hasData) {
-                                return Text("Stupid flutter");
+                                return Text("載入中");
                               }
-                              return Text("Stupid flutter");
+                              return Text("請上傳圖片");
                             }),
                       ),
                       Expanded(
@@ -472,7 +475,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                         child: Text("請上傳照片"),
                       ),
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: ElevatedButton(
                           onPressed: () async {
                             final results = await FilePicker.platform.pickFiles(
@@ -489,7 +492,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                               return null;
                             }
                             final path = results.files.single.path!;
-                            final file = "123.jpg";
+                            final file = filename;
 
                             this.setState(() => result = "完成任務");
                             // print("1.filename:$filename");
@@ -498,7 +501,7 @@ class _task3showDialog extends State<turtleTask3showDialog> {
                             // Timer timer;
                             // timer =  new Timer(Duration(milliseconds: 1000), (){});
                           },
-                          child: Text('upload file'),
+                          child: Text('上傳照片'),
                         ),
                       ),
                       Expanded(

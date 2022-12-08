@@ -36,18 +36,13 @@ class TaskCard extends StatelessWidget {
                     content: Text('(任務進度會在好友圈顯示)'),
                     actions: <Widget>[
                       CupertinoDialogAction(
-                          child: TextButton(
-                            child: Text("確定"),
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.of(context).pop(true);
-                              changeTask(value.id, value.state);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => TasksPage()));
-                            },
-                          ))
+                          child: Text("確定"),
+                          onPressed: () {
+                          Navigator.of(context).pop(true);
+                          changeTask(value.id, value.state);
+                          Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => TasksPage()));}
+                )
                     ],
                   ),
                 ).then((onValue) {
