@@ -71,9 +71,9 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
 
     this.arSessionManager.onInitialize(
       showFeaturePoints: false,
-      showPlanes: true,
+      showPlanes: false,
       customPlaneTexturePath: "Images/triangle.png",
-      showWorldOrigin: true,
+      showWorldOrigin: false,
     );
     this.arObjectManager.onInitialize();
 
@@ -82,13 +82,13 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
   }
 
   Future<void> onRemoveEverything() async {
-    /*nodes.forEach((node) {
+    nodes.forEach((node) {
       this.arObjectManager.removeNode(node);
-    });*/
-    anchors.forEach((anchor) {
+    });
+    /*anchors.forEach((anchor) {
       this.arAnchorManager.removeAnchor(anchor);
     });
-    anchors = [];
+    anchors = [];*/
   }
 
   Future<void> onNodeTapped(List<String> nodes) async {
@@ -105,18 +105,20 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
       ARPlaneAnchor(transformation: singleHitTestResult.worldTransform);
       bool? didAddAnchor = await this.arAnchorManager.addAnchor(newAnchor);
       if (didAddAnchor==true) {
-        String Url="https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
-      if(widget.id==1){
-        Url="https://github.com/wayne881214/NewOcean/raw/main/lib/ttt.glb";
-      }
-      else if(widget.id==2){
-        Url="https://github.com/wayne881214/NewOcean/raw/main/lib/jeilfish.glb";
-      }else{
-        Url="https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
-      }
+        String Url = "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
+        if (widget.id == 1) {
+          Url = "https://github.com/wayne881214/NewOcean/raw/main/lib/ttt.glb";
+        }
+        else if (widget.id == 2) {
+          Url =
+          "https://github.com/wayne881214/NewOcean/raw/main/lib/jeilfish.glb";
+        } else {
+          Url =
+          "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
+        }
         this.anchors.add(newAnchor);
         // Add note to anchor
-        var newNode = ARNode(
+        /*var newNode = ARNode(
             type: NodeType.webGLB,
             uri: Url,
             scale: Vector3(0.3, 0.3, 0.3),
@@ -131,18 +133,19 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
         }
       } else {
         this.arSessionManager.onError("Adding Anchor failed");
-      }
-      /*
-      // To add a node to the tapped position without creating an anchor, use the following code (Please mind: the function onRemoveEverything has to be adapted accordingly!):
-      var newNode = ARNode(
-          type: NodeType.localGLTF2,
-          uri: "Models/Chicken_01/Chicken_01.gltf",
-          scale: Vector3(0.2, 0.2, 0.2),
-          transformation: singleHitTestResult.worldTransform);
-      bool didAddWebNode = await this.arObjectManager.addNode(newNode);
-      if (didAddWebNode) {
-        this.nodes.add(newNode);
       }*/
+
+        // To add a node to the tapped position without creating an anchor, use the following code (Please mind: the function onRemoveEverything has to be adapted accordingly!):
+        var newNode = ARNode(
+            type: NodeType.webGLB,
+            uri: Url,
+            scale: Vector3(0.2, 0.2, 0.2),
+            transformation: singleHitTestResult.worldTransform);
+        bool? didAddWebNode = await this.arObjectManager.addNode(newNode);
+        if (didAddWebNode!) {
+          this.nodes.add(newNode);
+        }
+      }
     }
   }
 }

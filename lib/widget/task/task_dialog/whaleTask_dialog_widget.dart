@@ -29,7 +29,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
   double x = 0, y = 0, z = 0 ;
   double? volumes = 1.0;
   VideoPlayerScreen newVideoPlayerScreen = VideoPlayerScreen(path:'assets/video/voice1.mp4',volume:1,height: 0,width:0);
-  String img = "https://turtleacademy.com/images/turtle.gif";
+  String img = "assets/images/animals/whale.png";
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
   <StreamSubscription<dynamic>>[];
@@ -76,7 +76,8 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                         widthFactor: 10,
                         heightFactor: 6,
                         alignment: Alignment(-1 * x / 10, y / 10),
-                        child: Image.network(img, height: 50, width: 50),
+                        child: Image.asset( img ,
+                            height: 50.00, width: 50.00)
                       ),
                       Expanded(
                         flex: 1,
