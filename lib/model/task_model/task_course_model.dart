@@ -26,6 +26,12 @@ class Course {
           Course('圖／翻攝自', 'assets/icons/picture.png', '大愛寵物貓狗控臉書',
               'assets/images/task_carousel_sea_lion_3.png'),
         ];
+      case 3:
+        return [
+          Course('圖／翻攝自', 'assets/icons/picture.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '高溫曝曬死亡的鯨魚', 'assets/images/task_carousel_whale_2.png'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '時間長了甚至會發生鯨爆', 'assets/images/task_carousel_whale_3.jpg'),
+        ];
       case 4:
         return [
           Course('圖／翻攝自', 'assets/icons/picture.png', '台灣經典美食-蚵仔',
@@ -46,25 +52,20 @@ class Course {
         ];
       case 6:
         return [
-          Course('圖／翻攝自', 'assets/icons/bell.png', '海洋攝影師Justin Hofman',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '海洋攝影師Justin Hofman',
               'assets/images/task_carousel_hofman_1.png'),
-          Course('圖／翻攝自', 'assets/icons/bell.png', 'OCEAN DEFENDER - Hawaii',
+          Course('圖／翻攝自', 'assets/icons/picture.png', 'OCEAN DEFENDER - Hawaii',
               'assets/images/task_carousel_hofman_2.png'),
-          Course('圖／翻攝自', 'assets/icons/bell.png', '海洋攝影師 Kerim Sabuncuoğlu',
+          Course('圖／翻攝自', 'assets/icons/picture.png', '海洋攝影師 Kerim Sabuncuoğlu',
               'assets/images/task_carousel_hofman_3.png'),
         ];
       case 7:
         return [
-          Course('珊瑚白化(一)', 'assets/icons/bell.png', '珊瑚被塑膠袋套住', 'assets/images/task_carousel_coral_1.png'),
-          Course('珊瑚白化(二)', 'assets/icons/bell.png', '珊瑚受地球暖化白化', 'assets/images/task_carousel_coral_2.png'),
-          Course('珊瑚白化(三)', 'assets/icons/bell.png', '大量珊瑚礁死亡', 'assets/images/task_carousel_coral_3.jpg'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '珊瑚被塑膠袋套住', 'assets/images/task_carousel_coral_1.png'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '珊瑚受地球暖化白化', 'assets/images/task_carousel_coral_2.png'),
+          Course('圖／翻攝自', 'assets/icons/picture.png', '大量珊瑚礁死亡', 'assets/images/task_carousel_coral_3.png'),
         ];
-      case 8:
-        return [
-          Course('鯨魚擱淺(一)', 'assets/icons/bell.png', '噪音干擾下鯨魚找不到回家方向', 'assets/images/task_carousel_whale_1.png'),
-          Course('鯨魚擱淺(二)', 'assets/icons/bell.png', '高溫曝曬死亡的鯨魚', 'assets/images/task_carousel_whale_2.png'),
-          Course('鯨魚擱淺(三)', 'assets/icons/bell.png', '時間長了甚至會發生鯨爆', 'assets/images/task_carousel_whale_3.jpg'),
-        ];
+
       default:
         return [
           Course('照片一', 'assets/icons/picture.png', '描述...',
