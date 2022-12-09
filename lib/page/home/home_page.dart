@@ -105,16 +105,6 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return ShowMapPage();
-                  }));
-                },
-                  // Map_VideoPage
-                child: new Text('地圖'),
-              ),
-              new ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
                     return Map_VideoPage();
                   }));
                 },

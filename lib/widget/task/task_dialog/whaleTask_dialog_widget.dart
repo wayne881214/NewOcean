@@ -16,6 +16,7 @@ import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
+import '../../../page/map/map_video.dart';
 import '../../../video.dart';
 
 class whaleTask1showDialog extends StatefulWidget {
@@ -196,12 +197,11 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                     child: Column(children: [
                       Expanded(
                         flex: 8,
-                        child: Text("請上傳照片"),
+                        child: Map_VideoPage(),
                       ),
                       Expanded(
                         flex: 1,
-
-                        child: Text("請將環保水壺靠近手機紀錄"),
+                        child: Text("尋找鯨魚"),
                       ),
                       Expanded(
                           flex: 1,
