@@ -76,7 +76,8 @@ class SignInUpPage extends StatelessWidget {
                           'email': email,
                           'uid': uid,
                           'ststus': 'Unavalible',
-                          'profileImage': ''
+                          'password': password,
+                          'profileImage': 'https://firebasestorage.googleapis.com/v0/b/newocean-444d7.appspot.com/o/turtle.png?alt=media&token=cd499869-ec68-4c8e-89fa-3c0574fde393'
                         });
                         DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
                         for (int i = 1; i < 9; i++)
