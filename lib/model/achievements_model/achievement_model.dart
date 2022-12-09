@@ -101,7 +101,8 @@ class Achievement {
       json['target'],
       json['points'],
       labels,
-      json['reward'],
+      {'經驗':100,'金錢':200},
+      //輸出先寫死
     );
   }
 }

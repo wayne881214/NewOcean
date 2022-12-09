@@ -58,8 +58,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     requestPermission();
 
     setState(() {
-      myLoc222 = LatLng(24.197899221352937, 120.64250092953444);
+      // myLoc222 = LatLng(24.197899221352937, 120.64250092953444);
       // myLoc222 = LatLng(24.173068, 120.642312);
+      myLoc222 = LatLng(24.184014, 120.64676300000002);
       Marker marker = Marker(
         icon:
         BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
