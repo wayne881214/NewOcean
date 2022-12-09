@@ -123,9 +123,9 @@ class _task1showDialog extends State<turtleTask1showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3,2);
+    Log resquestLog = Log.addTaskLog(1, 1);
     addLog(resquestLog);
-    changeTask(3,2);
+    changeTask(1,1);
   }
 
   void _checkAndPush() {
