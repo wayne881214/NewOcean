@@ -19,7 +19,7 @@ import '../../video.dart';
 
 var times = 0;
 late LatLng target;
-
+late LatLng myLoc222;
 class Map_VideoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,33 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     newVideoPlayerScreen.run(volumes);
     requestPermission();
 
-    setState(() {});
+    setState(() {
+      myLoc222 = LatLng(24.197899221352937, 120.64250092953444);
+      // myLoc222 = LatLng(24.173068, 120.642312);
+      Marker marker = Marker(
+        icon:
+        BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
+        position: myLoc222,
+        infoWindowEnable: true,
+        draggable: true,
+        onTap: (s) async {
+          // if (target.latitude - mapCenter.latitude <= 0.0001 &&
+          //     target.longitude - mapCenter.longitude <= 0.0001) {
+          //   show('完成任務');
+          //   // result = '完成任務';
+          //   // _checkAndPush();
+          // } else {
+          //   show('太遠了');
+          // }
+        },
+        infoWindow: InfoWindow(
+          title: '目標',
+          snippet: "\n簡介!!!!" + "item.snippet" + "\n添加者:" + "item.user",
+        ),
+        // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+      );
+      initMarkerMap[marker.id] = marker;
+    });
     super.initState();
 
     AMapLocationOption loacationOption = AMapLocationOption(
@@ -108,7 +134,6 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
 
   AMapController? _controller;
   bool isChangeLocation = false;
-  late LatLng myLoc222 = LatLng(24.17328, 120.64407);
   late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
   late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
 
@@ -127,30 +152,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   @override
   Widget build(BuildContext context) {
     // target = LatLng(24.18409, 120.646756);
-    target = LatLng(24.18409 + 0.01, 120.646756 + 0.01);
-    Marker marker = Marker(
-      icon:
-          BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
-      position:myLoc222,
-      infoWindowEnable: true,
-      draggable: true,
-      onTap: (s) async {
-        // if (target.latitude - mapCenter.latitude <= 0.0001 &&
-        //     target.longitude - mapCenter.longitude <= 0.0001) {
-        //   show('完成任務');
-        //   // result = '完成任務';
-        //   // _checkAndPush();
-        // } else {
-        //   show('太遠了');
-        // }
-      },
-      infoWindow: InfoWindow(
-        title: '目標',
-        snippet: "\n簡介!!!!" + "item.snippet" + "\n添加者:" + "item.user",
-      ),
-      // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
-    );
-    initMarkerMap[marker.id] = marker;
+    // target = LatLng(24.18409 + 0.01, 120.646756 + 0.01);
+    target = myLoc222;
+
     final AMapWidget map = AMapWidget(
       ///初始化中心定
       initialCameraPosition: CameraPosition(
@@ -159,7 +163,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
       ),
       buildingsEnabled: true,
       trafficEnabled: true,
-      labelsEnabled:true,
+      labelsEnabled: true,
       // mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(
@@ -182,18 +186,18 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
         // times++;
         //0.010076 //0.01
         //0.001076 //0.01
-        myLoc = location.latLng;
         setState(() {
+          myLoc = location.latLng;
           times++;
           var tempV = (target.latitude - location.latLng.latitude).abs();
           if ((target.latitude - location.latLng.latitude).abs() > 0.0001) {
             volumes =
                 1 - ((target.latitude - location.latLng.latitude).abs() / 0.01);
             newVideoPlayerScreen.run(volumes!);
-            show('$target vs $location.latLng.latitude($times)\n=>$tempV');
+            // show('$target vs $location.latLng($times)\n=>$tempV');
           }
           if ((target.latitude - location.latLng.latitude).abs() <= 0.0001) {
-            result = "完成任務";
+            // result = "完成任務";
             show('完成任務!!!');
           }
         });
@@ -237,6 +241,53 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
         ),
         floatingActionButton:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          FloatingActionButton(
+            child: Icon(Icons.sixteen_mp_rounded),
+            onPressed: () {
+              var tempV = 1 - ((target.latitude - myLoc.latitude).abs() / 0.01);
+              var str='目標:$target \n 定位: $myLoc \n 音量: $tempV ($volumes)';
+              show('$str');
+            },
+            heroTag: null,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.refresh),
+            onPressed: () {
+              show(myLoc);
+              setState(() {
+                Marker marker = Marker(
+                  icon:
+                  BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
+                  position: myLoc222,
+                  infoWindowEnable: true,
+                  draggable: true,
+                  onTap: (s) async {
+                    // if (target.latitude - mapCenter.latitude <= 0.0001 &&
+                    //     target.longitude - mapCenter.longitude <= 0.0001) {
+                    //   show('完成任務');
+                    //   // result = '完成任務';
+                    //   // _checkAndPush();
+                    // } else {
+                    //   show('太遠了');
+                    // }
+                  },
+                  infoWindow: InfoWindow(
+                    title: '目標',
+                    snippet: "\n簡介!!!!" + "item.snippet" + "\n添加者:" + "item.user",
+                  ),
+                  // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+                );
+                initMarkerMap[marker.id] = marker;
+              });
+            },
+            heroTag: null,
+          ),
+          SizedBox(
+            height: 10,
+          ),
           FloatingActionButton(
             child: Icon(Icons.delete),
             onPressed: () {
