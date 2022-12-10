@@ -214,44 +214,88 @@ class _task2showDialog extends State<whaleTask2showDialog> {
                         flex: 1,
                         child: Text("尋找鯨魚"),
                       ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
-                            ),
-                          ))
+
                     ])))),
       ),
     );
   }
 
-  void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3,2);
-    addLog(resquestLog);
-    changeTask(3,2);
-  }
 
-  void _checkAndPush() {
-    if (result == "完成任務") {
-      _pushLog();
-    }
-  }
 }
 
 class whaleTask3showDialog extends StatefulWidget {
   @override
   _task3showDialog createState() => _task3showDialog();
 }
-
 class _task3showDialog extends State<whaleTask3showDialog> {
+  bool _proximityValues = false;
+  String result = "取消";
+  List<StreamSubscription<dynamic>> _streamSubscriptions =
+  <StreamSubscription<dynamic>>[];
+
+  void initState() {
+    super.initState();
+    _streamSubscriptions
+        .add(name.proximityEvents!.listen((name.ProximityEvent event) {
+      setState(() {
+        _proximityValues = event.getValue();
+      });
+      if (_proximityValues) {
+        setState(() {
+          result = "完成任務";
+        });
+      }
+    }));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    for (StreamSubscription<dynamic> subscription in _streamSubscriptions) {
+      subscription.cancel();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+      child: Container(
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            gradient: new LinearGradient(colors: <Color>[
+              Color(0xffB3E7E7),
+              Color(0xffBCCFF5),
+            ], begin: Alignment.topLeft, end: Alignment.topRight)),
+        child: Card(
+            elevation: 0,
+            color: Colors.transparent,
+            child: SizedBox(
+                width: 350,
+                height: 500,
+                child: Center(
+                    child: Column(children: [
+                      Expanded(
+                        flex: 8,
+                        child: _WhaleGPSBody(),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text("尋找鯨魚"),
+                      ),
+                    ])))),
+      ),
+    );
+  }
+}
+
+class _WhaleGPSBody extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _WhaleGPSState();
+}
+
+class _WhaleGPSState extends State<_WhaleGPSBody> {
   List<Widget> _approvalNumberWidget = [];
 
   AMapFlutterLocation _locationPlugin = new AMapFlutterLocation();
@@ -325,8 +369,10 @@ class _task3showDialog extends State<whaleTask3showDialog> {
 
   AMapController? _controller;
   bool isChangeLocation = false;
-  late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
-  late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
+  // late LatLng myLoc = LatLng(24.071087778636508, 120.64362036428265);
+  // late LatLng mapCenter = LatLng(24.071087778636508, 120.64362036428265);
+  late LatLng myLoc = LatLng(0, 0);
+  late LatLng mapCenter = LatLng(0, 0);
 
   moveCamera(LatLng currentLatLng) {
     if (null != _controller) {
@@ -349,8 +395,8 @@ class _task3showDialog extends State<whaleTask3showDialog> {
         infoWindowEnable: true,
         draggable: true,
         onTap: (s) async {
-          if (item.latitude - mapCenter.latitude <= 0.001 &&
-              item.longitude - mapCenter.longitude <= 0.001) {
+          if (item.latitude - mapCenter.latitude <= 0.0001 &&
+              item.longitude - mapCenter.longitude <= 0.0001) {
             show('完成任務');
             result = '完成任務';
             _checkAndPush();
@@ -399,9 +445,9 @@ class _task3showDialog extends State<whaleTask3showDialog> {
           myLoc = mapCenter;
           myLoc = location.latLng;
           moveCamera(myLoc);
-          print('location.latLng onLocationChanged');
-          print(myLoc);
-          print(location.latLng);
+          // print('location.latLng onLocationChanged');
+          // print(myLoc);
+          // print(location.latLng);
           isChangeLocation = true;
           super.initState();
         }
@@ -430,49 +476,6 @@ class _task3showDialog extends State<whaleTask3showDialog> {
         ),
         floatingActionButton:
         Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          // FloatingActionButton(
-          //   child: Icon(Icons.shower_outlined),
-          //   onPressed: () async {
-          //     changeTask(5, 0);
-          //     show("還原任務->0");
-          //     Navigator.of(context).pop(true);
-          //   },
-          //   heroTag: null,
-          // ),
-          // SizedBox(
-          //   height: 10,
-          // ),
-          // FloatingActionButton(
-          //   child: Icon(Icons.shopping_cart_sharp),
-          //   onPressed: () async {
-          //     changeTask(5, 1);
-          //     show("還原任務->1");
-          //     Navigator.of(context).pop(true);
-          //   },
-          //   heroTag: null,
-          // ),
-          // SizedBox(
-          //   height: 10,
-          // ),
-          FloatingActionButton(
-            child: Icon(Icons.delete),
-            onPressed: () {
-              final currentUser =
-              FirebaseAuth.instance.currentUser!.uid.toString();
-              MapData mapData = MapData(currentUser, mapCenter.latitude,
-                  mapCenter.longitude, "垃圾桶", "垃圾桶", "這是垃圾桶");
-              createApi(mapData);
-              addMap(mapData);
-              Log resquestLog = Log.addTaskLog(5, 2);
-              addLog(resquestLog);
-              changeTask(5, 2);
-              Navigator.of(context).pop(true);
-            },
-            heroTag: null,
-          ),
-          SizedBox(
-            height: 10,
-          ),
           FloatingActionButton(
             child: Icon(Icons.gps_fixed),
             onPressed: () {

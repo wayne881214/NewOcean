@@ -48,7 +48,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   final Map<String, Marker> initMarkerMap = <String, Marker>{};
   List jsonResponse = [];
   List<MapData> allMap = [];
-  var result;
+  var result='取消';
 
   @override
   void initState() {
@@ -198,7 +198,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
             // show('$target vs $location.latLng($times)\n=>$tempV');
           }
           if ((target.latitude - location.latLng.latitude).abs() <= 0.0001) {
-            // result = "完成任務";
+            result = "完成任務";
             show('完成任務!!!');
           }
         });
@@ -236,6 +236,12 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: map,
+              ),ElevatedButton(
+                onPressed: () {
+                  _checkAndPush();
+                  Navigator.of(context).pop(true);
+                },
+                child: Text('$result'),
               ),
             ],
           ),
@@ -295,16 +301,6 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
               moveCamera(target);
               print('moveCamera to target');
               print(target);
-              // final currentUser =
-              //     FirebaseAuth.instance.currentUser!.uid.toString();
-              // MapData mapData = MapData(currentUser, mapCenter.latitude,
-              //     mapCenter.longitude, "垃圾桶", "垃圾桶", "這是垃圾桶");
-              // createApi(mapData);
-              // addMap(mapData);
-              // Log resquestLog = Log.addTaskLog(5, 2);
-              // addLog(resquestLog);
-              // changeTask(5, 2);
-              // Navigator.of(context).pop(true);
             },
             heroTag: null,
           ),
@@ -326,15 +322,14 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(5, 3);
+    Log resquestLog = Log.addTaskLog(3,2);
     addLog(resquestLog);
-    changeTask(5, 2);
+    changeTask(3,2);
   }
 
   void _checkAndPush() {
     if (result == "完成任務") {
       _pushLog();
-      Navigator.of(context).pop(true);
     }
   }
 

@@ -17,7 +17,7 @@ import '../map/map_video.dart';
 import '../map/show_map_page.dart';
 import '../store/storeHomepage.dart';
 import '../tasks/screen/task_issue.dart';
-Map Animals =  <int, String>{1:"turle",2:"sealion",3:"whale",4:"ostrica",5:"jellyfish",6:"hippocampus",7:"coral"};
+Map Animals =  <int, String>{1:"turtle",2:"sealion",3:"whale",4:"ostrica",5:"jellyfish",6:"hippocampus",7:"coral"};
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
