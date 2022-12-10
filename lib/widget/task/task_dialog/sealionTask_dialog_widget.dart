@@ -207,7 +207,7 @@ class _task2showDialog extends State<sealionTask2showDialog> {
                                           Text(
                                               '掃描資料: ${result!.code}')
                                         else
-                                          const Text('掃描QRcode'),
+                                          const Text('掃描QRcode\n(若鏡頭沒畫面，請翻轉鏡頭)'),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -335,7 +335,7 @@ class _task2showDialog extends State<sealionTask2showDialog> {
     changeTask2(2 ,2,API);
   }
   void _checkAndPush(){
-    if(result=="完成任務"){
+    if(resultText=="完成任務"){
       _pushLog();
     }
   }
@@ -411,7 +411,7 @@ class _task3showDialog extends State<sealionTask3showDialog> {
                                           Text(
                                               '掃描資料: ${result!.code}')
                                         else
-                                          const Text('掃描QRcode'),
+                                          const Text('掃描QRcode\n(若鏡頭沒畫面，請翻轉鏡頭)'),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -539,7 +539,7 @@ class _task3showDialog extends State<sealionTask3showDialog> {
     changeTask3(2 ,3,API);
   }
   void _checkAndPush(){
-    if(result=="完成任務"){
+    if(resultText=="完成任務"){
       _pushLog();
     }
   }

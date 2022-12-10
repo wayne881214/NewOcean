@@ -25,7 +25,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  String qrstr = "請掃描無塑商店的專屬QRcode";
+  String qrstr = "請掃描專屬用具的QRcode";
   String resultText ="取消";
 
   // In order to get hot reload to work we need to pause the camera if the platform
@@ -85,7 +85,7 @@ class _ostricaTask2showDialog extends State<ostricaTask2showDialog> {
                                           Text(
                                               '掃描資料: ${result!.code}')
                                         else
-                                          const Text('掃描QRcode'),
+                                          const Text('掃描QRcode\n(若鏡頭沒畫面，請翻轉鏡頭)'),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
