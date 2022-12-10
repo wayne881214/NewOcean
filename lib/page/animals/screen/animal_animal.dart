@@ -9,26 +9,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:newocean/widget/animal/animal_headshot.dart';
 
 class Animal_animal extends StatefulWidget {
-  Animal_animal({Key? key, required this.id}) : super(key: key);
+  Animal_animal({Key? key, required this.id,required this.state}) : super(key: key);
   final int id;
+  final int state;
   @override
   _AnimalState createState() => _AnimalState();
 }
 
 class  _AnimalState extends State<Animal_animal> {
   int number=0;
+  int state = 0;
   Animal animal=Animal.addAnimal(0,1);
   @override
   void initState() {
-    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
-    //讀取用戶動物，將進行中的任務加入List<Animal>行列
 
-    FirebaseDatabase.instance.ref().child('Animals/$currentUser/animal'+widget.id.toString()).onValue.listen((event) {
-      int state = (event.snapshot.value as Map)["state"];
-      setState(() {
-        animal=Animal.addAnimal((widget.id),state);
-      });
-    });
+    animal=Animal.addAnimal((widget.id),(widget.state));
 
     super.initState();
   }

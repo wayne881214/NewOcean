@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/page/ocean/ar_widget.dart';
@@ -19,15 +20,16 @@ class  _interactState extends State<Animal_interact> {
   String animalToolImg3 = "assets/images/animals/lock.png";
 
   void initState() {
+    print("======================================"+ widget.state.toString());
     setState(() {
       if(widget.state >= 2){
-        animalToolImg1 = "assets/images/animals/arIcon.png";
+        animalToolImg1 = "assets/images/animals/aricon.png";
       }
       if(widget.state >= 3){
-        animalToolImg2 = "assets/images/animals/arIcon.png";
+        animalToolImg2 = "assets/images/animals/aricon.png";
       }
       if(widget.state >= 4){
-        animalToolImg3 = "assets/images/animals/arIcon.png";
+        animalToolImg3 = "assets/images/animals/aricon.png";
       }
     });
     super.initState();
@@ -40,7 +42,7 @@ class  _interactState extends State<Animal_interact> {
         children:[
           GestureDetector(
           onTap: () {
-            if(widget.state >=2) {
+            if( widget.state >= 2 ) {
               Navigator.push(
                   context,
                   MaterialPageRoute(
