@@ -179,7 +179,9 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+        var ans=result!.code;
+        ans = ans.toString();
+        if(ans=="store1 "||ans=="store1"||ans=="store2 "||ans=="store2"){
           resultText="完成任務";
         }
       });

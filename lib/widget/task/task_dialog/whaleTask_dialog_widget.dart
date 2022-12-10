@@ -81,7 +81,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                       Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/inages/task_carousel_coral_1.png'),
+                            image: AssetImage('assets/images/task_carousel_coral_1.png'),
                             fit: BoxFit.cover,
                           ),
                         ),

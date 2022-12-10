@@ -303,7 +303,9 @@ class _task2showDialog extends State<sealionTask2showDialog> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+        var ans=result!.code;
+        ans = ans.toString();
+        if(ans=="store1 "||ans=="store1"||ans=="store2 "||ans=="store2"){
           resultText="完成任務";
         }
       });
@@ -505,7 +507,9 @@ class _task3showDialog extends State<sealionTask3showDialog> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+        var ans=result!.code;
+        ans = ans.toString();
+        if(ans=="store1 "||ans=="store1"||ans=="store2 "||ans=="store2"){
           resultText="完成任務";
         }
       });
