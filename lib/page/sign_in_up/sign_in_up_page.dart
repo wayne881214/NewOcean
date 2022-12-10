@@ -28,7 +28,6 @@ const FontWeight kLightFontWeight = FontWeight.w300;
 // Medium 字重
 const FontWeight kMediumFontWeight = FontWeight.w500;
 
-
 const Color kBgColor = Color(0xFFFEDCE0);
 // 文字颜色
 const Color kTextColor = Color(0xFF3D0007);
@@ -99,7 +98,7 @@ class LoginClipper extends CustomClipper<Path> {
     //第二阶段 三阶贝塞尔曲线
     path.cubicTo(216.0, 38.0, 280.0, 73.0, 280.0, 44.0);
     //第三阶段 三阶贝塞尔曲线
-    path.cubicTo(280.0, -11.0,330.0, 8.0, size.width, .0);
+    path.cubicTo(280.0, -11.0, 330.0, 8.0, size.width, .0);
     // 连接到右下角
     path.lineTo(size.width, size.height);
     // 连接到左下角
@@ -114,78 +113,6 @@ class LoginClipper extends CustomClipper<Path> {
     return this.hashCode != oldClipper.hashCode;
   }
 }
-//
-//
-//
-// ///登录输入框
-// class LoginInput extends StatelessWidget {
-//   const LoginInput({
-//     Key? key,
-//     this.hintText?,
-//     this.prefixIcon,
-//     this.obscureText = false,
-//   }) : super(key: key);
-//
-//   final String hintText;
-//   final String prefixIcon;
-//   final bool obscureText;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextField(
-//       decoration: InputDecoration(
-//         hintText: hintText,
-//         border: kInputBorder,
-//         focusedBorder: kInputBorder,
-//         enabledBorder: kInputBorder,
-//         prefixIcon: Container(
-//           width: kIconBoxSize,
-//           height: kIconBoxSize,
-//           alignment: Alignment.center,
-//           child: Image.asset(
-//             prefixIcon,
-//             width: kIconSize,
-//             height: kIconSize,
-//           ),
-//         ),
-//       ),
-//       obscureText: obscureText,
-//       style: kBodyTextStyle.copyWith(
-//         fontSize: 18,
-//       ),
-//     );
-//   }
-// }
-//
-// /// 返回图标
-// class BackIcon extends StatelessWidget {
-//   const BackIcon({
-//     Key key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: () {
-//         Navigator.pop(context);
-//       },
-//       child: Container(
-//         width: kIconBoxSize,
-//         height: kIconBoxSize,
-//         alignment: Alignment.center,
-//         decoration: BoxDecoration(
-//           color: Colors.white,
-//           shape: BoxShape.circle,
-//         ),
-//         child: Image.asset(
-//           'assets/icons/icon_back.png',
-//           width: kIconSize,
-//           height: kIconSize,
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class SignInUpPage extends StatelessWidget {
   final database = FirebaseDatabase.instance.reference();
@@ -208,248 +135,261 @@ class SignInUpPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Image.asset('assets/images/New Ocean (1).png',height:250),
+          Image.asset('assets/images/New Ocean (1).png', height: 250),
           Column(
             children: [
               SizedBox(height: 180),
               ClipPath(
-                clipper: LoginClipper(),
-                child:SingleChildScrollView(
-                    child:Container(
-                    color: Colors.white,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.all(32),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 36),
-                          Text(
-                            'Register/Login',
-                            style: kTitleTextStyle,
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Your Name',
-                            style: kBodyTextStyle,
-                          ),
-                          SizedBox(height: 4),
-
-                          TextField(
-                              controller: nameController,
-                              decoration: InputDecoration(
-                                labelText: "Name",
-                                hintText: "Name",
-                                border: kInputBorder,
-                                focusedBorder: kInputBorder,
-                                enabledBorder: kInputBorder,
-                                prefixIcon: Container(
-                                  width: kIconBoxSize,
-                                  height: kIconBoxSize,
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
-                                    "assets/images/email.png",
-                                    width: kIconSize,
-                                    height: kIconSize,
-                                  ),
+                  clipper: LoginClipper(),
+                  child: SingleChildScrollView(
+                      child: Container(
+                          color: Colors.white,
+                          width: double.maxFinite,
+                          padding: EdgeInsets.all(32),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 36),
+                                Text(
+                                  'Register/Login',
+                                  style: kTitleTextStyle,
                                 ),
-                              ),
-                              obscureText: false,
-                              style: kBodyTextStyle.copyWith(
-                                fontSize: 18,
-                              )
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                            'Your Email',
-                            style: kBodyTextStyle,
-                          ),
-                          SizedBox(height: 4),
-
-                          TextField(
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                labelText: "Email",
-                                hintText: "Email",
-                                border: kInputBorder,
-                                focusedBorder: kInputBorder,
-                                enabledBorder: kInputBorder,
-                                prefixIcon: Container(
-                                  width: kIconBoxSize,
-                                  height: kIconBoxSize,
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
-                                    "assets/images/email.png",
-                                    width: kIconSize,
-                                    height: kIconSize,
-                                  ),
+                                SizedBox(height: 20),
+                                Text(
+                                  'Your Name',
+                                  style: kBodyTextStyle,
                                 ),
-                              ),
-                              obscureText: false,
-                              style: kBodyTextStyle.copyWith(
-                                fontSize: 18,
-                              )
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                            'Your Password',
-                            style: kBodyTextStyle,
-                          ),
-                          SizedBox(height: 4),
-                          TextField(
-                              controller: passwordController,
-                              decoration: InputDecoration(
-                                hintText: "password",
-                                border: kInputBorder,
-                                focusedBorder: kInputBorder,
-                                enabledBorder: kInputBorder,
-                                prefixIcon: Container(
-                                  width: kIconBoxSize,
-                                  height: kIconBoxSize,
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
-                                    "assets/images/password.png",
-                                    width: kIconSize,
-                                    height: kIconSize,
-                                  ),
-                                ),
-                              ),
-                              obscureText: true,
-                              style: kBodyTextStyle.copyWith(
-                                fontSize: 18,
-                              )
-                          ),
-                          SizedBox(height: 32),
-                          Row(
-                            children: [
-                              Spacer(),
-                              GestureDetector(
-                                onTap: () async {
-                                  var name = nameController.text.trim();
-                                  var email = emailController.text.trim();
-                                  var password = passwordController.text.trim();
-                                  try {
-                                    FirebaseAuth auth = FirebaseAuth.instance;
-                                    UserCredential userCredential =
-                                    await auth.createUserWithEmailAndPassword(
-                                        email: email, password: password);
-                                    if (userCredential.user != null) {
-                                      DatabaseReference userRef = FirebaseDatabase.instance.reference().child('Users/');
-                                      String uid = userCredential.user!.uid;
-                                      await userRef.child(uid).set({
-                                        'name': name,
-                                        'email': email,
-                                        'uid': uid,
-                                        'ststus': 'Unavalible',
-                                        'profileImage': ''
-                                      });
-                                      DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
-                                      for (int i = 1; i < 9; i++)
-                                        await taskRef.child('task$i').set(
-                                            {
-                                              'state': 0,
-                                              'id': i,
-                                            }
-                                        );
-                                      users.add({
-                                        'name': name,
-                                        'email': email,
-                                        'uid': uid,
-                                        'ststus': 'Unavalible',
-                                      }
-                                      );
-                                      Achievement.initAchievements();
-                                      setMoney(100);
-                                      print('success');
-                                    }
-                                  } catch (e) {
-                                    print('error $e');
-                                  }
-                                  context.read<AuthenticationService>().signUp(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                  );
-                                },
-                                child: Container(
-                                  width: 160,
-                                  height: 48,
-                                  decoration: BoxDecoration(
-                                    gradient: kBtnLinearGradient,
-                                    boxShadow: kBtnShadow,
-                                    borderRadius: BorderRadius.circular(kBtnRadius),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    children: [
-                                      SizedBox(width: 34),
-                                      Text(
-                                      "註冊",
-                                      style: kBtnTextStyle.copyWith(
-                                      color: Colors.white,
-                                      ),
-                                      ),
-                                      Spacer(),
-                                      Image.asset(
-                                        'assets/images/icons/icon_arrow_right.png',
-                                        width: kIconSize,
-                                        height: kIconSize,
-                                      ),
-                                      SizedBox(width: 24),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Spacer(),
-                              GestureDetector(
-                                onTap: () async {
-                                  var email = emailController.text.trim();
-                                  var password = passwordController.text.trim();
-                                  context.read<AuthenticationService>().signIn(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                  );
-                                },
-                                child: Container(
-                                  width: 160,
-                                  height: 48,
-                                  decoration: BoxDecoration(
-                                    gradient: kBtnLinearGradient,
-                                    boxShadow: kBtnShadow,
-                                    borderRadius: BorderRadius.circular(kBtnRadius),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    children: [
-                                      SizedBox(width: 34),
-                                      Text(
-                                        "登入",
-                                        style: kBtnTextStyle.copyWith(
-                                          color: Colors.white,
+                                SizedBox(height: 4),
+                                TextField(
+                                    controller: nameController,
+                                    decoration: InputDecoration(
+                                      labelText: "Name",
+                                      hintText: "Name",
+                                      border: kInputBorder,
+                                      focusedBorder: kInputBorder,
+                                      enabledBorder: kInputBorder,
+                                      prefixIcon: Container(
+                                        width: kIconBoxSize,
+                                        height: kIconBoxSize,
+                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          "assets/images/email.png",
+                                          width: kIconSize,
+                                          height: kIconSize,
                                         ),
                                       ),
-                                      Spacer(),
-                                      Image.asset(
-                                        'assets/images/icons/icon_arrow_right.png',
-                                        width: kIconSize,
-                                        height: kIconSize,
-                                      ),
-                                      SizedBox(width: 24),
-                                    ],
-                                  ),
+                                    ),
+                                    obscureText: false,
+                                    style: kBodyTextStyle.copyWith(
+                                      fontSize: 18,
+                                    )),
+                                SizedBox(height: 16),
+                                Text(
+                                  'Your Email',
+                                  style: kBodyTextStyle,
                                 ),
-                              )
-                            ],
-                          ),
-
-                        ]
-                    )
-                    )
-                )
-              ),
+                                SizedBox(height: 4),
+                                TextField(
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                      labelText: "Email",
+                                      hintText: "Email",
+                                      border: kInputBorder,
+                                      focusedBorder: kInputBorder,
+                                      enabledBorder: kInputBorder,
+                                      prefixIcon: Container(
+                                        width: kIconBoxSize,
+                                        height: kIconBoxSize,
+                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          "assets/images/email.png",
+                                          width: kIconSize,
+                                          height: kIconSize,
+                                        ),
+                                      ),
+                                    ),
+                                    obscureText: false,
+                                    style: kBodyTextStyle.copyWith(
+                                      fontSize: 18,
+                                    )),
+                                SizedBox(height: 16),
+                                Text(
+                                  'Your Password',
+                                  style: kBodyTextStyle,
+                                ),
+                                SizedBox(height: 4),
+                                TextField(
+                                    controller: passwordController,
+                                    decoration: InputDecoration(
+                                      hintText: "password",
+                                      border: kInputBorder,
+                                      focusedBorder: kInputBorder,
+                                      enabledBorder: kInputBorder,
+                                      prefixIcon: Container(
+                                        width: kIconBoxSize,
+                                        height: kIconBoxSize,
+                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          "assets/images/password.png",
+                                          width: kIconSize,
+                                          height: kIconSize,
+                                        ),
+                                      ),
+                                    ),
+                                    obscureText: true,
+                                    style: kBodyTextStyle.copyWith(
+                                      fontSize: 18,
+                                    )),
+                                SizedBox(height: 32),
+                                Row(
+                                  children: [
+                                    Spacer(),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        var name = nameController.text.trim();
+                                        var email = emailController.text.trim();
+                                        var password =
+                                            passwordController.text.trim();
+                                        try {
+                                          FirebaseAuth auth =
+                                              FirebaseAuth.instance;
+                                          UserCredential userCredential =
+                                              await auth
+                                                  .createUserWithEmailAndPassword(
+                                                      email: email,
+                                                      password: password);
+                                          if (userCredential.user != null) {
+                                            DatabaseReference userRef =
+                                                FirebaseDatabase.instance
+                                                    .reference()
+                                                    .child('Users/');
+                                            String uid =
+                                                userCredential.user!.uid;
+                                            await userRef.child(uid).set({
+                                              'name': name,
+                                              'email': email,
+                                              'uid': uid,
+                                              'ststus': 'Unavalible',
+                                              'password': password,
+                                              'profileImage': 'https://firebasestorage.googleapis.com/v0/b/newocean-444d7.appspot.com/o/turtle.png?alt=media&token=cd499869-ec68-4c8e-89fa-3c0574fde393'
+                                            });
+                                            DatabaseReference taskRef =
+                                                FirebaseDatabase.instance
+                                                    .reference()
+                                                    .child('Tasks/')
+                                                    .child(uid);
+                                            for (int i = 1; i < 9; i++)
+                                              await taskRef
+                                                  .child('task$i')
+                                                  .set({
+                                                'state': 0,
+                                                'id': i,
+                                              });
+                                            users.add({
+                                              'name': name,
+                                              'email': email,
+                                              'uid': uid,
+                                              'ststus': 'Unavalible',
+                                            });
+                                            Achievement.initAchievements();
+                                            setMoney(100);
+                                            print('success');
+                                          }
+                                        } catch (e) {
+                                          print('error $e');
+                                        }
+                                        context
+                                            .read<AuthenticationService>()
+                                            .signUp(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password: passwordController.text
+                                                  .trim(),
+                                            );
+                                      },
+                                      child: Container(
+                                        width: 160,
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          gradient: kBtnLinearGradient,
+                                          boxShadow: kBtnShadow,
+                                          borderRadius:
+                                              BorderRadius.circular(kBtnRadius),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Row(
+                                          children: [
+                                            SizedBox(width: 34),
+                                            Text(
+                                              "註冊",
+                                              style: kBtnTextStyle.copyWith(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Image.asset(
+                                              'assets/images/icons/icon_arrow_right.png',
+                                              width: kIconSize,
+                                              height: kIconSize,
+                                            ),
+                                            SizedBox(width: 24),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Spacer(),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        var email = emailController.text.trim();
+                                        var password =
+                                            passwordController.text.trim();
+                                        context
+                                            .read<AuthenticationService>()
+                                            .signIn(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password: passwordController.text
+                                                  .trim(),
+                                            );
+                                      },
+                                      child: Container(
+                                        width: 160,
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          gradient: kBtnLinearGradient,
+                                          boxShadow: kBtnShadow,
+                                          borderRadius:
+                                              BorderRadius.circular(kBtnRadius),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Row(
+                                          children: [
+                                            SizedBox(width: 34),
+                                            Text(
+                                              "登入",
+                                              style: kBtnTextStyle.copyWith(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Image.asset(
+                                              'assets/images/icons/icon_arrow_right.png',
+                                              width: kIconSize,
+                                              height: kIconSize,
+                                            ),
+                                            SizedBox(width: 24),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ])))),
             ],
           ),
           // Positioned(
@@ -461,195 +401,5 @@ class SignInUpPage extends StatelessWidget {
       ),
     );
 
-    // return Scaffold(
-    //   backgroundColor: Colors.white,
-    //   body: Column(
-    //   children: [
-    //   Stack(
-    //     children: [
-    //       Image.asset(
-    //           'assets/images/logo.png'
-    //       ),
-    //     ],
-    //   ),
-    //   SizedBox(height: 4),
-    //   TextField(
-    //     controller: nameController,
-    //
-    //     decoration: InputDecoration(
-    //       border: kInputBorder,
-    //       focusedBorder: kInputBorder,
-    //       enabledBorder: kInputBorder,
-    //       labelText: "Name",
-    //       prefixIcon: Container(
-    //         width: kIconBoxSize,
-    //         height: kIconBoxSize,
-    //         // 【这里很重要，再次强调】不然会拉升
-    //         alignment: Alignment.center,
-    //         child: Image.asset(
-    //           "assets/images/email.png",
-    //           width: kIconSize,
-    //           height: kIconSize,
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    //   SizedBox(height: 4),
-    //   TextField(
-    //       controller: nameController,
-    //
-    //       decoration: InputDecoration(
-    //         border: kInputBorder,
-    //         focusedBorder: kInputBorder,
-    //         enabledBorder: kInputBorder,
-    //         labelText: "Name",
-    //         prefixIcon: Container(
-    //           width: kIconBoxSize,
-    //           height: kIconBoxSize,
-    //           // 【这里很重要，再次强调】不然会拉升
-    //           alignment: Alignment.center,
-    //           child: Image.asset(
-    //             "assets/images/email.png",
-    //             width: kIconSize,
-    //             height: kIconSize,
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //
-    //
-    //   ]
-    //
-    //   )
-    // );
-    //         TextField(
-    //           controller: nameController,
-    //
-    //           decoration: InputDecoration(
-    //               border: kInputBorder,
-    //               focusedBorder: kInputBorder,
-    //               enabledBorder: kInputBorder,
-    //               labelText: "Name",
-    //               prefixIcon: Container(
-    //               width: kIconBoxSize,
-    //               height: kIconBoxSize,
-    //               // 【这里很重要，再次强调】不然会拉升
-    //               alignment: Alignment.center,
-    //               child: Image.asset(
-    //                 "assets/images/email.png",
-    //                 width: kIconSize,
-    //                 height: kIconSize,
-    //               ),
-    //             ),
-    //           ),
-    //         ),
-    //         SizedBox(height: 16),
-    //         //SizedBox(height: 5),
-    //         TextField(
-    //           controller: emailController,
-    //           decoration: InputDecoration(
-    //             border: kInputBorder,
-    //             focusedBorder: kInputBorder,
-    //             enabledBorder: kInputBorder,
-    //             labelText: "Email",
-    //             prefixIcon: Container(
-    //               width: kIconBoxSize,
-    //               height: kIconBoxSize,
-    //               // 【这里很重要，再次强调】不然会拉升
-    //               alignment: Alignment.center,
-    //               child: Image.asset(
-    //                 "assets/images/email.png",
-    //                 width: kIconSize,
-    //                 height: kIconSize,
-    //               ),)
-    //           ),
-    //         ),
-    //         SizedBox(height: 4),
-    //         //SizedBox(height: 5),
-    //         TextField(
-    //           controller: passwordController,
-    //           decoration: InputDecoration(
-    //             border: kInputBorder,
-    //             focusedBorder: kInputBorder,
-    //             enabledBorder: kInputBorder,
-    //             hintText: "Your Password",
-    //             labelText: "Password",
-    //               prefixIcon: Container(
-    //                 width: kIconBoxSize,
-    //                 height: kIconBoxSize,
-    //                 // 【这里很重要，再次强调】不然会拉升
-    //                 alignment: Alignment.center,
-    //                 child: Image.asset(
-    //                   "assets/images/password.png",
-    //                   width: kIconSize,
-    //                   height: kIconSize,
-    //                 ),)
-    //           ),
-    //           obscureText: true,
-    //         ),
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             ElevatedButton(
-    //               onPressed: () {
-    //                 context.read<AuthenticationService>().signIn(
-    //                   email: emailController.text.trim(),
-    //                   password: passwordController.text.trim(),
-    //                 );
-    //               },
-    //               child: Text("登入"),
-    //             ),
-    //             ElevatedButton(
-    //               onPressed: () async {
-    //                 var name = nameController.text.trim();
-    //                 var email = emailController.text.trim();
-    //                 var password = passwordController.text.trim();
-    //                 try {
-    //                   FirebaseAuth auth = FirebaseAuth.instance;
-    //                   UserCredential userCredential =
-    //                   await auth.createUserWithEmailAndPassword(
-    //                       email: email, password: password);
-    //                   if (userCredential.user != null) {
-    //                     DatabaseReference userRef = FirebaseDatabase.instance.reference().child('Users/');
-    //                     String uid = userCredential.user!.uid;
-    //                     await userRef.child(uid).set({
-    //                       'name': name,
-    //                       'email': email,
-    //                       'uid': uid,
-    //                       'ststus': 'Unavalible',
-    //                       'profileImage': ''
-    //                     });
-    //                     DatabaseReference taskRef = FirebaseDatabase.instance.reference().child('Tasks/').child(uid);
-    //                     for (int i = 1; i < 9; i++)
-    //                       await taskRef.child('task$i').set(
-    //                           {
-    //                             'state': 0,
-    //                             'id': i,
-    //                           }
-    //                       );
-    //                     users.add({
-    //                       'name': name,
-    //                       'email': email,
-    //                       'uid': uid,
-    //                       'ststus': 'Unavalible',
-    //                     }
-    //                     );
-    //                     Achievement.initAchievements();
-    //                     setMoney(100);
-    //                     print('success');
-    //                   }
-    //                 } catch (e) {
-    //                   print('error $e');
-    //                 }
-    //                 context.read<AuthenticationService>().signUp(
-    //                   email: emailController.text.trim(),
-    //                   password: passwordController.text.trim(),
-    //                 );
-    //               },
-    //               child: Text("註冊"),
-    //             )
-    //     ),
-    //
-    // );
   }
 }
