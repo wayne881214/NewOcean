@@ -17,7 +17,18 @@ class _SignOutPageState extends State<SignOutPage> {
         centerTitle: true,
         backgroundColor: Color(0xFF00BFA5),
         systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  context.read<AuthenticationService>().signOut();
+                  Navigator.pop(context);
+                },
+                child: const Text('登出')),
+          )
+        ],
+      ),/*
       body: Column(
         children: [
           ElevatedButton(
@@ -28,7 +39,7 @@ class _SignOutPageState extends State<SignOutPage> {
             child: Text("登出"),
           ),
         ],
-      ),
+      ),*/
     );
   }
 }

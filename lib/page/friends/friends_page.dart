@@ -15,7 +15,7 @@ class FriendsPage extends StatefulWidget {
 }
 
 class _FriendsPageState extends State<FriendsPage> {
-  var screens = [ChatsPage(), PeoplePage(), AddFriendsPage()];
+  var screens = [/*ChatsPage(),*/ PeoplePage(), AddFriendsPage()];
 
   @override
   void initState() {
@@ -39,11 +39,11 @@ class _FriendsPageState extends State<FriendsPage> {
           child: CupertinoTabScaffold(
             resizeToAvoidBottomInset: true,
             tabBar: CupertinoTabBar(
-              items: [
+              items: [/*
                 BottomNavigationBarItem(
                   label: "Chats",
                   icon: Icon(CupertinoIcons.chat_bubble_2_fill),
-                ),
+                ),*/
                 BottomNavigationBarItem(
                   label: "People",
                   icon: Icon(CupertinoIcons.person_alt_circle),

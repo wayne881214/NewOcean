@@ -8,6 +8,7 @@ import 'package:newocean/page/animals/animals_page.dart';
 import 'package:newocean/page/store/storeHomepage.dart';
 import 'package:newocean/page/tasks/tasks_page.dart';
 import 'package:newocean/page/user/user_page.dart';
+import '../page/user/profilepage.dart';
 import '../page/user/sign_out_page.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
@@ -21,6 +22,8 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   String userName = '';
   String userEmail = '';
+  String userPassword = '';
+  String userprofileImage = '';
 
   @override
   void initState() {
@@ -32,9 +35,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     database.child('Users/$currentUser').onValue.listen((event) {
       String name = (event.snapshot.value as Map)["name"];
       String email = (event.snapshot.value as Map)["email"];
+      String image = (event.snapshot.value as Map)["profileImage"];
+      String password = (event.snapshot.value as Map)["password"];
       setState(() {
         userName = '$name';
         userEmail = '$email';
+        userprofileImage = '$image';
+        userPassword = '$password';
       });
     });
   }
@@ -43,7 +50,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   Widget build(BuildContext context) {
     final name = userName;
     final email = userEmail;
-    final urlImage = 'https://firebasestorage.googleapis.com/v0/b/newocean-444d7.appspot.com/o/image%2027.png?alt=media&token=8edf57e6-c8ba-497b-b9a7-d536b4d306b0';
+    final urlImage = userprofileImage;
     return Drawer(
       child: Material(
         color: Color.fromRGBO(176, 226, 217, 1),
@@ -54,9 +61,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               name: name,
               email: email,
               onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => UserPage(
-                  name: '使用者',
-                  urlImage: urlImage,
+                builder: (context) => ProfilePage(
+                  name: '$userName',
+                  email: '$userEmail',
+                  img: '$userprofileImage',
+                  password: '$userPassword',
+
                 ),
               )),
             ),
