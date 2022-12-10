@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../firebase/User.dart';
 import '../../firebase/database_service.dart';
 import '../../firebase/log_service.dart';
 import '../../firebase/map_service.dart';
@@ -245,9 +246,9 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
                   mapCenter.longitude, "垃圾桶", "垃圾桶", "這是垃圾桶");
               createApi(mapData);
               addMap(mapData);
-              Log resquestLog = Log.addTaskLog(5, 2);
+              Log resquestLog = Log.addTaskLog(5, 1);
               addLog(resquestLog);
-              changeTask(5, 2);
+              changeTask(5, 1);
               Navigator.of(context).pop(true);
             },
             heroTag: null,
@@ -270,9 +271,9 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(5, 3);
+    Log resquestLog = Log.addTaskLog(5,2);
     addLog(resquestLog);
-    changeTask(5, 2);
+    changeTask2(5, 2,API);
   }
 
   void _checkAndPush() {

@@ -113,9 +113,9 @@ class _ShakeshowDialog extends State<seahorseTask1showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3,1);
+    Log resquestLog = Log.addTaskLog(6,1);
     addLog(resquestLog);
-    changeTask(3,1);
+    changeTask(6,1);
   }
 
   void _checkAndPush() {
@@ -207,9 +207,9 @@ class _task2showDialog extends State<seahorseTask2showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3,2);
+    Log resquestLog = Log.addTaskLog(6,2);
     addLog(resquestLog);
-    changeTask(3,2);
+    changeTask2(6,2,API);
   }
 
   void _checkAndPush() {
@@ -338,9 +338,9 @@ class _task3showDialog extends State<seahorseTask3showDialog> {
   }
 
   void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3,3);
+    Log resquestLog = Log.addTaskLog(6,3);
     addLog(resquestLog);
-    changeTask(3,3);
+    changeTask3(6,3,API);
   }
 
   void _checkAndPush() {

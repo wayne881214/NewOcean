@@ -9,9 +9,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
+import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../firebase/map_service.dart';
@@ -55,6 +57,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
           sizeX = 50;
           sizeY = 50;
           result = "完成任務";
+
         }
       });
     }));
@@ -493,7 +496,8 @@ class _WhaleGPSState extends State<_WhaleGPSBody> {
   void _pushLog() {
     Log resquestLog = Log.addTaskLog(3, 3);
     addLog(resquestLog);
-    changeTask(3, 3);
+    changeTask3(3, 3, API);
+
   }
 
   void _checkAndPush() {
