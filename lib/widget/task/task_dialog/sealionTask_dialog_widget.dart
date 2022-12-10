@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:date_format/date_format.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -141,119 +144,189 @@ class sealionTask2showDialog extends StatefulWidget {
 }
 
 class _task2showDialog extends State<sealionTask2showDialog> {
-  int number = 0, op = 0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
-  String result = "取消";
-  String filename="123.jpg";
+  Barcode? result;
+  QRViewController? controller;
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  String qrstr = "請掃描無塑商店的專屬QRcode";
+  String resultText ="取消";
 
-  void initState() {
-    super.initState();
-    setState(() {
-    });
+  // In order to get hot reload to work we need to pause the camera if the platform
+  // is android, or resume the camera if the platform is iOS.
+  @override
+  void reassemble() {
+    // super.reassemble();
+    // if (Platform.isAndroid) {
+    //   controller!.pauseCamera();
+    // }
+    // controller!.resumeCamera();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Storage storage =Storage();
-    // print("2.filename:$filename");
-    return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
-      child: Container(
-        decoration: new BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: new LinearGradient(colors: <Color>[
-              Color(0xffB3E7E7),
-              Color(0xffBCCFF5),
-            ], begin: Alignment.topLeft, end: Alignment.topRight)),
-        child: Card(
-            elevation: 0,
-            color: Colors.transparent,
-            child: SizedBox(
-                width: 350,
-                height: 500,
-                child: Center(
-                    child: Column(children: [
-                      Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder:(BuildContext context,
-                                AsyncSnapshot<String>snapshot){
-                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child:Image.network(
-                                      snapshot.data!,
-                                      fit:BoxFit.cover,
-                                    ));
-                              }
-                              if(snapshot.connectionState==ConnectionState.waiting||
-                                  !snapshot.hasData){
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file ="123.jpg";
-
-                            this.setState(
-                                    ()=>result="完成任務");
-                            // print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then((value) =>
-                                this.setState(()=>filename=file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-
-                          child: Text('upload file'),
-
-                        ),
-                      ),
-                      Expanded(
+    return
+      Dialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+        child: Container(
+          decoration: new BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              gradient: new LinearGradient(colors: <Color>[
+                Color(0xffB3E7E7),
+                Color(0xffBCCFF5),
+              ], begin: Alignment.topLeft, end: Alignment.topRight)),
+          child: Card(
+              elevation: 0,
+              color: Colors.transparent,
+              child: SizedBox(
+                  width: 350,
+                  height: 500,
+                  child: Center(
+                      child: Column(children: [
+                        Expanded(
                           flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
+                          child: Text(qrstr,
+                              style: TextStyle(
+                                fontSize: 20,
+                              )),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child:  Scaffold(
+                            backgroundColor:Color(0x00FFFFFF),
+                            body: Column(
+                              children: <Widget>[
+                                Expanded(flex: 4, child: _buildQrView(context)),
+                                Expanded(
+                                  flex: 1,
+                                  child: FittedBox(
+                                    fit: BoxFit.contain,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        if (result != null)
+                                          Text(
+                                              '掃描資料: ${result!.code}')
+                                        else
+                                          const Text('掃描QRcode'),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Container(
+                                              margin: const EdgeInsets.all(8),
+                                              child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    await controller?.toggleFlash();
+                                                    setState(() {});
+                                                  },
+                                                  child: FutureBuilder(
+                                                    future: controller?.getFlashStatus(),
+                                                    builder: (context, snapshot) {
+                                                      return Text('手電筒: ${snapshot.data}');
+                                                    },
+                                                  )),
+                                            ),
+                                            Container(
+                                              margin: const EdgeInsets.all(8),
+                                              child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    await controller?.flipCamera();
+                                                    setState(() {});
+                                                  },
+                                                  child: FutureBuilder(
+                                                    future: controller?.getCameraInfo(),
+                                                    builder: (context, snapshot) {
+                                                      if (snapshot.data != null) {
+                                                        return Text(
+                                                            '翻轉鏡頭 ${describeEnum(snapshot.data!)}');
+                                                      } else {
+                                                        return const Text('等待中');
+                                                      }
+                                                    },
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                          ))
-                    ])))),
-      ),
+                          ),),
+                        Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(5.0),
+                              width: 100, // <-- Your width
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _checkAndPush();
+                                  Navigator.of(context).pop(true);
+                                },
+                                child: Text('$resultText'),
+
+                              ),
+                            ))
+                      ])))),
+        ),
+      );
+
+  }
+
+  Widget _buildQrView(BuildContext context) {
+    // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
+    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+        MediaQuery.of(context).size.height < 400)
+        ? 150.0
+        : 300.0;
+    // To ensure the Scanner view is properly sizes after rotation
+    // we need to listen for Flutter SizeChanged notification and update controller
+    return QRView(
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+      overlay: QrScannerOverlayShape(
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderLength: 30,
+          borderWidth: 10,
+          cutOutSize: scanArea),
+      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
   }
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData;
+        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+          resultText="完成任務";
+        }
+      });
+    });
+  }
+
+  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
+    if (!p) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('no Permission')),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+
+
   void _pushLog(){
     Log resquestLog = Log.addTaskLog(2, 2);
     addLog(resquestLog);
@@ -273,119 +346,189 @@ class sealionTask3showDialog extends StatefulWidget {
 }
 
 class _task3showDialog extends State<sealionTask3showDialog> {
-  int number = 0,op=0;
-  String img = "https://turtleacademy.com/images/turtle.gif";
-  String result = "取消";
-  String filename="123.jpg";
+  Barcode? result;
+  QRViewController? controller;
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  String qrstr = "請掃描無塑商店的專屬QRcode";
+  String resultText ="取消";
 
-  void initState() {
-    super.initState();
-    setState(() {
-    });
+  // In order to get hot reload to work we need to pause the camera if the platform
+  // is android, or resume the camera if the platform is iOS.
+  @override
+  void reassemble() {
+    // super.reassemble();
+    // if (Platform.isAndroid) {
+    //   controller!.pauseCamera();
+    // }
+    // controller!.resumeCamera();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Storage storage =Storage();
-    // print("2.filename:$filename");
-    return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
-      child: Container(
-        decoration: new BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: new LinearGradient(colors: <Color>[
-              Color(0xffB3E7E7),
-              Color(0xffBCCFF5),
-            ], begin: Alignment.topLeft, end: Alignment.topRight)),
-        child: Card(
-            elevation: 0,
-            color: Colors.transparent,
-            child: SizedBox(
-                width: 350,
-                height: 500,
-                child: Center(
-                    child: Column(children: [
-                      Expanded(
-                        flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder:(BuildContext context,
-                                AsyncSnapshot<String>snapshot){
-                              if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData) {
-                                return Container(
-                                    width: 300,
-                                    height: 250,
-                                    child:Image.network(
-                                      snapshot.data!,
-                                      fit:BoxFit.cover,
-                                    ));
-                              }
-                              if(snapshot.connectionState==ConnectionState.waiting||
-                                  !snapshot.hasData){
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file ="123.jpg";
-
-                            this.setState(
-                                    ()=>result="完成任務");
-                            // print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then((value) =>
-                                this.setState(()=>filename=file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-
-                          child: Text('upload file'),
-
-                        ),
-                      ),
-                      Expanded(
+    return
+      Dialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.all(new Radius.circular(32.0))),
+        child: Container(
+          decoration: new BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              gradient: new LinearGradient(colors: <Color>[
+                Color(0xffB3E7E7),
+                Color(0xffBCCFF5),
+              ], begin: Alignment.topLeft, end: Alignment.topRight)),
+          child: Card(
+              elevation: 0,
+              color: Colors.transparent,
+              child: SizedBox(
+                  width: 350,
+                  height: 500,
+                  child: Center(
+                      child: Column(children: [
+                        Expanded(
                           flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
+                          child: Text(qrstr,
+                              style: TextStyle(
+                                fontSize: 20,
+                              )),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child:  Scaffold(
+                            backgroundColor:Color(0x00FFFFFF),
+                            body: Column(
+                              children: <Widget>[
+                                Expanded(flex: 4, child: _buildQrView(context)),
+                                Expanded(
+                                  flex: 1,
+                                  child: FittedBox(
+                                    fit: BoxFit.contain,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        if (result != null)
+                                          Text(
+                                              '掃描資料: ${result!.code}')
+                                        else
+                                          const Text('掃描QRcode'),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Container(
+                                              margin: const EdgeInsets.all(8),
+                                              child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    await controller?.toggleFlash();
+                                                    setState(() {});
+                                                  },
+                                                  child: FutureBuilder(
+                                                    future: controller?.getFlashStatus(),
+                                                    builder: (context, snapshot) {
+                                                      return Text('手電筒: ${snapshot.data}');
+                                                    },
+                                                  )),
+                                            ),
+                                            Container(
+                                              margin: const EdgeInsets.all(8),
+                                              child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    await controller?.flipCamera();
+                                                    setState(() {});
+                                                  },
+                                                  child: FutureBuilder(
+                                                    future: controller?.getCameraInfo(),
+                                                    builder: (context, snapshot) {
+                                                      if (snapshot.data != null) {
+                                                        return Text(
+                                                            '翻轉鏡頭 ${describeEnum(snapshot.data!)}');
+                                                      } else {
+                                                        return const Text('等待中');
+                                                      }
+                                                    },
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                          ))
-                    ])))),
-      ),
+                          ),),
+                        Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(5.0),
+                              width: 100, // <-- Your width
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _checkAndPush();
+                                  Navigator.of(context).pop(true);
+                                },
+                                child: Text('$resultText'),
+
+                              ),
+                            ))
+                      ])))),
+        ),
+      );
+
+  }
+
+  Widget _buildQrView(BuildContext context) {
+    // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
+    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+        MediaQuery.of(context).size.height < 400)
+        ? 150.0
+        : 300.0;
+    // To ensure the Scanner view is properly sizes after rotation
+    // we need to listen for Flutter SizeChanged notification and update controller
+    return QRView(
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+      overlay: QrScannerOverlayShape(
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderLength: 30,
+          borderWidth: 10,
+          cutOutSize: scanArea),
+      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
   }
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData;
+        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+          resultText="完成任務";
+        }
+      });
+    });
+  }
+
+  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
+    if (!p) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('no Permission')),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+
+
   void _pushLog(){
     Log resquestLog = Log.addTaskLog(2, 3);
     addLog(resquestLog);

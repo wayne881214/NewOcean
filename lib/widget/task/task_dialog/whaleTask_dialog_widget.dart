@@ -17,6 +17,7 @@ import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
 import '../../../page/map/map_video.dart';
+import '../../../page/map/show_map_page.dart';
 import '../../../video.dart';
 
 class whaleTask1showDialog extends StatefulWidget {
@@ -275,74 +276,12 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                     child: Column(children: [
                       Expanded(
                         flex: 6,
-                        child: FutureBuilder(
-                            future: storage.downloadURL('$filename'),
-
-                            // future: storage.listFiles(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<String> snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done &&
-                                  snapshot.hasData) {
-                                return Container(
-                                    child: const VideoPlayerScreen(path:'assets/video/video.mp4',volume:1.0,height: 250,width:300));
-                              }
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting ||
-                                  !snapshot.hasData) {
-                                return Text("Stupid flutter");
-                              }
-                              return Text("Stupid flutter");
-                            }),
+                        child: ShowMapPage(),
                       ),
                       Expanded(
                         flex: 1,
-                        child: Text("請上傳照片"),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('No file selected'),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final file = "123.jpg";
-
-                            this.setState(() => result = "完成任務");
-                            // print("1.filename:$filename");
-                            storage.uploadFile(path, filename).then(
-                                    (value) => this.setState(() => filename = file));
-                            // Timer timer;
-                            // timer =  new Timer(Duration(milliseconds: 1000), (){});
-                          },
-                          child: Text('upload file'),
-                        ),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            width: 100, // <-- Your width
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _checkAndPush();
-                                Navigator.of(context).pop(true);
-                              },
-                              child: Text('$result'),
-                            ),
-                          ))
+                        child: Text("到環保站點打卡"),
+                      )
                     ])))),
       ),
     );
