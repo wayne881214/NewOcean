@@ -78,11 +78,19 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                 height: 500,
                 child: Center(
                     child: Column(children: [
-                      Align(
-                        widthFactor: 10,
-                        heightFactor: 6,
-                        alignment: Alignment(-1 * x / 10, y / 10),
-                        child: Image.asset( img ,height: sizeX, width: sizeY)
+                      Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/inages/task_carousel_coral_1.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: Align(
+                            widthFactor: 10,
+                            heightFactor: 6,
+                            alignment: Alignment(-1 * x / 10, y / 10),
+                            child: Image.asset( img ,height: sizeX, width: sizeY)
+                        ),
                       ),
                       Expanded(
                         flex: 1,
