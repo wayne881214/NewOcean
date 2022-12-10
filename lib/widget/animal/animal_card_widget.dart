@@ -23,7 +23,7 @@ class AnimalCard extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Animal_animal(id: value.id),
+                    builder: (context) => Animal_animal(id: value.id,state: value.state),
                   ));
             },
             child:Column(

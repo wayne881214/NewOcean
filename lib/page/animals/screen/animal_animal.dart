@@ -1,27 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:newocean/widget/animal/aniaml_describe.dart';
 import 'package:newocean/widget/animal/animal_interact.dart';
-import 'package:sensors/sensors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/widget/animal/animal_headshot.dart';
 
 class Animal_animal extends StatefulWidget {
-  Animal_animal({Key? key, required this.id}) : super(key: key);
+  Animal_animal({Key? key, required this.id,required this.state}) : super(key: key);
   final int id;
+  final int state;
   @override
   _AnimalState createState() => _AnimalState();
 }
 
 class  _AnimalState extends State<Animal_animal> {
   int number=0;
+  int state = 0;
   Animal animal=Animal.addAnimal(0,1);
   @override
   void initState() {
-    animal=Animal.addAnimal((widget.id),1);
-    setState(() {
-    });
+
+    animal=Animal.addAnimal((widget.id),(widget.state));
+
     super.initState();
   }
 

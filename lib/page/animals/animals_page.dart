@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_database/firebase_database.dart';
@@ -23,15 +24,16 @@ class _AnimalState extends State<AnimalsPage> {
   //初始化
   void initState() {
     animal=[];
+    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
     //讀取用戶動物，將進行中的任務加入List<Animal>行列
-    DatabaseReference Ref = FirebaseDatabase.instance.ref('User/1/animal');
+    DatabaseReference Ref = FirebaseDatabase.instance.ref('Animals/$currentUser');
     Ref.onChildAdded.listen((event) {
       int id= (event.snapshot.value as Map)["id"];
       int state= (event.snapshot.value as Map)["state"];
-      if(state>=1) {
+      if(state >= 1) {
         animal.add(Animal.addAnimal(id,state));
       }
-      if(state==0) {
+      if(state == 0) {
         animal.add(Animal.addAnimal(0,0));
       }
       //更新 AnimalCard Widget(動物卡片列表)
@@ -50,50 +52,7 @@ class _AnimalState extends State<AnimalsPage> {
           systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: card,
-        bottomNavigationBar: _buildBottomNaigationBar(),
       );
 }
-
-BottomNavigationBar _buildBottomNaigationBar() {
-  return BottomNavigationBar(
-    type: BottomNavigationBarType.fixed,
-    backgroundColor: kBackground,
-    showSelectedLabels: false,
-    showUnselectedLabels: false,
-    items: [
-      BottomNavigationBarItem(
-          label: 'issue',
-          icon: Container(
-            padding: EdgeInsets.only(bottom: 5),
-            decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('全部', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
-      BottomNavigationBarItem(
-          label: 'issue',
-          icon: Container(
-            padding: EdgeInsets.only(bottom: 5),
-            decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('未完成', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
-      BottomNavigationBarItem(
-          label: 'issue',
-          icon: Container(
-            padding: EdgeInsets.only(bottom: 5),
-            decoration: BoxDecoration(
-                border:
-                Border(bottom: BorderSide(color: kAccent, width: 2))),
-            child: Text('已完成', style: TextStyle(fontWeight: FontWeight.bold),),
-          )
-      ),
-    ],
-  );
-}
-
 
 
