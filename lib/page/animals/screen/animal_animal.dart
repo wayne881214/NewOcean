@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:newocean/widget/animal/aniaml_describe.dart';
 import 'package:newocean/widget/animal/animal_interact.dart';
-import 'package:sensors/sensors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:newocean/widget/animal/animal_headshot.dart';
 
@@ -19,9 +20,16 @@ class  _AnimalState extends State<Animal_animal> {
   Animal animal=Animal.addAnimal(0,1);
   @override
   void initState() {
-    animal=Animal.addAnimal((widget.id),1);
-    setState(() {
+    final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
+    //讀取用戶動物，將進行中的任務加入List<Animal>行列
+
+    FirebaseDatabase.instance.ref().child('Animals/$currentUser/animal'+widget.id.toString()).onValue.listen((event) {
+      int state = (event.snapshot.value as Map)["state"];
+      setState(() {
+        animal=Animal.addAnimal((widget.id),state);
+      });
     });
+
     super.initState();
   }
 
