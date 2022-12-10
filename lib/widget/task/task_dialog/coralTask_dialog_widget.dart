@@ -348,7 +348,7 @@ class _task3showDialog extends State<coralTask3showDialog> {
   void _pushLog() {
     Log resquestLog = Log.addTaskLog(7, 3);
     addLog(resquestLog);
-    changeTask2(7, 3, API);
+    changeTask3(7, 3, API);
   }
 
   void _checkAndPush() {

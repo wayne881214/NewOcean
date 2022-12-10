@@ -83,7 +83,7 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
                                           Text(
                                               '掃描資料: ${result!.code}')
                                         else
-                                          const Text('掃描QRcode'),
+                                          const Text('掃描QRcode\n(若鏡頭沒畫面，請翻轉鏡頭)'),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -179,7 +179,9 @@ class _ostricaTask3showDialog extends State<ostricaTask3showDialog> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        if(result!.code=="store1"||result!.code=="store2"||result!.code=="store3"){
+        var ans=result!.code;
+        ans = ans.toString();
+        if(ans=="store1 "||ans=="store1"||ans=="store2 "||ans=="store2"){
           resultText="完成任務";
         }
       });

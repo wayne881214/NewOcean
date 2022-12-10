@@ -78,7 +78,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                                           Text(
                                               '掃描資料: ${result!.code}')
                                         else
-                                          const Text('掃描QRcode'),
+                                          const Text('掃描QRcode\n(若鏡頭沒畫面，請翻轉鏡頭)'),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
