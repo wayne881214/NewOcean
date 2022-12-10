@@ -33,6 +33,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
   double? volumes = 1.0;
   VideoPlayerScreen newVideoPlayerScreen = VideoPlayerScreen(path:'assets/video/voice1.mp4',volume:1,height: 0,width:0);
   String img = "assets/images/animals/whale.png";
+  String background = "assets/images/task_carousel_coral_1.png";
   String result = "取消";
   List<StreamSubscription<dynamic>> _streamSubscriptions =
   <StreamSubscription<dynamic>>[];
@@ -50,8 +51,9 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
         }
         if((x - stateX).abs() <= 3 ){
           x = stateX ;
-          sizeX = 50;
-          sizeY = 50;
+          sizeX = 0;
+          sizeY = 0;
+          background = "assets/images/animals/whale.png";
           result = "完成任務";
         }
       });
@@ -81,7 +83,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                       Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/inages/task_carousel_coral_1.png'),
+                            image: AssetImage(background),
                             fit: BoxFit.cover,
                           ),
                         ),
