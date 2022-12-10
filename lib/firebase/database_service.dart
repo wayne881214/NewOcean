@@ -12,6 +12,12 @@ void changeTask(int id ,int state){
   }).catchError((error) {
     print(error);
   });
+
+  DatabaseReference animalsRef = FirebaseDatabase.instance.ref('Animals/'+currentUser+'/animal'+id.toString());
+  animalsRef.set(Task).whenComplete(() {
+  }).catchError((error) {
+    print(error);
+  });
 }
 //
 
@@ -26,6 +32,12 @@ void changeTask2(int id ,int state,double stateApi) {
     DatabaseReference Ref = FirebaseDatabase.instance.ref(
         'Tasks/'+currentUser+'/task'+id.toString());
     Ref.set(Task).whenComplete(() {}).catchError((error) {
+      print(error);
+    });
+
+    DatabaseReference animalsRef = FirebaseDatabase.instance.ref('Animals/'+currentUser+'/animal'+id.toString());
+    animalsRef.set(Task).whenComplete(() {
+    }).catchError((error) {
       print(error);
     });
   }
@@ -43,6 +55,12 @@ void changeTask3(int id ,int state,double stateApi){
     DatabaseReference Ref = FirebaseDatabase.instance.ref(
         'Tasks/'+currentUser+'/task'+id.toString());
     Ref.set(Task).whenComplete(() {}).catchError((error) {
+      print(error);
+    });
+
+    DatabaseReference animalsRef = FirebaseDatabase.instance.ref('Animals/'+currentUser+'/animal'+id.toString());
+    animalsRef.set(Task).whenComplete(() {
+    }).catchError((error) {
       print(error);
     });
   }

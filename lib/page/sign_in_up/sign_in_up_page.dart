@@ -275,12 +275,24 @@ class SignInUpPage extends StatelessWidget {
                                             });
                                             DatabaseReference taskRef =
                                                 FirebaseDatabase.instance
-                                                    .reference()
+                                                    .ref()
                                                     .child('Tasks/')
                                                     .child(uid);
-                                            for (int i = 1; i < 9; i++)
+                                            for (int i = 1; i < 8; i++)
                                               await taskRef
                                                   .child('task$i')
+                                                  .set({
+                                                'state': 0,
+                                                'id': i,
+                                              });
+                                            DatabaseReference animalRef =
+                                            FirebaseDatabase.instance
+                                                .ref()
+                                                .child('Animals/')
+                                                .child(uid);
+                                            for (int i = 1; i < 8; i++)
+                                              await animalRef
+                                                  .child('animal$i')
                                                   .set({
                                                 'state': 0,
                                                 'id': i,
