@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   int money = -2;
-  String word = "救救我!!!";
+  String word = "(...)";
   int animalsId = 0;
   int state = 0;
   int level = 1;
@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
     setState(() {
       animal = Animals[i];
+      animalsId = i;
     });
 
     DatabaseReference sRef = FirebaseDatabase.instance.ref('Tasks/$currentUser');
@@ -34,7 +35,6 @@ class _HomePageState extends State<HomePage> {
       int id = (event.snapshot.value as Map)["id"];
       int states = (event.snapshot.value as Map)["state"];
       setState(() {
-      animalsId = id;
       if (states == 4) {
           level++;
       }
