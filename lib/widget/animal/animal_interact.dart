@@ -22,13 +22,13 @@ class  _interactState extends State<Animal_interact> {
   void initState() {
     setState(() {
       if(widget.state >= 2){
-        animalToolImg1 = "assets/images/animals/aricon.png";
+        animalToolImg1 = "assets/images/animals/arIcon.png";
       }
       if(widget.state >= 3){
-        animalToolImg2 = "assets/images/animals/aricon.png";
+        animalToolImg2 = "assets/images/animals/arIcon.png";
       }
       if(widget.state >= 4){
-        animalToolImg3 = "assets/images/animals/aricon.png";
+        animalToolImg3 = "assets/images/animals/arIcon.png";
       }
     });
     super.initState();
