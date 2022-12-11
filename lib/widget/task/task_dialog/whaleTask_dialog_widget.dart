@@ -1,20 +1,28 @@
 import 'dart:async';
-
-import 'package:all_sensors/all_sensors.dart' as name;
-import 'package:amap_flutter_location/amap_flutter_location.dart';
-import 'package:amap_flutter_map/amap_flutter_map.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'dart:math';
+import 'package:all_sensors/all_sensors.dart' as name;
+
+import 'package:amap_flutter_location/amap_flutter_location.dart';
+import 'package:amap_flutter_location/amap_location_option.dart';
+import 'package:amap_flutter_map/amap_flutter_map.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:amap_flutter_base/amap_flutter_base.dart';
+import 'package:flutter/services.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../firebase/User.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';
+import '../../../firebase/map_service.dart';
 import '../../../model/achievements_model/logs_model.dart';
 import '../../../model/map_model/map_model.dart';
 import '../../../page/map/map_video.dart';
 import '../../../video.dart';
+
+
 
 class whaleTask1showDialog extends StatefulWidget {
   @override
@@ -51,6 +59,7 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
           sizeY = 0;
           background = "assets/images/animals/whale.png";
           result = "完成任務";
+
         }
       });
     }));
@@ -91,10 +100,10 @@ class _ShakeshowDialog extends State<whaleTask1showDialog> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
-                        child:Container(
-                         child: newVideoPlayerScreen
-                        )
+                          flex: 1,
+                          child:Container(
+                              child: newVideoPlayerScreen
+                          )
                       ),
                       Expanded(
                           flex: 2,
@@ -283,49 +292,6 @@ class _task3showDialog extends State<whaleTask3showDialog> {
                     ])))),
       ),
     );
-  }
-
-  void _pushLog() {
-    Log resquestLog = Log.addTaskLog(3, 3);
-    addLog(resquestLog);
-    changeTask3(3, 3, API);
-
-  }
-
-  void _checkAndPush() {
-    if (result == "完成任務") {
-      _pushLog();
-      Navigator.of(context).pop(true);
-    }
-  }
-
-  AMapController? _mapController;
-
-  void onMapCreated(AMapController controller) {
-    setState(() {
-      _mapController = controller;
-      getApprovalNumber();
-    });
-  }
-
-  /// 获取审图号
-  void getApprovalNumber() async {
-    //普通地图审图号
-    String? mapContentApprovalNumber =
-    await _mapController?.getMapContentApprovalNumber();
-    //卫星地图审图号
-    String? satelliteImageApprovalNumber =
-    await _mapController?.getSatelliteImageApprovalNumber();
-    setState(() {
-      if (null != mapContentApprovalNumber) {
-        _approvalNumberWidget.add(Text(mapContentApprovalNumber));
-      }
-      if (null != satelliteImageApprovalNumber) {
-        _approvalNumberWidget.add(Text(satelliteImageApprovalNumber));
-      }
-    });
-    print('地图审图号（普通地图）: $mapContentApprovalNumber');
-    print('地图审图号（卫星地图): $satelliteImageApprovalNumber');
   }
 }
 
