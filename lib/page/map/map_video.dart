@@ -207,9 +207,12 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
           times++;
           if (target.latitude == 0 && target.longitude == 0) {
             var i = Random().nextInt(10000);
-            double positionRandom = i * 0.0000001;
-            target = LatLng(myLoc.latitude + positionRandom,
-                myLoc.longitude + positionRandom);
+            double positionRandom = i * 0.000001;
+            // double positionRandom = i * 0.0000001;
+            // target = LatLng(myLoc.latitude + positionRandom,
+            //     myLoc.longitude + positionRandom);
+            target = LatLng(24.1847174,
+                120.64737840000004);
             // target = LatLng(myLoc.latitude + 0.001, myLoc.longitude+ 0.001);
             targetStr = 'Data:' +
                 target.latitude.toString() +
@@ -236,7 +239,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
           dis = _getDistance(myLoc.latitude, myLoc.longitude, target.latitude,
               target.longitude);
           // show('$volumes $dis');
-          volumes = 1 - dis / 200;
+          volumes = 1 - dis / 500;
           newVideoPlayerScreen.run(volumes!);
           if (volumes < 0.8) {
             result = "取消";

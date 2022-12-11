@@ -143,7 +143,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
         },
         infoWindow: InfoWindow(
           title: item.title,
-          snippet: "\n簡介" + item.snippet + "\n添加者:" + item.user,
+          snippet: "\n簡介:" + item.snippet + "\n添加者:" + item.user,
         ),
         // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
       );
@@ -158,6 +158,7 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
       ),
       buildingsEnabled: true,
       trafficEnabled: true,
+      labelsEnabled:false,
       // mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(

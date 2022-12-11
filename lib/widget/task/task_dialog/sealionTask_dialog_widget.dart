@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:sensors/sensors.dart';
@@ -25,6 +26,9 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
 
   void initState() {
     accelerometerEvents.listen((AccelerometerEvent event) {
+      // Vibrate.vibrate();
+      // HapticFeedback.vibrate();
+      // HapticFeedback.heavyImpact();
       // 摇一摇阀值,不同手机能达到的最大值不同，如某品牌手机只能达到20。
       int value = 15;
       if (event.x >= value ||
@@ -34,6 +38,7 @@ class _ShakeshowDialog extends State<sealionTask1showDialog> {
           event.z >= value ||
           event.z <= -value) {
         if (number < 50) {
+          HapticFeedback.lightImpact();
           setState(() {
             number += 1;
           });

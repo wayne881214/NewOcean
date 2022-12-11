@@ -403,7 +403,6 @@ class _WhaleGPSState extends State<_WhaleGPSBody> {
             "assets/images/animals/whale_map.png"),
         position: position,
         infoWindowEnable: true,
-        draggable: true,
         onTap: (s) async {
           if (item.latitude - mapCenter.latitude <= 0.0001 &&
               item.longitude - mapCenter.longitude <= 0.0001) {
@@ -416,7 +415,7 @@ class _WhaleGPSState extends State<_WhaleGPSBody> {
         },
         infoWindow: InfoWindow(
           title: item.title,
-          snippet: "\n簡介" + item.snippet + "\n添加者:" + item.user,
+          snippet: "\n簡介:" + item.snippet + "\n添加者:" + item.user,
         ),
         // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
       );
@@ -430,7 +429,8 @@ class _WhaleGPSState extends State<_WhaleGPSBody> {
         zoom: 50,
       ),
       buildingsEnabled: true,
-      trafficEnabled: true,
+      trafficEnabled: false,
+      labelsEnabled:false,
       // mapType:MapType.satellite,
       /// 我的位置自定义配置
       myLocationStyleOptions: MyLocationStyleOptions(

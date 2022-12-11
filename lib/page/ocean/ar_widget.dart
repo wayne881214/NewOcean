@@ -105,7 +105,7 @@ class _ObjectsOnPlanesWidgetState extends State<ObjectsOnPlanesWidget> {
       if (didAddAnchor==true) {
         String Url = "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF-Binary/Duck.glb";
         if (widget.id == 1) {
-          Url = "https://github.com/wayne881214/NewOcean/raw/main/lib/ttt.glb";
+          Url = "https://github.com/wayne881214/NewOcean/raw/main/lib/turtle.glb";
         }
         else if (widget.id == 2) {
           Url =
