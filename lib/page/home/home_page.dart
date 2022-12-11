@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import '../../widget/navigation_drawer_widget.dart';
 import '../tasks/screen/task_issue.dart';
 
-Map Animals =  <int, String>{1:"turle",2:"sealion",3:"whale",4:"ostrica",5:"jellyfish",6:"hippocampus",7:"coral"};
+Map Animals =  <int, String>{1:"turtle",2:"sealion",3:"whale",4:"ostrica",5:"jellyfish",6:"hippocampus",7:"coral"};
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   int money = -2;
   String word = "救救我!!!";
+  int animalsId = 0;
   int state = 0;
   int level = 1;
   int i = Random().nextInt(7) + 1;
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
       int id = (event.snapshot.value as Map)["id"];
       int states = (event.snapshot.value as Map)["state"];
       setState(() {
+      animalsId = id;
       if (states == 4) {
           level++;
       }
@@ -110,19 +112,19 @@ class _HomePageState extends State<HomePage> {
           case 4:
             switch(state) {
               case 0:
-                word = "嘿，牡蠣要長大也是需要好的環境的!";
+                word = "嘿，你們吃我就算了\n還欺人太甚不讓我成長";
                 break;
               case 1:
-                word = "嗚嗚嗚~吸管卡在鼻子好痛!";
+                word = "還不快幫我建立長大的環境";
                 break;
               case 2:
-                word = "嗚嗚嗚~幫我收集塑膠垃圾!";
+                word = "海洋越差\n我是你吃不起的牡蠣大人~!";
                 break;
               case 3:
-                word = "嗚嗚嗚~海洋還是好多";
+                word = "動作太慢了\n我身價又又飆漲了";
                 break;
               case 4:
-                word = "救救我!!!";
+                word = "嘿，人類打個商量\n不要吃我好嗎";
                 break;
               default:
                 word = "現在海洋很和平~";
@@ -133,19 +135,19 @@ class _HomePageState extends State<HomePage> {
           case 5:
             switch(state) {
               case 0:
-                word = "救救我!!!";
+                word = "呼呼。人類太棒啦\n這裡是我水母的天下啦";
                 break;
               case 1:
-                word = "救救我!!!";
+                word = "別阻擋我\n我要讓水母一族成為海賊王";
                 break;
               case 2:
-                word = "救救我!!!";
+                word = "人類你別自以為了\n現在做環保能擋下我的腳步嗎";
                 break;
               case 3:
-                word = "救救我!!!";
+                word = "哼，反正你總有一天會放棄\n水母帝國總將會復活的";
                 break;
               case 4:
-                word = "救救我!!!";
+                word = "(舉白旗投降)\n算你贏了，人類";
                 break;
               default:
                 word = "現在海洋很和平~";
@@ -156,19 +158,19 @@ class _HomePageState extends State<HomePage> {
           case 6:
             switch(state) {
               case 0:
-                word = "救救我!!!";
+                word = "臭人類!滾滾滾!";
                 break;
               case 1:
-                word = "救救我!!!";
+                word = "臭人類!滾!";
                 break;
               case 2:
-                word = "救救我!!!";
+                word = "臭人類!算你有進步!";
                 break;
               case 3:
-                word = "救救我!!!";
+                word = "人類~別退步了!";
                 break;
               case 4:
-                word = "救救我!!!";
+                word = "人類~ ♡";
                 break;
               default:
                 word = "現在海洋很和平~";
@@ -179,19 +181,19 @@ class _HomePageState extends State<HomePage> {
           case 7:
             switch(state) {
               case 0:
-                word = "救救我!!!";
+                word = "(Ò 皿 Ó ╬)";
                 break;
               case 1:
-                word = "救救我!!!";
+                word = "(ꐦಠ皿ಠ)";
                 break;
               case 2:
-                word = "救救我!!!";
+                word = "(¬▂¬)";
                 break;
               case 3:
-                word = "救救我!!!";
+                word = "(-`д´-)";
                 break;
               case 4:
-                word = "救救我!!!";
+                word = "(⁎˃ᆺ˂)";
                 break;
               default:
                 word = "現在海洋很和平~";
@@ -238,11 +240,6 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.teal,
                   fontSize: 27,
                 )),
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: Icon(Icons.plus_one),
-            //   color: Colors.teal,
-            // ),
           ],
         ),
         body: Center(
@@ -254,9 +251,9 @@ class _HomePageState extends State<HomePage> {
               color: Colors.red,
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Task_issue(id:1)));
+                    context, MaterialPageRoute(builder: (context) => Task_issue(id:animalsId)));
               }),
-              Text('$word',style: TextStyle(color: Colors.red, fontSize: 27,)),
+              Text('$word',textAlign: TextAlign.center,style: TextStyle(color: Colors.red, fontSize: 27,)),
               Image.asset('assets/images/animals/'+ animal+ '.png'),
             ],
           ),

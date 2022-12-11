@@ -35,10 +35,10 @@ class _Task_issue extends State<Task_issue> {
         knowledgetext='根據垃圾減量 3 原則: 源頭減量(Reduce)、再使用(Reuse)、物料回收(Recycle)，主要在於推動垃圾的回收再生利用，而最根本的垃圾問題其最理想的解決辦法是實現垃圾源頭的減量。';
         break;
       case 3:
-        taskTitle="鯨魚";
+        taskTitle="鯨魚任務";
         issuetext='船舶噪音會產生海洋噪音，高強度噪音影響鯨魚的聽力，導致仰賴聲音溝通的鯨魚受困於岸上無法自行游回大海，擱淺的鯨魚容易因日曬嚴重脫水而死亡。\n';
         featuretext='鯨魚擱淺的照片';
-        knowledgetext='塑膠微粒(Microplastic)，指大小少於5毫米的塑膠碎片。世界自然基金會的研究表示，全球平均每人每週會攝取約5公克的塑膠微粒，等同吃下一張信用卡。';
+        knowledgetext='一般藍鯨的聲音通常介於 15 到 25 赫茲之間，但人類帶來的噪音卻嚴重影響鯨魚們的溝通，設想在如果你在工地擴建的旁邊說話，根本聽不到其他人說甚麼，但這就是鯨魚每天在來來去去的港口，每天面臨的問題。';
         break;
       case 4:
         taskTitle = "牡蠣任務";

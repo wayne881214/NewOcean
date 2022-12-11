@@ -20,11 +20,13 @@ class AnimalCard extends StatelessWidget {
         //偵測點擊跳轉(mission介面)
         return GestureDetector(
             onTap: () {
+              if(value.state > 0){
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Animal_animal(id: value.id,state: value.state),
                   ));
+              }
             },
             child:Column(
             children: [
