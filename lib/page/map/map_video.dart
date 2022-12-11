@@ -38,8 +38,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   var times = 0;
   late bool visibleB = false;
   late Marker marker;
-  late LatLng target;
-  late LatLng myLoc;
+  LatLng target= LatLng(0, 0);
+  LatLng myLoc= LatLng(0, 0);
+
   List<Widget> _approvalNumberWidget = [];
   double volumes = 1.0;
   VideoPlayerScreen newVideoPlayerScreen = VideoPlayerScreen(
@@ -47,9 +48,10 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
 
   AMapFlutterLocation _locationPlugin = new AMapFlutterLocation();
   StreamSubscription<Map<String, Object>>? _locationListener;
-  final Map<String, Marker> initMarkerMap = <String, Marker>{};
+  late Map<String, Marker> initMarkerMap = <String, Marker>{};
   List jsonResponse = [];
   List<MapData> allMap = [];
+  late double dis;
   var result = '取消';
   var targetStr;
 
@@ -59,8 +61,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     volumes = 1.0;
     newVideoPlayerScreen.run(volumes);
     requestPermission();
-    target = LatLng(0, 0);
-    myLoc = LatLng(0, 0);
+
     marker = Marker(
       icon:
           BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
@@ -156,13 +157,10 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   bool isChangeLocation = false;
 
   moveCamera(LatLng currentLatLng) {
-    if (null != _controller) {
-      myLoc = currentLatLng;
-      _controller!.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: currentLatLng,
-        zoom: 50,
-      )));
-    }
+    _controller!.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: currentLatLng,
+      zoom: 50,
+    )));
   }
 
   @override
@@ -187,6 +185,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
         circleFillColor: Colors.lightBlue,
         circleStrokeColor: Colors.blue,
         circleStrokeWidth: 3,
+        icon: BitmapDescriptor.fromIconPath('assets/images/animals/whale_me.png'),
         // icon: BitmapDescriptor.defaultMarker,
       ),
 
@@ -206,10 +205,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
         setState(() {
           myLoc = location.latLng;
           times++;
-          if (times == 5) {
-            var i = Random().nextInt(1000);
-            double positionRandom = i * 0.000001;
-            show(positionRandom.toString());
+          if (target.latitude == 0 && target.longitude == 0) {
+            var i = Random().nextInt(10000);
+            double positionRandom = i * 0.0000001;
             target = LatLng(myLoc.latitude + positionRandom,
                 myLoc.longitude + positionRandom);
             // target = LatLng(myLoc.latitude + 0.001, myLoc.longitude+ 0.001);
@@ -225,14 +223,6 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
               infoWindowEnable: true,
               onTap: (s) async {
                 show('!!');
-                // if (target.latitude - mapCenter.latitude <= 0.0001 &&
-                //     target.longitude - mapCenter.longitude <= 0.0001) {
-                //   show('完成任務');
-                //   // result = '完成任務';
-                //   // _checkAndPush();
-                // } else {
-                //   show('太遠了');
-                // }
               },
               infoWindow: InfoWindow(
                 title: '目標',
@@ -243,27 +233,18 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
             initMarkerMap[marker.id] = marker;
           }
           var tempV = (target.latitude - location.latLng.latitude).abs();
-          volumes = 1 - tempV / 0.01;
+          dis = _getDistance(myLoc.latitude, myLoc.longitude, target.latitude,
+              target.longitude);
+          // show('$volumes $dis');
+          volumes = 1 - dis / 200;
           newVideoPlayerScreen.run(volumes!);
-          if (volumes < 0.9) {
+          if (volumes < 0.8) {
             result = "取消";
           } else {
             result = "完成任務";
           }
         });
         super.initState();
-        //
-        // }
-        if (!isChangeLocation) {
-          myLoc = location.latLng;
-          moveCamera(myLoc);
-          print('location.latLng onLocationChanged');
-          print(location.latLng);
-          isChangeLocation = true;
-
-          super.initState();
-        }
-        myLoc = location.latLng;
       },
       markers: Set<Marker>.of(initMarkerMap.values),
 
@@ -300,8 +281,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
           FloatingActionButton(
             child: Icon(Icons.sixteen_mp_rounded),
             onPressed: () {
-              var tempV = 1 - ((target.latitude - myLoc.latitude).abs() / 0.01);
-              var str = '目標:$target \n 定位: $myLoc \n 音量: $tempV ($volumes)';
+              dis = _getDistance(myLoc.latitude, myLoc.longitude,
+                  target.latitude, target.longitude);
+              var str = '目標:$target \n 定位: $myLoc \n 音量: $volumes \n距離:$dis 米)';
               show('$str');
             },
             heroTag: null,
@@ -320,13 +302,13 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
                   show('簡單模式');
                   visibleB = true;
                 }
-
+                initMarkerMap = <String, Marker>{};
                 // visibleB =-visibleB;
                 marker = Marker(
                   icon: BitmapDescriptor.fromIconPath(
                       "assets/images/animals/whale_map.png"),
                   position: target,
-                  visible: visibleB,
+                  draggable: true,
                   infoWindowEnable: true,
                   onTap: (s) async {
                     show('!!');
@@ -375,8 +357,6 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
                     myLoc.longitude.toString();
                 show(myLocStr);
                 moveCamera(myLoc);
-                // print('moveCamera to');
-                // print(myLoc);
               }
             },
             heroTag: null,
@@ -394,6 +374,26 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     if (result == "完成任務") {
       _pushLog();
     }
+  }
+
+  /// 根据两点经纬度 使用math 算出之间距离
+  /// 导入import 'dart:math';
+  _getDistance(double lat1, double lng1, double lat2, double lng2) {
+    /// 单位：米
+    /// def ：地球半径
+    double def = 6378137.0;
+    double radLat1 = _rad(lat1);
+    double radLat2 = _rad(lat2);
+    double a = radLat1 - radLat2;
+    double b = _rad(lng1) - _rad(lng2);
+    double s = 2 *
+        asin(sqrt(pow(sin(a / 2), 2) +
+            cos(radLat1) * cos(radLat2) * pow(sin(b / 2), 2)));
+    return (s * def).roundToDouble();
+  }
+
+  double _rad(double d) {
+    return d * pi / 180.0;
   }
 
   AMapController? _mapController;
