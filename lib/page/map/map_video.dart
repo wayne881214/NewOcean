@@ -39,6 +39,7 @@ class _Map_VideoPageBody extends StatefulWidget {
 
 class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   var times = 0;
+  late bool visibleB = false;
   late Marker marker;
   late LatLng target;
   late LatLng myLoc;
@@ -53,6 +54,7 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   List jsonResponse = [];
   List<MapData> allMap = [];
   var result = '取消';
+  var targetStr;
 
   @override
   void initState() {
@@ -60,12 +62,13 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     volumes = 1.0;
     newVideoPlayerScreen.run(volumes);
     requestPermission();
-    target = LatLng(0,0);
-    myLoc = LatLng(0,0);
+    target = LatLng(0, 0);
+    myLoc = LatLng(0, 0);
     marker = Marker(
-      icon: BitmapDescriptor.fromIconPath(
-          "assets/images/animals/whale_map.png"),
+      icon:
+          BitmapDescriptor.fromIconPath("assets/images/animals/whale_map.png"),
       position: target,
+      visible: visibleB,
       infoWindowEnable: true,
       onTap: (s) async {
         show('??');
@@ -151,7 +154,6 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
   AMapController? _controller;
   bool isChangeLocation = false;
 
-
   moveCamera(LatLng currentLatLng) {
     if (null != _controller) {
       myLoc = currentLatLng;
@@ -201,17 +203,21 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
           myLoc = location.latLng;
           times++;
           if (times == 5) {
-            print('ffffffffffff');
             var i = Random().nextInt(1000);
-            double positionRandom=i*0.000001;
+            double positionRandom = i * 0.000001;
             show(positionRandom.toString());
-            target = LatLng(myLoc.latitude + positionRandom, myLoc.longitude+positionRandom);
+            target = LatLng(myLoc.latitude + positionRandom,
+                myLoc.longitude + positionRandom);
             // target = LatLng(myLoc.latitude + 0.001, myLoc.longitude+ 0.001);
-            var targetStr='Data:'+target.latitude.toString()+'\n'+target.longitude.toString();
+            targetStr = 'Data:' +
+                target.latitude.toString() +
+                '\n' +
+                target.longitude.toString();
             marker = Marker(
               icon: BitmapDescriptor.fromIconPath(
                   "assets/images/animals/whale_map.png"),
               position: target,
+              visible: visibleB,
               infoWindowEnable: true,
               onTap: (s) async {
                 show('!!');
@@ -233,15 +239,12 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
             initMarkerMap[marker.id] = marker;
           }
           var tempV = (target.latitude - location.latLng.latitude).abs();
-          if ((target.latitude - location.latLng.latitude).abs() > 0.0001) {
-            volumes =
-                1 - ((target.latitude - location.latLng.latitude).abs() / 0.01);
-            newVideoPlayerScreen.run(volumes!);
-            // show('$target vs $location.latLng($times)\n=>$tempV');
-          }
-          if ((target.latitude - location.latLng.latitude).abs() <= 0.0001) {
+          volumes = 1 - tempV / 0.01;
+          newVideoPlayerScreen.run(volumes!);
+          if (volumes < 0.9) {
+            result = "取消";
+          } else {
             result = "完成任務";
-            show('完成任務!!!');
           }
         });
         super.initState();
@@ -305,8 +308,40 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
           FloatingActionButton(
             child: Icon(Icons.refresh),
             onPressed: () {
-              show(myLoc);
               setState(() {
+                if (visibleB) {
+                  show('困難模式(聽覺)');
+                  visibleB = false;
+                } else {
+                  show('簡單模式');
+                  visibleB = true;
+                }
+
+                // visibleB =-visibleB;
+                marker = Marker(
+                  icon: BitmapDescriptor.fromIconPath(
+                      "assets/images/animals/whale_map.png"),
+                  position: target,
+                  visible: visibleB,
+                  infoWindowEnable: true,
+                  onTap: (s) async {
+                    show('!!');
+                    // if (target.latitude - mapCenter.latitude <= 0.0001 &&
+                    //     target.longitude - mapCenter.longitude <= 0.0001) {
+                    //   show('完成任務');
+                    //   // result = '完成任務';
+                    //   // _checkAndPush();
+                    // } else {
+                    //   show('太遠了');
+                    // }
+                  },
+                  infoWindow: InfoWindow(
+                    title: '目標',
+                    snippet: targetStr,
+                  ),
+                  // icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+                );
+                initMarkerMap[marker.id] = marker;
               });
             },
             heroTag: null,
@@ -330,7 +365,10 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
             child: Icon(Icons.gps_fixed),
             onPressed: () {
               {
-                var myLocStr='myLocData:'+myLoc.latitude.toString()+'\n'+myLoc.longitude.toString();
+                var myLocStr = 'myLocData:' +
+                    myLoc.latitude.toString() +
+                    '\n' +
+                    myLoc.longitude.toString();
                 show(myLocStr);
                 moveCamera(myLoc);
                 // print('moveCamera to');
