@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
 import 'package:newocean/constants/colors.dart';
 
 class QuestionWidget extends StatelessWidget {

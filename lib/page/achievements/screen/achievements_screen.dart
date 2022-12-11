@@ -2,14 +2,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import '../../../constants/achievements_theme.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/achievements_model/achievement_model.dart';
-import '../../../model/achievements_model/logs_model.dart';
-import '../../../widget/achievements/mediterranean_diet_view.dart';
 import '../../../widget/achievements/reward_dialog.dart';
-import '../../../widget/task/task_dialog/sealionTask_dialog_widget.dart';
 
 List jsonResponse = [];
 

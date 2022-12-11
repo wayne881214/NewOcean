@@ -1,16 +1,10 @@
-import 'dart:async';
 
-import 'package:date_format/date_format.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/firebase/User.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sensors/sensors.dart';
 import 'package:newocean/firebase/storage_service.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-
 import '../../../constants/colors.dart';
 import '../../../firebase/database_service.dart';
 import '../../../firebase/log_service.dart';

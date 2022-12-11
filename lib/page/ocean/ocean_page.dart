@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/model/animal_model/animal_model.dart';
 import 'package:newocean/page/ocean/ocean_card.dart';
-import 'package:newocean/widget/animal/animal_card_widget.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'ar_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 class OceanPage extends StatefulWidget {

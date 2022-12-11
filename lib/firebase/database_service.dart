@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:newocean/firebase/User.dart';
+
 void changeTask(int id ,int state){
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();
   Map<String, Object> Task = {

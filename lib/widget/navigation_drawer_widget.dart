@@ -3,11 +3,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/page/achievements/achievements_page.dart';
 import 'package:newocean/page/friends/friends_page.dart';
-import 'package:newocean/page/ocean/ocean_page.dart';
 import 'package:newocean/page/animals/animals_page.dart';
 import 'package:newocean/page/store/storeHomepage.dart';
 import 'package:newocean/page/tasks/tasks_page.dart';
-import 'package:newocean/page/user/user_page.dart';
 import '../page/user/profilepage.dart';
 import '../page/user/sign_out_page.dart';
 

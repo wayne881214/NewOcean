@@ -20,7 +20,6 @@ class  _interactState extends State<Animal_interact> {
   String animalToolImg3 = "assets/images/animals/lock.png";
 
   void initState() {
-    print("======================================"+ widget.state.toString());
     setState(() {
       if(widget.state >= 2){
         animalToolImg1 = "assets/images/animals/aricon.png";

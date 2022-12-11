@@ -1,7 +1,3 @@
-import 'package:date_format/date_format.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-
 class UserData {
   final String uid;
   final String name;

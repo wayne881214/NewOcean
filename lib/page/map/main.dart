@@ -5,8 +5,6 @@ import 'package:amap_flutter_location/amap_location_option.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-
 import 'show_map_page.dart';
 
 void main() {

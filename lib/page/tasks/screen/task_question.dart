@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/page/tasks/screen/task_issue.dart';
 import 'package:newocean/page/tasks/screen/task_task.dart';

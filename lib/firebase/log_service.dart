@@ -5,7 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../model/achievements_model/achievement_model.dart';
 import '../model/achievements_model/logs_model.dart';
 

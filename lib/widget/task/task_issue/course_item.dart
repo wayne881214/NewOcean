@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
 import 'package:newocean/model/task_model/task_course_model.dart';
-import 'package:newocean/widget/task/task_issue/detail.dart';
-
-
-
 
 class CourseItem extends StatelessWidget {
   final Course course;

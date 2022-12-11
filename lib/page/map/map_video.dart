@@ -5,8 +5,6 @@ import 'dart:math';
 import 'package:amap_flutter_location/amap_flutter_location.dart';
 import 'package:amap_flutter_location/amap_location_option.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +13,6 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../firebase/User.dart';
 import '../../firebase/database_service.dart';
 import '../../firebase/log_service.dart';
-import '../../firebase/map_service.dart';
 import '../../model/achievements_model/logs_model.dart';
 import '../../model/map_model/map_model.dart';
 import '../../video.dart';
@@ -148,6 +145,10 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
     }
   }
 
+  Future<List<MapData>> _fetchLogs() async {
+    return jsonResponse.map((item) => new MapData.fromJson(item)).toList();
+  }
+
   AMapController? _controller;
   bool isChangeLocation = false;
 
@@ -197,6 +198,9 @@ class _Map_VideoPageState extends State<_Map_VideoPageBody> {
         HapticFeedback.mediumImpact();
 
         print('location.latLng isChangeLocation');
+        // times++;
+        //0.010076 //0.01
+        //0.001076 //0.01
         setState(() {
           myLoc = location.latLng;
           times++;

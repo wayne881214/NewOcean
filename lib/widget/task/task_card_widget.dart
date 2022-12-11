@@ -4,7 +4,6 @@ import 'package:newocean/page/tasks/tasks_page.dart';
 import 'package:newocean/page/tasks/screen/task_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
 import '../../model/task_model/task_model.dart';
 
 class TaskCard extends StatelessWidget {

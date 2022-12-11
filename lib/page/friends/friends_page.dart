@@ -1,12 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newocean/page/friends/screen/calls.dart';
-import 'package:newocean/page/friends/screen/chats.dart';
 import 'package:newocean/page/friends/screen/people.dart';
 import 'package:newocean/page/friends/states/lib.dart';
-import 'package:newocean/page/friends/screen/chatroom.dart';
-
 import 'screen/addfriend.dart';
 
 class FriendsPage extends StatefulWidget {

@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:newocean/page/animals/screen/animal_animal.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/model/animal_model/animal_model.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 import 'ar_widget.dart';
 class OceanCard extends StatelessWidget {

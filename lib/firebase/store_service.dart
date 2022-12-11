@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import '../model/achievements_model/achievement_model.dart';
-import '../model/achievements_model/logs_model.dart';
 import '../model/store_model/cart_model.dart';
-import 'log_service.dart';
+
 
 void setMoney(int money) {
   final currentUser = FirebaseAuth.instance.currentUser!.uid.toString();

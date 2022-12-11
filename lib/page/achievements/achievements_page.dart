@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newocean/page/achievements/screen/achievements_screen.dart';
 import 'package:newocean/page/achievements/screen/friend_show.dart';
-
 import '../../constants/colors.dart';
 import '../../constants/achievements_theme.dart';
-import '../../model/achievements_model/achievement_model.dart';
 import 'screen/my_diary_screen.dart';
 
 

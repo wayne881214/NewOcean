@@ -1,13 +1,10 @@
 import 'package:date_format/date_format.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:newocean/widget/achievements/title_view.dart';
-
 import '../../../../../constants/achievements_theme.dart';
 import '../../../firebase/log_service.dart';
 import '../../../model/task_model/task_progress_detail_model.dart';
-import '../../../widget/achievements/bar_chart.dart';
 import '../../../widget/achievements/line_chart.dart';
 import '../../../widget/achievements/loglist_view.dart';
 import '../../../widget/achievements/mediterranean_diet_view.dart';

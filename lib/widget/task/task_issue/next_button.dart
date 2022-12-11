@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newocean/constants/colors.dart';
 
 class NextButton extends StatelessWidget {
   const NextButton({Key? key, required this.nextQuestion}) : super(key: key);

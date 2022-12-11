@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newocean/constants/colors.dart';
 
-
-
 class CategoryStyle extends StatelessWidget {
   final String leftText;
   final String rightText;

@@ -1,13 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cupertino_list_tile/cupertino_list_tile.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../model/achievements_model/achievement_model.dart';
 import '../../../model/user_model/user_model.dart';
-import '../../../widget/achievements/reward_dialog.dart';
 import '../../friends/screen/chatdetail.dart';
 import 'my_diary_screen.dart';
 
